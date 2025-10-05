@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Marcelo Fabián — Gameplay Programmer (Portfolio)</title>
+  <meta name="description" content="Portafolio de Gameplay Programmer — placeholders listos para reemplazar">
+  <style>
+    /* -------------------- Base / VARIABLES -------------------- */
+    :root{
+      --bg:#0b0b0b;        /* dark */
+      --panel:#0f0f10;
+      --muted:#9b9b9b;
+      --accent:#ffffff;    /* bright accent (Nothing-style minimal) */
+      --glass: rgba(255,255,255,0.03);
+      --glass-2: rgba(255,255,255,0.02);
+      --radius:14px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Segoe UI Mono", monospace;
+      --ui: 14px/1.4 system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font:var(--ui); color:var(--accent); background:linear-gradient(180deg,var(--bg) 0%, #070707 100%);
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      padding:32px; display:flex; align-items:flex-start; justify-content:center;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+
+    /* Container */
+    .wrap{width:100%; max-width:1100px;}
+
+    /* Header */
+    header{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:28px}
+    .brand{display:flex; align-items:center; gap:14px}
+    .logo{width:56px; height:56px; background:linear-gradient(135deg,#fff0, #fff0); border-radius:10px; display:grid; place-items:center; border:1px solid rgba(255,255,255,0.06); padding:6px}
+    .logo .mark{width:40px; height:10px; background:linear-gradient(90deg,#fff,#ccc); border-radius:4px; transform:rotate(5deg)}
+    h1{margin:0; font-size:20px; letter-spacing:0.6px}
+    .tag{font-size:12px; color:var(--muted)}
+
+    /* Lang Buttons */
+    .controls{display:flex; gap:8px; align-items:center}
+    .lang{background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--accent); padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:600}
+    .lang.active{background:var(--accent); color:#0b0b0b}
+
+    /* Grid */
+    main{display:grid; grid-template-columns: 1fr 360px; gap:20px}
+    @media (max-width:980px){main{grid-template-columns:1fr} .right{order:2}}
+
+    section.card{background:linear-gradient(180deg,var(--panel), rgba(255,255,255,0.01)); border-radius:var(--radius); padding:18px; border:1px solid rgba(255,255,255,0.03);}
+
+    /* Hero */
+    .hero{display:flex; gap:18px; align-items:center}
+    .hero .eye{width:140px; height:140px; border-radius:14px; background:var(--glass); display:grid; place-items:center; border:1px solid rgba(255,255,255,0.04);}
+    .hero h2{margin:0; font-size:18px}
+    .one-liner{color:var(--muted); margin-top:8px}
+
+    /* Projects */
+    .projects{display:grid; gap:12px; margin-top:12px}
+    .project{display:flex; gap:12px; align-items:flex-start; padding:10px; border-radius:12px; background:var(--glass-2); border:1px solid rgba(255,255,255,0.02)}
+    .thumb{width:120px; height:72px; flex:0 0 120px; border-radius:8px; background:linear-gradient(180deg,#222,#111); display:grid; place-items:center; color:var(--muted); font-family:var(--mono)}
+    .proj-meta{flex:1}
+    .proj-title{font-weight:700}
+    .proj-desc{color:var(--muted); font-size:13px; margin-top:6px}
+    .tags{margin-top:8px; display:flex; gap:8px; flex-wrap:wrap}
+    .tag-pill{font-size:12px; padding:6px 8px; border-radius:999px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.02)}
+
+    /* Right column */
+    .right{display:flex; flex-direction:column; gap:16px}
+    .about p{color:var(--muted)}
+    .contact a{display:inline-block; margin-top:8px; text-decoration:none; color:var(--accent); font-weight:600}
+
+    /* Footer */
+    footer{margin-top:18px; color:var(--muted); font-size:13px}
+
+    /* subtle interactive micro-animations */
+    .lang:hover{transform:translateY(-2px)}
+    .project:hover{transform:translateY(-6px); transition:transform .22s ease}
+
+    /* Utilities */
+    .small{font-size:12px;color:var(--muted)}
+    a.ghost{color:var(--muted); text-decoration:none; border-bottom:1px dashed rgba(255,255,255,0.03)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"><div class="mark"></div></div>
+        <div>
+          <h1 data-i18n="name">Marcelo Fabián — Gameplay Programmer</h1>
+          <div class="tag" data-i18n="role">Gameplay · Systems · Tools</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="lang" id="btn-en" data-lang="en">English</button>
+        <button class="lang active" id="btn-es" data-lang="es">Español</button>
+      </div>
+    </header>
+
+    <main>
+      <div>
+        <!-- HERO -->
+        <section class="card hero">
+          <div class="eye" aria-hidden="true">ART</div>
+          <div>
+            <h2 data-i18n="headline">Experimental gameplay systems that feel right</h2>
+            <div class="one-liner" data-i18n="one_liner">Placeholder one-line summary — swap for your own elevator pitch.</div>
+            <div style="margin-top:12px; display:flex; gap:10px; align-items:center">
+              <a class="ghost" href="#projects" data-i18n="cta_projects">Ver Proyectos</a>
+              <span class="small">·</span>
+              <a class="ghost" href="#contact" data-i18n="cta_contact">Contacto</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" class="card" style="margin-top:18px">
+          <h3 data-i18n="projects_title">Proyectos</h3>
+          <div class="projects" id="projects-list">
+            <!-- project cards generated by JS -->
+          </div>
+        </section>
+
+        <!-- How to play / Systems -->
+        <section class="card" style="margin-top:18px">
+          <h3 data-i18n="howto_title">How to Play / Systems</h3>
+          <p data-i18n="howto_text">Breve explicación de la jugabilidad y los sistemas: aquí puedes describir las mecánicas principales, el loop de juego y qué problemas técnicos resolviste (ej. input buffering, state machines, prediction).</p>
+        </section>
+
+        <footer>
+          <div class="small">Built with <span style="font-family:var(--mono)">HTML · CSS · JS</span> — placeholders listos para personalizar.</div>
+        </footer>
+      </div>
+
+      <aside class="right">
+        <section class="card about">
+          <h4 data-i18n="about_title">Sobre mí</h4>
+          <p data-i18n="about_text">Soy un gameplay programmer con interés en mecánicas emergentes, prototipado rápido y sistemas robustos. Aquí va un párrafo corto sobre tu formación y lo que busques mostrar.</p>
+          <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap">
+            <div class="tag-pill">Unity</div>
+            <div class="tag-pill">C#</div>
+            <div class="tag-pill">Gameplay</div>
+            <div class="tag-pill">Tooling</div>
+          </div>
+        </section>
+
+        <section class="card contact" id="contact">
+          <h4 data-i18n="contact_title">Contacto</h4>
+          <div class="small" data-i18n="contact_text">Email / Links a redes. Reemplaza por tus datos reales.</div>
+          <a class="ghost" href="mailto:tu.email@example.com" data-i18n="contact_email">tu.email@example.com</a>
+          <div style="margin-top:12px">
+            <a class="ghost" href="#" data-i18n="link_github">GitHub</a> · <a class="ghost" href="#" data-i18n="link_linkedin">LinkedIn</a>
+          </div>
+        </section>
+
+        <section class="card">
+          <h4 data-i18n="skills_title">Skills / Tools</h4>
+          <ul class="small">
+            <li>C# / Unity</li>
+            <li>State Machines · Input Handling</li>
+            <li>Prototyping · Performance</li>
+          </ul>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    /* ----------------- TRANSLATIONS (modular) ----------------- */
+    const I18N = {
+      es: {
+        name: "Marcelo Fabián — Gameplay Programmer",
+        role: "Gameplay · Systems · Tools",
+        headline: "Sistemas experimentales de gameplay que se sienten bien",
+        one_liner: "Pitch provisional — cambia este texto por tu elevator pitch.",
+        cta_projects: "Ver Proyectos",
+        cta_contact: "Contacto",
+        projects_title: "Proyectos",
+        howto_title: "How to Play / Systems",
+        howto_text: "Breve explicación de la jugabilidad y los sistemas: describe loop, mecánicas y retos técnicos resueltos (ej. smoothing de input, detección de colisiones, máquinas de estado).",
+        about_title: "Sobre mí",
+        about_text: "Soy un gameplay programmer centrado en prototipado rápido, depuración de mecánicas y herramientas internas. Aquí un párrafo corto sobre tu background.",
+        contact_title: "Contacto",
+        contact_text: "Email / Links a redes. Reemplaza por tus datos reales.",
+        contact_email: "tu.email@example.com",
+        link_github: "GitHub",
+        link_linkedin: "LinkedIn",
+        skills_title: "Skills / Tools"
+      },
+      en: {
+        name: "Marcelo Fabián — Gameplay Programmer",
+        role: "Gameplay · Systems · Tools",
+        headline: "Experimental gameplay systems that feel right",
+        one_liner: "Temporary one-line pitch — replace with your elevator pitch.",
+        cta_projects: "See Projects",
+        cta_contact: "Contact",
+        projects_title: "Projects",
+        howto_title: "How to Play / Systems",
+        howto_text: "Short explanation of gameplay and systems: describe the player loop, core mechanics and technical challenges you solved (e.g. input buffering, collision handling, state machines).",
+        about_title: "About",
+        about_text: "I'm a gameplay programmer focused on fast prototyping, mechanics debugging and internal tools. Short paragraph about your background goes here.",
+        contact_title: "Contact",
+        contact_text: "Email / Links. Replace with your real contact data.",
+        contact_email: "your.email@example.com",
+        link_github: "GitHub",
+        link_linkedin: "LinkedIn",
+        skills_title: "Skills / Tools"
+      }
+    }
+
+    // function to apply translations to elements with [data-i18n]
+    function applyLang(lang){
+      const dict = I18N[lang] || I18N.es;
+      document.querySelectorAll('[data-i18n]').forEach(node=>{
+        const key = node.getAttribute('data-i18n');
+        if(dict[key]){
+          node.textContent = dict[key];
+        }
+      });
+
+      // update language buttons labels as requested
+      document.getElementById('btn-en').textContent = lang === 'en' ? 'English' : 'English';
+      document.getElementById('btn-es').textContent = lang === 'en' ? 'Spanish' : 'Español';
+
+      // active state
+      document.querySelectorAll('.lang').forEach(btn=>btn.classList.toggle('active', btn.dataset.lang === lang));
+    }
+
+    // attach events to lang buttons
+    document.getElementById('btn-en').addEventListener('click', ()=>applyLang('en'));
+    document.getElementById('btn-es').addEventListener('click', ()=>applyLang('es'));
+
+    // init default language
+    applyLang('es');
+
+    /* ----------------- PROJECTS (modular data) ----------------- */
+    const PROJECTS = [
+      {id:'p1', title:'Prototype: Input Buffering', desc:'Small prototype solving hit-cancel windows and buffered inputs. Implemented with a compact state machine.', tags:['Unity','C#','Prototype']},
+      {id:'p2', title:'Rifle Handling System', desc:'Tuned weapon recoil, aim assist and spread curves. Includes editor tooling for tuning curves.', tags:['Unity','Systems','Tools']},
+      {id:'p3', title:'Roguelite Progression', desc:'Progression system + save data, modular item effects and procedural balancing utilities.', tags:['Design','Balance','Systems']}
+    ];
+
+    function renderProjects(){
+      const container = document.getElementById('projects-list');
+      container.innerHTML = '';
+      PROJECTS.forEach(p=>{
+        const el = document.createElement('div'); el.className = 'project';
+        el.innerHTML = `
+          <div class="thumb">${p.id.toUpperCase()}</div>
+          <div class="proj-meta">
+            <div class="proj-title">${p.title}</div>
+            <div class="proj-desc">${p.desc}</div>
+            <div class="tags">${p.tags.map(t=>`<div class="tag-pill">${t}</div>`).join('')}</div>
+          </div>
+        `;
+        container.appendChild(el);
+      });
+    }
+    renderProjects();
+
+    /* ----------------- Helpful notes for editing ----------------- */
+    // 1) Replace I18N text with your own translations.
+    // 2) Replace PROJECTS array with your projects; add fields like `media` to include gif/video.
+    // 3) Replace contact email in the HTML anchor and I18N objects.
+    // 4) To test locally: open index.html in the browser or run `python -m http.server` in the folder.
+  </script>
+</body>
+</html>
