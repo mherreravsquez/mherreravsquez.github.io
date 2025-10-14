@@ -1,270 +1,988 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Marcelo Fabián — Gameplay Programmer (Portfolio)</title>
-  <meta name="description" content="Portafolio de Gameplay Programmer — placeholders listos para reemplazar">
-  <style>
-    /* -------------------- Base / VARIABLES -------------------- */
-    :root{
-      --bg:#0b0b0b;        /* dark */
-      --panel:#0f0f10;
-      --muted:#9b9b9b;
-      --accent:#ffffff;    /* bright accent (Nothing-style minimal) */
-      --glass: rgba(255,255,255,0.03);
-      --glass-2: rgba(255,255,255,0.02);
-      --radius:14px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Segoe UI Mono", monospace;
-      --ui: 14px/1.4 system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; font:var(--ui); color:var(--accent); background:linear-gradient(180deg,var(--bg) 0%, #070707 100%);
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-      padding:32px; display:flex; align-items:flex-start; justify-content:center;
-      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Marcelo Herrera — Gameplay Programmer (Portfolio)</title>
+    <meta name="description" content="Portafolio de Gameplay Programmer — proyectos, sistemas y herramientas de diseño y programación de videojuegos.">
+    <style>
+        /* -------------------- Base / VARIABLES -------------------- */
+        :root{
+            --bg:#0b0b0b;
+            --panel:#0f0f10;
+            --muted:#9b9b9b;
+            --accent:#ffffff;
+            --glass: rgba(255,255,255,0.03);
+            --glass-2: rgba(255,255,255,0.02);
+            --radius:14px;
+            --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Segoe UI Mono", monospace;
+            --ui: 14px/1.4 system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+        }
+        *{box-sizing:border-box}
+        html,body{height:100%}
+        body{
+            margin:0;
+            font:var(--ui);
+            color:var(--accent);
+            background:linear-gradient(180deg,var(--bg) 0%, #070707 100%);
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            padding:32px;
+            display:flex;
+            align-items:flex-start;
+            justify-content:center;
+            font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;
+        }
 
-    /* Container */
-    .wrap{width:100%; max-width:1100px;}
+        .wrap{width:100%; max-width:1100px;}
+        header{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:28px}
+        .brand{display:flex; align-items:center; gap:14px}
+        .logo{width:56px; height:56px; border-radius:10px; display:grid; place-items:center; border:1px solid rgba(255,255,255,0.06); padding:6px}
+        .logo .mark{width:40px; height:10px; background:linear-gradient(90deg,#fff,#ccc); border-radius:4px; transform:rotate(5deg)}
+        h1{margin:0; font-size:20px; letter-spacing:0.6px}
+        .tag{font-size:12px; color:var(--muted)}
 
-    /* Header */
-    header{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:28px}
-    .brand{display:flex; align-items:center; gap:14px}
-    .logo{width:56px; height:56px; background:linear-gradient(135deg,#fff0, #fff0); border-radius:10px; display:grid; place-items:center; border:1px solid rgba(255,255,255,0.06); padding:6px}
-    .logo .mark{width:40px; height:10px; background:linear-gradient(90deg,#fff,#ccc); border-radius:4px; transform:rotate(5deg)}
-    h1{margin:0; font-size:20px; letter-spacing:0.6px}
-    .tag{font-size:12px; color:var(--muted)}
+        .controls{display:flex; gap:8px; align-items:center}
+        .lang{background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--accent); padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:600}
+        .lang.active{background:var(--accent); color:#0b0b0b}
 
-    /* Lang Buttons */
-    .controls{display:flex; gap:8px; align-items:center}
-    .lang{background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--accent); padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:600}
-    .lang.active{background:var(--accent); color:#0b0b0b}
+        main{display:grid; grid-template-columns: 1fr 360px; gap:20px}
+        @media (max-width:980px){main{grid-template-columns:1fr} .right{order:2}}
 
-    /* Grid */
-    main{display:grid; grid-template-columns: 1fr 360px; gap:20px}
-    @media (max-width:980px){main{grid-template-columns:1fr} .right{order:2}}
+        section.card{background:linear-gradient(180deg,var(--panel), rgba(255,255,255,0.01)); border-radius:var(--radius); padding:18px; border:1px solid rgba(255,255,255,0.03);}
 
-    section.card{background:linear-gradient(180deg,var(--panel), rgba(255,255,255,0.01)); border-radius:var(--radius); padding:18px; border:1px solid rgba(255,255,255,0.03);}
+        /* Hero */
+        .hero{display:flex; gap:18px; align-items:center}
+        .hero .eye{width:140px; height:140px; border-radius:14px; background:var(--glass); display:grid; place-items:center; border:1px solid rgba(255,255,255,0.04);}
+        .hero h2{margin:0; font-size:18px}
+        .one-liner{color:var(--muted); margin-top:8px}
 
-    /* Hero */
-    .hero{display:flex; gap:18px; align-items:center}
-    .hero .eye{width:140px; height:140px; border-radius:14px; background:var(--glass); display:grid; place-items:center; border:1px solid rgba(255,255,255,0.04);}
-    .hero h2{margin:0; font-size:18px}
-    .one-liner{color:var(--muted); margin-top:8px}
+        /* Projects */
+        .projects {
+            display: grid;
+            gap: 12px;
+            margin-top: 18px;
+        }
 
-    /* Projects */
-    .projects{display:grid; gap:12px; margin-top:12px}
-    .project{display:flex; gap:12px; align-items:flex-start; padding:10px; border-radius:12px; background:var(--glass-2); border:1px solid rgba(255,255,255,0.02)}
-    .thumb{width:120px; height:72px; flex:0 0 120px; border-radius:8px; background:linear-gradient(180deg,#222,#111); display:grid; place-items:center; color:var(--muted); font-family:var(--mono)}
-    .proj-meta{flex:1}
-    .proj-title{font-weight:700}
-    .proj-desc{color:var(--muted); font-size:13px; margin-top:6px}
-    .tags{margin-top:8px; display:flex; gap:8px; flex-wrap:wrap}
-    .tag-pill{font-size:12px; padding:6px 8px; border-radius:999px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.02)}
+        .project {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            padding: 12px;
+            border-radius: 12px;
+            background: var(--glass-2);
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: transform 0.25s ease, background 0.25s ease;
+            cursor: pointer;
+        }
 
-    /* Right column */
-    .right{display:flex; flex-direction:column; gap:16px}
-    .about p{color:var(--muted)}
-    .contact a{display:inline-block; margin-top:8px; text-decoration:none; color:var(--accent); font-weight:600}
+        .project:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.04);
+        }
 
-    /* Footer */
-    footer{margin-top:18px; color:var(--muted); font-size:13px}
+        .thumb {
+            width: 160px;
+            aspect-ratio: 13 / 10;
+            flex: 0 0 320px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.06);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
 
-    /* subtle interactive micro-animations */
-    .lang:hover{transform:translateY(-2px)}
-    .project:hover{transform:translateY(-6px); transition:transform .22s ease}
+        .proj-meta {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
 
-    /* Utilities */
-    .small{font-size:12px;color:var(--muted)}
-    a.ghost{color:var(--muted); text-decoration:none; border-bottom:1px dashed rgba(255,255,255,0.03)}
-  </style>
+        .proj-title {
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .proj-desc {
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 6px;
+            line-height: 1.4;
+        }
+
+        .tags {
+            margin-top: 8px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag-pill {
+            font-size: 12px;
+            padding: 6px 8px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.02);
+        }
+
+        @media (max-width: 700px) {
+            .project {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .thumb {
+                width: 100%;
+                max-width: 400px;
+            }
+            .proj-meta {
+                align-items: center;
+            }
+        }
+
+        /* Gallery Base */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            border-radius: 10px;
+            background: var(--glass-2);
+            border: 1px solid rgba(255,255,255,0.03);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.25s ease;
+        }
+
+        .gallery-item:hover::before {
+            transform: scale(1.05);
+        }
+
+        .gallery-item:hover {
+            border-color: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.04);
+        }
+
+        /* PANEL EXPANDIBLE */
+        .expandable-panel {
+            margin-top: 20px;
+            background: var(--panel);
+            border-radius: var(--radius);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 0;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+
+        .expandable-panel.active {
+            max-height: 1200px;
+            padding: 25px;
+        }
+
+        .panel-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .panel-content {
+                flex-direction: row;
+            }
+        }
+
+        .panel-media {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #000;
+            aspect-ratio: 16/9;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            pointer-events: none;
+        }
+
+        .carousel-btn {
+            background: rgba(0,0,0,0.5);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            pointer-events: all;
+            transition: background 0.3s ease;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(0,0,0,0.8);
+        }
+
+        .carousel-thumbnails {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 5px 0;
+        }
+
+        .carousel-thumb {
+            width: 60px;
+            height: 60px;
+            border-radius: 6px;
+            object-fit: cover;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .carousel-thumb.active {
+            opacity: 1;
+            border-color: var(--accent);
+        }
+
+        .carousel-thumb:hover {
+            opacity: 1;
+        }
+
+        .panel-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .panel-title {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .panel-desc {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .right{display:flex; flex-direction:column; gap:16px}
+        .about p{color:var(--muted)}
+        .contact a{display:inline-block; margin-top:8px; text-decoration:none; color:var(--accent); font-weight:600}
+        footer{margin-top:18px; color:var(--muted); font-size:13px}
+        .lang:hover{transform:translateY(-2px)}
+        .small{font-size:12px;color:var(--muted)}
+        a.ghost{color:var(--muted); text-decoration:none; border-bottom:1px dashed rgba(255,255,255,0.03)}
+
+        .card + .card,
+        .right > .card + .card {
+            margin-top: 18px;
+        }
+    </style>
 </head>
-<body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo" aria-hidden="true"><div class="mark"></div></div>
-        <div>
-          <h1 data-i18n="name">Marcelo Fabián — Gameplay Programmer</h1>
-          <div class="tag" data-i18n="role">Gameplay · Systems · Tools</div>
-        </div>
-      </div>
 
-      <div class="controls">
-        <button class="lang" id="btn-en" data-lang="en">English</button>
-        <button class="lang active" id="btn-es" data-lang="es">Español</button>
-      </div>
+<body>
+<div class="wrap">
+    <header>
+        <div class="brand">
+            <div class="logo" aria-hidden="true"><div class="mark"></div></div>
+            <div>
+                <h1 data-i18n="name">Marcelo Herrera — Gameplay Programmer</h1>
+                <div class="tag" data-i18n="role">Gameplay · Systems · Tools</div>
+            </div>
+        </div>
+        <div class="controls">
+            <button class="lang" id="btn-en" data-lang="en">English</button>
+            <button class="lang active" id="btn-es" data-lang="es">Español</button>
+        </div>
     </header>
 
     <main>
-      <div>
-        <!-- HERO -->
-        <section class="card hero">
-          <div class="eye" aria-hidden="true">ART</div>
-          <div>
-            <h2 data-i18n="headline">Experimental gameplay systems that feel right</h2>
-            <div class="one-liner" data-i18n="one_liner">Placeholder one-line summary — swap for your own elevator pitch.</div>
-            <div style="margin-top:12px; display:flex; gap:10px; align-items:center">
-              <a class="ghost" href="#projects" data-i18n="cta_projects">Ver Proyectos</a>
-              <span class="small">·</span>
-              <a class="ghost" href="#contact" data-i18n="cta_contact">Contacto</a>
-            </div>
-          </div>
-        </section>
+        <div>
+            <!-- HERO -->
+            <section class="card hero">
+                <div class="eye" aria-hidden="true">ART</div>
+                <div>
+                    <h2 data-i18n="headline">Sistemas experimentales de gameplay que se sienten bien</h2>
+                    <div class="one-liner" data-i18n="one_liner">Experimentos interactivos, loops pulidos y sistemas emergentes.</div>
+                    <div style="margin-top:12px; display:flex; gap:10px; align-items:center">
+                        <a class="ghost" href="#projects" data-i18n="cta_projects">Ver Proyectos</a>
+                        <span class="small">·</span>
+                        <a class="ghost" href="#gallery" data-i18n="cta_gallery">Galería</a>
+                        <span class="small">·</span>
+                        <a class="ghost" href="#contact" data-i18n="cta_contact">Contacto</a>
+                    </div>
+                </div>
+            </section>
 
-        <!-- PROJECTS -->
-        <section id="projects" class="card" style="margin-top:18px">
-          <h3 data-i18n="projects_title">Proyectos</h3>
-          <div class="projects" id="projects-list">
-            <!-- project cards generated by JS -->
-          </div>
-        </section>
+            <!-- PROJECTS -->
+            <section id="projects" class="card" style="margin-top:18px">
+                <h3 data-i18n="projects_title">Proyectos</h3>
+                <div class="projects" id="projects-list"></div>
+            </section>
 
-        <!-- How to play / Systems -->
-        <section class="card" style="margin-top:18px">
-          <h3 data-i18n="howto_title">How to Play / Systems</h3>
-          <p data-i18n="howto_text">Breve explicación de la jugabilidad y los sistemas: aquí puedes describir las mecánicas principales, el loop de juego y qué problemas técnicos resolviste (ej. input buffering, state machines, prediction).</p>
-        </section>
+            <!-- GALLERY -->
+            <section id="gallery" class="card" style="margin-top:18px">
+                <h3 data-i18n="gallery_title">Galería de Proyectos</h3>
+                <p class="small" data-i18n="gallery_text">Otros trabajos y experimentos realizados durante mis estudios de diseño de juegos digitales.</p>
 
-        <footer>
-          <div class="small">Built with <span style="font-family:var(--mono)">HTML · CSS · JS</span> — placeholders listos para personalizar.</div>
-        </footer>
-      </div>
+                <!-- GALERÍA CON PANEL EXPANDIBLE -->
+                <div class="gallery" id="gallery-expandable-list"></div>
+                <div class="expandable-panel" id="expandable-panel">
+                    <div class="panel-content">
+                        <div class="panel-media">
+                            <div class="carousel-container" id="carousel-container">
+                                <!-- Las diapositivas del carrusel se generarán aquí -->
+                            </div>
+                            <div class="carousel-thumbnails" id="carousel-thumbnails">
+                                <!-- Las miniaturas se generarán aquí -->
+                            </div>
+                        </div>
+                        <div class="panel-info">
+                            <h3 class="panel-title" id="panel-title">Título del Proyecto</h3>
+                            <p class="panel-desc" id="panel-desc">Descripción del proyecto aparecerá aquí...</p>
+                            <div class="tags" id="panel-tags"></div>
+                            <div class="modal-details" id="panel-details">
+                                <div class="detail-item">
+                                    <div class="detail-label">Tecnología</div>
+                                    <div class="detail-value">Unity, C#, Blender</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">Rol</div>
+                                    <div class="detail-value">Gameplay Programmer</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">Duración</div>
+                                    <div class="detail-value">3 meses</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-      <aside class="right">
-        <section class="card about">
-          <h4 data-i18n="about_title">Sobre mí</h4>
-          <p data-i18n="about_text">Soy un gameplay programmer con interés en mecánicas emergentes, prototipado rápido y sistemas robustos. Aquí va un párrafo corto sobre tu formación y lo que busques mostrar.</p>
-          <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap">
-            <div class="tag-pill">Unity</div>
-            <div class="tag-pill">C#</div>
-            <div class="tag-pill">Gameplay</div>
-            <div class="tag-pill">Tooling</div>
-          </div>
-        </section>
+            <footer>
+                <div class="small">© 2025 — Built with <span style="font-family:var(--mono)">HTML · CSS · JS</span></div>
+            </footer>
+        </div>
 
-        <section class="card contact" id="contact">
-          <h4 data-i18n="contact_title">Contacto</h4>
-          <div class="small" data-i18n="contact_text">Email / Links a redes. Reemplaza por tus datos reales.</div>
-          <a class="ghost" href="mailto:tu.email@example.com" data-i18n="contact_email">tu.email@example.com</a>
-          <div style="margin-top:12px">
-            <a class="ghost" href="#" data-i18n="link_github">GitHub</a> · <a class="ghost" href="#" data-i18n="link_linkedin">LinkedIn</a>
-          </div>
-        </section>
+        <aside class="right">
+            <section class="card about">
+                <h4 data-i18n="about_title">Sobre mí</h4>
+                <p data-i18n="about_text">Soy un gameplay programmer centrado en prototipado rápido, depuración de mecánicas y herramientas internas. Me apasiona traducir ideas de diseño en sistemas funcionales y expresivos.</p>
+                <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap">
+                    <div class="tag-pill">Unity</div>
+                    <div class="tag-pill">C#</div>
+                    <div class="tag-pill">Gameplay</div>
+                    <div class="tag-pill">Tooling</div>
+                </div>
+            </section>
 
-        <section class="card">
-          <h4 data-i18n="skills_title">Skills / Tools</h4>
-          <ul class="small">
-            <li>C# / Unity</li>
-            <li>State Machines · Input Handling</li>
-            <li>Prototyping · Performance</li>
-          </ul>
-        </section>
-      </aside>
+            <section class="card contact" id="contact">
+                <h4 data-i18n="contact_title">Contacto</h4>
+                <div class="small" data-i18n="contact_text">Email y redes profesionales.</div>
+                <a class="ghost" href="mailto:m.herreravsquez@outlook.com" data-i18n="contact_email">m.herreravsquez@outlook.com</a>
+                <div style="margin-top:12px">
+                    <a class="ghost" href="https://github.com/mherreravsquez" target="_blank" data-i18n="link_github">GitHub</a> ·
+                    <a class="ghost" href="https://www.linkedin.com/in/mherreravsquez" target="_blank" data-i18n="link_linkedin">LinkedIn</a> ·
+                    <a class="ghost" href="https://mherreravsquez.artstation.com" target="_blank" data-i18n="link_artstation">ArtStation</a> ·
+                    <a class="ghost" href="https://instagram.com/mherreravsquez" target="_blank" data-i18n="link_instagram">Instagram</a>
+                </div>
+                <div style="margin-top:12px">
+                    <a class="ghost" href="assets/CV_MarceloHerrera.pdf" target="_blank" data-i18n="link_cv">Descargar CV</a>
+                </div>
+            </section>
+
+            <section class="card">
+                <h4 data-i18n="skills_title">Skills / Tools</h4>
+                <ul class="small">
+                    <li>C# / Unity</li>
+                    <li>State Machines · Input Handling</li>
+                    <li>Prototyping · Performance</li>
+                </ul>
+            </section>
+        </aside>
     </main>
-  </div>
+</div>
 
-  <script>
-    /* ----------------- TRANSLATIONS (modular) ----------------- */
+<script>
+    /* =====================================================================
+       INSTRUCCIONES PARA PERSONALIZAR EL PORTFOLIO / INSTRUCTIONS FOR CUSTOMIZING THE PORTFOLIO
+       ===================================================================== */
+
+    /*
+    ESPAÑOL:
+    Para personalizar este portfolio, sigue estos pasos:
+
+    1. CAMBIAR TEXTOS Y TRADUCCIONES:
+       - Modifica el objeto I18N más abajo para cambiar los textos en español e inglés
+       - Cada texto tiene una clave (key) y valores para español (es) e inglés (en)
+
+    2. AÑADIR/MODIFICAR PROYECTOS:
+       - Edita el array PROJECTS más abajo
+       - Cada proyecto necesita:
+         * id: Identificador único
+         * title: Título en español e inglés
+         * desc: Descripción en español e inglés
+         * cover: Ruta a la imagen de portada
+         * tags: Array de etiquetas
+
+    3. AÑADIR/MODIFICAR ELEMENTOS DE LA GALERÍA:
+       - Edita el array GALLERY_ITEMS más abajo
+       - Cada elemento necesita:
+         * id: Identificador único
+         * title: Título en español e inglés
+         * desc: Descripción en español e inglés
+         * images: Array de rutas a imágenes/GIFs (mínimo 1)
+         * tags: Array de etiquetas
+         * details: Información detallada en español e inglés
+
+    4. CAMBIAR IMÁGENES:
+       - Coloca tus imágenes en la carpeta 'assets/'
+       - Actualiza las rutas en los arrays PROJECTS y GALLERY_ITEMS
+       - Formatos soportados: JPG, PNG, GIF, WebP
+
+    5. ACTUALIZAR ENLACES DE CONTACTO:
+       - Modifica los enlaces en la sección de contacto del HTML
+       - Actualiza el correo electrónico
+
+    ENGLISH:
+    To customize this portfolio, follow these steps:
+
+    1. CHANGE TEXTS AND TRANSLATIONS:
+       - Modify the I18N object below to change texts in Spanish and English
+       - Each text has a key and values for Spanish (es) and English (en)
+
+    2. ADD/MODIFY PROJECTS:
+       - Edit the PROJECTS array below
+       - Each project needs:
+         * id: Unique identifier
+         * title: Title in Spanish and English
+         * desc: Description in Spanish and English
+         * cover: Path to the cover image
+         * tags: Array of tags
+
+    3. ADD/MODIFY GALLERY ITEMS:
+       - Edit the GALLERY_ITEMS array below
+       - Each item needs:
+         * id: Unique identifier
+         * title: Title in Spanish and English
+         * desc: Description in Spanish and English
+         * images: Array of paths to images/GIFs (minimum 1)
+         * tags: Array of tags
+         * details: Detailed information in Spanish and English
+
+    4. CHANGE IMAGES:
+       - Place your images in the 'assets/' folder
+       - Update the paths in the PROJECTS and GALLERY_ITEMS arrays
+       - Supported formats: JPG, PNG, GIF, WebP
+
+    5. UPDATE CONTACT LINKS:
+       - Modify the links in the contact section of the HTML
+       - Update the email address
+    */
+
+    /* ----------------- TRANSLATIONS ----------------- */
     const I18N = {
-      es: {
-        name: "Marcelo Fabián — Gameplay Programmer",
-        role: "Gameplay · Systems · Tools",
-        headline: "Sistemas experimentales de gameplay que se sienten bien",
-        one_liner: "Pitch provisional — cambia este texto por tu elevator pitch.",
-        cta_projects: "Ver Proyectos",
-        cta_contact: "Contacto",
-        projects_title: "Proyectos",
-        howto_title: "How to Play / Systems",
-        howto_text: "Breve explicación de la jugabilidad y los sistemas: describe loop, mecánicas y retos técnicos resueltos (ej. smoothing de input, detección de colisiones, máquinas de estado).",
-        about_title: "Sobre mí",
-        about_text: "Soy un gameplay programmer centrado en prototipado rápido, depuración de mecánicas y herramientas internas. Aquí un párrafo corto sobre tu background.",
-        contact_title: "Contacto",
-        contact_text: "Email / Links a redes. Reemplaza por tus datos reales.",
-        contact_email: "tu.email@example.com",
-        link_github: "GitHub",
-        link_linkedin: "LinkedIn",
-        skills_title: "Skills / Tools"
-      },
-      en: {
-        name: "Marcelo Fabián — Gameplay Programmer",
-        role: "Gameplay · Systems · Tools",
-        headline: "Experimental gameplay systems that feel right",
-        one_liner: "Temporary one-line pitch — replace with your elevator pitch.",
-        cta_projects: "See Projects",
-        cta_contact: "Contact",
-        projects_title: "Projects",
-        howto_title: "How to Play / Systems",
-        howto_text: "Short explanation of gameplay and systems: describe the player loop, core mechanics and technical challenges you solved (e.g. input buffering, collision handling, state machines).",
-        about_title: "About",
-        about_text: "I'm a gameplay programmer focused on fast prototyping, mechanics debugging and internal tools. Short paragraph about your background goes here.",
-        contact_title: "Contact",
-        contact_text: "Email / Links. Replace with your real contact data.",
-        contact_email: "your.email@example.com",
-        link_github: "GitHub",
-        link_linkedin: "LinkedIn",
-        skills_title: "Skills / Tools"
-      }
-    }
-
-    // function to apply translations to elements with [data-i18n]
-    function applyLang(lang){
-      const dict = I18N[lang] || I18N.es;
-      document.querySelectorAll('[data-i18n]').forEach(node=>{
-        const key = node.getAttribute('data-i18n');
-        if(dict[key]){
-          node.textContent = dict[key];
+        es: {
+            name: "Marcelo Herrera — Gameplay Programmer",
+            role: "Gameplay · Systems · Tools",
+            headline: "Sistemas experimentales de gameplay que se sienten bien",
+            one_liner: "Experimentos interactivos, loops pulidos y sistemas emergentes.",
+            cta_projects: "Ver Proyectos",
+            cta_gallery: "Galería",
+            cta_contact: "Contacto",
+            projects_title: "Proyectos",
+            gallery_title: "Galería de Proyectos",
+            gallery_text: "Otros trabajos y experimentos realizados durante mis estudios de diseño de juegos digitales.",
+            about_title: "Sobre mí",
+            about_text: "Soy un gameplay programmer centrado en prototipado rápido, depuración de mecánicas y herramientas internas. Me apasiona traducir ideas de diseño en sistemas funcionales y expresivos.",
+            contact_title: "Contacto",
+            contact_text: "Email y redes profesionales.",
+            contact_email: "m.herreravsquez@outlook.com",
+            link_github: "GitHub",
+            link_linkedin: "LinkedIn",
+            link_artstation: "ArtStation",
+            link_instagram: "Instagram",
+            link_cv: "Descargar CV",
+            skills_title: "Skills / Tools"
+        },
+        en: {
+            name: "Marcelo Herrera — Gameplay Programmer",
+            role: "Gameplay · Systems · Tools",
+            headline: "Experimental gameplay systems that feel right",
+            one_liner: "Interactive experiments, polished loops, and emergent systems.",
+            cta_projects: "See Projects",
+            cta_gallery: "Gallery",
+            cta_contact: "Contact",
+            projects_title: "Projects",
+            gallery_title: "Project Gallery",
+            gallery_text: "Other works and experiments from my digital game design studies.",
+            about_title: "About",
+            about_text: "I'm a gameplay programmer focused on fast prototyping, mechanic debugging, and internal tools. I enjoy turning design ideas into expressive, functional systems.",
+            contact_title: "Contact",
+            contact_text: "Email and professional networks.",
+            contact_email: "m.herreravsquez@outlook.com",
+            link_github: "GitHub",
+            link_linkedin: "LinkedIn",
+            link_artstation: "ArtStation",
+            link_instagram: "Instagram",
+            link_cv: "Download CV",
+            skills_title: "Skills / Tools"
         }
-      });
+    };
 
-      // update language buttons labels as requested
-      document.getElementById('btn-en').textContent = lang === 'en' ? 'English' : 'English';
-      document.getElementById('btn-es').textContent = lang === 'en' ? 'Spanish' : 'Español';
-
-      // active state
-      document.querySelectorAll('.lang').forEach(btn=>btn.classList.toggle('active', btn.dataset.lang === lang));
+    function applyLang(lang){
+        const dict = I18N[lang] || I18N.es;
+        document.querySelectorAll('[data-i18n]').forEach(node=>{
+            const key=node.getAttribute('data-i18n');
+            if(dict[key]) node.textContent=dict[key];
+        });
+        document.querySelectorAll('.lang').forEach(btn=>btn.classList.toggle('active', btn.dataset.lang===lang));
+        localStorage.setItem('lang', lang);
     }
 
-    // attach events to lang buttons
-    document.getElementById('btn-en').addEventListener('click', ()=>applyLang('en'));
-    document.getElementById('btn-es').addEventListener('click', ()=>applyLang('es'));
+    document.getElementById('btn-en').addEventListener('click', ()=>{applyLang('en'); renderProjects(); renderGallery();});
+    document.getElementById('btn-es').addEventListener('click', ()=>{applyLang('es'); renderProjects(); renderGallery();});
 
-    // init default language
-    applyLang('es');
+    applyLang(localStorage.getItem('lang') || 'es');
 
-    /* ----------------- PROJECTS (modular data) ----------------- */
+    /* ----------------- PROJECTS ----------------- */
+    /*
+    ESPAÑOL:
+    Para añadir o modificar proyectos, edita este array.
+    Cada proyecto debe tener:
+    - id: Identificador único
+    - title: Objeto con títulos en español (es) e inglés (en)
+    - desc: Objeto con descripciones en español (es) e inglés (en)
+    - cover: Ruta a la imagen de portada
+    - tags: Array de etiquetas
+
+    ENGLISH:
+    To add or modify projects, edit this array.
+    Each project must have:
+    - id: Unique identifier
+    - title: Object with titles in Spanish (es) and English (en)
+    - desc: Object with descriptions in Spanish (es) and English (en)
+    - cover: Path to the cover image
+    - tags: Array of tags
+    */
     const PROJECTS = [
-      {id:'p1', title:'Prototype: Input Buffering', desc:'Small prototype solving hit-cancel windows and buffered inputs. Implemented with a compact state machine.', tags:['Unity','C#','Prototype']},
-      {id:'p2', title:'Rifle Handling System', desc:'Tuned weapon recoil, aim assist and spread curves. Includes editor tooling for tuning curves.', tags:['Unity','Systems','Tools']},
-      {id:'p3', title:'Roguelite Progression', desc:'Progression system + save data, modular item effects and procedural balancing utilities.', tags:['Design','Balance','Systems']}
+        {
+            id:'BTB',
+            title:{es:'Break the Bubble',en:'Break the Bubble'},
+            desc:{
+                es:'Metroidvania 2D donde controlas a un mago que debe abrirse paso al supermercado. Derrota enemigos, resuelve puzles y adquiere nuevos poderes para completar su misión.',
+                en:'2D Metroidvania where you play as a wizard on a journey to the supermarket. Fight enemies, solve puzzles, and gain new powers to complete your mission.'
+            },
+            cover:'assets/Unity_Games/BTB/BTB_Cover.png',
+            tags:['Unity','2D','C#','Prototype','Jam']
+        },
+        {
+            id:'CL',
+            title:{es:'Car-Loop',en:'Car-Loop'},
+            desc:{
+                es:'Juego de terror psicológico en VR donde el jugador revive un bucle de pesadillas dentro de su automóvil mientras conduce hacia un destino inevitable.',
+                en:'Psychological VR horror game where the player relives a nightmare loop inside their car while driving toward an inevitable fate.'
+            },
+            cover:'assets/Unity_Games/CL/CL_Cover.png',
+            tags:['Unity','3D','C#','VR','Prototype']
+        },
+        {
+            id:'HA',
+            title:{es:'Hunters: Awakening',en:'Hunters: Awakening'},
+            desc:{
+                es:'Javiera es rescatada por un cazador interdimensional y descubre una organización secreta que mantiene el equilibrio entre realidades paralelas.',
+                en:'Javiera is rescued by an interdimensional hunter and uncovers a secret organization maintaining balance between parallel realities.'
+            },
+            cover:'assets/Unity_Games/HA/HA_Cover.png',
+            tags:['Unity','2D','C#','Prototype']
+        }
+        /*
+        EJEMPLO DE CÓMO AÑADIR UN NUEVO PROYECTO / EXAMPLE OF HOW TO ADD A NEW PROJECT:
+        
+        {
+            id:'NUEVO_PROYECTO', // ID único / Unique ID
+            title:{
+                es:'Título en Español',
+                en:'Title in English'
+            },
+            desc:{
+                es:'Descripción detallada en español...',
+                en:'Detailed description in English...'
+            },
+            cover:'assets/ruta/a/tu/imagen.jpg', // Ruta a la imagen de portada / Path to cover image
+            tags:['Unity', '3D', 'C#', 'Multiplayer'] // Etiquetas / Tags
+        }
+        */
     ];
 
-    function renderProjects(){
-      const container = document.getElementById('projects-list');
-      container.innerHTML = '';
-      PROJECTS.forEach(p=>{
-        const el = document.createElement('div'); el.className = 'project';
-        el.innerHTML = `
-          <div class="thumb">${p.id.toUpperCase()}</div>
-          <div class="proj-meta">
-            <div class="proj-title">${p.title}</div>
-            <div class="proj-desc">${p.desc}</div>
-            <div class="tags">${p.tags.map(t=>`<div class="tag-pill">${t}</div>`).join('')}</div>
-          </div>
-        `;
-        container.appendChild(el);
-      });
-    }
-    renderProjects();
+    /* ----------------- GALLERY ----------------- */
+    /*
+    ESPAÑOL:
+    Para añadir o modificar elementos de la galería, edita este array.
+    Cada elemento debe tener:
+    - id: Identificador único
+    - title: Objeto con títulos en español (es) e inglés (en)
+    - desc: Objeto con descripciones en español (es) e inglés (en)
+    - images: Array de rutas a imágenes/GIFs (puede tener una o más imágenes)
+    - tags: Array de etiquetas
+    - details: Objeto con información detallada en español (es) e inglés (en)
 
-    /* ----------------- Helpful notes for editing ----------------- */
-    // 1) Replace I18N text with your own translations.
-    // 2) Replace PROJECTS array with your projects; add fields like `media` to include gif/video.
-    // 3) Replace contact email in the HTML anchor and I18N objects.
-    // 4) To test locally: open index.html in the browser or run `python -m http.server` in the folder.
-  </script>
+    ENGLISH:
+    To add or modify gallery items, edit this array.
+    Each item must have:
+    - id: Unique identifier
+    - title: Object with titles in Spanish (es) and English (en)
+    - desc: Object with descriptions in Spanish (es) and English (en)
+    - images: Array of paths to images/GIFs (can have one or more images)
+    - tags: Array of tags
+    - details: Object with detailed information in Spanish (es) and English (en)
+    */
+    const GALLERY_ITEMS = [
+        {
+            id: 'LB',
+            title: {es: 'Light Box - Instalación Interactiva', en: 'Light Box - Interactive Installation'},
+            desc: {es: 'Una instalación de arte interactivo que combina luces LED, sensores de movimiento y programación creativa para crear una experiencia inmersiva.', en: 'An interactive art installation combining LED lights, motion sensors and creative programming to create an immersive experience.'},
+            images: ['assets/3D/LB2.jpg', 'assets/3D/LB1.jpg'],
+            tags: ['3D', 'Installation', 'Interactive', 'Arduino'],
+            details: {
+                es: [
+                    {label: 'Tecnología', value: 'Arduino, Sensores PIR, LED RGB'},
+                    {label: 'Rol', value: 'Diseñador y Programador Principal'},
+                    {label: 'Duración', value: '4 semanas'},
+                    {label: 'Año', value: '2023'}
+                ],
+                en: [
+                    {label: 'Technology', value: 'Arduino, PIR Sensors, RGB LED'},
+                    {label: 'Role', value: 'Lead Designer and Programmer'},
+                    {label: 'Duration', value: '4 weeks'},
+                    {label: 'Year', value: '2023'}
+                ]
+            }
+        },
+        {
+            id: 'BEEP',
+            title: {es: 'Beep Experiment - Animación Sonora', en: 'Beep Experiment - Sound Animation'},
+            desc: {es: 'Exploración audiovisual que sincroniza ondas sonoras sintetizadas con patrones de animación abstractos generados proceduralmente.', en: 'Audiovisual exploration that synchronizes synthesized sound waves with procedurally generated abstract animation patterns.'},
+            images: ['assets/3D/beep.gif'],
+            tags: ['Animation', 'Experimental', 'Sound Design', 'Procedural'],
+            details: {
+                es: [
+                    {label: 'Software', value: 'After Effects, Processing, Audacity'},
+                    {label: 'Duración', value: '2 minutos 15 segundos'},
+                    {label: 'Año', value: '2022'},
+                    {label: 'Técnica', value: 'Animación procedural + síntesis de audio'}
+                ],
+                en: [
+                    {label: 'Software', value: 'After Effects, Processing, Audacity'},
+                    {label: 'Duration', value: '2 minutes 15 seconds'},
+                    {label: 'Year', value: '2022'},
+                    {label: 'Technique', value: 'Procedural animation + audio synthesis'}
+                ]
+            }
+        }
+        /*
+        EJEMPLO DE CÓMO AÑADIR UN NUEVO ELEMENTO A LA GALERÍA / EXAMPLE OF HOW TO ADD A NEW GALLERY ITEM:
+        
+        {
+            id: 'NUEVO_ELEMENTO', // ID único / Unique ID
+            title: {
+                es: 'Título en Español',
+                en: 'Title in English'
+            },
+            desc: {
+                es: 'Descripción detallada en español...',
+                en: 'Detailed description in English...'
+            },
+            images: [
+                'assets/ruta/imagen1.jpg',
+                'assets/ruta/imagen2.jpg',
+                'assets/ruta/animacion.gif'
+            ], // Múltiples imágenes soportadas / Multiple images supported
+            tags: ['Etiqueta1', 'Etiqueta2', 'Etiqueta3'], // Etiquetas / Tags
+            details: {
+                es: [
+                    {label: 'Campo1', value: 'Valor1'},
+                    {label: 'Campo2', value: 'Valor2'}
+                ],
+                en: [
+                    {label: 'Field1', value: 'Value1'},
+                    {label: 'Field2', value: 'Value2'}
+                ]
+            }
+        }
+        */
+    ];
+
+    /* ----------------- CARRUSEL Y PANEL EXPANDIBLE ----------------- */
+    let currentItem = null;
+    let currentSlideIndex = 0;
+
+    function openExpandablePanel(item) {
+        currentItem = item;
+        currentSlideIndex = 0;
+
+        const panel = document.getElementById('expandable-panel');
+        const lang = localStorage.getItem('lang') || 'es';
+
+        // Llenar la información del proyecto
+        document.getElementById('panel-title').textContent = item.title[lang];
+        document.getElementById('panel-desc').textContent = item.desc[lang];
+
+        // Tags
+        const tagsContainer = document.getElementById('panel-tags');
+        tagsContainer.innerHTML = '';
+        item.tags.forEach(tag => {
+            const tagEl = document.createElement('div');
+            tagEl.className = 'tag-pill';
+            tagEl.textContent = tag;
+            tagsContainer.appendChild(tagEl);
+        });
+
+        // Detalles
+        const detailsContainer = document.getElementById('panel-details');
+        detailsContainer.innerHTML = '';
+        if (item.details && item.details[lang]) {
+            item.details[lang].forEach(detail => {
+                const detailEl = document.createElement('div');
+                detailEl.className = 'detail-item';
+                detailEl.innerHTML = `
+                    <div class="detail-label">${detail.label}</div>
+                    <div class="detail-value">${detail.value}</div>
+                `;
+                detailsContainer.appendChild(detailEl);
+            });
+        }
+
+        // Crear carrusel
+        createCarousel(item.images);
+
+        // Activar el panel
+        panel.classList.add('active');
+
+        // Desplazar la vista al panel
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function createCarousel(images) {
+        const carouselContainer = document.getElementById('carousel-container');
+        const thumbnailsContainer = document.getElementById('carousel-thumbnails');
+
+        // Limpiar contenedores
+        carouselContainer.innerHTML = '';
+        thumbnailsContainer.innerHTML = '';
+
+        // Crear diapositivas
+        images.forEach((image, index) => {
+            // Crear diapositiva
+            const slide = document.createElement('div');
+            slide.className = `carousel-slide ${index === 0 ? 'active' : ''}`;
+
+            const img = document.createElement('img');
+            img.className = 'carousel-image';
+            img.src = image;
+            img.alt = `Project image ${index + 1}`;
+
+            slide.appendChild(img);
+            carouselContainer.appendChild(slide);
+
+            // Crear miniatura
+            const thumb = document.createElement('img');
+            thumb.className = `carousel-thumb ${index === 0 ? 'active' : ''}`;
+            thumb.src = image;
+            thumb.alt = `Thumbnail ${index + 1}`;
+            thumb.addEventListener('click', () => {
+                goToSlide(index);
+            });
+
+            thumbnailsContainer.appendChild(thumb);
+        });
+
+        // Crear botones de navegación (solo si hay más de una imagen)
+        if (images.length > 1) {
+            const nav = document.createElement('div');
+            nav.className = 'carousel-nav';
+
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'carousel-btn';
+            prevBtn.innerHTML = '&#10094;';
+            prevBtn.addEventListener('click', prevSlide);
+
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'carousel-btn';
+            nextBtn.innerHTML = '&#10095;';
+            nextBtn.addEventListener('click', nextSlide);
+
+            nav.appendChild(prevBtn);
+            nav.appendChild(nextBtn);
+            carouselContainer.appendChild(nav);
+        }
+    }
+
+    function goToSlide(index) {
+        const slides = document.querySelectorAll('.carousel-slide');
+        const thumbs = document.querySelectorAll('.carousel-thumb');
+
+        // Ocultar todas las diapositivas
+        slides.forEach(slide => slide.classList.remove('active'));
+        thumbs.forEach(thumb => thumb.classList.remove('active'));
+
+        // Mostrar la diapositiva seleccionada
+        slides[index].classList.add('active');
+        thumbs[index].classList.add('active');
+
+        currentSlideIndex = index;
+    }
+
+    function nextSlide() {
+        const slides = document.querySelectorAll('.carousel-slide');
+        const nextIndex = (currentSlideIndex + 1) % slides.length;
+        goToSlide(nextIndex);
+    }
+
+    function prevSlide() {
+        const slides = document.querySelectorAll('.carousel-slide');
+        const prevIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+        goToSlide(prevIndex);
+    }
+
+    function closeExpandablePanel() {
+        const panel = document.getElementById('expandable-panel');
+        panel.classList.remove('active');
+    }
+
+    function renderProjects(){
+        const container=document.getElementById('projects-list');
+        container.innerHTML='';
+        const lang=localStorage.getItem('lang')||'es';
+        PROJECTS.forEach(p=>{
+            const el=document.createElement('div');
+            el.className='project';
+            el.innerHTML=`
+          <div class="thumb" style="background-image:url('${p.cover}')"></div>
+          <div class="proj-meta">
+            <div class="proj-title">${p.title[lang]}</div>
+            <div class="proj-desc">${p.desc[lang]}</div>
+            <div class="tags">${p.tags.map(t=>`<div class="tag-pill">${t}</div>`).join('')}</div>
+          </div>`;
+            container.appendChild(el);
+        });
+    }
+
+    function renderGallery(){
+        const container = document.getElementById('gallery-expandable-list');
+        container.innerHTML = '';
+
+        const lang = localStorage.getItem('lang') || 'es';
+
+        GALLERY_ITEMS.forEach(item => {
+            const el = document.createElement('div');
+            el.className = 'gallery-item';
+            el.style.backgroundImage = `url('${item.images[0]}')`;
+            el.setAttribute('data-id', item.id);
+
+            // Al hacer clic, abrir el panel expandible
+            el.addEventListener('click', () => openExpandablePanel(item));
+
+            container.appendChild(el);
+        });
+    }
+
+    // Cerrar panel al hacer clic fuera de él
+    document.addEventListener('click', (e) => {
+        const panel = document.getElementById('expandable-panel');
+        if (panel.classList.contains('active') && !panel.contains(e.target)) {
+            // Verificar que no se hizo clic en un elemento de la galería
+            if (!e.target.closest('.gallery-item')) {
+                closeExpandablePanel();
+            }
+        }
+    });
+
+    // Navegación con teclado
+    document.addEventListener('keydown', (e) => {
+        const panel = document.getElementById('expandable-panel');
+        if (panel.classList.contains('active')) {
+            if (e.key === 'ArrowLeft') {
+                prevSlide();
+            } else if (e.key === 'ArrowRight') {
+                nextSlide();
+            } else if (e.key === 'Escape') {
+                closeExpandablePanel();
+            }
+        }
+    });
+
+    // Inicializar
+    renderProjects();
+    renderGallery();
+</script>
 </body>
 </html>
