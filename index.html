@@ -1,163 +1,557 @@
-<!doctype html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Marcelo Herrera — Gameplay Programmer (Portfolio)</title>
-    <meta name="description" content="Portafolio de Gameplay Programmer — proyectos, sistemas y herramientas de diseño y programación de videojuegos.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Developer - Gameplay Programmer &amp; Game Designer</title>
     <style>
-        /* -------------------- Base / VARIABLES -------------------- */
-        :root{
-            --bg:#0b0b0b;
-            --panel:#0f0f10;
-            --muted:#9b9b9b;
-            --accent:#ffffff;
-            --glass: rgba(255,255,255,0.03);
-            --glass-2: rgba(255,255,255,0.02);
-            --radius:14px;
-            --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Segoe UI Mono", monospace;
-            --ui: 14px/1.4 system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-        }
-        *{box-sizing:border-box}
-        html,body{height:100%}
-        body{
-            margin:0;
-            font:var(--ui);
-            color:var(--accent);
-            background:linear-gradient(180deg,var(--bg) 0%, #070707 100%);
-            -webkit-font-smoothing:antialiased;
-            -moz-osx-font-smoothing:grayscale;
-            padding:32px;
-            display:flex;
-            align-items:flex-start;
-            justify-content:center;
-            font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;
+        /* Nothing-Inspired Design System */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .wrap{width:100%; max-width:1100px;}
-        header{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:28px}
-        .brand{display:flex; align-items:center; gap:14px}
-        .logo{width:56px; height:56px; border-radius:10px; display:grid; place-items:center; border:1px solid rgba(255,255,255,0.06); padding:6px}
-        .logo .mark{width:40px; height:10px; background:linear-gradient(90deg,#fff,#ccc); border-radius:4px; transform:rotate(5deg)}
-        h1{margin:0; font-size:20px; letter-spacing:0.6px}
-        .tag{font-size:12px; color:var(--muted)}
-
-        .controls{display:flex; gap:8px; align-items:center}
-        .lang{background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--accent); padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:600}
-        .lang.active{background:var(--accent); color:#0b0b0b}
-
-        main{display:grid; grid-template-columns: 1fr 360px; gap:20px}
-        @media (max-width:980px){main{grid-template-columns:1fr} .right{order:2}}
-
-        section.card{background:linear-gradient(180deg,var(--panel), rgba(255,255,255,0.01)); border-radius:var(--radius); padding:18px; border:1px solid rgba(255,255,255,0.03);}
-
-        /* Hero */
-        .hero{display:flex; gap:18px; align-items:center}
-        .hero .eye{width:140px; height:140px; border-radius:14px; background:var(--glass); display:grid; place-items:center; border:1px solid rgba(255,255,255,0.04);}
-        .hero h2{margin:0; font-size:18px}
-        .one-liner{color:var(--muted); margin-top:8px}
-
-        /* Projects */
-        .projects {
-            display: grid;
-            gap: 12px;
-            margin-top: 18px;
+        :root {
+            --primary-bg: #000000;
+            --secondary-bg: #111111;
+            --surface: #1a1a1a;
+            --surface-glass: rgba(255, 255, 255, 0.05);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent: #ff0000;
+            --border: rgba(255, 255, 255, 0.1);
+            --glow: rgba(255, 255, 255, 0.3);
+            
+            --font-primary: 'Courier New', 'Monaco', monospace;
+            --glass-blur: blur(10px);
+            --glow-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            --dot-matrix-glow: 0 0 10px rgba(255, 0, 0, 0.5);
         }
 
-        .project {
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Glass Morphism Components */
+        .glass {
+            background: var(--surface-glass);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .glow {
+            box-shadow: var(--glow-shadow);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
             display: flex;
-            gap: 14px;
-            align-items: flex-start;
-            padding: 12px;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-primary);
+            text-shadow: var(--dot-matrix-glow);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        .nav-menu a:hover {
+            color: var(--text-primary);
+            border-bottom-color: var(--accent);
+            text-shadow: 0 0 5px var(--glow);
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lang-toggle {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle::before {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 22px;
+            height: 22px;
+            background: var(--accent);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        .lang-toggle.spanish::before {
+            transform: translateX(28px);
+        }
+
+        .lang-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            min-width: 20px;
+        }
+
+        .lang-label.active {
+            color: var(--accent);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+
+        .section {
+            padding: 4rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--text-primary);
+            text-shadow: var(--dot-matrix-glow);
+        }
+
+        /* Hero Section Enhanced */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(circle, rgba(255, 0, 0, 0.15) 2px, transparent 2px);
+            background-size: 50px 50px;
+            animation: subtle-float 4s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.02) 1.5px, transparent 1.5px);
+            background-size: 80px 80px;
+            animation: subtle-float 6s ease-in-out infinite reverse;
+            opacity: 0.4;
+        }
+
+        @keyframes subtle-float {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            25% { transform: translateY(-10px) translateX(5px); }
+            50% { transform: translateY(-5px) translateX(-3px); }
+            75% { transform: translateY(-15px) translateX(2px); }
+        }
+
+        .hero-content {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-profile {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--surface-glass);
+            border: 2px solid var(--accent);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--accent);
+            backdrop-filter: var(--glass-blur);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+        }
+
+        .hero-greeting {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .hero-name {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--text-primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-title {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            text-shadow: var(--dot-matrix-glow);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            background: var(--surface-glass);
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: bold;
+            backdrop-filter: var(--glass-blur);
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .hero-cta:hover {
+            background: var(--accent);
+            color: var(--primary-bg);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+            transform: translateY(-2px);
+        }
+
+
+
+        /* About Section Enhanced */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text-section {
+            order: 1;
+        }
+
+        .about-text {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .about-image {
+            order: 2;
+            aspect-ratio: 3/4;
+            width: 100%;
+            height: 400px;
+            background: var(--surface-glass);
+            border: 1px solid var(--border);
             border-radius: 12px;
-            background: var(--glass-2);
-            border: 1px solid rgba(255,255,255,0.03);
-            transition: transform 0.25s ease, background 0.25s ease;
+            backdrop-filter: var(--glass-blur);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 0, 0, 0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .about-image:hover::before {
+            opacity: 1;
+        }
+
+        .about-image:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
+        }
+
+        .highlights {
+            list-style: none;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .highlights li {
+            padding: 1rem;
+            background: var(--surface-glass);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            backdrop-filter: var(--glass-blur);
+            transition: all 0.3s ease;
+        }
+
+        .highlights li:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+            transform: translateX(10px);
+        }
+
+        /* Projects Carousel */
+        .projects-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .projects-carousel {
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .projects-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .project-slide {
+            min-width: 100%;
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.5s ease;
+        }
+
+        .project-slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .project-card {
+            background: var(--surface-glass);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            backdrop-filter: var(--glass-blur);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
             cursor: pointer;
         }
 
-        .project:hover {
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
             transform: translateY(-5px);
-            background: rgba(255,255,255,0.04);
+            border-color: var(--accent);
+            box-shadow: 0 10px 40px rgba(255, 0, 0, 0.2);
         }
 
-        .thumb {
-            width: 160px;
-            aspect-ratio: 13 / 10;
-            flex: 0 0 320px;
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.06);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
         }
 
-        .proj-meta {
-            flex: 1;
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
         }
 
-        .proj-title {
-            font-weight: 700;
-            font-size: 15px;
+        .project-image:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
         }
 
-        .proj-desc {
-            color: var(--muted);
-            font-size: 13px;
-            margin-top: 6px;
-            line-height: 1.4;
-        }
-
-        .tags {
-            margin-top: 8px;
+        .project-tech {
             display: flex;
-            gap: 8px;
             flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
         }
 
-        .tag-pill {
-            font-size: 12px;
-            padding: 6px 8px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.02);
+        .tech-tag {
+            padding: 0.25rem 0.75rem;
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--accent);
         }
 
-        @media (max-width: 700px) {
-            .project {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .thumb {
-                width: 100%;
-                max-width: 400px;
-            }
-            .proj-meta {
-                align-items: center;
-            }
+        .project-status {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Gallery Base */
-        .gallery {
+        .carousel-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .carousel-btn {
+            background: var(--surface-glass);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: var(--glass-blur);
+        }
+
+        .carousel-btn:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 12px;
-            margin-top: 18px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
         }
 
         .gallery-item {
-            aspect-ratio: 1;
-            border-radius: 10px;
-            background: var(--glass-2);
-            border: 1px solid rgba(255,255,255,0.03);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            cursor: pointer;
-            transition: all 0.25s ease;
+            aspect-ratio: 16/10;
+            background: var(--surface-glass);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            backdrop-filter: var(--glass-blur);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
@@ -165,824 +559,1327 @@
         .gallery-item::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: inherit;
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.25s ease;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 0, 0, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .gallery-item:hover::before {
-            transform: scale(1.05);
-        }
-
-        .gallery-item:hover {
-            border-color: rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.04);
-        }
-
-        /* PANEL EXPANDIBLE */
-        .expandable-panel {
-            margin-top: 20px;
-            background: var(--panel);
-            border-radius: var(--radius);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 0;
-            overflow: hidden;
-            max-height: 0;
-            transition: max-height 0.5s ease, padding 0.5s ease;
-        }
-
-        .expandable-panel.active {
-            max-height: 1200px;
-            padding: 25px;
-        }
-
-        .panel-content {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        @media (min-width: 768px) {
-            .panel-content {
-                flex-direction: row;
-            }
-        }
-
-        .panel-media {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            border-radius: 8px;
-            overflow: hidden;
-            background: #000;
-            aspect-ratio: 16/9;
-        }
-
-        .carousel-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .carousel-slide.active {
             opacity: 1;
         }
 
-        .carousel-image {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
+        .gallery-item:hover {
+            transform: scale(1.05);
+            border-color: var(--accent);
         }
 
-        .carousel-nav {
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--surface-glass);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            backdrop-filter: var(--glass-blur);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+            text-shadow: var(--dot-matrix-glow);
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-list li:hover {
+            color: var(--text-primary);
+        }
+
+        /* Certifications Carousel */
+        .certifications-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .certifications-carousel {
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .certifications-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .certification-slide {
+            min-width: 100%;
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.5s ease;
+        }
+
+        .certification-slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .cert-card {
+            background: var(--surface-glass);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            backdrop-filter: var(--glass-blur);
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-card::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 15px;
-            pointer-events: none;
+            height: 2px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
 
-        .carousel-btn {
-            background: rgba(0,0,0,0.5);
+        .cert-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 40px rgba(255, 0, 0, 0.2);
+        }
+
+        .cert-thumbnail {
+            width: 100%;
+            height: 200px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+
+        .cert-thumbnail:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
+        }
+
+        .cert-name {
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-issuer {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-year {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .contact-info p {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--surface-glass);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            backdrop-filter: var(--glass-blur);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+            transform: translateX(10px);
+        }
+
+        .cv-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--primary-bg);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .cv-download:hover {
+            background: var(--text-primary);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-name {
+                font-size: 2.5rem;
+            }
+
+            .hero-title {
+                font-size: 1.5rem;
+            }
+
+            .section {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Modal System */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--surface-glass);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 3rem;
+            max-width: 900px;
+            max-height: 90vh;
+            width: 90%;
+            backdrop-filter: var(--glass-blur);
+            position: relative;
+            overflow-y: auto;
+            transform: scale(0.8) translateY(50px);
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
             border: none;
-            color: white;
+            color: var(--text-primary);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--accent);
+        }
+
+        .modal-header {
+            margin-bottom: 2rem;
+        }
+
+        .modal-title {
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .modal-description {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .modal-gallery {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .gallery-container {
+            width: 100%;
+            height: 400px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--surface-glass);
+            border: 1px solid var(--border);
+            border-radius: 50%;
             width: 40px;
             height: 40px;
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            pointer-events: all;
-            transition: background 0.3s ease;
-            font-size: 18px;
-            font-weight: bold;
+            transition: all 0.3s ease;
+            backdrop-filter: var(--glass-blur);
         }
 
-        .carousel-btn:hover {
-            background: rgba(0,0,0,0.8);
+        .gallery-nav:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
         }
 
-        .carousel-thumbnails {
+        .gallery-nav.prev {
+            left: 10px;
+        }
+
+        .gallery-nav.next {
+            right: 10px;
+        }
+
+        .modal-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .modal-section h3 {
+            color: var(--accent);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modal-section li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+        }
+
+        .modal-actions {
             display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            padding: 5px 0;
+            gap: 1rem;
+            margin-top: 2rem;
         }
 
-        .carousel-thumb {
-            width: 60px;
-            height: 60px;
-            border-radius: 6px;
-            object-fit: cover;
-            cursor: pointer;
-            opacity: 0.6;
-            transition: opacity 0.3s ease;
-            border: 2px solid transparent;
+        .modal-btn {
+            padding: 1rem 2rem;
+            background: var(--surface-glass);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: var(--glass-blur);
         }
 
-        .carousel-thumb.active {
-            opacity: 1;
+        .modal-btn:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+        }
+
+        .modal-btn--primary {
+            background: var(--accent);
+            color: var(--primary-bg);
             border-color: var(--accent);
         }
 
-        .carousel-thumb:hover {
-            opacity: 1;
+        .modal-btn--primary:hover {
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
         }
 
-        .panel-info {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .panel-title {
-            margin: 0;
-            font-size: 22px;
-            font-weight: 700;
-        }
-
-        .panel-desc {
-            color: var(--muted);
-            font-size: 15px;
-            line-height: 1.6;
-        }
-
-        .right{display:flex; flex-direction:column; gap:16px}
-        .about p{color:var(--muted)}
-        .contact a{display:inline-block; margin-top:8px; text-decoration:none; color:var(--accent); font-weight:600}
-        footer{margin-top:18px; color:var(--muted); font-size:13px}
-        .lang:hover{transform:translateY(-2px)}
-        .small{font-size:12px;color:var(--muted)}
-        a.ghost{color:var(--muted); text-decoration:none; border-bottom:1px dashed rgba(255,255,255,0.03)}
-
-        .card + .card,
-        .right > .card + .card {
-            margin-top: 18px;
+        /* Hidden class for language switching */
+        .hidden {
+            display: none !important;
         }
     </style>
 </head>
-
 <body>
-<div class="wrap">
+    <!-- Header -->
     <header>
-        <div class="brand">
-            <div class="logo" aria-hidden="true"><div class="mark"></div></div>
-            <div>
-                <h1 data-i18n="name">Marcelo Herrera — Gameplay Programmer</h1>
-                <div class="tag" data-i18n="role">Gameplay · Systems · Tools</div>
+        <nav>
+            <div class="logo">AD</div>
+            <ul class="nav-menu">
+                <li><a href="#about" data-en="About" data-es="Acerca de">About</a></li>
+                <li><a href="#projects" data-en="Main Projects" data-es="Proyectos Principales">Main Projects</a></li>
+                <li><a href="#gallery" data-en="Gallery" data-es="Galería">Gallery</a></li>
+                <li><a href="#skills" data-en="Skills" data-es="Habilidades">Skills</a></li>
+                <li><a href="#certifications" data-en="Certifications" data-es="Certificaciones">Certifications</a></li>
+                <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+            </ul>
+            <div class="lang-switcher">
+                <span class="lang-label active" data-lang="en">EN</span>
+                <div class="lang-toggle" onclick="toggleLanguage()"></div>
+                <span class="lang-label" data-lang="es">ES</span>
             </div>
-        </div>
-        <div class="controls">
-            <button class="lang" id="btn-en" data-lang="en">English</button>
-            <button class="lang active" id="btn-es" data-lang="es">Español</button>
-        </div>
+        </nav>
     </header>
 
     <main>
-        <div>
-            <!-- HERO -->
-            <section class="card hero">
-                <div class="eye" aria-hidden="true">ART</div>
-                <div>
-                    <h2 data-i18n="headline">Sistemas experimentales de gameplay que se sienten bien</h2>
-                    <div class="one-liner" data-i18n="one_liner">Experimentos interactivos, loops pulidos y sistemas emergentes.</div>
-                    <div style="margin-top:12px; display:flex; gap:10px; align-items:center">
-                        <a class="ghost" href="#projects" data-i18n="cta_projects">Ver Proyectos</a>
-                        <span class="small">·</span>
-                        <a class="ghost" href="#gallery" data-i18n="cta_gallery">Galería</a>
-                        <span class="small">·</span>
-                        <a class="ghost" href="#contact" data-i18n="cta_contact">Contacto</a>
-                    </div>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-profile">AD</div>
+                <p class="hero-greeting" data-en="Hello, I'm" data-es="Hola, soy">Hello, I'm</p>
+                <h1 class="hero-name" data-en="Alex Developer" data-es="Alex Developer">Alex Developer</h1>
+                <p class="hero-title" data-en="Gameplay Programmer &amp; Game Designer" data-es="Gameplay Programmer &amp; Diseñador de Juegos">Gameplay Programmer &amp; Game Designer</p>
+                <p class="hero-subtitle" data-en="Creating immersive interactive experiences through code and design" data-es="Creando experiencias interactivas inmersivas a través del código y el diseño">Creating immersive interactive experiences through code and design</p>
+                
+                <a href="#projects" class="hero-cta">
+                    <span data-en="View My Work" data-es="Ver Mi Trabajo">View My Work</span>
+                    <span>→</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section fade-in">
+            <h2 class="section-title" data-en="About Me" data-es="Acerca de Mí">About Me</h2>
+            <div class="about-content">
+                <div class="about-text-section">
+                    <p class="about-text" data-en="Passionate gameplay programmer and game designer with 5+ years of experience crafting engaging interactive experiences. I specialize in gameplay mechanics, AI systems, and user experience design, always striving to create games that resonate with players on an emotional level." data-es="Programador de gameplay y diseñador de juegos apasionado con más de 5 años de experiencia creando experiencias interactivas atractivas. Me especializo en mecánicas de juego, sistemas de IA y diseño de experiencia de usuario, siempre esforzándome por crear juegos que resuenen emocionalmente con los jugadores.">Passionate gameplay programmer and game designer with 5+ years of experience crafting engaging interactive experiences. I specialize in gameplay mechanics, AI systems, and user experience design, always striving to create games that resonate with players on an emotional level.</p>
+                    <ul class="highlights">
+                        <li data-en="5+ years in game development" data-es="5+ años en desarrollo de juegos">5+ years in game development</li>
+                        <li data-en="Expert in Unity &amp; Unreal Engine" data-es="Experto en Unity y Unreal Engine">Expert in Unity &amp; Unreal Engine</li>
+                        <li data-en="Published 15+ games across platforms" data-es="15+ juegos publicados en múltiples plataformas">Published 15+ games across platforms</li>
+                        <li data-en="User-centered design approach" data-es="Enfoque centrado en el usuario">User-centered design approach</li>
+                    </ul>
                 </div>
-            </section>
+                <div class="about-image" data-en="Professional Profile Photo (3:4)" data-es="Foto de Perfil Profesional (3:4)">Professional Profile Photo (3:4)</div>
+            </div>
+        </section>
 
-            <!-- PROJECTS -->
-            <section id="projects" class="card" style="margin-top:18px">
-                <h3 data-i18n="projects_title">Proyectos</h3>
-                <div class="projects" id="projects-list"></div>
-            </section>
-
-            <!-- GALLERY -->
-            <section id="gallery" class="card" style="margin-top:18px">
-                <h3 data-i18n="gallery_title">Galería de Proyectos</h3>
-                <p class="small" data-i18n="gallery_text">Otros trabajos y experimentos realizados durante mis estudios de diseño de juegos digitales.</p>
-
-                <!-- GALERÍA CON PANEL EXPANDIBLE -->
-                <div class="gallery" id="gallery-expandable-list"></div>
-                <div class="expandable-panel" id="expandable-panel">
-                    <div class="panel-content">
-                        <div class="panel-media">
-                            <div class="carousel-container" id="carousel-container">
-                                <!-- Las diapositivas del carrusel se generarán aquí -->
-                            </div>
-                            <div class="carousel-thumbnails" id="carousel-thumbnails">
-                                <!-- Las miniaturas se generarán aquí -->
-                            </div>
-                        </div>
-                        <div class="panel-info">
-                            <h3 class="panel-title" id="panel-title">Título del Proyecto</h3>
-                            <p class="panel-desc" id="panel-desc">Descripción del proyecto aparecerá aquí...</p>
-                            <div class="tags" id="panel-tags"></div>
-                            <div class="modal-details" id="panel-details">
-                                <div class="detail-item">
-                                    <div class="detail-label">Tecnología</div>
-                                    <div class="detail-value">Unity, C#, Blender</div>
+        <!-- Projects Section -->
+        <section id="projects" class="section fade-in">
+            <h2 class="section-title" data-en="Main Projects" data-es="Proyectos Principales">Main Projects</h2>
+            <div class="projects-container">
+                <div class="projects-carousel">
+                    <div class="projects-track" id="projectsTrack">
+                        <div class="project-slide active" data-project="0">
+                            <div class="project-card glass glow" onclick="openProjectModal(0)">
+                                <h3 class="project-title">Stellar Combat</h3>
+                                <div class="project-image" data-en="Game Screenshot - Space Combat (650x500)" data-es="Captura del Juego - Combate Espacial (650x500)">Game Screenshot - Space Combat (650x500)</div>
+                                <p class="project-description" data-en="3D space combat game with advanced AI enemy systems and procedural weapon generation" data-es="Juego de combate espacial 3D con sistemas avanzados de IA enemiga y generación procedimental de armas">3D space combat game with advanced AI enemy systems and procedural weapon generation</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Unity</span>
+                                    <span class="tech-tag">C#</span>
+                                    <span class="tech-tag" data-en="AI Navigation" data-es="Navegación IA">AI Navigation</span>
                                 </div>
-                                <div class="detail-item">
-                                    <div class="detail-label">Rol</div>
-                                    <div class="detail-value">Gameplay Programmer</div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-label">Duración</div>
-                                    <div class="detail-value">3 meses</div>
-                                </div>
+                                <p class="project-status" data-en="Released" data-es="Lanzado">Released</p>
                             </div>
                         </div>
+                        <div class="project-slide" data-project="1">
+                            <div class="project-card glass glow" onclick="openProjectModal(1)">
+                                <h3 class="project-title">Mystic Realms</h3>
+                                <div class="project-image" data-en="Game Screenshot - RPG Interface (650x500)" data-es="Captura del Juego - Interfaz RPG (650x500)">Game Screenshot - RPG Interface (650x500)</div>
+                                <p class="project-description" data-en="RPG with complex dialogue system and branching narrative mechanics" data-es="RPG con sistema de diálogo complejo y mecánicas narrativas ramificadas">RPG with complex dialogue system and branching narrative mechanics</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Unreal Engine</span>
+                                    <span class="tech-tag">Blueprint</span>
+                                    <span class="tech-tag" data-en="Dialogue System" data-es="Sistema de Diálogo">Dialogue System</span>
+                                </div>
+                                <p class="project-status" data-en="In Development" data-es="En Desarrollo">In Development</p>
+                            </div>
+                        </div>
+                        <div class="project-slide" data-project="2">
+                            <div class="project-card glass glow" onclick="openProjectModal(2)">
+                                <h3 class="project-title">Neon Runner</h3>
+                                <div class="project-image" data-en="Game Screenshot - Endless Runner (650x500)" data-es="Captura del Juego - Endless Runner (650x500)">Game Screenshot - Endless Runner (650x500)</div>
+                                <p class="project-description" data-en="Endless runner with dynamic obstacle generation and fluid character controls" data-es="Endless runner con generación dinámica de obstáculos y controles fluidos de personaje">Endless runner with dynamic obstacle generation and fluid character controls</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Unity</span>
+                                    <span class="tech-tag">C#</span>
+                                    <span class="tech-tag" data-en="Mobile Optimization" data-es="Optimización Móvil">Mobile Optimization</span>
+                                </div>
+                                <p class="project-status" data-en="Released" data-es="Lanzado">Released</p>
+                            </div>
+                        </div>
+                        <div class="project-slide" data-project="3">
+                            <div class="project-card glass glow" onclick="openProjectModal(3)">
+                                <h3 class="project-title">Quantum Puzzles</h3>
+                                <div class="project-image" data-en="Game Screenshot - Physics Puzzle (650x500)" data-es="Captura del Juego - Puzzle de Física (650x500)">Game Screenshot - Physics Puzzle (650x500)</div>
+                                <p class="project-description" data-en="Physics-based puzzle game exploring quantum mechanics concepts through gameplay" data-es="Juego de rompecabezas basado en física que explora conceptos de mecánica cuántica">Physics-based puzzle game exploring quantum mechanics concepts through gameplay</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Unity</span>
+                                    <span class="tech-tag">C#</span>
+                                    <span class="tech-tag" data-en="Physics Simulation" data-es="Simulación de Física">Physics Simulation</span>
+                                </div>
+                                <p class="project-status" data-en="Released" data-es="Lanzado">Released</p>
+                            </div>
+                        </div>
+                        <div class="project-slide" data-project="4">
+                            <div class="project-card glass glow" onclick="openProjectModal(4)">
+                                <h3 class="project-title">Shadow Tactics</h3>
+                                <div class="project-image" data-en="Game Screenshot - Stealth Action (650x500)" data-es="Captura del Juego - Acción Sigilosa (650x500)">Game Screenshot - Stealth Action (650x500)</div>
+                                <p class="project-description" data-en="Stealth action game with advanced AI and dynamic lighting systems" data-es="Juego de acción sigilosa con IA avanzada y sistemas de iluminación dinámica">Stealth action game with advanced AI and dynamic lighting systems</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Unreal Engine</span>
+                                    <span class="tech-tag">C++</span>
+                                    <span class="tech-tag" data-en="AI Systems" data-es="Sistemas IA">AI Systems</span>
+                                </div>
+                                <p class="project-status" data-en="In Development" data-es="En Desarrollo">In Development</p>
+                            </div>
+                        </div>
+                        <div class="project-slide" data-project="5">
+                            <div class="project-card glass glow" onclick="openProjectModal(5)">
+                                <h3 class="project-title">Crystal Defenders</h3>
+                                <div class="project-image" data-en="Game Screenshot - Tower Defense (650x500)" data-es="Captura del Juego - Defensa de Torres (650x500)">Game Screenshot - Tower Defense (650x500)</div>
+                                <p class="project-description" data-en="Tower defense game with magical element combination system" data-es="Juego de defensa de torres con sistema de combinación de elementos mágicos">Tower defense game with magical element combination system</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Unity</span>
+                                    <span class="tech-tag">C#</span>
+                                    <span class="tech-tag" data-en="Shader Programming" data-es="Programación de Shaders">Shader Programming</span>
+                                </div>
+                                <p class="project-status" data-en="Released" data-es="Lanzado">Released</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
-
-            <footer>
-                <div class="small">© 2025 — Built with <span style="font-family:var(--mono)">HTML · CSS · JS</span></div>
-            </footer>
-        </div>
-
-        <aside class="right">
-            <section class="card about">
-                <h4 data-i18n="about_title">Sobre mí</h4>
-                <p data-i18n="about_text">Soy un gameplay programmer centrado en prototipado rápido, depuración de mecánicas y herramientas internas. Me apasiona traducir ideas de diseño en sistemas funcionales y expresivos.</p>
-                <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap">
-                    <div class="tag-pill">Unity</div>
-                    <div class="tag-pill">C#</div>
-                    <div class="tag-pill">Gameplay</div>
-                    <div class="tag-pill">Tooling</div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn" onclick="previousProject()">‹</button>
+                    <div class="carousel-dots" id="carouselDots"></div>
+                    <button class="carousel-btn" onclick="nextProject()">›</button>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section class="card contact" id="contact">
-                <h4 data-i18n="contact_title">Contacto</h4>
-                <div class="small" data-i18n="contact_text">Email y redes profesionales.</div>
-                <a class="ghost" href="mailto:m.herreravsquez@outlook.com" data-i18n="contact_email">m.herreravsquez@outlook.com</a>
-                <div style="margin-top:12px">
-                    <a class="ghost" href="https://github.com/mherreravsquez" target="_blank" data-i18n="link_github">GitHub</a> ·
-                    <a class="ghost" href="https://www.linkedin.com/in/mherreravsquez" target="_blank" data-i18n="link_linkedin">LinkedIn</a> ·
-                    <a class="ghost" href="https://mherreravsquez.artstation.com" target="_blank" data-i18n="link_artstation">ArtStation</a> ·
-                    <a class="ghost" href="https://instagram.com/mherreravsquez" target="_blank" data-i18n="link_instagram">Instagram</a>
+        <!-- Gallery Section -->
+        <section id="gallery" class="section fade-in">
+            <h2 class="section-title" data-en="Secondary Projects" data-es="Proyectos Secundarios">Secondary Projects</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item glass">
+                    <span data-en="Puzzle Mechanics Prototype" data-es="Prototipo de Mecánicas de Puzzle">Puzzle Mechanics Prototype</span>
                 </div>
-                <div style="margin-top:12px">
-                    <a class="ghost" href="assets/CV_MarceloHerrera.pdf" target="_blank" data-i18n="link_cv">Descargar CV</a>
+                <div class="gallery-item glass">
+                    <span data-en="Character Controller System" data-es="Sistema de Controlador de Personaje">Character Controller System</span>
                 </div>
-            </section>
+                <div class="gallery-item glass">
+                    <span data-en="Inventory UI Framework" data-es="Framework de UI de Inventario">Inventory UI Framework</span>
+                </div>
+                <div class="gallery-item glass">
+                    <span data-en="Procedural Level Generator" data-es="Generador de Niveles Procedimental">Procedural Level Generator</span>
+                </div>
+                <div class="gallery-item glass">
+                    <span data-en="Combat System Demo" data-es="Demo de Sistema de Combate">Combat System Demo</span>
+                </div>
+                <div class="gallery-item glass">
+                    <span data-en="Shader Effects Collection" data-es="Colección de Efectos de Shader">Shader Effects Collection</span>
+                </div>
+            </div>
+        </section>
 
-            <section class="card">
-                <h4 data-i18n="skills_title">Skills / Tools</h4>
-                <ul class="small">
-                    <li>C# / Unity</li>
-                    <li>State Machines · Input Handling</li>
-                    <li>Prototyping · Performance</li>
-                </ul>
-            </section>
-        </aside>
+        <!-- Skills Section -->
+        <section id="skills" class="section fade-in">
+            <h2 class="section-title" data-en="Skills &amp; Software" data-es="Habilidades y Software">Skills &amp; Software</h2>
+            <div class="skills-grid">
+                <div class="skill-category glass glow">
+                    <h3 data-en="Programming" data-es="Programación">Programming</h3>
+                    <ul class="skill-list">
+                        <li>C#</li>
+                        <li>C++</li>
+                        <li>JavaScript</li>
+                        <li>Python</li>
+                        <li>HLSL</li>
+                    </ul>
+                </div>
+                <div class="skill-category glass glow">
+                    <h3 data-en="Game Engines" data-es="Motores de Juego">Game Engines</h3>
+                    <ul class="skill-list">
+                        <li>Unity</li>
+                        <li>Unreal Engine</li>
+                        <li>Godot</li>
+                        <li>GameMaker Studio</li>
+                    </ul>
+                </div>
+                <div class="skill-category glass glow">
+                    <h3 data-en="Tools" data-es="Herramientas">Tools</h3>
+                    <ul class="skill-list">
+                        <li>Git</li>
+                        <li>Perforce</li>
+                        <li>Jira</li>
+                        <li>Blender</li>
+                        <li>Photoshop</li>
+                    </ul>
+                </div>
+                <div class="skill-category glass glow">
+                    <h3 data-en="Design" data-es="Diseño">Design</h3>
+                    <ul class="skill-list">
+                        <li data-en="Game Design" data-es="Diseño de Juegos">Game Design</li>
+                        <li data-en="Level Design" data-es="Diseño de Niveles">Level Design</li>
+                        <li>UI/UX</li>
+                        <li data-en="System Design" data-es="Diseño de Sistemas">System Design</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="section fade-in">
+            <h2 class="section-title" data-en="Certifications" data-es="Certificaciones">Certifications</h2>
+            <div class="certifications-container">
+                <div class="certifications-carousel">
+                    <div class="certifications-track" id="certificationsTrack">
+                        <div class="certification-slide active" data-certification="0">
+                            <div class="cert-card glass glow" onclick="openCertificationModal(0)">
+                                <div class="cert-thumbnail" data-en="Unity Certification Preview" data-es="Vista Previa Certificación Unity">Unity Certification Preview</div>
+                                <h3 class="cert-name">Unity Certified Developer</h3>
+                                <p class="cert-issuer">Unity Technologies</p>
+                                <p class="cert-year">2023</p>
+                            </div>
+                        </div>
+                        <div class="certification-slide" data-certification="1">
+                            <div class="cert-card glass glow" onclick="openCertificationModal(1)">
+                                <div class="cert-thumbnail" data-en="Unreal Engine Certification Preview" data-es="Vista Previa Certificación Unreal">Unreal Engine Certification Preview</div>
+                                <h3 class="cert-name">Unreal Engine Blueprint Certified</h3>
+                                <p class="cert-issuer">Epic Games</p>
+                                <p class="cert-year">2022</p>
+                            </div>
+                        </div>
+                        <div class="certification-slide" data-certification="2">
+                            <div class="cert-card glass glow" onclick="openCertificationModal(2)">
+                                <div class="cert-thumbnail" data-en="Game Design Certification Preview" data-es="Vista Previa Certificación Diseño">Game Design Certification Preview</div>
+                                <h3 class="cert-name" data-en="Game Design Fundamentals" data-es="Fundamentos de Diseño de Juegos">Game Design Fundamentals</h3>
+                                <p class="cert-issuer">Coursera</p>
+                                <p class="cert-year">2021</p>
+                            </div>
+                        </div>
+                        <div class="certification-slide" data-certification="3">
+                            <div class="cert-card glass glow" onclick="openCertificationModal(3)">
+                                <div class="cert-thumbnail" data-en="C# Certification Preview" data-es="Vista Previa Certificación C#">C# Certification Preview</div>
+                                <h3 class="cert-name" data-en="Advanced C# Programming" data-es="Programación Avanzada C#">Advanced C# Programming</h3>
+                                <p class="cert-issuer">Microsoft</p>
+                                <p class="cert-year">2023</p>
+                            </div>
+                        </div>
+                        <div class="certification-slide" data-certification="4">
+                            <div class="cert-card glass glow" onclick="openCertificationModal(4)">
+                                <div class="cert-thumbnail" data-en="Mobile Development Certification Preview" data-es="Vista Previa Certificación Móvil">Mobile Development Certification Preview</div>
+                                <h3 class="cert-name" data-en="Mobile Game Development" data-es="Desarrollo de Juegos Móviles">Mobile Game Development</h3>
+                                <p class="cert-issuer">Unity Learn</p>
+                                <p class="cert-year">2022</p>
+                            </div>
+                        </div>
+                        <div class="certification-slide" data-certification="5">
+                            <div class="cert-card glass glow" onclick="openCertificationModal(5)">
+                                <div class="cert-thumbnail" data-en="AI Certification Preview" data-es="Vista Previa Certificación IA">AI Certification Preview</div>
+                                <h3 class="cert-name" data-en="AI for Games" data-es="IA para Juegos">AI for Games</h3>
+                                <p class="cert-issuer">Coursera</p>
+                                <p class="cert-year">2021</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn" onclick="previousCertification()">‹</button>
+                    <div class="carousel-dots" id="certificationDots"></div>
+                    <button class="carousel-btn" onclick="nextCertification()">›</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section fade-in">
+            <h2 class="section-title" data-en="Contact &amp; Social" data-es="Contacto y Redes">Contact &amp; Social</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3 data-en="Get In Touch" data-es="Contáctame">Get In Touch</h3>
+                    <p><strong>Email:</strong> alex.developer@email.com</p>
+                    <p data-en="Available for Remote Work" data-es="Disponible para Trabajo Remoto">Available for Remote Work</p>
+                    <a href="#" class="cv-download">
+                        <span data-en="Download CV" data-es="Descargar CV">Download CV</span>
+                    </a>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/alexdeveloper" class="social-link" target="_blank">
+                        <span>🔗</span>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://linkedin.com/in/alexdeveloper" class="social-link" target="_blank">
+                        <span>🔗</span>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://artstation.com/alexdeveloper" class="social-link" target="_blank">
+                        <span>🔗</span>
+                        <span>ArtStation</span>
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
-</div>
 
-<script>
-    /* =====================================================================
-       INSTRUCCIONES PARA PERSONALIZAR EL PORTFOLIO / INSTRUCTIONS FOR CUSTOMIZING THE PORTFOLIO
-       ===================================================================== */
+    <!-- Certification Modal -->
+    <div class="modal-overlay" id="certificationModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeCertificationModal()">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title" id="certModalTitle">Certification Title</h2>
+                <p class="modal-description" id="certModalDescription">Certification Description</p>
+            </div>
+            <div class="modal-gallery">
+                <div class="gallery-container" id="certGalleryContainer">
+                    <span id="certGalleryPlaceholder">Certificate Full Image</span>
+                </div>
+            </div>
+            <div class="modal-details">
+                <div class="modal-section">
+                    <h3 data-en="Skills Gained" data-es="Habilidades Adquiridas">Skills Gained</h3>
+                    <ul id="certModalSkills"></ul>
+                </div>
+                <div class="modal-section">
+                    <h3 data-en="Course Details" data-es="Detalles del Curso">Course Details</h3>
+                    <ul id="certModalDetails"></ul>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <a href="#" class="modal-btn modal-btn--primary" id="certModalVerify" target="_blank" data-en="Verify Certificate" data-es="Verificar Certificado">Verify Certificate</a>
+                <a href="#" class="modal-btn" id="certModalDownload" data-en="Download PDF" data-es="Descargar PDF">Download PDF</a>
+            </div>
+        </div>
+    </div>
 
-    /*
-    ESPAÑOL:
-    Para personalizar este portfolio, sigue estos pasos:
+    <!-- Project Modal -->
+    <div class="modal-overlay" id="projectModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeProjectModal()">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Project Title</h2>
+                <p class="modal-description" id="modalDescription">Project Description</p>
+            </div>
+            <div class="modal-gallery">
+                <div class="gallery-container" id="galleryContainer">
+                    <span id="galleryPlaceholder">Project Screenshot Gallery</span>
+                    <button class="gallery-nav prev" onclick="previousGalleryImage()">‹</button>
+                    <button class="gallery-nav next" onclick="nextGalleryImage()">›</button>
+                </div>
+            </div>
+            <div class="modal-details">
+                <div class="modal-section">
+                    <h3 data-en="Key Features" data-es="Características Clave">Key Features</h3>
+                    <ul id="modalFeatures"></ul>
+                </div>
+                <div class="modal-section">
+                    <h3 data-en="Technical Challenges" data-es="Desafíos Técnicos">Technical Challenges</h3>
+                    <ul id="modalChallenges"></ul>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <a href="#" class="modal-btn modal-btn--primary" id="modalDemo" data-en="Live Demo" data-es="Demo en Vivo">Live Demo</a>
+                <a href="#" class="modal-btn" id="modalGithub" data-en="View Code" data-es="Ver Código">View Code</a>
+                <a href="#" class="modal-btn" id="modalDownload" data-en="Download" data-es="Descargar">Download</a>
+            </div>
+        </div>
+    </div>
 
-    1. CAMBIAR TEXTOS Y TRADUCCIONES:
-       - Modifica el objeto I18N más abajo para cambiar los textos en español e inglés
-       - Cada texto tiene una clave (key) y valores para español (es) e inglés (en)
+    <script>
+        // Language switching functionality
+        let currentLanguage = 'en';
 
-    2. AÑADIR/MODIFICAR PROYECTOS:
-       - Edita el array PROJECTS más abajo
-       - Cada proyecto necesita:
-         * id: Identificador único
-         * title: Título en español e inglés
-         * desc: Descripción en español e inglés
-         * cover: Ruta a la imagen de portada
-         * tags: Array de etiquetas
-
-    3. AÑADIR/MODIFICAR ELEMENTOS DE LA GALERÍA:
-       - Edita el array GALLERY_ITEMS más abajo
-       - Cada elemento necesita:
-         * id: Identificador único
-         * title: Título en español e inglés
-         * desc: Descripción en español e inglés
-         * images: Array de rutas a imágenes/GIFs (mínimo 1)
-         * tags: Array de etiquetas
-         * details: Información detallada en español e inglés
-
-    4. CAMBIAR IMÁGENES:
-       - Coloca tus imágenes en la carpeta 'assets/'
-       - Actualiza las rutas en los arrays PROJECTS y GALLERY_ITEMS
-       - Formatos soportados: JPG, PNG, GIF, WebP
-
-    5. ACTUALIZAR ENLACES DE CONTACTO:
-       - Modifica los enlaces en la sección de contacto del HTML
-       - Actualiza el correo electrónico
-
-    ENGLISH:
-    To customize this portfolio, follow these steps:
-
-    1. CHANGE TEXTS AND TRANSLATIONS:
-       - Modify the I18N object below to change texts in Spanish and English
-       - Each text has a key and values for Spanish (es) and English (en)
-
-    2. ADD/MODIFY PROJECTS:
-       - Edit the PROJECTS array below
-       - Each project needs:
-         * id: Unique identifier
-         * title: Title in Spanish and English
-         * desc: Description in Spanish and English
-         * cover: Path to the cover image
-         * tags: Array of tags
-
-    3. ADD/MODIFY GALLERY ITEMS:
-       - Edit the GALLERY_ITEMS array below
-       - Each item needs:
-         * id: Unique identifier
-         * title: Title in Spanish and English
-         * desc: Description in Spanish and English
-         * images: Array of paths to images/GIFs (minimum 1)
-         * tags: Array of tags
-         * details: Detailed information in Spanish and English
-
-    4. CHANGE IMAGES:
-       - Place your images in the 'assets/' folder
-       - Update the paths in the PROJECTS and GALLERY_ITEMS arrays
-       - Supported formats: JPG, PNG, GIF, WebP
-
-    5. UPDATE CONTACT LINKS:
-       - Modify the links in the contact section of the HTML
-       - Update the email address
-    */
-
-    /* ----------------- TRANSLATIONS ----------------- */
-    const I18N = {
-        es: {
-            name: "Marcelo Herrera — Gameplay Programmer",
-            role: "Gameplay · Systems · Tools",
-            headline: "Sistemas experimentales de gameplay que se sienten bien",
-            one_liner: "Experimentos interactivos, loops pulidos y sistemas emergentes.",
-            cta_projects: "Ver Proyectos",
-            cta_gallery: "Galería",
-            cta_contact: "Contacto",
-            projects_title: "Proyectos",
-            gallery_title: "Galería de Proyectos",
-            gallery_text: "Otros trabajos y experimentos realizados durante mis estudios de diseño de juegos digitales.",
-            about_title: "Sobre mí",
-            about_text: "Soy un gameplay programmer centrado en prototipado rápido, depuración de mecánicas y herramientas internas. Me apasiona traducir ideas de diseño en sistemas funcionales y expresivos.",
-            contact_title: "Contacto",
-            contact_text: "Email y redes profesionales.",
-            contact_email: "m.herreravsquez@outlook.com",
-            link_github: "GitHub",
-            link_linkedin: "LinkedIn",
-            link_artstation: "ArtStation",
-            link_instagram: "Instagram",
-            link_cv: "Descargar CV",
-            skills_title: "Skills / Tools"
-        },
-        en: {
-            name: "Marcelo Herrera — Gameplay Programmer",
-            role: "Gameplay · Systems · Tools",
-            headline: "Experimental gameplay systems that feel right",
-            one_liner: "Interactive experiments, polished loops, and emergent systems.",
-            cta_projects: "See Projects",
-            cta_gallery: "Gallery",
-            cta_contact: "Contact",
-            projects_title: "Projects",
-            gallery_title: "Project Gallery",
-            gallery_text: "Other works and experiments from my digital game design studies.",
-            about_title: "About",
-            about_text: "I'm a gameplay programmer focused on fast prototyping, mechanic debugging, and internal tools. I enjoy turning design ideas into expressive, functional systems.",
-            contact_title: "Contact",
-            contact_text: "Email and professional networks.",
-            contact_email: "m.herreravsquez@outlook.com",
-            link_github: "GitHub",
-            link_linkedin: "LinkedIn",
-            link_artstation: "ArtStation",
-            link_instagram: "Instagram",
-            link_cv: "Download CV",
-            skills_title: "Skills / Tools"
-        }
-    };
-
-    function applyLang(lang){
-        const dict = I18N[lang] || I18N.es;
-        document.querySelectorAll('[data-i18n]').forEach(node=>{
-            const key=node.getAttribute('data-i18n');
-            if(dict[key]) node.textContent=dict[key];
-        });
-        document.querySelectorAll('.lang').forEach(btn=>btn.classList.toggle('active', btn.dataset.lang===lang));
-        localStorage.setItem('lang', lang);
-    }
-
-    document.getElementById('btn-en').addEventListener('click', ()=>{applyLang('en'); renderProjects(); renderGallery();});
-    document.getElementById('btn-es').addEventListener('click', ()=>{applyLang('es'); renderProjects(); renderGallery();});
-
-    applyLang(localStorage.getItem('lang') || 'es');
-
-    /* ----------------- PROJECTS ----------------- */
-    /*
-    ESPAÑOL:
-    Para añadir o modificar proyectos, edita este array.
-    Cada proyecto debe tener:
-    - id: Identificador único
-    - title: Objeto con títulos en español (es) e inglés (en)
-    - desc: Objeto con descripciones en español (es) e inglés (en)
-    - cover: Ruta a la imagen de portada
-    - tags: Array de etiquetas
-
-    ENGLISH:
-    To add or modify projects, edit this array.
-    Each project must have:
-    - id: Unique identifier
-    - title: Object with titles in Spanish (es) and English (en)
-    - desc: Object with descriptions in Spanish (es) and English (en)
-    - cover: Path to the cover image
-    - tags: Array of tags
-    */
-    const PROJECTS = [
-        {
-            id:'BTB',
-            title:{es:'Break the Bubble',en:'Break the Bubble'},
-            desc:{
-                es:'Metroidvania 2D donde controlas a un mago que debe abrirse paso al supermercado. Derrota enemigos, resuelve puzles y adquiere nuevos poderes para completar su misión.',
-                en:'2D Metroidvania where you play as a wizard on a journey to the supermarket. Fight enemies, solve puzzles, and gain new powers to complete your mission.'
-            },
-            cover:'assets/Unity_Games/BTB/BTB_Cover.png',
-            tags:['Unity','2D','C#','Prototype','Jam']
-        },
-        {
-            id:'CL',
-            title:{es:'Car-Loop',en:'Car-Loop'},
-            desc:{
-                es:'Juego de terror psicológico en VR donde el jugador revive un bucle de pesadillas dentro de su automóvil mientras conduce hacia un destino inevitable.',
-                en:'Psychological VR horror game where the player relives a nightmare loop inside their car while driving toward an inevitable fate.'
-            },
-            cover:'assets/Unity_Games/CL/CL_Cover.png',
-            tags:['Unity','3D','C#','VR','Prototype']
-        },
-        {
-            id:'HA',
-            title:{es:'Hunters: Awakening',en:'Hunters: Awakening'},
-            desc:{
-                es:'Javiera es rescatada por un cazador interdimensional y descubre una organización secreta que mantiene el equilibrio entre realidades paralelas.',
-                en:'Javiera is rescued by an interdimensional hunter and uncovers a secret organization maintaining balance between parallel realities.'
-            },
-            cover:'assets/Unity_Games/HA/HA_Cover.png',
-            tags:['Unity','2D','C#','Prototype']
-        }
-        /*
-        EJEMPLO DE CÓMO AÑADIR UN NUEVO PROYECTO / EXAMPLE OF HOW TO ADD A NEW PROJECT:
-        
-        {
-            id:'NUEVO_PROYECTO', // ID único / Unique ID
-            title:{
-                es:'Título en Español',
-                en:'Title in English'
-            },
-            desc:{
-                es:'Descripción detallada en español...',
-                en:'Detailed description in English...'
-            },
-            cover:'assets/ruta/a/tu/imagen.jpg', // Ruta a la imagen de portada / Path to cover image
-            tags:['Unity', '3D', 'C#', 'Multiplayer'] // Etiquetas / Tags
-        }
-        */
-    ];
-
-    /* ----------------- GALLERY ----------------- */
-    /*
-    ESPAÑOL:
-    Para añadir o modificar elementos de la galería, edita este array.
-    Cada elemento debe tener:
-    - id: Identificador único
-    - title: Objeto con títulos en español (es) e inglés (en)
-    - desc: Objeto con descripciones en español (es) e inglés (en)
-    - images: Array de rutas a imágenes/GIFs (puede tener una o más imágenes)
-    - tags: Array de etiquetas
-    - details: Objeto con información detallada en español (es) e inglés (en)
-
-    ENGLISH:
-    To add or modify gallery items, edit this array.
-    Each item must have:
-    - id: Unique identifier
-    - title: Object with titles in Spanish (es) and English (en)
-    - desc: Object with descriptions in Spanish (es) and English (en)
-    - images: Array of paths to images/GIFs (can have one or more images)
-    - tags: Array of tags
-    - details: Object with detailed information in Spanish (es) and English (en)
-    */
-    const GALLERY_ITEMS = [
-        {
-            id: 'LB',
-            title: {es: 'Light Box - Instalación Interactiva', en: 'Light Box - Interactive Installation'},
-            desc: {es: 'Una instalación de arte interactivo que combina luces LED, sensores de movimiento y programación creativa para crear una experiencia inmersiva.', en: 'An interactive art installation combining LED lights, motion sensors and creative programming to create an immersive experience.'},
-            images: ['assets/3D/LB2.jpg', 'assets/3D/LB1.jpg'],
-            tags: ['3D', 'Installation', 'Interactive', 'Arduino'],
-            details: {
-                es: [
-                    {label: 'Tecnología', value: 'Arduino, Sensores PIR, LED RGB'},
-                    {label: 'Rol', value: 'Diseñador y Programador Principal'},
-                    {label: 'Duración', value: '4 semanas'},
-                    {label: 'Año', value: '2023'}
-                ],
-                en: [
-                    {label: 'Technology', value: 'Arduino, PIR Sensors, RGB LED'},
-                    {label: 'Role', value: 'Lead Designer and Programmer'},
-                    {label: 'Duration', value: '4 weeks'},
-                    {label: 'Year', value: '2023'}
-                ]
+        function toggleLanguage() {
+            const toggle = document.querySelector('.lang-toggle');
+            const langLabels = document.querySelectorAll('.lang-label');
+            
+            if (currentLanguage === 'en') {
+                currentLanguage = 'es';
+                toggle.classList.add('spanish');
+            } else {
+                currentLanguage = 'en';
+                toggle.classList.remove('spanish');
             }
-        },
-        {
-            id: 'BEEP',
-            title: {es: 'Beep Experiment - Animación Sonora', en: 'Beep Experiment - Sound Animation'},
-            desc: {es: 'Exploración audiovisual que sincroniza ondas sonoras sintetizadas con patrones de animación abstractos generados proceduralmente.', en: 'Audiovisual exploration that synchronizes synthesized sound waves with procedurally generated abstract animation patterns.'},
-            images: ['assets/3D/beep.gif'],
-            tags: ['Animation', 'Experimental', 'Sound Design', 'Procedural'],
-            details: {
-                es: [
-                    {label: 'Software', value: 'After Effects, Processing, Audacity'},
-                    {label: 'Duración', value: '2 minutos 15 segundos'},
-                    {label: 'Año', value: '2022'},
-                    {label: 'Técnica', value: 'Animación procedural + síntesis de audio'}
-                ],
-                en: [
-                    {label: 'Software', value: 'After Effects, Processing, Audacity'},
-                    {label: 'Duration', value: '2 minutes 15 seconds'},
-                    {label: 'Year', value: '2022'},
-                    {label: 'Technique', value: 'Procedural animation + audio synthesis'}
-                ]
-            }
+            
+            // Update language labels
+            langLabels.forEach(label => {
+                if (label.dataset.lang === currentLanguage) {
+                    label.classList.add('active');
+                } else {
+                    label.classList.remove('active');
+                }
+            });
+            
+            // Update all text content
+            updateLanguage();
         }
-        /*
-        EJEMPLO DE CÓMO AÑADIR UN NUEVO ELEMENTO A LA GALERÍA / EXAMPLE OF HOW TO ADD A NEW GALLERY ITEM:
-        
-        {
-            id: 'NUEVO_ELEMENTO', // ID único / Unique ID
-            title: {
-                es: 'Título en Español',
-                en: 'Title in English'
-            },
-            desc: {
-                es: 'Descripción detallada en español...',
-                en: 'Detailed description in English...'
-            },
-            images: [
-                'assets/ruta/imagen1.jpg',
-                'assets/ruta/imagen2.jpg',
-                'assets/ruta/animacion.gif'
-            ], // Múltiples imágenes soportadas / Multiple images supported
-            tags: ['Etiqueta1', 'Etiqueta2', 'Etiqueta3'], // Etiquetas / Tags
-            details: {
-                es: [
-                    {label: 'Campo1', value: 'Valor1'},
-                    {label: 'Campo2', value: 'Valor2'}
-                ],
-                en: [
-                    {label: 'Field1', value: 'Value1'},
-                    {label: 'Field2', value: 'Value2'}
-                ]
-            }
-        }
-        */
-    ];
 
-    /* ----------------- CARRUSEL Y PANEL EXPANDIBLE ----------------- */
-    let currentItem = null;
-    let currentSlideIndex = 0;
-
-    function openExpandablePanel(item) {
-        currentItem = item;
-        currentSlideIndex = 0;
-
-        const panel = document.getElementById('expandable-panel');
-        const lang = localStorage.getItem('lang') || 'es';
-
-        // Llenar la información del proyecto
-        document.getElementById('panel-title').textContent = item.title[lang];
-        document.getElementById('panel-desc').textContent = item.desc[lang];
-
-        // Tags
-        const tagsContainer = document.getElementById('panel-tags');
-        tagsContainer.innerHTML = '';
-        item.tags.forEach(tag => {
-            const tagEl = document.createElement('div');
-            tagEl.className = 'tag-pill';
-            tagEl.textContent = tag;
-            tagsContainer.appendChild(tagEl);
-        });
-
-        // Detalles
-        const detailsContainer = document.getElementById('panel-details');
-        detailsContainer.innerHTML = '';
-        if (item.details && item.details[lang]) {
-            item.details[lang].forEach(detail => {
-                const detailEl = document.createElement('div');
-                detailEl.className = 'detail-item';
-                detailEl.innerHTML = `
-                    <div class="detail-label">${detail.label}</div>
-                    <div class="detail-value">${detail.value}</div>
-                `;
-                detailsContainer.appendChild(detailEl);
+        function updateLanguage() {
+            const elements = document.querySelectorAll('[data-' + currentLanguage + ']');
+            elements.forEach(element => {
+                const text = element.getAttribute('data-' + currentLanguage);
+                if (text) {
+                    element.textContent = text;
+                }
             });
         }
 
-        // Crear carrusel
-        createCarousel(item.images);
-
-        // Activar el panel
-        panel.classList.add('active');
-
-        // Desplazar la vista al panel
-        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-
-    function createCarousel(images) {
-        const carouselContainer = document.getElementById('carousel-container');
-        const thumbnailsContainer = document.getElementById('carousel-thumbnails');
-
-        // Limpiar contenedores
-        carouselContainer.innerHTML = '';
-        thumbnailsContainer.innerHTML = '';
-
-        // Crear diapositivas
-        images.forEach((image, index) => {
-            // Crear diapositiva
-            const slide = document.createElement('div');
-            slide.className = `carousel-slide ${index === 0 ? 'active' : ''}`;
-
-            const img = document.createElement('img');
-            img.className = 'carousel-image';
-            img.src = image;
-            img.alt = `Project image ${index + 1}`;
-
-            slide.appendChild(img);
-            carouselContainer.appendChild(slide);
-
-            // Crear miniatura
-            const thumb = document.createElement('img');
-            thumb.className = `carousel-thumb ${index === 0 ? 'active' : ''}`;
-            thumb.src = image;
-            thumb.alt = `Thumbnail ${index + 1}`;
-            thumb.addEventListener('click', () => {
-                goToSlide(index);
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
             });
-
-            thumbnailsContainer.appendChild(thumb);
         });
 
-        // Crear botones de navegación (solo si hay más de una imagen)
-        if (images.length > 1) {
-            const nav = document.createElement('div');
-            nav.className = 'carousel-nav';
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-            const prevBtn = document.createElement('button');
-            prevBtn.className = 'carousel-btn';
-            prevBtn.innerHTML = '&#10094;';
-            prevBtn.addEventListener('click', prevSlide);
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
 
-            const nextBtn = document.createElement('button');
-            nextBtn.className = 'carousel-btn';
-            nextBtn.innerHTML = '&#10095;';
-            nextBtn.addEventListener('click', nextSlide);
-
-            nav.appendChild(prevBtn);
-            nav.appendChild(nextBtn);
-            carouselContainer.appendChild(nav);
-        }
-    }
-
-    function goToSlide(index) {
-        const slides = document.querySelectorAll('.carousel-slide');
-        const thumbs = document.querySelectorAll('.carousel-thumb');
-
-        // Ocultar todas las diapositivas
-        slides.forEach(slide => slide.classList.remove('active'));
-        thumbs.forEach(thumb => thumb.classList.remove('active'));
-
-        // Mostrar la diapositiva seleccionada
-        slides[index].classList.add('active');
-        thumbs[index].classList.add('active');
-
-        currentSlideIndex = index;
-    }
-
-    function nextSlide() {
-        const slides = document.querySelectorAll('.carousel-slide');
-        const nextIndex = (currentSlideIndex + 1) % slides.length;
-        goToSlide(nextIndex);
-    }
-
-    function prevSlide() {
-        const slides = document.querySelectorAll('.carousel-slide');
-        const prevIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
-        goToSlide(prevIndex);
-    }
-
-    function closeExpandablePanel() {
-        const panel = document.getElementById('expandable-panel');
-        panel.classList.remove('active');
-    }
-
-    function renderProjects(){
-        const container=document.getElementById('projects-list');
-        container.innerHTML='';
-        const lang=localStorage.getItem('lang')||'es';
-        PROJECTS.forEach(p=>{
-            const el=document.createElement('div');
-            el.className='project';
-            el.innerHTML=`
-          <div class="thumb" style="background-image:url('${p.cover}')"></div>
-          <div class="proj-meta">
-            <div class="proj-title">${p.title[lang]}</div>
-            <div class="proj-desc">${p.desc[lang]}</div>
-            <div class="tags">${p.tags.map(t=>`<div class="tag-pill">${t}</div>`).join('')}</div>
-          </div>`;
-            container.appendChild(el);
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
         });
-    }
 
-    function renderGallery(){
-        const container = document.getElementById('gallery-expandable-list');
-        container.innerHTML = '';
-
-        const lang = localStorage.getItem('lang') || 'es';
-
-        GALLERY_ITEMS.forEach(item => {
-            const el = document.createElement('div');
-            el.className = 'gallery-item';
-            el.style.backgroundImage = `url('${item.images[0]}')`;
-            el.setAttribute('data-id', item.id);
-
-            // Al hacer clic, abrir el panel expandible
-            el.addEventListener('click', () => openExpandablePanel(item));
-
-            container.appendChild(el);
-        });
-    }
-
-    // Cerrar panel al hacer clic fuera de él
-    document.addEventListener('click', (e) => {
-        const panel = document.getElementById('expandable-panel');
-        if (panel.classList.contains('active') && !panel.contains(e.target)) {
-            // Verificar que no se hizo clic en un elemento de la galería
-            if (!e.target.closest('.gallery-item')) {
-                closeExpandablePanel();
+        // Certification carousel functionality
+        let currentCertification = 0;
+        const totalCertifications = 6;
+        
+        // Project carousel functionality
+        let currentProject = 0;
+        const totalProjects = 6;
+        
+        // Project data for modal
+        const projectData = {
+            en: [
+                {
+                    title: "Stellar Combat",
+                    fullDescription: "Stellar Combat is an ambitious 3D space combat simulator that pushes the boundaries of AI-driven gameplay. The game features a sophisticated enemy AI system that adapts to player behavior, creating unique combat scenarios every time.",
+                    features: ["Advanced AI enemy behavior with machine learning", "Procedural weapon generation with 1M+ combinations", "Dynamic difficulty adjustment", "Multiplayer combat with up to 16 players"],
+                    challenges: ["Optimizing AI calculations for mobile platforms", "Balancing procedural weapons for competitive play", "Implementing seamless multiplayer synchronization"]
+                },
+                {
+                    title: "Mystic Realms",
+                    fullDescription: "Mystic Realms represents a new approach to narrative-driven RPGs, featuring a groundbreaking dialogue system that remembers player choices across multiple playthroughs.",
+                    features: ["Revolutionary dialogue system with emotional memory", "50+ unique story endings", "Dynamic character relationship system", "Procedural quest generation"],
+                    challenges: ["Creating believable AI character personalities", "Managing complex branching narrative database", "Optimizing dialogue trees for performance"]
+                },
+                {
+                    title: "Neon Runner",
+                    fullDescription: "Neon Runner revolutionizes the endless runner genre with its fluid character control system and dynamic obstacle generation using advanced physics simulation.",
+                    features: ["Physics-based character controller", "Dynamic obstacle generation using ML", "Customizable character abilities", "Real-time leaderboard competition"],
+                    challenges: ["Achieving 60fps on low-end mobile devices", "Creating fair but challenging obstacle patterns", "Implementing smooth touch controls"]
+                },
+                {
+                    title: "Quantum Puzzles",
+                    fullDescription: "Quantum Puzzles makes complex physics concepts accessible through innovative gameplay mechanics. Players manipulate quantum particles to solve increasingly complex puzzles.",
+                    features: ["Accurate quantum physics simulation", "Educational content integrated into gameplay", "120+ hand-crafted puzzle levels", "Interactive physics sandbox mode"],
+                    challenges: ["Simplifying complex physics for general audience", "Creating visually appealing quantum effects", "Balancing education with entertainment"]
+                },
+                {
+                    title: "Shadow Tactics",
+                    fullDescription: "Shadow Tactics combines classic stealth gameplay with cutting-edge AI and lighting technology. The game features an advanced enemy AI system that communicates and coordinates.",
+                    features: ["Advanced enemy AI with communication systems", "Dynamic lighting affects gameplay mechanics", "Multiple approaches to each level", "Environmental storytelling"],
+                    challenges: ["Creating believable AI communication", "Optimizing complex lighting calculations", "Balancing stealth difficulty curve"]
+                },
+                {
+                    title: "Crystal Defenders",
+                    fullDescription: "Crystal Defenders reinvents tower defense with its innovative magical element system. Players combine different crystal types to create unique defensive strategies.",
+                    features: ["100+ magical element combinations", "Custom shader effects for spell casting", "Campaign mode with 50+ levels", "Competitive multiplayer mode"],
+                    challenges: ["Balancing complex element interactions", "Creating performant particle effects", "Designing intuitive combination UI"]
+                }
+            ],
+            es: [
+                {
+                    title: "Stellar Combat",
+                    fullDescription: "Stellar Combat es un ambicioso simulador de combate espacial 3D que empuja los límites del gameplay impulsado por IA. El juego presenta un sofisticado sistema de IA enemiga que se adapta al comportamiento del jugador.",
+                    features: ["Comportamiento avanzado de IA enemiga con aprendizaje automático", "Generación procedimental de armas con más de 1M de combinaciones", "Ajuste dinámico de dificultad", "Combate multijugador con hasta 16 jugadores"],
+                    challenges: ["Optimizar cálculos de IA para plataformas móviles", "Balancear armas procedimentales para juego competitivo", "Implementar sincronización multijugador fluida"]
+                },
+                {
+                    title: "Mystic Realms",
+                    fullDescription: "Mystic Realms representa un nuevo enfoque para los RPGs narrativos, presentando un revolucionario sistema de diálogo que recuerda las decisiones del jugador a través de múltiples partidas.",
+                    features: ["Sistema revolucionario de diálogo con memoria emocional", "50+ finales únicos de historia", "Sistema dinámico de relaciones de personajes", "Generación procedimental de misiones"],
+                    challenges: ["Crear personalidades creíbles de personajes IA", "Gestionar base de datos narrativa ramificada compleja", "Optimizar árboles de diálogo para rendimiento"]
+                },
+                {
+                    title: "Neon Runner",
+                    fullDescription: "Neon Runner revoluciona el género endless runner con su sistema fluido de control de personajes y generación dinámica de obstáculos usando simulación avanzada de física.",
+                    features: ["Controlador de personaje basado en física", "Generación dinámica de obstáculos usando ML", "Habilidades personalizables de personaje", "Competencia en tabla de clasificación en tiempo real"],
+                    challenges: ["Lograr 60fps en dispositivos móviles de gama baja", "Crear patrones de obstáculos justos pero desafiantes", "Implementar controles táctiles suaves"]
+                },
+                {
+                    title: "Quantum Puzzles",
+                    fullDescription: "Quantum Puzzles hace accesibles conceptos complejos de física a través de mecánicas de juego innovadoras. Los jugadores manipulan partículas cuánticas para resolver rompecabezas cada vez más complejos.",
+                    features: ["Simulación precisa de física cuántica", "Contenido educativo integrado en el gameplay", "120+ niveles de rompecabezas hechos a mano", "Modo sandbox de física interactiva"],
+                    challenges: ["Simplificar física compleja para audiencia general", "Crear efectos cuánticos visualmente atractivos", "Balancear educación con entretenimiento"]
+                },
+                {
+                    title: "Shadow Tactics",
+                    fullDescription: "Shadow Tactics combina gameplay de sigilo clásico con tecnología IA e iluminación de vanguardia. El juego presenta un sistema avanzado de IA enemiga que se comunica y coordina.",
+                    features: ["IA enemiga avanzada con sistemas de comunicación", "Iluminación dinámica afecta mecánicas de juego", "Múltiples enfoques para cada nivel", "Narrativa ambiental"],
+                    challenges: ["Crear comunicación IA creíble", "Optimizar cálculos complejos de iluminación", "Balancear curva de dificultad de sigilo"]
+                },
+                {
+                    title: "Crystal Defenders",
+                    fullDescription: "Crystal Defenders reinventa la defensa de torres con su innovador sistema de elementos mágicos. Los jugadores combinan diferentes tipos de cristales para crear estrategias defensivas únicas.",
+                    features: ["100+ combinaciones de elementos mágicos", "Efectos de shader personalizados para lanzamiento de hechizos", "Modo campaña con más de 50 niveles", "Modo multijugador competitivo"],
+                    challenges: ["Balancear interacciones complejas de elementos", "Crear efectos de partículas eficientes", "Diseñar UI intuitiva de combinación"]
+                }
+            ]
+        };
+        
+        function initializeCarousel() {
+            const dotsContainer = document.getElementById('carouselDots');
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalProjects; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                dot.onclick = () => goToProject(i);
+                dotsContainer.appendChild(dot);
             }
         }
-    });
-
-    // Navegación con teclado
-    document.addEventListener('keydown', (e) => {
-        const panel = document.getElementById('expandable-panel');
-        if (panel.classList.contains('active')) {
-            if (e.key === 'ArrowLeft') {
-                prevSlide();
-            } else if (e.key === 'ArrowRight') {
-                nextSlide();
-            } else if (e.key === 'Escape') {
-                closeExpandablePanel();
+        
+        function updateCarousel() {
+            const slides = document.querySelectorAll('.project-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            slides.forEach((slide, index) => {
+                if (index === currentProject) {
+                    slide.classList.add('active');
+                    dots[index].classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                    dots[index].classList.remove('active');
+                }
+            });
+        }
+        
+        function nextProject() {
+            currentProject = (currentProject + 1) % totalProjects;
+            updateCarousel();
+        }
+        
+        function previousProject() {
+            currentProject = (currentProject - 1 + totalProjects) % totalProjects;
+            updateCarousel();
+        }
+        
+        function goToProject(index) {
+            currentProject = index;
+            updateCarousel();
+        }
+        
+        // Modal functionality
+        function openProjectModal(projectIndex) {
+            const modal = document.getElementById('projectModal');
+            const data = projectData[currentLanguage][projectIndex];
+            
+            document.getElementById('modalTitle').textContent = data.title;
+            document.getElementById('modalDescription').textContent = data.fullDescription;
+            
+            const featuresEl = document.getElementById('modalFeatures');
+            featuresEl.innerHTML = '';
+            data.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.textContent = feature;
+                featuresEl.appendChild(li);
+            });
+            
+            const challengesEl = document.getElementById('modalChallenges');
+            challengesEl.innerHTML = '';
+            data.challenges.forEach(challenge => {
+                const li = document.createElement('li');
+                li.textContent = challenge;
+                challengesEl.appendChild(li);
+            });
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeProjectModal() {
+            const modal = document.getElementById('projectModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        let currentGalleryImage = 0;
+        const totalGalleryImages = 4;
+        
+        function nextGalleryImage() {
+            currentGalleryImage = (currentGalleryImage + 1) % totalGalleryImages;
+            updateGalleryDisplay();
+        }
+        
+        function previousGalleryImage() {
+            currentGalleryImage = (currentGalleryImage - 1 + totalGalleryImages) % totalGalleryImages;
+            updateGalleryDisplay();
+        }
+        
+        function updateGalleryDisplay() {
+            document.getElementById('galleryPlaceholder').textContent = `Project Screenshot ${currentGalleryImage + 1} of ${totalGalleryImages}`;
+        }
+        
+        // Close modal on escape key or click outside
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeProjectModal();
+                closeCertificationModal();
+            }
+        });
+        
+        document.getElementById('projectModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeProjectModal();
+            }
+        });
+        
+        // Auto-advance carousel (optional)
+        let carouselInterval;
+        
+        function startAutoCarousel() {
+            carouselInterval = setInterval(nextProject, 8000);
+        }
+        
+        function stopAutoCarousel() {
+            clearInterval(carouselInterval);
+        }
+        
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                nextProject();
+            }
+            if (touchEndX > touchStartX + 50) {
+                previousProject();
             }
         }
-    });
-
-    // Inicializar
-    renderProjects();
-    renderGallery();
-</script>
+        
+        // Certification data for modal
+        const certificationData = {
+            en: [
+                {
+                    title: "Unity Certified Developer",
+                    description: "Comprehensive certification covering advanced Unity development, including performance optimization, advanced scripting, and professional development practices.",
+                    skills: ["Advanced C# Programming", "Performance Optimization", "Asset Pipeline Management", "Cross-platform Development"],
+                    details: ["Duration: 40 hours", "Issued: 2023", "Level: Advanced", "Verification: unity.com/verify/cert123"]
+                },
+                {
+                    title: "Unreal Engine Blueprint Certified",
+                    description: "Advanced Blueprint visual scripting certification demonstrating mastery of Unreal Engine's node-based programming system.",
+                    skills: ["Blueprint Visual Scripting", "Game Logic Implementation", "UI/UX Development", "Animation Systems"],
+                    details: ["Duration: 35 hours", "Issued: 2022", "Level: Advanced", "Verification: epicgames.com/verify/cert456"]
+                },
+                {
+                    title: "Game Design Fundamentals",
+                    description: "Foundational course in game design principles, covering player psychology, mechanics design, and iterative development processes.",
+                    skills: ["Game Design Theory", "Player Psychology", "Mechanics Design", "Playtesting Methods"],
+                    details: ["Duration: 60 hours", "Issued: 2021", "Level: Intermediate", "Verification: coursera.org/verify/cert789"]
+                },
+                {
+                    title: "Advanced C# Programming",
+                    description: "Advanced C# programming certification focusing on enterprise-level development patterns and performance optimization.",
+                    skills: ["Advanced C# Features", "Design Patterns", "Memory Management", "Async Programming"],
+                    details: ["Duration: 50 hours", "Issued: 2023", "Level: Expert", "Verification: microsoft.com/verify/cert101"]
+                },
+                {
+                    title: "Mobile Game Development",
+                    description: "Specialized certification in mobile game development, covering optimization techniques and platform-specific considerations.",
+                    skills: ["Mobile Optimization", "Touch Controls", "Performance Profiling", "Platform Integration"],
+                    details: ["Duration: 30 hours", "Issued: 2022", "Level: Intermediate", "Verification: unity.com/verify/cert202"]
+                },
+                {
+                    title: "AI for Games",
+                    description: "Comprehensive course on artificial intelligence implementation in games, covering pathfinding, decision trees, and behavioral systems.",
+                    skills: ["AI Programming", "Pathfinding Algorithms", "Behavioral Trees", "Machine Learning"],
+                    details: ["Duration: 45 hours", "Issued: 2021", "Level: Advanced", "Verification: coursera.org/verify/cert303"]
+                }
+            ],
+            es: [
+                {
+                    title: "Unity Certified Developer",
+                    description: "Certificación integral que cubre desarrollo avanzado de Unity, incluyendo optimización de rendimiento, scripting avanzado y prácticas de desarrollo profesional.",
+                    skills: ["Programación Avanzada C#", "Optimización de Rendimiento", "Gestión de Pipeline de Assets", "Desarrollo Multiplataforma"],
+                    details: ["Duración: 40 horas", "Emitido: 2023", "Nivel: Avanzado", "Verificación: unity.com/verify/cert123"]
+                },
+                {
+                    title: "Unreal Engine Blueprint Certified",
+                    description: "Certificación avanzada de scripting visual Blueprint que demuestra dominio del sistema de programación basado en nodos de Unreal Engine.",
+                    skills: ["Blueprint Visual Scripting", "Implementación de Lógica de Juego", "Desarrollo UI/UX", "Sistemas de Animación"],
+                    details: ["Duración: 35 horas", "Emitido: 2022", "Nivel: Avanzado", "Verificación: epicgames.com/verify/cert456"]
+                },
+                {
+                    title: "Fundamentos de Diseño de Juegos",
+                    description: "Curso fundacional en principios de diseño de juegos, cubriendo psicología del jugador, diseño de mecánicas y procesos de desarrollo iterativo.",
+                    skills: ["Teoría de Diseño de Juegos", "Psicología del Jugador", "Diseño de Mecánicas", "Métodos de Playtesting"],
+                    details: ["Duración: 60 horas", "Emitido: 2021", "Nivel: Intermedio", "Verificación: coursera.org/verify/cert789"]
+                },
+                {
+                    title: "Programación Avanzada C#",
+                    description: "Certificación avanzada de programación C# enfocada en patrones de desarrollo a nivel empresarial y optimización de rendimiento.",
+                    skills: ["Características Avanzadas C#", "Patrones de Diseño", "Gestión de Memoria", "Programación Asíncrona"],
+                    details: ["Duración: 50 horas", "Emitido: 2023", "Nivel: Experto", "Verificación: microsoft.com/verify/cert101"]
+                },
+                {
+                    title: "Desarrollo de Juegos Móviles",
+                    description: "Certificación especializada en desarrollo de juegos móviles, cubriendo técnicas de optimización y consideraciones específicas de plataforma.",
+                    skills: ["Optimización Móvil", "Controles Táctiles", "Profiling de Rendimiento", "Integración de Plataforma"],
+                    details: ["Duración: 30 horas", "Emitido: 2022", "Nivel: Intermedio", "Verificación: unity.com/verify/cert202"]
+                },
+                {
+                    title: "IA para Juegos",
+                    description: "Curso integral sobre implementación de inteligencia artificial en juegos, cubriendo pathfinding, árboles de decisión y sistemas de comportamiento.",
+                    skills: ["Programación IA", "Algoritmos de Pathfinding", "Árboles de Comportamiento", "Aprendizaje Automático"],
+                    details: ["Duración: 45 horas", "Emitido: 2021", "Nivel: Avanzado", "Verificación: coursera.org/verify/cert303"]
+                }
+            ]
+        };
+        
+        function initializeCertificationCarousel() {
+            const dotsContainer = document.getElementById('certificationDots');
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalCertifications; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                dot.onclick = () => goToCertification(i);
+                dotsContainer.appendChild(dot);
+            }
+        }
+        
+        function updateCertificationCarousel() {
+            const slides = document.querySelectorAll('.certification-slide');
+            const dots = document.querySelectorAll('#certificationDots .carousel-dot');
+            
+            slides.forEach((slide, index) => {
+                if (index === currentCertification) {
+                    slide.classList.add('active');
+                    if (dots[index]) dots[index].classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                    if (dots[index]) dots[index].classList.remove('active');
+                }
+            });
+        }
+        
+        function nextCertification() {
+            currentCertification = (currentCertification + 1) % totalCertifications;
+            updateCertificationCarousel();
+        }
+        
+        function previousCertification() {
+            currentCertification = (currentCertification - 1 + totalCertifications) % totalCertifications;
+            updateCertificationCarousel();
+        }
+        
+        function goToCertification(index) {
+            currentCertification = index;
+            updateCertificationCarousel();
+        }
+        
+        // Certification Modal functionality
+        function openCertificationModal(certIndex) {
+            const modal = document.getElementById('certificationModal');
+            const data = certificationData[currentLanguage][certIndex];
+            
+            document.getElementById('certModalTitle').textContent = data.title;
+            document.getElementById('certModalDescription').textContent = data.description;
+            
+            const skillsEl = document.getElementById('certModalSkills');
+            skillsEl.innerHTML = '';
+            data.skills.forEach(skill => {
+                const li = document.createElement('li');
+                li.textContent = skill;
+                skillsEl.appendChild(li);
+            });
+            
+            const detailsEl = document.getElementById('certModalDetails');
+            detailsEl.innerHTML = '';
+            data.details.forEach(detail => {
+                const li = document.createElement('li');
+                li.textContent = detail;
+                detailsEl.appendChild(li);
+            });
+            
+            document.getElementById('certGalleryPlaceholder').textContent = data.title + ' - Full Certificate Image';
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeCertificationModal() {
+            const modal = document.getElementById('certificationModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close certification modal on escape key or click outside
+        document.getElementById('certificationModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCertificationModal();
+            }
+        });
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateLanguage();
+            initializeCarousel();
+            initializeCertificationCarousel();
+            startAutoCarousel();
+        });
+    </script>
 </body>
 </html>
