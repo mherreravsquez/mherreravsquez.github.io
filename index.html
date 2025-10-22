@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marcelo Herrera | Game Designer Portfolio</title>
+    <title>Marcelo Herrera | Gameplay Programmer & Game Designer Portfolio</title>
     <style>
         :root {
             --primary-green: #00ff41;
@@ -406,7 +407,7 @@
         }
 
         .project-image-container {
-            height: 200px;
+            aspect-ratio: 1.3 / 1;
             position: relative;
             overflow: hidden;
             border-radius: 0 0 10px 10px;
@@ -523,9 +524,24 @@
         .detail-carousel-container {
             position: relative;
             width: 100%;
-            height: 400px;
+            height: 500px;
             overflow: hidden;
             border-radius: 8px;
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+        }
+
+        .detail-carousel-container .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .detail-carousel-container .carousel-slide:empty {
             background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
         }
 
@@ -538,14 +554,16 @@
         .carousel-slide {
             min-width: 100%;
             height: 100%;
-            background-size: cover;
+            background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-muted);
-            font-size: 2rem;
+        }
+
+        .carousel-slide:empty {
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
         }
 
         .carousel-nav {
@@ -1358,7 +1376,9 @@
         }
     </style>
 </head>
+
 <body>
+
 <header class="header">
     <div class="logo">MARCHEL.dev</div>
 
@@ -2246,9 +2266,13 @@
         images.forEach((imagePath, index) => {
             const slide = document.createElement('div');
             slide.className = 'carousel-slide';
-            slide.style.backgroundImage = `url('${imagePath}')`;
-            // Fallback content if image doesn't load
-            slide.innerHTML = '🎮';
+            const img = document.createElement('img');
+            img.src = imagePath;
+            img.alt = `Image ${index + 1} for ${projectId}`;
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.objectFit = 'contain';
+            slide.appendChild(img);
             track.appendChild(slide);
         });
 
@@ -2483,5 +2507,7 @@
         });
     });
 </script>
+
 </body>
+
 </html>
