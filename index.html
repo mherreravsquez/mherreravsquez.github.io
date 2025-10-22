@@ -1360,7 +1360,7 @@
 </head>
 <body>
 <header class="header">
-    <div class="logo">MARCELO_HERRERA.exe</div>
+    <div class="logo">MARCHEL.dev</div>
 
     <nav class="nav-tabs">
         <button class="nav-tab active" data-section="stats" data-i18n="tabs.stats">STATS</button>
@@ -1543,269 +1543,270 @@
                 </div>
             </div>
         </div>
-
-        <!-- Gallery Section -->
-        <section id="gallery" class="section">
-            <h2 class="section-title" data-i18n="section_title_gallery">CREATIVE_GALLERY.collection</h2>
-
-            <div class="gallery-filters">
-                <button class="filter-btn active" data-filter="all" data-i18n="gallery_filters.all">ALL_PROJECTS</button>
-                <button class="filter-btn" data-filter="modeling" data-i18n="gallery_filters.modeling">3D_MODELING</button>
-                <button class="filter-btn" data-filter="virtual" data-i18n="gallery_filters.virtual">VIRTUAL_PROD</button>
-                <button class="filter-btn" data-filter="installation" data-i18n="gallery_filters.interactive">INSTALLATIONS</button>
-            </div>
-
-            <div class="gallery-grid">
-                <div class="gallery-item" data-category="installation" onclick="openGalleryModal('boombastic')">
-                    <div class="gallery-preview">
-                        <video width="100%" height="100%" preload="metadata">
-                            <source src="assets/Gallery/BB/BB_gameplay1.mp4" type="video/mp4">
-                        </video>
-                    </div>                    <div class="gallery-info">
-                    <h3 class="gallery-title">Boombastic - Interactive Installation</h3>
-                    <div class="gallery-category">Interactive Installation</div>
-                    <p class="gallery-description">Interactive installation of mixes of songs from the 90s, using Kinect and project mapping.</p>
-                </div>
-                </div>
-
-                <div class="gallery-item" data-category="modeling" onclick="openGalleryModal('beep')">
-                    <div class="gallery-preview">
-                        <img src="assets/Gallery/beep/beep_render1.gif" alt="Beep fighting animation" style="width:100%;">
-                    </div>
-                    <div class="gallery-info">
-                        <h3 class="gallery-title">Beep Animation</h3>
-                        <div class="gallery-category">3D Sculpting and Animation</div>
-                        <p class="gallery-description">Sculpted and textured in ZBrush of the character "Beep" from the video game Kenshi. Then animated in Blender using Mixamo animations.</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="modeling" onclick="openGalleryModal('leblanc_diorama')">
-                    <div class="gallery-preview">
-                        <img src="assets/Gallery/LB/LB_thumbnail.jpg" alt="Leblanc cafe render, made in Blender" style="width:100%;">
-                    </div>
-                    <div class="gallery-info">
-                        <h3 class="gallery-title">Leblanc cafe Diorama</h3>
-                        <div class="gallery-category">3D Modeling</div>
-                        <p class="gallery-description">Diorama of the Leblanc cafe from the Persona 5 Royal video game. 3D modeled and textured using materials from the Blender Kit website.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Gallery Modal -->
-            <div class="gallery-modal" id="galleryModal">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title" id="modalTitle"></h3>
-                        <button class="modal-close" onclick="closeGalleryModal()">✕</button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="modal-preview" id="modalPreview"></div>
-                        <div class="modal-info-grid">
-                            <div class="modal-info-section">
-                                <h4>📝 <span data-i18n="gallery_modal_labels.description">Descripción</span></h4>
-                                <p class="modal-description" id="modalDescription"></p>
-                            </div>
-                            <div class="modal-info-section">
-                                <h4>🛠️ <span data-i18n="gallery_modal_labels.tools">Herramientas Utilizadas</span></h4>
-                                <div class="modal-tools" id="modalTools"></div>
-                            </div>
-                            <div class="modal-info-section">
-                                <h4>⚙️ <span data-i18n="gallery_modal_labels.process">Proceso de Desarrollo</span></h4>
-                                <div class="modal-process" id="modalProcess"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="modal-nav prev" onclick="prevGalleryItem()">❮</button>
-                <button class="modal-nav next" onclick="nextGalleryItem()">❯</button>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="section">
-            <h2 class="section-title" data-i18n="section_title_skills">SKILL_TREE.dat</h2>
-
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3 class="skill-category-title" data-i18n="skill_categories.programming">PROGRAMMING_BRANCH</h3>
-                    <div class="skill-item">
-                        <span class="skill-name">C#</span>
-                        <div class="skill-level">
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3 class="skill-category-title" data-i18n="skill_categories.engines">ENGINE_MASTERY</h3>
-                    <div class="skill-item">
-                        <span class="skill-name">Unity</span>
-                        <div class="skill-level">
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot"></span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">RenPy</span>
-                        <div class="skill-level">
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot"></span>
-                            <span class="skill-dot"></span>
-                            <span class="skill-dot"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3 class="skill-category-title" data-i18n="skill_categories.creative">CREATIVE_TOOLS</h3>
-                    <div class="skill-item">
-                        <span class="skill-name">ZBrush</span>
-                        <div class="skill-level">
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot"></span>
-                            <span class="skill-dot"></span>
-                            <span class="skill-dot"></span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Blender</span>
-                        <div class="skill-level">
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot"></span>
-                            <span class="skill-dot"></span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Premiere</span>
-                        <div class="skill-level">
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot"></span>
-                            <span class="skill-dot"></span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">After Effects</span>
-                        <div class="skill-level">
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot"></span>
-                            <span class="skill-dot"></span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Photoshop</span>
-                        <div class="skill-level">
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot"></span>
-                            <span class="skill-dot"></span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Reaper</span>
-                        <div class="skill-level">
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot"></span>
-                            <span class="skill-dot"></span>
-                            <span class="skill-dot"></span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Audacity</span>
-                        <div class="skill-level">
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot"></span>
-                            <span class="skill-dot"></span>
-                            <span class="skill-dot"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3 class="skill-category-title" data-i18n="skill_categories.languages">LANGUAGES</h3>
-                    <div class="skill-item">
-                        <span class="skill-name">Español</span>
-                        <div class="skill-level">
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Inglés</span>
-                        <div class="skill-level">
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot filled"></span>
-                            <span class="skill-dot"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Achievements Section -->
-        <section id="achievements" class="section">
-            <h2 class="section-title" data-i18n="section_title_achievements">ACHIEVEMENTS_UNLOCKED.log</h2>
-            <p class="achievements-subtitle" data-i18n="achievements_subtitle">TOTAL UNLOCKED: 1/∞ | COMPLETION RATE: 100%</p>
-
-            <div class="achievements-grid">
-                <div class="achievement-card">
-                    <div class="achievement-icon">📱</div>
-                    <h3 class="achievement-title">Meta Spark AR Certificate</h3>
-                    <p class="achievement-description">Meta Spark AR Certificate from Meta awarded by CRTIC</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-            <h2 class="section-title" data-i18n="section_title_contact">ESTABLISH_CONNECTION.exe</h2>
-
-            <div class="contact-container">
-                <div class="contact-status" data-i18n="contact_status">STATUS: ACCEPTING_COLLABORATIONS</div>
-
-                <p class="contact-description" data-i18n="contact_description">Ready to collaborate on innovative gaming projects. Specializing in VR experiences, gameplay programming, and pushing the boundaries of interactive storytelling. Let's create something extraordinary together.</p>
-
-                <div class="contact-info">
-                    <div class="contact-info-item">
-                        <span data-i18n="contact_availability">🌍 AVAILABILITY: REMOTE_WORLDWIDE</span>
-                    </div>
-                    <div class="contact-info-item">
-                        <span data-i18n="contact_response">⚡ RESPONSE_TIME: &lt; 24_HOURS</span>
-                    </div>
-                </div>
-
-                <div class="contact-links">
-                    <a href="mailto:m.herreravsquez@outlook.com" class="contact-link" data-i18n="contact_links.email">📧 EMAIL_PROTOCOL</a>
-                    <a href="https://github.com/mherreravsquez" target="_blank" class="contact-link" data-i18n="contact_links.github">💻 GITHUB_REPO</a>
-                    <a href="https://linkedin.com/in/mherreravsquez" target="_blank" class="contact-link" data-i18n="contact_links.linkedin">💼 LINKEDIN_NET</a>
-                    <a href="https://mherreravsquez.artstation.com" target="_blank" class="contact-link" data-i18n="contact_links.artstation">🎨 ARTSTATION_GALLERY</a>
-                    <a href="#" class="contact-link" data-i18n="contact_links.cv">📄 DOWNLOAD_CV.pdf</a>
-                </div>
-            </div>
-        </section>
     </div>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <h2 class="section-title" data-i18n="section_title_gallery">CREATIVE_GALLERY.collection</h2>
+
+        <div class="gallery-filters">
+            <button class="filter-btn active" data-filter="all" data-i18n="gallery_filters.all">ALL_PROJECTS</button>
+            <button class="filter-btn" data-filter="modeling" data-i18n="gallery_filters.modeling">3D_MODELING</button>
+            <button class="filter-btn" data-filter="virtual" data-i18n="gallery_filters.virtual">VIRTUAL_PROD</button>
+            <button class="filter-btn" data-filter="installation" data-i18n="gallery_filters.interactive">INSTALLATIONS</button>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item" data-category="installation" onclick="openGalleryModal('boombastic')">
+                <div class="gallery-preview">
+                    <video width="100%" height="100%" preload="metadata">
+                        <source src="assets/Gallery/BB/BB_gameplay1.mp4" type="video/mp4">
+                    </video>
+                </div>                    <div class="gallery-info">
+                <h3 class="gallery-title">Boombastic - Interactive Installation</h3>
+                <div class="gallery-category">Interactive Installation</div>
+                <p class="gallery-description">Interactive installation of mixes of songs from the 90s, using Kinect and project mapping.</p>
+            </div>
+            </div>
+
+            <div class="gallery-item" data-category="modeling" onclick="openGalleryModal('beep')">
+                <div class="gallery-preview">
+                    <img src="assets/Gallery/beep/beep_render1.gif" alt="Beep fighting animation" style="width:100%;">
+                </div>
+                <div class="gallery-info">
+                    <h3 class="gallery-title">Beep Animation</h3>
+                    <div class="gallery-category">3D Sculpting and Animation</div>
+                    <p class="gallery-description">Sculpted and textured in ZBrush of the character "Beep" from the video game Kenshi. Then animated in Blender using Mixamo animations.</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="modeling" onclick="openGalleryModal('leblanc_diorama')">
+                <div class="gallery-preview">
+                    <img src="assets/Gallery/LB/LB_thumbnail.jpg" alt="Leblanc cafe render, made in Blender" style="width:100%;">
+                </div>
+                <div class="gallery-info">
+                    <h3 class="gallery-title">Leblanc cafe Diorama</h3>
+                    <div class="gallery-category">3D Modeling</div>
+                    <p class="gallery-description">Diorama of the Leblanc cafe from the Persona 5 Royal video game. 3D modeled and textured using materials from the Blender Kit website.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Modal -->
+        <div class="gallery-modal" id="galleryModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modalTitle"></h3>
+                    <button class="modal-close" onclick="closeGalleryModal()">✕</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-preview" id="modalPreview"></div>
+                    <div class="modal-info-grid">
+                        <div class="modal-info-section">
+                            <h4>📝 <span data-i18n="gallery_modal_labels.description">Descripción</span></h4>
+                            <p class="modal-description" id="modalDescription"></p>
+                        </div>
+                        <div class="modal-info-section">
+                            <h4>🛠️ <span data-i18n="gallery_modal_labels.tools">Herramientas Utilizadas</span></h4>
+                            <div class="modal-tools" id="modalTools"></div>
+                        </div>
+                        <div class="modal-info-section">
+                            <h4>⚙️ <span data-i18n="gallery_modal_labels.process">Proceso de Desarrollo</span></h4>
+                            <div class="modal-process" id="modalProcess"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="modal-nav prev" onclick="prevGalleryItem()">❮</button>
+            <button class="modal-nav next" onclick="nextGalleryItem()">❯</button>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2 class="section-title" data-i18n="section_title_skills">SKILL_TREE.dat</h2>
+
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3 class="skill-category-title" data-i18n="skill_categories.programming">PROGRAMMING_BRANCH</h3>
+                <div class="skill-item">
+                    <span class="skill-name">C#</span>
+                    <div class="skill-level">
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3 class="skill-category-title" data-i18n="skill_categories.engines">ENGINE_MASTERY</h3>
+                <div class="skill-item">
+                    <span class="skill-name">Unity</span>
+                    <div class="skill-level">
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot"></span>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">RenPy</span>
+                    <div class="skill-level">
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot"></span>
+                        <span class="skill-dot"></span>
+                        <span class="skill-dot"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3 class="skill-category-title" data-i18n="skill_categories.creative">CREATIVE_TOOLS</h3>
+                <div class="skill-item">
+                    <span class="skill-name">ZBrush</span>
+                    <div class="skill-level">
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot"></span>
+                        <span class="skill-dot"></span>
+                        <span class="skill-dot"></span>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Blender</span>
+                    <div class="skill-level">
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot"></span>
+                        <span class="skill-dot"></span>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Adobe Premiere</span>
+                    <div class="skill-level">
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot"></span>
+                        <span class="skill-dot"></span>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Adobe After Effects</span>
+                    <div class="skill-level">
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot"></span>
+                        <span class="skill-dot"></span>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Adobe Photoshop</span>
+                    <div class="skill-level">
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot"></span>
+                        <span class="skill-dot"></span>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Reaper</span>
+                    <div class="skill-level">
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot"></span>
+                        <span class="skill-dot"></span>
+                        <span class="skill-dot"></span>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Audacity</span>
+                    <div class="skill-level">
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot"></span>
+                        <span class="skill-dot"></span>
+                        <span class="skill-dot"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3 class="skill-category-title" data-i18n="skill_categories.languages">LANGUAGES</h3>
+                <div class="skill-item">
+                    <span class="skill-name">Spanish</span>
+                    <div class="skill-level">
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">English</span>
+                    <div class="skill-level">
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot filled"></span>
+                        <span class="skill-dot"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section">
+        <h2 class="section-title" data-i18n="section_title_achievements">ACHIEVEMENTS_UNLOCKED.log</h2>
+        <p class="achievements-subtitle" data-i18n="achievements_subtitle">TOTAL UNLOCKED: 1/∞ | COMPLETION RATE: 100%</p>
+
+        <div class="achievements-grid">
+            <div class="achievement-card">
+                <div class="achievement-icon">📱</div>
+                <h3 class="achievement-title">Meta Spark AR Certificate</h3>
+                <p class="achievement-description">Meta Spark AR Certificate from Meta awarded by CRTIC</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2 class="section-title" data-i18n="section_title_contact">ESTABLISH_CONNECTION.exe</h2>
+
+        <div class="contact-container">
+            <div class="contact-status" data-i18n="contact_status">STATUS: ACCEPTING_COLLABORATIONS</div>
+
+            <p class="contact-description" data-i18n="contact_description">Ready to collaborate on innovative gaming projects. Specializing in VR experiences, gameplay programming, and pushing the boundaries of interactive storytelling. Let's create something extraordinary together.</p>
+
+            <div class="contact-info">
+                <div class="contact-info-item">
+                    <span data-i18n="contact_availability">🌍 AVAILABILITY: REMOTE_WORLDWIDE</span>
+                </div>
+                <div class="contact-info-item">
+                    <span data-i18n="contact_response">⚡ RESPONSE_TIME: &lt; 24_HOURS</span>
+                </div>
+            </div>
+
+            <div class="contact-links">
+                <a href="mailto:m.herreravsquez@outlook.com" class="contact-link" data-i18n="contact_links.email">📧 EMAIL_PROTOCOL</a>
+                <a href="https://github.com/mherreravsquez" target="_blank" class="contact-link" data-i18n="contact_links.github">💻 GITHUB_REPO</a>
+                <a href="https://linkedin.com/in/mherreravsquez" target="_blank" class="contact-link" data-i18n="contact_links.linkedin">💼 LINKEDIN_NET</a>
+                <a href="https://mherreravsquez.artstation.com" target="_blank" class="contact-link" data-i18n="contact_links.artstation">🎨 ARTSTATION_GALLERY</a>
+                <a href="#" class="contact-link" data-i18n="contact_links.cv">📄 DOWNLOAD_CV.pdf</a>
+            </div>
+        </div>
+    </section>
+    
 </main>
 
 <script>
@@ -2000,6 +2001,73 @@
 
     // Translations
     const translations = {
+        es: {
+            language_toggle: "EN",
+            tabs: {
+                stats: "ESTADÍSTICAS",
+                projects: "PROYECTOS",
+                gallery: "GALERIA",
+                skills: "HABILIDADES",
+                achievements: "CERTIFICACIONES",
+                contact: "CONECTA"
+            },
+            section_title_stats: "PERFIL_USUARIO.exe",
+            hero_status: "DISPONIBLE_PARA_PROYECTOS",
+            hero_name: "MARCELO_HERRERA",
+            hero_class: "GAMEPLAY_PROGRAMMER • GAME_DESIGNER",
+            hero_bio: "Soy programador de jugabilidad y diseñador de juegos especializado en Unity, actualmente cursando mi tercer año de Diseño de Juegos Digitales en la Universidad Andrés Bello. Mi pasión es experimentar con tecnologías emergentes y desarrollar prototipos para plataformas innovadoras como la realidad virtual. Me fascina especialmente la generación y animación procedural, así como el desarrollo de herramientas Unity personalizadas a través del código, buscando constantemente ampliar los límites de la interactividad y la jugabilidad.",
+            stats_title: "⚡ ESTADÍSTICAS_PRINCIPALES",
+            stat_labels: {
+                exp: "EXPERIENCIA",
+                games: "PROTOTIPOS",
+                tech: "JUEGOS • DEMOS",
+                innovation: "INNOVACIÓN • GANAS DE APRENDER"
+            },
+            section_title_projects: "COLECCIÓN_DE_PROYECTOS.zip",
+            rarity_legend: "★ COMÚN | ★★ RARO | ★★★ ÉPICO | ★★★★ LEGENDARIO",
+            section_title_gallery: "GALERIA_CREATIVA.collection",
+            gallery_filters: {
+                all: "TODOS_LOS_PROYECTOS",
+                modeling: "MODELADO_3D",
+                virtual: "VIRTUAL_PROD",
+                interactive: "INSTALACIONES"
+            },
+            section_title_skills: "ÁRBOL_DE_HABILIDADES.dat",
+            skill_categories: {
+                programming: "RAMA_PROGRAMACIÓN",
+                engines: "MAESTRÍA_MOTORES",
+                creative: "HERRAMIENTAS_CREATIVAS",
+                languages: "IDIOMAS"
+            },
+            section_title_achievements: "LOGROS_DESBLOQUEADOS.log",
+            achievements_subtitle: "TOTAL DESBLOQUEADO: 1/∞ | ÍNDICE DE FINALIZACIÓN: 100%",
+            section_title_contact: "ESTABLECER_CONEXIÓN.exe",
+            contact_status: "ESTADO: ACEPTANDO_COLABORACIONES",
+            contact_description: "Listo para colaborar en proyectos de videojuegos innovadores. Creemos juntos algo extraordinario.",
+            contact_availability: "🌍 DISPONIBILIDAD: REMOTA_MUNDIAL • PRESCENCIAL_EN_SANTIAGO_CHILE",
+            contact_response: "⚡ TIEMPO_DE_RESPUESTA: 24_HORAS",
+            contact_links: {
+                email: "📧 PROTOCOLO_EMAIL",
+                github: "💻 REPOSITORIO_GITHUB",
+                linkedin: "💼 RED_LINKEDIN",
+                artstation: "🎨 GALERÍA_ARTSTATION",
+                cv: "📄 DESCARGAR_CV.pdf"
+            },
+            profile_photo_label: "FOTO_DE_PERFIL.jpg",
+            project_detail_labels: {
+                description: "DESCRIPCIÓN",
+                challenges: "DEAFÍOS_TÉCNICOS",
+                tools: "HERRAMIENTAS_DE_DESARROLLO",
+                dev_info: "INFORMACIÓN_DEL_DESARROLLO",
+                dev_time: "TIEMPO_DE_DESARROLLO",
+                status: "ESTADO"
+            },
+            gallery_modal_labels: {
+                description: "DESCRIPCIÓN",
+                tools: "HERRAMIENTAS_DE_DESARROLLO",
+                process: "PROCESO_DE_DESARROLLO",
+            }
+        },
         en: {
             language_toggle: "ES",
             tabs: {
@@ -2008,43 +2076,43 @@
                 gallery: "GALLERY",
                 skills: "SKILLS",
                 achievements: "CERTS",
-                contact: "CONNECT"
+                contact: "CONECT"
             },
             section_title_stats: "PLAYER_PROFILE.exe",
-            hero_status: "ONLINE_FOR_PROJECTS",
+            hero_status: "AVAILABLE_FOR_PROJECTS",
             hero_name: "MARCELO_HERRERA",
             hero_class: "GAMEPLAY_PROGRAMMER • GAME_DESIGNER",
-            hero_bio: "I am a Gameplay Programmer and Game Designer specializing in Unity, currently in my third year studying Digital Game Design at Universidad Andrés Bello. My passion lies in experimenting with emerging technologies and developing prototypes for innovative platforms such as Virtual Reality. I am particularly fascinated by procedural generation and animation, as well as developing custom Unity tools through code, constantly seeking to push the boundaries of interactivity and gameplay.",
+            hero_bio: "I am a Gameplay Programmer and Game Designer specializing in Unity, currently in my third year of studying Digital Game Design at Andrés Bello University. My passion lies in experimenting with emerging technologies and developing prototypes for innovative platforms such as Virtual Reality. I am particularly fascinated by procedural generation and animation, as well as developing custom tools in Unity through code, always seeking to expand the limits of interactivity and gameplay.",
             stats_title: "⚡ CORE_STATS",
             stat_labels: {
                 exp: "EXP",
-                games: "Prototypes",
+                games: "PROTOTYPES",
                 tech: "GAMES • DEMOS",
                 innovation: "INNOVATION • DESIRE TO LEARN"
             },
             section_title_projects: "PROJECT_COLLECTION.zip",
-            rarity_legend: "★ COMMON | ★★ RARE | ★★★ EPIC | ★★★★ LEGENDARY",
-            section_title_gallery: "CREATIVE_GALLERY.collection",
+            rarity_legend: "★ COMMON | ★★ RARE | ★★★ EPIC | ★★★★ LEGENDARY ",
+            section_title_gallery: "CREATIVE_GALLERY.colección",
             gallery_filters: {
                 all: "ALL_PROJECTS",
                 modeling: "3D_MODELING",
                 virtual: "VIRTUAL_PROD",
-                interactive: "INSTALLATIONS"
+                interactive: "INSTALATIONS"
             },
-            section_title_skills: "SKILL_TREE.dat",
+            section_title_skills: "SKILLS_TREE.dat",
             skill_categories: {
                 programming: "PROGRAMMING_BRANCH",
                 engines: "ENGINE_MASTERY",
                 creative: "CREATIVE_TOOLS",
                 languages: "LANGUAGES"
             },
-            section_title_achievements: "ACHIEVEMENTS_UNLOCKED.log",
+            section_title_achievements: "UNLOCKED_ACHIEVEMENTS.log",
             achievements_subtitle: "TOTAL UNLOCKED: 1/∞ | COMPLETION RATE: 100%",
-            section_title_contact: "ESTABLISH_CONNECTION.exe",
-            contact_status: "STATUS: ACCEPTING_COLLABORATIONS",
-            contact_description: "Ready to collaborate on innovative gaming projects. Specializing in VR experiences, gameplay programming, and pushing the boundaries of interactive storytelling. Let's create something extraordinary together.",
-            contact_availability: "🌍 AVAILABILITY: REMOTE_WORLDWIDE",
-            contact_response: "⚡ RESPONSE_TIME: &lt; 24_HOURS",
+            section_title_contact: "ESTABLISH_CONECTION.exe",
+            contact_status: "STATUS: ACCEPTING_COLABORATIONS",
+            contact_description: "Ready to collaborate on innovative game projects. Let's create something extraordinary together.",
+            contact_availability: "🌍 AVAILABILITY: REMOTE_WORLDWIDE • IN-PERSON_IN_SANTIAGO_CHILE",
+            contact_response: "⚡ RESPONSE_TIME: 24_HOURS",
             contact_links: {
                 email: "📧 EMAIL_PROTOCOL",
                 github: "💻 GITHUB_REPO",
@@ -2052,86 +2120,19 @@
                 artstation: "🎨 ARTSTATION_GALLERY",
                 cv: "📄 DOWNLOAD_CV.pdf"
             },
-            profile_photo_label: "PROFILE_IMAGE.jpg",
+            profile_photo_label: "PROFILE_PHOTO.jpg",
             project_detail_labels: {
-                description: "Complete Description",
-                challenges: "Technical Challenges",
-                tools: "Tools Used",
-                dev_info: "Development Info",
-                dev_time: "Development Time",
-                status: "Current Status"
+                description: "DESCRIPTION",
+                challenges: "TECHNICAL_CHALLENGES",
+                tools: "DEV_TOOLS",
+                dev_info: "DEV_INFO",
+                dev_time: "DEV_TIME",
+                status: "STATUS"
             },
             gallery_modal_labels: {
-                description: "Description",
-                tools: "Tools Used",
-                process: "Development Process"
-            }
-        },
-        es: {
-            language_toggle: "EN",
-            tabs: {
-                stats: "ESTADÍSTICAS",
-                projects: "PROYECTOS",
-                gallery: "GALERÍA",
-                skills: "HABILIDADES",
-                achievements: "CERTIFICACIONES",
-                contact: "CONTACTO"
-            },
-            section_title_stats: "PERFIL_JUGADOR.exe",
-            hero_status: "EN_LÍNEA_PARA_PROYECTOS",
-            hero_name: "MARCELO_HERRERA",
-            hero_class: "PROGRAMADOR_GAMEPLAY • DISEÑADOR_JUEGOS",
-            hero_bio: "Soy un Gameplay Programmer y Game Designer especializado en Unity, actualmente cursando mi tercer año en la carrera de Diseño de Juegos Digitales en la Universidad Andrés Bello. Mi pasión radica en experimentar con tecnologías emergentes y desarrollar prototipos para plataformas innovadoras como la Realidad Virtual. Me fascina especialmente la generación y animación procedural, así como el desarrollo de herramientas personalizadas en Unity mediante código, buscando siempre expandir los límites de la interactividad y la jugabilidad.",
-            stats_title: "⚡ ESTADÍSTICAS_NÚCLEO",
-            stat_labels: {
-                exp: "EXPERIENCIA",
-                games: "Prototipos",
-                tech: "JUEGOS • DEMOS",
-                innovation: "INNOVACIÓN • DESEO DE APRENDER"
-            },
-            section_title_projects: "COLECCIÓN_PROYECTOS.zip",
-            rarity_legend: "★ COMÚN | ★★ RARO | ★★★ ÉPICO | ★★★★ LEGENDARIO",
-            section_title_gallery: "GALERÍA_CREATIVA.colección",
-            gallery_filters: {
-                all: "TODOS_PROYECTOS",
-                modeling: "MODELADO_3D",
-                virtual: "PRODUCCIÓN_VIRTUAL",
-                interactive: "INSTALACIONES"
-            },
-            section_title_skills: "ÁRBOL_HABILIDADES.dat",
-            skill_categories: {
-                programming: "RAMA_PROGRAMACIÓN",
-                engines: "DOMINIO_MOTORES",
-                creative: "HERRAMIENTAS_CREATIVAS",
-                languages: "IDIOMAS"
-            },
-            section_title_achievements: "LOGROS_DESBLOQUEADOS.log",
-            achievements_subtitle: "TOTAL DESBLOQUEADOS: 1/∞ | TASA COMPLETADO: 100%",
-            section_title_contact: "ESTABLECER_CONEXIÓN.exe",
-            contact_status: "ESTADO: ACEPTANDO_COLABORACIONES",
-            contact_description: "Listo para colaborar en proyectos de juegos innovadores. Especializado en experiencias VR, programación de gameplay y empujar los límites de la narrativa interactiva. Creemos algo extraordinario juntos.",
-            contact_availability: "🌍 DISPONIBILIDAD: REMOTO_MUNDIAL",
-            contact_response: "⚡ TIEMPO_RESPUESTA: &lt; 24_HORAS",
-            contact_links: {
-                email: "📧 PROTOCOLO_EMAIL",
-                github: "💻 REPOSITORIO_GITHUB",
-                linkedin: "💼 RED_LINKEDIN",
-                artstation: "🎨 GALERÍA_ARTSTATION",
-                cv: "📄 DESCARGAR_CV.pdf"
-            },
-            profile_photo_label: "IMAGEN_PERFIL.jpg",
-            project_detail_labels: {
-                description: "Descripción Completa",
-                challenges: "Desafíos Técnicos",
-                tools: "Herramientas Utilizadas",
-                dev_info: "Información de Desarrollo",
-                dev_time: "Tiempo de Desarrollo",
-                status: "Estado Actual"
-            },
-            gallery_modal_labels: {
-                description: "Descripción",
-                tools: "Herramientas Utilizadas",
-                process: "Proceso de Desarrollo"
+                description: "DESCRIPTION",
+                tools: "DEV_TOOLS",
+                process: "DEV_PROCESS"
             }
         }
     };
