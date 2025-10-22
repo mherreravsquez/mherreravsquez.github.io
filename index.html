@@ -1,61 +1,9 @@
-<!--
-==============================================
-  PORTAFOLIO GAMING - MARCELO_HERRERA
-  GUÍA COMPLETA DE PERSONALIZACIÓN
-==============================================
-
-Este es un portafolio gaming completamente personalizable.
-Todos los elementos están documentados con comentarios detallados.
-
-┌─ ESTRUCTURA GENERAL:
-│
-├─ SECCIONES PRINCIPALES:
-│   ├─ STATS/PERFIL: Foto, info personal, estadísticas
-│   ├─ PROJECTS: Proyectos con carruseles y detalles
-│   ├─ GALLERY: Galería con filtros y modales
-│   ├─ SKILLS: Habilidades con niveles visuales
-│   ├─ ACHIEVEMENTS: Certificaciones y logros
-│   └─ CONTACT: Información y enlaces de contacto
-│
-├─ CARACTERÍSTICAS TÉCNICAS:
-│   ├─ Sistema bilingue (Español/Inglés)
-│   ├─ Carruseles de imágenes interactivos
-│   ├─ Modales con navegación
-│   ├─ Filtros de categoría dinámicos
-│   ├─ Animaciones CSS gaming
-│   ├─ Diseño responsive completo
-│   └─ Efectos visuales futuristas
-│
-├─ PERSONALIZACIÓN RÁPIDA:
-│   ├─ 1. Cambiar datos personales en traducción 'hero_*'
-│   ├─ 2. Agregar proyectos siguiendo estructura existente
-│   ├─ 3. Subir imágenes a carpetas assets/Main Projects/
-│   ├─ 4. Actualizar enlaces de contacto
-│   └─ 5. Modificar skills y achievements según experiencia
-│
-└─ ARCHIVOS Y CARPETAS:
-    ├─ index.html (este archivo - contiene todo)
-    └─ assets/
-        ├─ Main Projects/[PROYECTO]/[imagenes]
-        ├─ Gallery/[CATEGORIA]/[ELEMENTO]/[imagenes]
-        └─ profile-photo.jpg
-
-¿Dónde empezar?
-1. Busca "SECCIÓN STATS/PERFIL" para cambiar tu información
-2. Busca "projectData" para agregar tus proyectos
-3. Busca "translations" para personalizar textos
-4. Sigue los comentarios detallados en cada sección
-
-¡Todos los comentarios están en español para facilitar la personalización!
-==============================================
--->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alex_Developer | Game Designer Portfolio</title>
+    <title>Marcelo Herrera | Game Designer Portfolio</title>
     <style>
         :root {
             --primary-green: #00ff41;
@@ -95,9 +43,9 @@ Todos los elementos están documentados con comentarios detallados.
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+            background-image:
+                    linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
             animation: gridMove 20s linear infinite;
             pointer-events: none;
@@ -251,6 +199,14 @@ Todos los elementos están documentados con comentarios detallados.
             font-size: 3rem;
             margin-bottom: 1rem;
             position: relative;
+            overflow: hidden;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
         }
 
         .profile-image::after {
@@ -548,7 +504,7 @@ Todos los elementos están documentados con comentarios detallados.
             box-shadow: 0 0 10px var(--primary-green);
         }
 
-        /* Project Detail Panel - New System */
+        /* Project Detail Panel */
         .detail-body {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -860,8 +816,6 @@ Todos los elementos están documentados con comentarios detallados.
             gap: 1.5rem;
         }
 
-
-
         .gallery-item {
             background: var(--panel-bg);
             border: 2px solid var(--border-green);
@@ -989,6 +943,14 @@ Todos los elementos están documentados con comentarios detallados.
             font-size: 4rem;
             color: var(--primary-green);
             margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .modal-preview img,
+        .modal-preview video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         .modal-info-grid {
@@ -1016,6 +978,7 @@ Todos los elementos están documentados con comentarios detallados.
             color: var(--text-secondary);
             line-height: 1.8;
             margin-bottom: 1rem;
+            white-space: pre-line;
         }
 
         .modal-tools {
@@ -1078,6 +1041,14 @@ Todos los elementos están documentados con comentarios detallados.
             justify-content: center;
             color: var(--text-muted);
             font-size: 2rem;
+            overflow: hidden;
+        }
+
+        .gallery-preview img,
+        .gallery-preview video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .gallery-info {
@@ -1306,63 +1277,63 @@ Todos los elementos están documentados con comentarios detallados.
             .hero-container {
                 grid-template-columns: 1fr;
             }
-            
+
             .profile-image {
                 width: 150px;
                 height: 200px;
             }
-            
+
             .projects-grid {
                 padding: 0;
                 gap: 1.5rem;
             }
-            
+
             .project-card {
                 margin: 0;
             }
-            
+
             .carousel-nav.prev {
                 left: 5px;
             }
-            
+
             .carousel-nav.next {
                 right: 5px;
             }
-            
+
             .modal-content {
                 margin: 1rem;
                 max-height: 95vh;
             }
-            
+
             .modal-body {
                 padding: 1rem;
             }
-            
+
             .modal-info-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .detail-body {
                 grid-template-columns: 1fr;
             }
-            
+
             .detail-carousel-container {
                 height: 250px;
             }
-            
+
             .detail-dev-info {
                 grid-template-columns: 1fr;
             }
-            
+
             .modal-nav {
                 font-size: 1.5rem;
                 padding: 0.5rem;
             }
-            
+
             .modal-nav.prev {
                 left: 10px;
             }
-            
+
             .modal-nav.next {
                 right: 10px;
             }
@@ -1388,333 +1359,162 @@ Todos los elementos están documentados con comentarios detallados.
     </style>
 </head>
 <body>
-    <!-- 
-    ==============================================
-      HEADER/NAVEGACIÓN - PERSONALIZACIÓN
-    ==============================================
-    Para personalizar el header:
+<header class="header">
+    <div class="logo">MARCELO_HERRERA.exe</div>
 
-    1. LOGO/MARCA:
-       - Cambia "MARCELO_HERRERA.exe" por tu marca personal
-       - Mantén el .exe para el estilo gaming
-       - El logo tiene animación glow automática
+    <nav class="nav-tabs">
+        <button class="nav-tab active" data-section="stats" data-i18n="tabs.stats">STATS</button>
+        <button class="nav-tab" data-section="projects" data-i18n="tabs.projects">PROJECTS</button>
+        <button class="nav-tab" data-section="gallery" data-i18n="tabs.gallery">GALLERY</button>
+        <button class="nav-tab" data-section="skills" data-i18n="tabs.skills">SKILLS</button>
+        <button class="nav-tab" data-section="achievements" data-i18n="tabs.achievements">CERTS</button>
+        <button class="nav-tab" data-section="contact" data-i18n="tabs.contact">CONNECT</button>
+    </nav>
 
-    2. NAVEGACIÓN:
-       - Cada nav-tab tiene data-section correspondiente
-       - data-i18n conecta con las traducciones
-       - El orden de los tabs determina la navegación
+    <button class="language-toggle" onclick="toggleLanguage()" data-i18n="language_toggle">ES</button>
+</header>
 
-    3. SELECTOR DE IDIOMA:
-       - Alterna entre EN/ES automáticamente
-       - Cambia todas las traducciones instantáneamente
-       - Dorado para destacar la funcionalidad
+<main class="main-content">
+    <!-- Stats Section -->
+    <section id="stats" class="section active">
+        <h2 class="section-title" data-i18n="section_title_stats">PLAYER_PROFILE.exe</h2>
 
-    4. AGREGAR NUEVA SECCIÓN:
-       a) Agrega <button class="nav-tab" data-section="nueva_seccion">TEXTO</button>
-       b) Crea <section id="nueva_seccion" class="section">contenido</section>
-       c) Agrega traducciones para el botón
+        <div class="hero-container">
+            <div class="profile-photo-section">
+                <div class="profile-image">
+                    <img src="assets/profile-photo.jpg" alt="Marcelo Herrera">
+                </div>
+                <div class="photo-label" data-i18n="profile_photo_label">PROFILE_PHOTO.jpg</div>
+            </div>
 
-    ESTILO VISUAL:
-    - Header fijo con backdrop-filter blur
-    - Borde inferior verde gaming
-    - Botones con hover effects
-    - Responsive: se reorganiza en mobile
-    ============================================== 
-    -->
-    <header class="header">
-        <div class="logo">MARCELO_HERRERA.exe</div>
-        
-        <nav class="nav-tabs">
-            <button class="nav-tab active" data-section="stats" data-i18n="tabs.stats">STATS</button>
-            <button class="nav-tab" data-section="projects" data-i18n="tabs.projects">PROJECTS</button>
-            <button class="nav-tab" data-section="gallery" data-i18n="tabs.gallery">GALLERY</button>
-            <button class="nav-tab" data-section="skills" data-i18n="tabs.skills">SKILLS</button>
-            <button class="nav-tab" data-section="achievements" data-i18n="tabs.achievements">CERTS</button>
-            <button class="nav-tab" data-section="contact" data-i18n="tabs.contact">CONNECT</button>
-        </nav>
-        
-        <button class="language-toggle" onclick="toggleLanguage()" data-i18n="language_toggle">ES</button>
-    </header>
+            <div class="main-info">
+                <div class="status-indicator" data-i18n="hero_status">ONLINE_FOR_PROJECTS</div>
+                <h1 data-i18n="hero_name">MARCELO_HERRERA</h1>
+                <div class="class-info" data-i18n="hero_class">GAMEPLAY_PROGRAMMER • GAME_DESIGNER</div>
+                <p class="bio-text" data-i18n="hero_bio">I am a Gameplay Programmer and Game Designer specializing in Unity, currently in my third year studying Digital Game Design at Universidad Andrés Bello. My passion lies in experimenting with emerging technologies and developing prototypes for innovative platforms such as Virtual Reality. I am particularly fascinated by procedural generation and animation, as well as developing custom Unity tools through code, constantly seeking to push the boundaries of interactivity and gameplay.</p>
+            </div>
 
-    <main class="main-content">
-        <!-- 
-        ==============================================
-          SISTEMA DE TRADUCCIONES - PERSONALIZACIÓN
-        ==============================================
-        Para agregar nuevos textos al sistema de idiomas:
-
-        1. Localiza el objeto 'translations' en JavaScript (línea ~800)
-        2. Agrega tu nuevo texto tanto en 'en' como en 'es'
-        3. Usa la estructura de claves anidadas: translations.en.seccion.clave
-        4. En HTML, agrega data-i18n="seccion.clave" al elemento
-        5. Llama updateLanguage() para aplicar los cambios
-
-        EJEMPLO:
-        JavaScript: translations.en.mi_seccion = { titulo: "My Title" }
-        HTML: <h1 data-i18n="mi_seccion.titulo">Placeholder</h1>
-
-        NOTAS IMPORTANTES:
-        - Mantén la estructura de claves consistente entre idiomas
-        - Usa &amp; en lugar de & para evitar errores HTML
-        - Los textos se actualizan automáticamente al cambiar idioma
-        ==============================================
-        -->
-        <!-- 
-        ==============================================
-          SECCIÓN STATS/PERFIL - PERSONALIZACIÓN
-        ==============================================
-        Para personalizar esta sección:
-
-        1. FOTO DE PERFIL:
-           - Reemplaza el emoji 📸 con <img src="tu-foto.jpg" alt="Perfil">
-           - Dimensiones recomendadas: 200x267px (ratio 3:4)
-           - Formatos: JPG, PNG, WebP
-
-        2. INFORMACIÓN PERSONAL:
-           - Edita hero_name, hero_class, hero_bio en translations
-           - hero_status para cambiar el estado (ONLINE_FOR_PROJECTS, etc.)
-
-        3. ESTADÍSTICAS CORE_STATS:
-           - Modifica los valores en los <span class="stat-value">
-           - Cambia las etiquetas en stat_labels del objeto translations
-           - Usa números, texto o símbolos especiales (∞, +, etc.)
-
-        4. BARRAS DE PROGRESO (NO IMPLEMENTADAS AÚN):
-           - Para agregar: crea elementos con class="progress-bar"
-           - Usa CSS width: X% para el nivel de habilidad
-
-        EJEMPLO FOTO:
-        <div class="profile-image">
-            <img src="assets/profile-photo.jpg" alt="Marcelo Herrera" style="width:100%; height:100%; object-fit:cover; border-radius:8px;">
+            <div class="stats-panel">
+                <h3 class="stats-title" data-i18n="stats_title">⚡ CORE_STATS</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-value">-</span>
+                        <span class="stat-label" data-i18n="stat_labels.exp">EXP</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">4</span>
+                        <span class="stat-label" data-i18n="stat_labels.games">Prototypes</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">1</span>
+                        <span class="stat-label" data-i18n="stat_labels.tech">GAMES • DEMOS</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">∞</span>
+                        <span class="stat-label" data-i18n="stat_labels.innovation">INNOVATION • DESIRE TO LEARN</span>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        NOTAS IMPORTANTES:
-        - Las traducciones se aplican automáticamente al cambiar idioma
-        - Mantén las clases CSS para preservar el estilo gaming
-        - El status-indicator tiene animación pulse automática
-        ==============================================
-        -->
-        <!-- Stats Section -->
-        <section id="stats" class="section active">
-            <h2 class="section-title" data-i18n="section_title_stats">PLAYER_PROFILE.exe</h2>
-            
-            <div class="hero-container">
-                <div class="profile-photo-section">
-                    <!-- PERSONALIZAR FOTO: Reemplaza el emoji con tu foto -->
-                    <div class="profile-image">
-                        
-                        <img src="assets/profile-photo.jpg" alt="Marcelo Herrera" 
-                             style="width:100%; height:100%; object-fit:cover; border-radius:8px;">
-                    </div>
-                    <div class="photo-label" data-i18n="profile_photo_label">PROFILE_PHOTO.jpg</div>
+    <!-- Projects Section -->
+    <div id="projects" class="section">
+        <h2 class="section-title" data-i18n="section_title_projects">PROJECT_COLLECTION.zip</h2>
+        <p class="rarity-legend" data-i18n="rarity_legend">★ COMMON | ★★ RARE | ★★★ EPIC | ★★★★ LEGENDARY</p>
+
+        <div class="projects-grid">
+            <div class="project-card rarity-4" onclick="showProjectDetails('cl')" data-project="cl">
+                <div class="project-header">
+                    <h3 class="project-title">CAR_LOOP</h3>
+                    <div class="project-rarity">★★★★</div>
+                    <div class="project-type">Unity • C# • VR • Psychological Horror</div>
                 </div>
-                
-                <div class="main-info">
-                    <div class="status-indicator" data-i18n="hero_status">ONLINE_FOR_PROJECTS</div>
-                    <h1 data-i18n="hero_name">MARCELO_HERRERA</h1>
-                    <div class="class-info" data-i18n="hero_class">GAMEPLAY_PROGRAMMER • GAME_DESIGNER</div>
-                    <p class="bio-text" data-i18n="hero_bio">I am a Gameplay Programmer and Game Designer specializing in Unity, currently in my third year studying Digital Game Design at Universidad Andrés Bello. My passion lies in experimenting with emerging technologies and developing prototypes for innovative platforms such as Virtual Reality. I am particularly fascinated by procedural generation and animation, as well as developing custom Unity tools through code, constantly seeking to push the boundaries of interactivity and gameplay.</p>
-                </div>
-                
-                <div class="stats-panel">
-                    <h3 class="stats-title" data-i18n="stats_title">⚡ CORE_STATS</h3>
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <span class="stat-value">-</span>
-                            <span class="stat-label" data-i18n="stat_labels.exp">EXP</span>
+                <div class="project-image-container">
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="cl-track">
+                            <div class="carousel-slide" style="background: url('assets/Main Projects/CL/CL_thumbnail.png') center/cover;"></div>
+                            <div class="carousel-slide" style="background: url('assets/Main Projects/CL/CL_gameplay1.png') center/cover;"></div>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-value">4</span>
-                            <span class="stat-label" data-i18n="stat_labels.games">Prototypes</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-value">1</span>
-                            <span class="stat-label" data-i18n="stat_labels.tech">GAMES • DEMOS</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-value">∞</span>
-                            <span class="stat-label" data-i18n="stat_labels.innovation">INNOVATION • DESIRE TO LEARN</span>
+                        <button class="carousel-nav prev" onclick="prevCarouselImage('cl')">‹</button>
+                        <button class="carousel-nav next" onclick="nextCarouselImage('cl')">›</button>
+                        <div class="carousel-counter">1/2</div>
+                        <div class="carousel-controls">
+                            <span class="carousel-dot active" onclick="setCarouselImage('cl', 0)"></span>
+                            <span class="carousel-dot" onclick="setCarouselImage('cl', 1)"></span>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- 
-        ==============================================
-          SECCIÓN PROJECTS - PERSONALIZACIÓN
-        ==============================================
-        Para personalizar esta sección:
-
-        1. AGREGAR NUEVO PROYECTO:
-           a) Copia la estructura de project-card completa
-           b) Cambia el ID único (ej: "mi-proyecto")
-           c) Actualiza data-project="mi-proyecto"
-           d) Modifica onclick="showProjectDetails('mi-proyecto')"
-
-        2. CONFIGURAR IMÁGENES:
-           - Crea carpeta: assets/Main Projects/[PROYECTO_ID]/
-           - Sube 2-4 imágenes: Cover.png, Gameplay1.png, etc.
-           - Actualiza projectImages en JavaScript:
-             projectImages.mi_proyecto = ['ruta1.png', 'ruta2.png']
-
-        3. CLASES DE RAREZA:
-           - rarity-1: COMÚN (gris) - Proyectos básicos
-           - rarity-2: RARO (azul) - Proyectos destacados
-           - rarity-3: ÉPICO (morado) - Proyectos importantes  
-           - rarity-4: LEGENDARIO (dorado) - Proyectos principales
-
-        4. INFORMACIÓN DETALLADA:
-           - Agrega entrada en projectData con:
-             * title_en/es, description_en/es
-             * challenges_en/es (array de desafíos)
-             * tools (array de herramientas)
-             * development_time_en/es, status_en/es
-
-        5. CARRUSEL DE IMÁGENES:
-           - Actualiza carouselStates con totalImages
-           - IDs deben coincidir: project-track, carousel-dots
-
-        EJEMPLO PROYECTO NUEVO:
-        <div class="project-card rarity-3" onclick="showProjectDetails('mi_juego')" data-project="mi_juego">
-            <div class="project-header">
-                <h3 class="project-title">MI_JUEGO</h3>
-                <div class="project-rarity">★★★</div>
-                <div class="project-type">Unity 2024 • C# • Multiplayer</div>
-            </div>
-            <div class="project-image-container">
-                <div class="carousel-container">
-                    <div class="carousel-track" id="mi_juego-track">
-                        <div class="carousel-slide" style="background: url('assets/Main Projects/MiJuego/MiJuego_thumbnail.png')"></div>
-                        <div class="carousel-slide" style="background: url('assets/Main Projects/MiJuego/MiJuego_gameplay1.png')"></div>
+            <div class="project-card rarity-4" onclick="showProjectDetails('btb')" data-project="btb">
+                <div class="project-header">
+                    <h3 class="project-title">Break the Bubble</h3>
+                    <div class="project-rarity">★★★★</div>
+                    <div class="project-type">Unity • C# • GGJ 2025 • Metroidvania</div>
+                </div>
+                <div class="project-image-container">
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="btb-track">
+                            <div class="carousel-slide" style="background: url('assets/Main Projects/BTB/BTB_thumbnail.png') center/cover;"></div>
+                            <div class="carousel-slide" style="background: url('assets/Main Projects/BTB/BTB_gameplay1.png') center/cover;"></div>
+                        </div>
+                        <button class="carousel-nav prev" onclick="prevCarouselImage('btb')">‹</button>
+                        <button class="carousel-nav next" onclick="nextCarouselImage('btb')">›</button>
+                        <div class="carousel-counter">1/2</div>
+                        <div class="carousel-controls">
+                            <span class="carousel-dot active" onclick="setCarouselImage('btb', 0)"></span>
+                            <span class="carousel-dot" onclick="setCarouselImage('btb', 1)"></span>
+                        </div>
                     </div>
-                    <button class="carousel-nav prev" onclick="prevCarouselImage('mi_juego')">‹</button>
-                    <button class="carousel-nav next" onclick="nextCarouselImage('mi_juego')">›</button>
-                    <div class="carousel-counter">1/2</div>
-                    <div class="carousel-controls">
-                        <span class="carousel-dot active" onclick="setCarouselImage('mi_juego', 0)"></span>
-                        <span class="carousel-dot" onclick="setCarouselImage('mi_juego', 1)"></span>
+                </div>
+            </div>
+
+            <div class="project-card rarity-4" onclick="showProjectDetails('ha')" data-project="ha">
+                <div class="project-header">
+                    <h3 class="project-title">HUNTERS: Awakening</h3>
+                    <div class="project-rarity">★★★★</div>
+                    <div class="project-type">Unity • C# • JRPG</div>
+                </div>
+                <div class="project-image-container">
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="ha-track">
+                            <div class="carousel-slide" style="background: url('assets/Main Projects/HA/HA_thumbnail.png') center/cover;"></div>
+                            <div class="carousel-slide" style="background: url('assets/Main Projects/HA/HA_gameplay1.png') center/cover;"></div>
+                        </div>
+                        <button class="carousel-nav prev" onclick="prevCarouselImage('ha')">‹</button>
+                        <button class="carousel-nav next" onclick="nextCarouselImage('ha')">›</button>
+                        <div class="carousel-counter">1/2</div>
+                        <div class="carousel-controls">
+                            <span class="carousel-dot active" onclick="setCarouselImage('ha', 0)"></span>
+                            <span class="carousel-dot" onclick="setCarouselImage('ha', 1)"></span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        ESTRUCTURA DE ARCHIVOS RECOMENDADA:
-        assets/
-        ├── Main Projects/
-        │   ├── MiJuego/
-        │   │   ├── MiJuego_thumbnail.png
-        │   │   ├── MiJuego_gameplay1.png
-        │   │   ├── MiJuego_gameplay2.png
-        │   │   └── MiJuego_UI_Screenshot.png
-        │   └── OtroProyecto/
-        └── profile-photo.jpg
-
-        NOTAS IMPORTANTES:
-        - Cada proyecto debe tener ID único en todo el sistema
-        - Los carruseles se inicializan automáticamente
-        - Las traducciones son obligatorias (en/es)
-        - Las imágenes deben ser 16:9 o similar para mejor visualización
-        ==============================================
-        -->
-        <!-- Projects Section -->
-        <div id="projects" class="section">
-            <h2 class="section-title" data-i18n="section_title_projects">PROJECT_COLLECTION.zip</h2>
-            <p class="rarity-legend" data-i18n="rarity_legend">★ COMMON | ★★ RARE | ★★★ EPIC | ★★★★ LEGENDARY</p>
-            
-            <div class="projects-grid">
-
-                <div class="project-card rarity-4" onclick="showProjectDetails('cl')" data-project="cl">
-                    <div class="project-header">
-                        <h3 class="project-title">CAR_LOOP</h3>
-                        <div class="project-rarity">★★★★★</div>
-                        <div class="project-type">Unity • C# • VR • Psychological Horror</div>
-                    </div>
-                    <div class="project-image-container">
-                        <div class="carousel-container">
-                            <div class="carousel-track" id="cl-track">
-                                <div class="carousel-slide" style="background: url('assets/Main Projects/CL/CL_thumbnail.png') center/cover;"></div>
-                                <div class="carousel-slide" style="background: url('assets/Main Projects/CL/CL_gameplay1.png') center/cover;"></div>
-                            </div>
-                            <button class="carousel-nav prev" onclick="prevCarouselImage('cl')">‹</button>
-                            <button class="carousel-nav next" onclick="nextCarouselImage('cl')">›</button>
-                            <div class="carousel-counter">1/2</div>
-                            <div class="carousel-controls">
-                                <span class="carousel-dot active" onclick="setCarouselImage('cl', 0)"></span>
-                                <span class="carousel-dot" onclick="setCarouselImage('cl', 1)"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card rarity-4" onclick="showProjectDetails('btb')" data-project="btb">
-                    <div class="project-header">
-                        <h3 class="project-title">Break the Bubble</h3>
-                        <div class="project-rarity">★★★★</div>
-                        <div class="project-type">Unity • C# • GGJ 2025 • Metroidvania</div>
-                    </div>
-                    <div class="project-image-container">
-                        <div class="carousel-container">
-                            <div class="carousel-track" id="btb-track">
-                                <div class="carousel-slide" style="background: url('assets/Main Projects/BTB/BTB_thumbnail.png') center/cover;"></div>
-                                <div class="carousel-slide" style="background: url('assets/Main Projects/BTB/BTB_gameplay1.png') center/cover;"></div>
-                            </div>
-                            <button class="carousel-nav prev" onclick="prevCarouselImage('btb')">‹</button>
-                            <button class="carousel-nav next" onclick="nextCarouselImage('btb')">›</button>
-                            <div class="carousel-counter">1/2</div>
-                            <div class="carousel-controls">
-                                <span class="carousel-dot active" onclick="setCarouselImage('btb', 0)"></span>
-                                <span class="carousel-dot" onclick="setCarouselImage('btb', 1)"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card rarity-4" onclick="showProjectDetails('ha')" data-project="ha">
-                    <div class="project-header">
-                        <h3 class="project-title">HUNTERS: Awakening</h3>
-                        <div class="project-rarity">★★★★</div>
-                        <div class="project-type">Unity • C# • JRPG</div>
-                    </div>
-                    <div class="project-image-container">
-                        <div class="carousel-container">
-                            <div class="carousel-track" id="ha-track">
-                                <div class="carousel-slide" style="background: url('assets/Main Projects/HA/HA_thumbnail.png') center/cover;"></div>
-                                <div class="carousel-slide" style="background: url('assets/Main Projects/HA/HA_gameplay1.png') center/cover;"></div>
-                            </div>
-                            <button class="carousel-nav prev" onclick="prevCarouselImage('ha')">‹</button>
-                            <button class="carousel-nav next" onclick="nextCarouselImage('ha')">›</button>
-                            <div class="carousel-counter">1/2</div>
-                            <div class="carousel-controls">
-                                <span class="carousel-dot active" onclick="setCarouselImage('ha', 0)"></span>
-                                <span class="carousel-dot" onclick="setCarouselImage('ha', 1)"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Project Detail Panel -->
+        <div class="project-detail-panel" id="projectDetailPanel">
+            <div class="detail-header">
+                <h3 class="detail-project-title" id="detailProjectTitle"></h3>
+                <button class="close-detail" onclick="closeProjectDetails()">✕</button>
             </div>
-            
-            <!-- Project Detail Panel -->
-            <div class="project-detail-panel" id="projectDetailPanel">
-                <div class="detail-header">
-                    <h3 class="detail-project-title" id="detailProjectTitle"></h3>
-                    <button class="close-detail" onclick="closeProjectDetails()">✕</button>
-                </div>
-                <div class="detail-body">
-                    <div class="detail-carousel-section">
-                        <div class="detail-carousel-container">
-                            <div class="carousel-track" id="detail-carousel-track">
-                                <!-- Slides dinámicos -->
-                            </div>
-                            <div class="carousel-nav prev" onclick="prevDetailImage()">‹</div>
-                            <div class="carousel-nav next" onclick="nextDetailImage()">›</div>
-                            <div class="carousel-counter" id="detail-carousel-counter">1/4</div>
-                            <div class="carousel-controls" id="detail-carousel-controls">
-                                <!-- Dots dinámicos -->
-                            </div>
+            <div class="detail-body">
+                <div class="detail-carousel-section">
+                    <div class="detail-carousel-container">
+                        <div class="carousel-track" id="detail-carousel-track">
+                            <!-- Slides dinámicos -->
+                        </div>
+                        <div class="carousel-nav prev" onclick="prevDetailImage()">‹</div>
+                        <div class="carousel-nav next" onclick="nextDetailImage()">›</div>
+                        <div class="carousel-counter" id="detail-carousel-counter">1/4</div>
+                        <div class="carousel-controls" id="detail-carousel-controls">
+                            <!-- Dots dinámicos -->
                         </div>
                     </div>
-                    <div class="detail-info-section">
+                </div>
+                <div class="detail-info-section">
                     <div class="detail-section">
                         <h4>📝 <span data-i18n="project_detail_labels.description">Descripción Completa</span></h4>
                         <p class="detail-description" id="detailDescription"></p>
@@ -1744,98 +1544,34 @@ Todos los elementos están documentados con comentarios detallados.
             </div>
         </div>
 
-
-        <!-- 
-        ==============================================
-          SECCIÓN GALLERY - PERSONALIZACIÓN
-        ==============================================
-        Para personalizar esta sección:
-
-        1. AGREGAR ELEMENTO A GALERÍA:
-           a) Copia la estructura de gallery-item
-           b) Asigna data-category="categoria"
-           c) Cambia onclick="openGalleryModal('id_unico')"
-           d) Actualiza título, categoría y descripción
-
-        2. CATEGORÍAS DISPONIBLES:
-           - modeling: Modelado 3D
-           - virtual: Producción Virtual
-           - interactive: Instalaciones Interactivas
-           - motion: Motion Graphics
-           - Para nueva categoría: agrega filter-btn y actualiza traducciones
-
-        3. ESTRUCTURA DE ARCHIVOS:
-           assets/Gallery/[CATEGORIA]/[ELEMENTO]/
-           - Thumbnail.jpg (preview)
-           - Detail1.png, Detail2.png (imágenes detalle)
-
-        4. INFORMACIÓN DETALLADA (MODAL):
-           - Agrega entrada en galleryData:
-             * title_en/es: Título del proyecto
-             * icon: Emoji o símbolo representativo
-             * description_en/es: Descripción completa
-             * tools: Array de herramientas usadas
-             * process_en/es: Descripción del proceso
-
-        5. NAVEGACIÓN MODAL:
-           - Actualiza galleryItems array con nuevos IDs
-           - Los botones prev/next navegarán automáticamente
-
-        EJEMPLO ELEMENTO NUEVO:
-        <div class="gallery-item" data-category="modeling" onclick="openGalleryModal('mi_modelo')">
-            <div class="gallery-preview">🏗️</div>
-            <div class="gallery-info">
-                <h3 class="gallery-title">Mi_Modelo_3D</h3>
-                <div class="gallery-category">3D Modeling</div>
-                <p class="gallery-description">Modelo de arquitectura detallado con materiales PBR.</p>
-            </div>
-        </div>
-
-        EJEMPLO NUEVA CATEGORÍA:
-        1. Agregar botón filtro:
-        <button class="filter-btn" data-filter="arquitectura" data-i18n="gallery_filters.arquitectura">ARQUITECTURA</button>
-
-        2. Agregar traducción:
-        translations.en.gallery_filters.arquitectura = "ARCHITECTURE"
-        translations.es.gallery_filters.arquitectura = "ARQUITECTURA"
-
-        3. Usar data-category="arquitectura" en elementos
-
-        NOTAS IMPORTANTES:
-        - Los iconos pueden ser emojis, símbolos Unicode o texto
-        - El modal se cierra con Escape o clic fuera
-        - Las categorías se filtran automáticamente
-        - Mantén consistencia en nombres de archivos
-        ==============================================
-        -->
         <!-- Gallery Section -->
         <section id="gallery" class="section">
             <h2 class="section-title" data-i18n="section_title_gallery">CREATIVE_GALLERY.collection</h2>
-            
+
             <div class="gallery-filters">
                 <button class="filter-btn active" data-filter="all" data-i18n="gallery_filters.all">ALL_PROJECTS</button>
                 <button class="filter-btn" data-filter="modeling" data-i18n="gallery_filters.modeling">3D_MODELING</button>
                 <button class="filter-btn" data-filter="virtual" data-i18n="gallery_filters.virtual">VIRTUAL_PROD</button>
                 <button class="filter-btn" data-filter="installation" data-i18n="gallery_filters.interactive">INSTALLATIONS</button>
             </div>
-            
+
             <div class="gallery-grid">
                 <div class="gallery-item" data-category="installation" onclick="openGalleryModal('boombastic')">
                     <div class="gallery-preview">
-                        <video controls width="100%">
+                        <video width="100%" height="100%" preload="metadata">
                             <source src="assets/Gallery/BB/BB_gameplay1.mp4" type="video/mp4">
                         </video>
                     </div>                    <div class="gallery-info">
-                        <h3 class="gallery-title">Boombastic - Interactive Installation</h3>
-                        <div class="gallery-category">Interactive Installation</div>
-                        <p class="gallery-description">Interactive installation of mixes of songs from the 90s, using Kinect and project mapping.</p>
-                    </div>
+                    <h3 class="gallery-title">Boombastic - Interactive Installation</h3>
+                    <div class="gallery-category">Interactive Installation</div>
+                    <p class="gallery-description">Interactive installation of mixes of songs from the 90s, using Kinect and project mapping.</p>
                 </div>
-                
+                </div>
+
                 <div class="gallery-item" data-category="modeling" onclick="openGalleryModal('beep')">
                     <div class="gallery-preview">
                         <img src="assets/Gallery/beep/beep_render1.gif" alt="Beep fighting animation" style="width:100%;">
-                    </div>                    
+                    </div>
                     <div class="gallery-info">
                         <h3 class="gallery-title">Beep Animation</h3>
                         <div class="gallery-category">3D Sculpting and Animation</div>
@@ -1846,7 +1582,7 @@ Todos los elementos están documentados con comentarios detallados.
                 <div class="gallery-item" data-category="modeling" onclick="openGalleryModal('leblanc_diorama')">
                     <div class="gallery-preview">
                         <img src="assets/Gallery/LB/LB_thumbnail.jpg" alt="Leblanc cafe render, made in Blender" style="width:100%;">
-                    </div>                    
+                    </div>
                     <div class="gallery-info">
                         <h3 class="gallery-title">Leblanc cafe Diorama</h3>
                         <div class="gallery-category">3D Modeling</div>
@@ -1854,7 +1590,7 @@ Todos los elementos están documentados con comentarios detallados.
                     </div>
                 </div>
             </div>
-            
+
             <!-- Gallery Modal -->
             <div class="gallery-modal" id="galleryModal">
                 <div class="modal-content">
@@ -1885,282 +1621,154 @@ Todos los elementos están documentados con comentarios detallados.
             </div>
         </section>
 
-        <!--
-        ==============================================
-          SECCIÓN SKILLS - PERSONALIZACIÓN
-        ==============================================
-        Para personalizar esta sección:
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <h2 class="section-title" data-i18n="section_title_skills">SKILL_TREE.dat</h2>
 
-        1. MODIFICAR CATEGORÍAS EXISTENTES:
-           - Edita skill_categories en translations
-           - Cambia skill-category-title para el título
-           - Los colores se heredan del CSS base
-
-        2. AGREGAR/QUITAR HABILIDADES:
-           a) Copia la estructura de skill-item
-           b) Cambia el texto en skill-name
-           c) Ajusta los skill-dot según nivel (1-5 dots)
-           d) Usa class="filled" para dots activos
-
-        3. SISTEMA DE NIVELES:
-           - 1 dot: Nivel básico (20%)
-           - 2 dots: Nivel intermedio (40%)
-           - 3 dots: Nivel competente (60%)
-           - 4 dots: Nivel avanzado (80%)
-           - 5 dots: Nivel experto (100%)
-
-        4. CREAR NUEVA CATEGORÍA:
-           a) Copia skill-category completa
-           b) Cambia skill-category-title
-           c) Agrega traducción en skill_categories
-           d) Opcionalmente personaliza colores CSS
-
-        EJEMPLO HABILIDAD NUEVA:
-        <div class="skill-item">
-            <span class="skill-name">Mi Nueva Skill</span>
-            <div class="skill-level">
-                <span class="skill-dot filled"></span>
-                <span class="skill-dot filled"></span>
-                <span class="skill-dot filled"></span>
-                <span class="skill-dot"></span>
-                <span class="skill-dot"></span>
-            </div>
-        </div>
-
-        EJEMPLO CATEGORÍA NUEVA:
-        <div class="skill-category">
-            <h3 class="skill-category-title" data-i18n="skill_categories.mi_categoria">MI_CATEGORÍA</h3>
-             Agregar skill-items aquí
-        </div> -->
-
-        <!-- PERSONALIZACIÓN VISUAL:
-        - Para cambiar colores de categoría, modifica CSS:
-          .skill-category:nth-child(5) { border-color: #custom-color; }
-        - Los dots activos usan --primary-green por defecto
-        - Efecto hover se aplica automáticamente
-
-        NOTAS IMPORTANTES:
-        - Máximo recomendado: 8 skills por categoría
-        - Usa nombres consistentes entre idiomas
-        - Los niveles son visuales, no funcionales
-        - La animación de glowing es automática
-        ==============================================
-        -->
-            <!-- Skills Section -->
-            <section id="skills" class="section">
-                <h2 class="section-title" data-i18n="section_title_skills">SKILL_TREE.dat</h2>
-
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3 class="skill-category-title" data-i18n="skill_categories.programming">PROGRAMMING_BRANCH</h3>
-                        <div class="skill-item">
-                            <span class="skill-name">C#</span>
-                            <div class="skill-level">
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot"></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3 class="skill-category-title" data-i18n="skill_categories.engines">ENGINE_MASTERY</h3>
-                        <div class="skill-item">
-                            <span class="skill-name">Unity</span>
-                            <div class="skill-level">
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot"></span>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">RenPy</span>
-                            <div class="skill-level">
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot"></span>
-                                <span class="skill-dot"></span>
-                                <span class="skill-dot"></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3 class="skill-category-title" data-i18n="skill_categories.creative">CREATIVE_TOOLS</h3>
-                        <div class="skill-item">
-                            <span class="skill-name">ZBrush</span>
-                            <div class="skill-level">
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot"></span>
-                                <span class="skill-dot"></span>
-                                <span class="skill-dot"></span>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Blender</span>
-                            <div class="skill-level">
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot"></span>
-                                <span class="skill-dot"></span>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Premiere</span>
-                            <div class="skill-level">
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot"></span>
-                                <span class="skill-dot"></span>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">After Effects</span>
-                            <div class="skill-level">
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot"></span>
-                                <span class="skill-dot"></span>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Photoshop</span>
-                            <div class="skill-level">
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot"></span>
-                                <span class="skill-dot"></span>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Reaper</span>
-                            <div class="skill-level">
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot"></span>
-                                <span class="skill-dot"></span>
-                                <span class="skill-dot"></span>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Audacity</span>
-                            <div class="skill-level">
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot"></span>
-                                <span class="skill-dot"></span>
-                                <span class="skill-dot"></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3 class="skill-category-title" data-i18n="skill_categories.languages">LANGUAGES</h3>
-                        <div class="skill-item">
-                            <span class="skill-name">Español</span>
-                            <div class="skill-level">
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Inglés</span>
-                            <div class="skill-level">
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot filled"></span>
-                                <span class="skill-dot"></span>
-                            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="skill-category-title" data-i18n="skill_categories.programming">PROGRAMMING_BRANCH</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">C#</span>
+                        <div class="skill-level">
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot"></span>
                         </div>
                     </div>
                 </div>
-            </section>
 
-        <!--
-        ==============================================
-          SECCIÓN ACHIEVEMENTS/CERTIFICACIONES - PERSONALIZACIÓN
-        ==============================================
-        Para personalizar esta sección:
+                <div class="skill-category">
+                    <h3 class="skill-category-title" data-i18n="skill_categories.engines">ENGINE_MASTERY</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">Unity</span>
+                        <div class="skill-level">
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot"></span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">RenPy</span>
+                        <div class="skill-level">
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot"></span>
+                            <span class="skill-dot"></span>
+                            <span class="skill-dot"></span>
+                        </div>
+                    </div>
+                </div>
 
-        1. AGREGAR NUEVA CERTIFICACIÓN:
-           a) Copia la estructura de achievement-card
-           b) Cambia achievement-icon (emoji o símbolo)
-           c) Actualiza achievement-title
-           d) Modifica achievement-description
+                <div class="skill-category">
+                    <h3 class="skill-category-title" data-i18n="skill_categories.creative">CREATIVE_TOOLS</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">ZBrush</span>
+                        <div class="skill-level">
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot"></span>
+                            <span class="skill-dot"></span>
+                            <span class="skill-dot"></span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Blender</span>
+                        <div class="skill-level">
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot"></span>
+                            <span class="skill-dot"></span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Premiere</span>
+                        <div class="skill-level">
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot"></span>
+                            <span class="skill-dot"></span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">After Effects</span>
+                        <div class="skill-level">
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot"></span>
+                            <span class="skill-dot"></span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Photoshop</span>
+                        <div class="skill-level">
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot"></span>
+                            <span class="skill-dot"></span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Reaper</span>
+                        <div class="skill-level">
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot"></span>
+                            <span class="skill-dot"></span>
+                            <span class="skill-dot"></span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Audacity</span>
+                        <div class="skill-level">
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot"></span>
+                            <span class="skill-dot"></span>
+                            <span class="skill-dot"></span>
+                        </div>
+                    </div>
+                </div>
 
-        2. ICONOS RECOMENDADOS:
-           - 🎓 Educación/Títulos
-           - 🏆 Premios/Reconocimientos
-           - 🎮 Certificaciones Gaming
-           - 🤖 Tecnología/AI
-           - 🌐 Networking/Web
-           - ⚡ Performance/Optimización
-           - 🛡️ Seguridad
-           - 📱 Mobile Development
+                <div class="skill-category">
+                    <h3 class="skill-category-title" data-i18n="skill_categories.languages">LANGUAGES</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">Español</span>
+                        <div class="skill-level">
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Inglés</span>
+                        <div class="skill-level">
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot filled"></span>
+                            <span class="skill-dot"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        3. NIVELES DE RAREZA (VISUAL):
-           - Todos los achievements usan gold-accent por defecto
-           - Para diferentes niveles, modifica border-color:
-             * border: 2px solid var(--gold-accent); (Legendario)
-             * border: 2px solid #9f40ff; (Épico)
-             * border: 2px solid var(--blue-accent); (Raro)
-             * border: 2px solid var(--text-muted); (Común)
-
-        4. INFORMACIÓN EXPANDIBLE:
-           - Por defecto es estática
-           - Para expandible: agrega onclick="expandAchievement('id')"
-           - Implementa función JavaScript personalizada
-
-        5. CONTADOR AUTOMÁTICO:
-           - El subtitle cuenta automáticamente los achievements
-           - Formato: "TOTAL UNLOCKED: X/∞ | COMPLETION RATE: Y%"
-           - Edita achievements_subtitle en translations para personalizar
-
-        EJEMPLO ACHIEVEMENT NUEVO:
-        <div class="achievement-card">
-            <div class="achievement-icon">📱</div>
-            <h3 class="achievement-title">Mobile Development Expert</h3>
-            <p class="achievement-description">Specialized in cross-platform mobile game development with React Native and Flutter frameworks.</p>
-        </div>
-
-        EJEMPLO ACHIEVEMENT ÉPICO (MORADO):
-        <div class="achievement-card" style="border: 2px solid #9f40ff;">
-            <div class="achievement-icon">🔥</div>
-            <h3 class="achievement-title" style="color: #9f40ff;">Epic Achievement</h3>
-            <p class="achievement-description">Descripción del logro épico conseguido.</p>
-        </div>
-
-        ESTRUCTURA GRID RESPONSIVE:
-        - Desktop: 3 columnas (minWidth 300px)
-        - Tablet: 2 columnas
-        - Mobile: 1 columna
-        - Ajuste automático con CSS Grid
-
-        NOTAS IMPORTANTES:
-        - Los achievements tienen animación goldScan automática
-        - Efecto hover con elevación y sombra dorada
-        - Usa description concisa pero informativa
-        - Mantén coherencia en el estilo de iconos
-        ==============================================
-        -->
         <!-- Achievements Section -->
         <section id="achievements" class="section">
             <h2 class="section-title" data-i18n="section_title_achievements">ACHIEVEMENTS_UNLOCKED.log</h2>
-            <p class="achievements-subtitle" data-i18n="achievements_subtitle">TOTAL UNLOCKED: 1/&infin; | COMPLETION RATE: 100%</p>
-            
+            <p class="achievements-subtitle" data-i18n="achievements_subtitle">TOTAL UNLOCKED: 1/∞ | COMPLETION RATE: 100%</p>
+
             <div class="achievements-grid">
                 <div class="achievement-card">
                     <div class="achievement-icon">📱</div>
@@ -2170,80 +1778,15 @@ Todos los elementos están documentados con comentarios detallados.
             </div>
         </section>
 
-        <!--
-        ==============================================
-          SECCIÓN CONTACT - PERSONALIZACIÓN
-        ==============================================
-        Para personalizar esta sección:
-
-        1. INFORMACIÓN DE CONTACTO:
-           - contact_status: Estado actual (ACCEPTING_COLLABORATIONS, BUSY, etc.)
-           - contact_description: Descripción de servicios/colaboraciones
-           - contact_availability: Disponibilidad geográfica
-           - contact_response: Tiempo de respuesta
-
-        2. ENLACES SOCIALES Y PROFESIONALES:
-           - Email: mailto:m.herreravsquez@outlook.com
-           - GitHub: https://github.com/mherreravsquez
-           - LinkedIn: https://linkedin.com/in/mherreravsquez
-           - ArtStation: https://mherreravsquez.artstation.com
-           - CV: Enlace directo al PDF o #
-
-        3. AGREGAR NUEVOS ENLACES:
-           a) Copia la estructura de contact-link
-           b) Cambia href y texto del enlace
-           c) Agrega target="_blank" para enlaces externos
-           d) Usa iconos emoji o Unicode apropiados
-
-        4. MODIFICAR INFORMACIÓN RÁPIDA:
-           - contact-info-item para datos destacados
-           - Usa iconos descriptivos (🌍, ⚡, 📧, etc.)
-           - Formato gaming con códigos: REMOTE_WORLDWIDE
-
-        EJEMPLO ENLACE NUEVO:
-        <a href="https://discord.gg/tu-servidor" target="_blank" class="contact-link">
-            💬 DISCORD_SERVER
-        </a>
-
-        EJEMPLO INFO PERSONALIZADA:
-        <div class="contact-info-item">
-            <span>💰 RATE: $XX/HOUR_NEGOTIABLE</span>
-        </div>
-
-        ICONOS SUGERIDOS PARA ENLACES:
-        - 📧 Email
-        - 💻 GitHub/Repositorios
-        - 💼 LinkedIn/Profesional
-        - 🎨 ArtStation/Portfolio
-        - 📄 CV/Resume
-        - 💬 Discord/Chat
-        - 🐦 Twitter/X
-        - 🎬 YouTube/Videos
-        - 📱 Telegram
-        - ☕ Ko-fi/Donaciones
-
-        PERSONALIZACIÓN VISUAL:
-        - Todos los enlaces usan transition y hover effects
-        - Colores base: border-green y primary-green
-        - Efecto elevación y sombra en hover
-        - Grid responsivo automático
-
-        NOTAS IMPORTANTES:
-        - Usa target="_blank" para enlaces externos
-        - Mantén el formato gaming en el texto
-        - Los enlaces deben ser funcionales (no placeholders)
-        - El email se abre en cliente de correo por defecto
-        ==============================================
-        -->
         <!-- Contact Section -->
         <section id="contact" class="section">
             <h2 class="section-title" data-i18n="section_title_contact">ESTABLISH_CONNECTION.exe</h2>
-            
+
             <div class="contact-container">
                 <div class="contact-status" data-i18n="contact_status">STATUS: ACCEPTING_COLLABORATIONS</div>
-                
+
                 <p class="contact-description" data-i18n="contact_description">Ready to collaborate on innovative gaming projects. Specializing in VR experiences, gameplay programming, and pushing the boundaries of interactive storytelling. Let's create something extraordinary together.</p>
-                
+
                 <div class="contact-info">
                     <div class="contact-info-item">
                         <span data-i18n="contact_availability">🌍 AVAILABILITY: REMOTE_WORLDWIDE</span>
@@ -2252,7 +1795,7 @@ Todos los elementos están documentados con comentarios detallados.
                         <span data-i18n="contact_response">⚡ RESPONSE_TIME: &lt; 24_HOURS</span>
                     </div>
                 </div>
-                
+
                 <div class="contact-links">
                     <a href="mailto:m.herreravsquez@outlook.com" class="contact-link" data-i18n="contact_links.email">📧 EMAIL_PROTOCOL</a>
                     <a href="https://github.com/mherreravsquez" target="_blank" class="contact-link" data-i18n="contact_links.github">💻 GITHUB_REPO</a>
@@ -2262,831 +1805,682 @@ Todos los elementos están documentados con comentarios detallados.
                 </div>
             </div>
         </section>
-        <!-- 
-        ==============================================
-          PERSONALIZACIÓN FINAL - CONSEJOS IMPORTANTES
-        ==============================================
-        ¡ENHORABUENA! Has llegado al final del código.
-        
-        CHECKLIST DE PERSONALIZACIÓN COMPLETA:
-        ☐ Cambiar información personal (hero_* en translations)
-        ☐ Subir foto de perfil a assets/profile-photo.jpg
-        ☐ Crear carpetas para tus proyectos en assets/Main Projects/
-        ☐ Agregar datos de tus proyectos en projectData
-        ☐ Configurar imágenes en projectImages
-        ☐ Personalizar skills según tu experiencia
-        ☐ Actualizar achievements con tus certificaciones
-        ☐ Cambiar enlaces de contacto por los tuyos
-        ☐ Probar navegación entre idiomas
-        ☐ Verificar responsive en móvil
-        
-        CONSEJOS DE MANTENIMIENTO:
-        - Mantén las rutas de imágenes consistentes
-        - Siempre agrega traducciones en ambos idiomas
-        - Testa en diferentes tamaños de pantalla
-        - Las animaciones están optimizadas para rendimiento
-        
-        SOPORTE TÉCNICO:
-        - CSS puro, sin frameworks externos
-        - JavaScript vanilla, compatible con todos los navegadores
-        - Responsive design nativo
-        - Accesible con teclado
-        
-        ¡Ahora tienes un portafolio gaming completamente funcional!
-        Personaliza con confianza siguiendo los comentarios detallados.
-        ==============================================
-        -->
-    </main>
+    </div>
+</main>
 
-    <script>
-        /*
-        ==============================================
-          SISTEMA JAVASCRIPT - CONFIGURACIÓN PRINCIPAL
-        ==============================================
-        CONFIGURACIONES IMPORTANTES PARA PERSONALIZAR:
+<script>
+    // Language system
+    let currentLanguage = 'en';
 
-        1. DATOS DE PROYECTOS (projectData):
-           - Cada proyecto necesita: title_en/es, description_en/es
-           - challenges_en/es: Array de desafíos técnicos
-           - tools: Array de herramientas utilizadas
-           - development_time_en/es: Tiempo de desarrollo
-           - status_en/es: Estado actual del proyecto
+    // Project images data
+    const projectImages = {
+        cl: [
+            'assets/Main Projects/CL/CL_thumbnail.png',
+            'assets/Main Projects/CL/CL_gameplay1.png'
+        ],
+        btb: [
+            'assets/Main Projects/BTB/BTB_thumbnail.png',
+            'assets/Main Projects/BTB/BTB_gameplay1.png'
+        ],
+        ha: [
+            'assets/Main Projects/HA/HA_thumbnail.png',
+            'assets/Main Projects/HA/HA_gameplay1.png'
+        ]
+    };
 
-        2. DATOS DE GALERÍA (galleryData):
-           - title_en/es: Título del elemento
-           - icon: Emoji representativo
-           - description_en/es: Descripción completa
-           - tools: Array de herramientas
-           - process_en/es: Descripción del proceso
+    // Detail carousel state
+    let currentDetailProject = null;
+    let currentDetailImageIndex = 0;
 
-        3. IMÁGENES DE PROYECTOS (projectImages):
-           - Estructura: projectImages.proyecto_id = ['ruta1.png', 'ruta2.png']
-           - Rutas relativas desde la raíz del proyecto
-           - Formatos recomendados: PNG, JPG, WebP
-
-        4. ESTADO DE CARRUSELES (carouselStates):
-           - Cada proyecto debe tener entrada con totalImages
-           - Se inicializa automáticamente en currentIndex: 0
-
-        5. TRADUCCIONES (translations):
-           - Estructura anidada: translations.idioma.seccion.clave
-           - Siempre agregar en ambos idiomas (en/es)
-           - Usar &amp; en lugar de & para evitar errores HTML
-
-        FUNCIONES PRINCIPALES:
-        - showProjectDetails(): Mostrar panel de detalles
-        - setupDetailCarousel(): Configurar carrusel de detalles
-        - openGalleryModal(): Abrir modal de galería
-        - updateLanguage(): Aplicar traducciones
-        - filterGallery(): Filtrar elementos por categoría
-        ==============================================
-        */
-        // Language system
-        let currentLanguage = 'en';
-        
-        /*
-        ==============================================
-          IMÁGENES DE PROYECTOS - CONFIGURACIÓN
-        ==============================================
-        Para agregar imágenes a un proyecto:
-
-        1. Crea la carpeta: assets/Main Projects/[PROYECTO_ID]/
-        2. Sube tus imágenes con nombres descriptivos:
-           - Cover.png (imagen principal)
-           - Gameplay1.png, Gameplay2.png (capturas de juego)
-           - UI_Screenshot.png (interfaz de usuario)
-           - VR_Setup.png (configuración especial)
-
-        3. Agrega la entrada al objeto projectImages:
-           proyecto_id: [
-               'assets/Main Projects/ProyectoID/Cover.png',
-               'assets/Main Projects/ProyectoID/Gameplay.png'
-           ]
-
-        4. Actualiza carouselStates con el número total de imágenes
-
-        NOTAS IMPORTANTES:
-        - Las rutas son relativas desde index.html
-        - Usa nombres consistentes sin espacios ni caracteres especiales
-        - Tamaños recomendados: 1920x1080 o 1280x720
-        - Formatos: PNG para capturas, JPG para fotos
-        ==============================================
-        */
-        // Project images data
-        const projectImages = {
-            carloop: [
-                'assets/Main Projects/CL/CL_thumbnail.png',
-                'assets/Main Projects/CL/CL_gameplay1.png', 
-                'assets/Main Projects/CL/CL_VR_Setup.png',
-                'assets/Main Projects/CL/CL_Hand_Tracking.png'
-            ],
-            mystic: [
-                'assets/Main Projects/MR/MR_Cover.png',
-                'assets/Main Projects/MR/MR_Dialogue.png',
-                'assets/Main Projects/MR/MR_World.png'
-            ],
-            neon: [
-                'assets/Main Projects/NR/NR_Cover.png',
-                'assets/Main Projects/NR/NR_Gameplay.png'
-            ]
-        };
-        
-        // Detail carousel state
-        let currentDetailProject = null;
-        let currentDetailImageIndex = 0;
-        
-        /*
-        ==============================================
-          DATOS DE PROYECTOS - CONFIGURACIÓN DETALLADA
-        ==============================================
-        Estructura completa para cada proyecto:
-
-        proyecto_id: {
-            title_en: "Título en inglés",
-            title_es: "Título en español",
-            description_en: "Descripción completa en inglés...",
-            description_es: "Descripción completa en español...",
+    // Project data
+    const projectData = {
+        cl: {
+            title_en: "Car-Loop",
+            title_es: "CAR-Loop",
+            description_en: "Psychological horror VR experience where you're trapped in a time loop with your wife on an endless road. Revolutionary hand-tracking communication system that redefines interactive storytelling. Each loop reveals new horrors and secrets, while your gestural choices determine the fate of both characters.",
+            description_es: "Experiencia de horror psicológico en VR donde estás atrapado en un bucle temporal con tu esposa en una carretera infinita. Sistema revolucionario de comunicación por seguimiento de manos que redefine la narrativa interactiva. Cada bucle revela nuevos horrores y secretos, mientras tus decisiones gestuales determinan el destino de ambos personajes.",
             challenges_en: [
-                "Desafío técnico 1 en inglés",
-                "Desafío técnico 2 en inglés"
+                "VR optimization for smooth 90fps performance in complex environments",
+                "Hand tracking precision for natural gesture recognition and emotional responses",
+                "Time loop mechanics with seamless transitions and progressive story revelation",
+                "Psychological tension balance - maintaining horror without motion sickness",
+                "Dynamic narrative branching based on subtle hand gestures and timing"
             ],
             challenges_es: [
-                "Desafío técnico 1 en español",
-                "Desafío técnico 2 en español"
+                "Optimización VR para rendimiento fluido de 90fps en entornos complejos",
+                "Precisión del seguimiento de manos para reconocimiento natural de gestos y respuestas emocionales",
+                "Mecánicas de bucle temporal con transiciones perfectas y revelación progresiva de la historia",
+                "Balance de tensión psicológica - mantener el horror sin mareo por movimiento",
+                "Ramificación narrativa dinámica basada en gestos sutiles y timing"
             ],
-            tools: ["Herramienta 1", "Herramienta 2", "Framework X"],
-            development_time_en: "X months",
-            development_time_es: "X meses",
-            status_en: "Current status in English",
-            status_es: "Estado actual en español"
+            tools: ["Unity 2023.1 LTS", "Meta XR SDK v57", "Visual Studio 2022", "Blender 4.0", "Photoshop 2024", "FMOD Studio"],
+            development_time_en: "8 months (ongoing)",
+            development_time_es: "8 meses (en progreso)",
+            status_en: "65% complete - Beta testing phase",
+            status_es: "65% completo - Fase de pruebas beta"
         },
-
-        CONSEJOS PARA CONTENIDO:
-        - Description: 2-3 oraciones, destaca lo innovador
-        - Challenges: 3-5 desafíos técnicos específicos
-        - Tools: Lista las tecnologías principales
-        - Status: Incluye porcentaje si está en desarrollo
-
-        EJEMPLOS DE ESTADOS:
-        - "Released - 1M+ downloads, 4.6★ rating"
-        - "85% complete - Polishing phase"
-        - "In development - Alpha testing"
-        - "Completed - Available on Steam"
-        ==============================================
-        */
-        // Project data
-        const projectData = {
-            carloop: {
-                title_en: "Car-Loop",
-                title_es: "CAR-Loop",
-                description_en: "Psychological horror VR experience where you're trapped in a time loop with your wife on an endless road. Revolutionary hand-tracking communication system that redefines interactive storytelling. Each loop reveals new horrors and secrets, while your gestural choices determine the fate of both characters.",
-                description_es: "Experiencia de horror psicol\u00f3gico en VR donde est\u00e1s atrapado en un bucle temporal con tu esposa en una carretera infinita. Sistema revolucionario de comunicaci\u00f3n por seguimiento de manos que redefine la narrativa interactiva. Cada bucle revela nuevos horrores y secretos, mientras tus decisiones gestuales determinan el destino de ambos personajes.",
-                challenges_en: [
-                    "VR optimization for smooth 90fps performance in complex environments",
-                    "Hand tracking precision for natural gesture recognition and emotional responses",
-                    "Time loop mechanics with seamless transitions and progressive story revelation",
-                    "Psychological tension balance - maintaining horror without motion sickness",
-                    "Dynamic narrative branching based on subtle hand gestures and timing"
-                ],
-                challenges_es: [
-                    "Optimizaci\u00f3n VR para rendimiento fluido de 90fps en entornos complejos",
-                    "Precisi\u00f3n del seguimiento de manos para reconocimiento natural de gestos y respuestas emocionales",
-                    "Mec\u00e1nicas de bucle temporal con transiciones perfectas y revelaci\u00f3n progresiva de la historia",
-                    "Balance de tensi\u00f3n psicol\u00f3gica - mantener el horror sin mareo por movimiento",
-                    "Ramificaci\u00f3n narrativa din\u00e1mica basada en gestos sutiles y timing"
-                ],
-                tools: ["Unity 2023.1 LTS", "Meta XR SDK v57", "Visual Studio 2022", "Blender 4.0", "Photoshop 2024", "FMOD Studio"],
-                development_time_en: "8 months (ongoing)",
-                development_time_es: "8 meses (en progreso)",
-                status_en: "65% complete - Beta testing phase",
-                status_es: "65% completo - Fase de pruebas beta"
-            },
-            mystic: {
-                title_en: "MYSTIC_REALMS",
-                title_es: "REINOS_M\u00cdSTICOS",
-                description_en: "Advanced RPG featuring emotional AI dialogue system with persistent memory across playthroughs. The game adapts to your previous decisions and creates unique narrative experiences with over 50 possible endings. Revolutionary character relationship system that remembers every interaction.",
-                description_es: "RPG avanzado con sistema de di\u00e1logo IA emocional con memoria persistente entre partidas. El juego se adapta a tus decisiones anteriores y crea experiencias narrativas \u00fanicas con m\u00e1s de 50 finales posibles. Sistema revolucionario de relaciones que recuerda cada interacci\u00f3n.",
-                challenges_en: [
-                    "AI dialogue system with emotional context and long-term memory",
-                    "Complex save state management across multiple playthroughs",
-                    "Branching narratives with 50+ unique story combinations",
-                    "Performance optimization for large open world environments",
-                    "Dynamic quest generation based on player behavior patterns"
-                ],
-                challenges_es: [
-                    "Sistema de di\u00e1logo IA con contexto emocional y memoria a largo plazo",
-                    "Gesti\u00f3n compleja de estados de guardado a trav\u00e9s de m\u00faltiples partidas",
-                    "Narrativas ramificadas con 50+ combinaciones \u00fanicas de historia",
-                    "Optimizaci\u00f3n de rendimiento para entornos de mundo abierto grandes",
-                    "Generaci\u00f3n din\u00e1mica de misiones basada en patrones de comportamiento del jugador"
-                ],
-                tools: ["Unreal Engine 5.1", "Blueprint Visual Scripting", "C++ Advanced", "World Machine", "Substance Suite", "Wwise Audio"],
-                development_time_en: "14 months",
-                development_time_es: "14 meses",
-                status_en: "85% complete - Polishing phase",
-                status_es: "85% completo - Fase de pulido"
-            },
-            neon: {
-                title_en: "NEON_RUNNER",
-                title_es: "CORREDOR_NE\u00d3N",
-                description_en: "Endless runner with dynamic obstacle generation and fluid character controls. Features machine learning-powered difficulty adaptation and real-time leaderboard competition. Achieved 1M+ downloads with 4.6 star rating across all platforms.",
-                description_es: "Corredor infinito con generaci\u00f3n din\u00e1mica de obst\u00e1culos y controles fluidos del personaje. Cuenta con adaptaci\u00f3n de dificultad potenciada por aprendizaje autom\u00e1tico y competencia de tabla de clasificaci\u00f3n en tiempo real. Logr\u00f3 1M+ descargas con calificaci\u00f3n de 4.6 estrellas en todas las plataformas.",
-                challenges_en: [
-                    "Mobile performance optimization for 60fps on low-end devices",
-                    "Intuitive touch controls with haptic feedback integration",
-                    "Procedural obstacle generation using machine learning algorithms",
-                    "Monetization balance without compromising gameplay experience",
-                    "Cross-platform synchronization and cloud save implementation"
-                ],
-                challenges_es: [
-                    "Optimizaci\u00f3n de rendimiento m\u00f3vil para 60fps en dispositivos de gama baja",
-                    "Controles t\u00e1ctiles intuitivos con integraci\u00f3n de retroalimentaci\u00f3n h\u00e1ptica",
-                    "Generaci\u00f3n procedural de obst\u00e1culos usando algoritmos de aprendizaje autom\u00e1tico",
-                    "Balance de monetizaci\u00f3n sin comprometer la experiencia de juego",
-                    "Sincronizaci\u00f3n multiplataforma e implementaci\u00f3n de guardado en la nube"
-                ],
-                tools: ["Unity 2022.3 LTS", "C# Advanced", "Unity Analytics", "Google AdMob", "Photoshop 2023", "Unity Cloud Build"],
-                development_time_en: "4 months",
-                development_time_es: "4 meses",
-                status_en: "Released - 1M+ downloads, 4.6★ rating",
-                status_es: "Lanzado - 1M+ descargas, calificaci\u00f3n 4.6★"
-            }
-        };
-        
-        /*
-        ==============================================
-          DATOS DE GALERÍA - CONFIGURACIÓN DETALLADA
-        ==============================================
-        Estructura para cada elemento de galería:
-
-        elemento_id: {
-            title_en: "Element Title",
-            title_es: "Título del Elemento",
-            icon: "🎭", // Emoji representativo
-            description_en: "Detailed description in English...",
-            description_es: "Descripción detallada en español...",
-            tools: ["Tool 1", "Tool 2", "Software X"],
-            process_en: "Step 1 → Step 2 → Step 3 → Final result",
-            process_es: "Paso 1 → Paso 2 → Paso 3 → Resultado final"
+        btb: {
+            title_en: "Break the Bubble",
+            title_es: "Break the Bubble",
+            description_en: "A metroidvania game developed for Global Game Jam 2025. Players navigate through a surreal world, breaking bubbles to progress and unlock new abilities. Features innovative movement mechanics and a unique art style.",
+            description_es: "Un juego metroidvania desarrollado para Global Game Jam 2025. Los jugadores navegan por un mundo surrealista, rompiendo burbujas para progresar y desbloquear nuevas habilidades. Cuenta con mecánicas de movimiento innovadoras y un estilo artístico único.",
+            challenges_en: [
+                "Metroidvania level design with interconnected areas",
+                "Progressive ability unlocking system",
+                "Bubble physics and interaction mechanics",
+                "Art style consistency across different environments"
+            ],
+            challenges_es: [
+                "Diseño de niveles metroidvania con áreas interconectadas",
+                "Sistema progresivo de desbloqueo de habilidades",
+                "Física de burbujas y mecánicas de interacción",
+                "Consistencia del estilo artístico en diferentes entornos"
+            ],
+            tools: ["Unity", "C#", "Aseprite", "FMOD"],
+            development_time_en: "48 hours (Game Jam)",
+            development_time_es: "48 horas (Game Jam)",
+            status_en: "Completed - Game Jam submission",
+            status_es: "Completado - Entrega de Game Jam"
         },
+        ha: {
+            title_en: "HUNTERS: Awakening",
+            title_es: "HUNTERS: Awakening",
+            description_en: "JRPG-style game featuring turn-based combat, character progression, and an engaging storyline. Players control a team of hunters exploring a mysterious world filled with challenges and secrets.",
+            description_es: "Juego estilo JRPG con combate por turnos, progresión de personajes y una historia atractiva. Los jugadores controlan un equipo de cazadores que exploran un mundo misterioso lleno de desafíos y secretos.",
+            challenges_en: [
+                "Turn-based combat system with strategic depth",
+                "Character progression and skill trees",
+                "Balancing enemy encounters and difficulty",
+                "Creating an engaging narrative with multiple paths"
+            ],
+            challenges_es: [
+                "Sistema de combate por turnos con profundidad estratégica",
+                "Progresión de personajes y árboles de habilidades",
+                "Equilibrio de encuentros con enemigos y dificultad",
+                "Creación de una narrativa atractiva con múltiples caminos"
+            ],
+            tools: ["Unity", "C#", "Blender", "Photoshop"],
+            development_time_en: "6 months",
+            development_time_es: "6 meses",
+            status_en: "In development - Core systems complete",
+            status_es: "En desarrollo - Sistemas principales completos"
+        }
+    };
 
-        ICONOS SUGERIDOS POR CATEGORÍA:
-        - 3D Modeling: 🎭 🗿 🏗️
-        - Virtual Production: 🎬 🎥 🌍
-        - Interactive: 🎨 ⚡ 🔮
-        - Motion Graphics: 🎦 🎆 📺
-        - Architecture: 🏢 🏰 🌉
-        - Game Assets: 🎮 🗺️ ⚔️
+    // Gallery data
+    const galleryData = {
+        boombastic: {
+            title_en: "Boombastic - Interactive Installation",
+            title_es: "Boombastic - Instalación Interactiva",
+            mediaPath: "assets/Gallery/BB/BB_gameplay1.mp4",
+            description_en: "Boombastic is an interactive installation that uses hand-tracking technology to allow users to move virtual cassettes onto a virtual boom box. Placing a cassette on the boom box sends a signal to REAPER (a digital audio workstation) to create beats with samples of representative songs from the 1990s.\n\nAdditionally, MadMapper is implemented to perform mapping projections on the boom box model, displaying various visual reactions and animations in real time.",
+            description_es: "Boombastic es una instalación interactiva que utiliza tecnología de seguimiento manual para que los usuarios puedan mover casetes virtuales hacia un radiocasete virtual. Al colocar un casete en el radiocasete, se envía una señal a REAPER (una estación de trabajo de audio digital) para crear ritmos con muestras de canciones representativas de los años 90.\n\nAdemás, MadMapper se implementa para realizar proyecciones de mapas en el modelo del radiocasete, mostrando diversas reacciones visuales y animaciones en tiempo real.",
+            tools: ["Unity 6.2", "Kinect SDK 2.0", "Reaper 7.48", "Madmapper 5.6.8"],
+            process_en: "Concept art → Base mesh → High-poly sculpting → Retopology → UV mapping → PBR texturing → Rigging → Animation tests",
+            process_es: "Arte conceptual → Malla base → Esculpido de alta poligonización → Retopología → Mapeo UV → Texturizado PBR → Rigging → Pruebas de animación"
+        },
+        beep: {
+            title_en: "Beep Animation and Sculpting",
+            title_es: "Animación y Esculpido de Beep",
+            mediaPath: "assets/Gallery/beep/beep_render1.gif",
+            description_en: "Sculpted and textured in ZBrush of the character \"Beep\" from the video game Kenshi. Then animated in Blender using Mixamo animations.",
+            description_es: "Esculpido y texturizado en ZBrush del personaje \"Beep\" del videojuego Kenshi. Luego animado en Blender haciendo uso de las animaciones de Mixamo.",
+            tools: ["Blender 4.0", "ZBrush", "Mixamo", "Rokoko Studio addon"],
+            process_en: "Conceptualization of idea → Character and animations selection → Blocking on ZBrush → Sculpting → Texture creation → Model mesh optimization → Integration on Blender → Animations integration with Rokoko Studio addon → Render",
+            process_es: "Conceptualización de la idea → Elección del personaje y las animaciones → Blocking en ZBrush → Esculpido → Optimización de la malla del modelo → Integración en Blender → Integración de animaciones con addon Rokoko Studio → Render"
+        },
+        leblanc_diorama: {
+            title_en: "Environment Assets Pack",
+            title_es: "Pack de Assets de Entorno",
+            mediaPath: "assets/Gallery/LB/LB_thumbnail.jpg",
+            description_en: "Diorama of the Leblanc cafe from the Persona 5 Royal video game. 3D modeled and textured using materials from the Blender Kit website.",
+            description_es: "Diorama del cafe Leblanc del videojuego Persona 5 Royal. Modelado en 3D y texturizado haciendo uso de materiales de la web Blender Kit.",
+            tools: ["Blender 4.0", "BlenderKit"],
+            process_en: "Choosing a scene/location of a video game → Blocking → Detailed prop modeling → Material selection → Camera positioning → Render",
+            process_es: "Elección de escena/lugar de un videojuego → Blocking → Modelado de props a detalle → Elección de materiales → Posicionamiento de cámara → Render"
+        }
+    };
 
-        ORGANIZACIÓN DE ARCHIVOS:
-        assets/Gallery/[CATEGORIA]/[ELEMENTO]/
-        ├── Thumbnail.jpg (400x300)
-        ├── Detail_01.png (1920x1080)
-        ├── Detail_02.png (1920x1080)
-        └── Process_Breakdown.jpg
+    // Current gallery item for navigation
+    let currentGalleryIndex = 0;
+    const galleryItems = ['boombastic', 'beep', 'leblanc_diorama'];
 
-        NAVEGACIÓN MODAL:
-        - Actualiza galleryItems array con nuevos IDs
-        - El orden en el array determina la navegación
-        ==============================================
-        */
-        // Gallery data
-        const galleryData = {
-            boombastic: {
-                title_en: "Boombastic - Interactive Instalation",
-                title_es: "Boombastic - Instalación Interactiva",
-                mediaPath: "assets/Gallery/BB/BB_gameplay1.mp4",
-                description_en: "Boombastic is an interactive installation that uses hand-tracking technology to allow users to move virtual cassettes onto a virtual boom box. Placing a cassette on the boom box sends a signal to REAPER (a digital audio workstation) to create beats with samples of representative songs from the 1990s.\n" +
-                    "\n" +
-                    "Additionally, MadMapper is implemented to perform mapping projections on the boom box model, displaying various visual reactions and animations in real time.",
-                description_es: "Boombastic es una instalación interactiva que utiliza tecnología de seguimiento manual para que los usuarios puedan mover casetes virtuales hacia un radiocasete virtual. Al colocar un casete en el radiocasete, se envía una señal a REAPER (una estación de trabajo de audio digital) para crear ritmos con muestras de canciones representativas de los años 90.\n" +
-                    "\n" +
-                    "Además, MadMapper se implementa para realizar proyecciones de mapas en el modelo del radiocasete, mostrando diversas reacciones visuales y animaciones en tiempo real.",
-                tools: ["Unity 6.2", "Kinect SDK 2.0", "Reaper 7.48", "Madmapper 5.6.8"],
-                process_en: "Concept art \u2192 Base mesh \u2192 High-poly sculpting \u2192 Retopology \u2192 UV mapping \u2192 PBR texturing \u2192 Rigging \u2192 Animation tests",
-                process_es: "Arte conceptual \u2192 Malla base \u2192 Esculpido de alta poligonizaci\u00f3n \u2192 Retopolog\u00eda \u2192 Mapeo UV \u2192 Texturizado PBR \u2192 Rigging \u2192 Pruebas de animaci\u00f3n"
+    // Carousel states
+    const carouselStates = {};
+
+    // Initialize carousels
+    function initCarousels() {
+        Object.keys(projectImages).forEach(projectId => {
+            carouselStates[projectId] = {
+                currentIndex: 0,
+                totalImages: projectImages[projectId].length
+            };
+            updateCarousel(projectId);
+        });
+    }
+
+    // Update carousel display
+    function updateCarousel(projectId) {
+        const state = carouselStates[projectId];
+        const track = document.getElementById(`${projectId}-track`);
+        const counter = document.querySelector(`[data-project="${projectId}"] .carousel-counter`);
+        const dots = document.querySelectorAll(`[data-project="${projectId}"] .carousel-dot`);
+
+        if (track) {
+            track.style.transform = `translateX(-${state.currentIndex * 100}%)`;
+        }
+
+        if (counter) {
+            counter.textContent = `${state.currentIndex + 1}/${state.totalImages}`;
+        }
+
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === state.currentIndex);
+        });
+    }
+
+    // Carousel navigation functions
+    function prevCarouselImage(projectId) {
+        const state = carouselStates[projectId];
+        state.currentIndex = (state.currentIndex - 1 + state.totalImages) % state.totalImages;
+        updateCarousel(projectId);
+    }
+
+    function nextCarouselImage(projectId) {
+        const state = carouselStates[projectId];
+        state.currentIndex = (state.currentIndex + 1) % state.totalImages;
+        updateCarousel(projectId);
+    }
+
+    function setCarouselImage(projectId, index) {
+        const state = carouselStates[projectId];
+        state.currentIndex = index;
+        updateCarousel(projectId);
+    }
+
+    // Translations
+    const translations = {
+        en: {
+            language_toggle: "ES",
+            tabs: {
+                stats: "STATS",
+                projects: "PROJECTS",
+                gallery: "GALLERY",
+                skills: "SKILLS",
+                achievements: "CERTS",
+                contact: "CONNECT"
             },
-            beep: {
-                title_en: "Beep Animation y Sculpting",
-                title_es: "Animación y Esculpido de Beep",
-                mediaPath: "assets/Gallery/beep/beep_render1.gif",
-                description_en: "Sculpted and textured in ZBrush of the character \"Beep\" from the video game Kenshi. Then animated in Blender using Mixamo animations.",
-                description_es: "Esculpido y texturizado en ZBrush del personaje \"Beep\" del videojuego Kenshi. Luego animado en Blender haciendo uso de las animaciones de Mixamo.",
-                tools: ["Blender 4.0", "ZBrush", "Mixamo", "Rokoko Studio addon"],
-                process_en: "Conceptualization of idea \u2192 Character and animations selection \u2192 Blocking on ZBrush \u2192 Sculpting \u2192 Texture creation \u2192 Model mesh optimization \u2192 Integration on Blender \u2192 Animations integration with Rokoko Studio addon \u2192 Render",
-                process_es: "Conceptualización de la idea \u2192 Elección del personaje y las animaciones \u2192 Blocking en ZBrush \u2192 Esculpido \u2192 Optimización de la malla del modelo \u2192 Integración en Blender \u2192 Integración de animaciones con addon Rokoko Studio \u2192 Render"
+            section_title_stats: "PLAYER_PROFILE.exe",
+            hero_status: "ONLINE_FOR_PROJECTS",
+            hero_name: "MARCELO_HERRERA",
+            hero_class: "GAMEPLAY_PROGRAMMER • GAME_DESIGNER",
+            hero_bio: "I am a Gameplay Programmer and Game Designer specializing in Unity, currently in my third year studying Digital Game Design at Universidad Andrés Bello. My passion lies in experimenting with emerging technologies and developing prototypes for innovative platforms such as Virtual Reality. I am particularly fascinated by procedural generation and animation, as well as developing custom Unity tools through code, constantly seeking to push the boundaries of interactivity and gameplay.",
+            stats_title: "⚡ CORE_STATS",
+            stat_labels: {
+                exp: "EXP",
+                games: "Prototypes",
+                tech: "GAMES • DEMOS",
+                innovation: "INNOVATION • DESIRE TO LEARN"
             },
-            leblanc_diorama: {
-                title_en: "Environment Assets Pack",
-                title_es: "Pack de Assets de Entorno",
-                mediaPath: "assets/Gallery/LB/LB_thumbnail.jpg",
-                description_en: "Diorama of the Leblanc cafe from the Persona 5 Royal video game. 3D modeled and textured using materials from the Blender Kit website.",
-                description_es: "Diorama del cafe Leblanc del videojuego Persona 5 Royal. Modelado en 3D y texturizado haciendo uso de materiales de la web Blender Kit.",
-                tools: ["Blender 4.0", "BlenderKit"],
-                process_en: "Choosing a scene/location of a video game \u2192 Blocking \u2192 Detailed prop modeling \u2192 Material selection \u2192 Camera positioning \u2192 Render",
-                process_es: "Elección de escena/lugar de un videojuego \u2192 Blocking \u2192 Modelado de props a detalle \u2192 Elección de materiales \u2192 Posicionamiento de cámara \u2192 Render"
+            section_title_projects: "PROJECT_COLLECTION.zip",
+            rarity_legend: "★ COMMON | ★★ RARE | ★★★ EPIC | ★★★★ LEGENDARY",
+            section_title_gallery: "CREATIVE_GALLERY.collection",
+            gallery_filters: {
+                all: "ALL_PROJECTS",
+                modeling: "3D_MODELING",
+                virtual: "VIRTUAL_PROD",
+                interactive: "INSTALLATIONS"
+            },
+            section_title_skills: "SKILL_TREE.dat",
+            skill_categories: {
+                programming: "PROGRAMMING_BRANCH",
+                engines: "ENGINE_MASTERY",
+                creative: "CREATIVE_TOOLS",
+                languages: "LANGUAGES"
+            },
+            section_title_achievements: "ACHIEVEMENTS_UNLOCKED.log",
+            achievements_subtitle: "TOTAL UNLOCKED: 1/∞ | COMPLETION RATE: 100%",
+            section_title_contact: "ESTABLISH_CONNECTION.exe",
+            contact_status: "STATUS: ACCEPTING_COLLABORATIONS",
+            contact_description: "Ready to collaborate on innovative gaming projects. Specializing in VR experiences, gameplay programming, and pushing the boundaries of interactive storytelling. Let's create something extraordinary together.",
+            contact_availability: "🌍 AVAILABILITY: REMOTE_WORLDWIDE",
+            contact_response: "⚡ RESPONSE_TIME: &lt; 24_HOURS",
+            contact_links: {
+                email: "📧 EMAIL_PROTOCOL",
+                github: "💻 GITHUB_REPO",
+                linkedin: "💼 LINKEDIN_NET",
+                artstation: "🎨 ARTSTATION_GALLERY",
+                cv: "📄 DOWNLOAD_CV.pdf"
+            },
+            profile_photo_label: "PROFILE_IMAGE.jpg",
+            project_detail_labels: {
+                description: "Complete Description",
+                challenges: "Technical Challenges",
+                tools: "Tools Used",
+                dev_info: "Development Info",
+                dev_time: "Development Time",
+                status: "Current Status"
+            },
+            gallery_modal_labels: {
+                description: "Description",
+                tools: "Tools Used",
+                process: "Development Process"
             }
-        };
-        
-        // Current gallery item for navigation
-        let currentGalleryIndex = 0;
-        const galleryItems = ['boombastic', 'beep', 'leblanc_diorama'];
-        
-        /*
-        ==============================================
-          SISTEMA DE TRADUCCIONES - ESTRUCTURA COMPLETA
-        ==============================================
-        Cómo agregar nuevas traducciones:
-
-        1. ESTRUCTURA ANIDADA:
-           translations.idioma.seccion.clave = "valor"
-
-        2. EJEMPLO COMPLETO:
-           translations.en.mi_seccion = {
-               titulo: "My Section Title",
-               descripcion: "Description text",
-               botones: {
-                   guardar: "Save",
-                   cancelar: "Cancel"
-               }
-           }
-
-        3. EN HTML:
-           <h1 data-i18n="mi_seccion.titulo">Placeholder</h1>
-           <button data-i18n="mi_seccion.botones.guardar">Save</button>
-
-        4. CARACTERES ESPECIALES:
-           - Usa &amp; en lugar de &
-           - Usa &bull; para bullets (•)
-           - Usa &lt; &gt; para < >
-           - Usa &infin; para ∞
-
-        SECCIONES DISPONIBLES:
-        - tabs: Navegación principal
-        - section_title_*: Títulos de secciones
-        - stat_labels: Etiquetas de estadísticas
-        - skill_categories: Categorías de habilidades
-        - gallery_filters: Filtros de galería
-        - contact_links: Enlaces de contacto
-        - project_detail_labels: Etiquetas de detalles
-        - gallery_modal_labels: Etiquetas de modal
-
-        APLICACIÓN AUTOMÁTICA:
-        - Se ejecuta updateLanguage() al cambiar idioma
-        - Busca todos los elementos con data-i18n
-        - Actualiza textContent con la traducción
-        ==============================================
-        */
-        const translations = {
-            en: {
-                language_toggle: "ES",
-                tabs: {
-                    stats: "STATS",
-                    projects: "PROJECTS",
-                    gallery: "GALLERY",
-                    skills: "SKILLS",
-                    achievements: "CERTS",
-                    contact: "CONNECT"
-                },
-                section_title_stats: "PLAYER_PROFILE.exe",
-                hero_status: "ONLINE_FOR_PROJECTS",
-                hero_name: "MARCELO_HERRERA",
-                hero_class: "GAMEPLAY_PROGRAMMER • GAME_DESIGNER",
-                hero_bio: "I am a Gameplay Programmer and Game Designer specializing in Unity, currently in my third year studying Digital Game Design at Universidad Andrés Bello. My passion lies in experimenting with emerging technologies and developing prototypes for innovative platforms such as Virtual Reality. I am particularly fascinated by procedural generation and animation, as well as developing custom Unity tools through code, constantly seeking to push the boundaries of interactivity and gameplay.",
-                stats_title: "⚡ CORE_STATS",
-                stat_labels: {
-                    exp: "EXP",
-                    games: "GAMES",
-                    tech: "TECH",
-                    innovation: "INNOVATION"
-                },
-                section_title_projects: "PROJECT_COLLECTION.zip",
-                rarity_legend: "★ COMMON | ★★ RARE | ★★★ EPIC | ★★★★ LEGENDARY",
-                section_title_gallery: "CREATIVE_GALLERY.collection",
-
-                gallery_filters: {
-                    all: "ALL_PROJECTS",
-                    modeling: "3D_MODELING",
-                    virtual: "VIRTUAL_PROD",
-                    interactive: "INSTALLATIONS",
-                    motion: "MOTION_GFX"
-                },
-                section_title_skills: "SKILL_TREE.dat",
-                skill_categories: {
-                    programming: "PROGRAMMING_BRANCH",
-                    engine: "ENGINE_MASTERY",
-                    special: "SPECIAL_ABILITIES",
-                    creative: "CREATIVE_TOOLS"
-                },
-                section_title_achievements: "ACHIEVEMENTS_UNLOCKED.log",
-                achievements_subtitle: "TOTAL UNLOCKED: 6/∞ | COMPLETION RATE: 95.2%",
-                section_title_contact: "ESTABLISH_CONNECTION.exe",
-                contact_status: "STATUS: ACCEPTING_COLLABORATIONS",
-                contact_description: "Ready to collaborate on innovative gaming projects. Specializing in VR experiences, gameplay programming, and pushing the boundaries of interactive storytelling. Let's create something extraordinary together.",
-                contact_availability: "🌍 AVAILABILITY: REMOTE_WORLDWIDE",
-                contact_response: "⚡ RESPONSE_TIME: &lt; 24_HOURS",
-                contact_links: {
-                    email: "📧 EMAIL_PROTOCOL",
-                    github: "💻 GITHUB_REPO",
-                    linkedin: "💼 LINKEDIN_NET",
-                    artstation: "🎨 ARTSTATION_GALLERY",
-                    cv: "📄 DOWNLOAD_CV.pdf"
-                },
-                profile_photo_label: "PROFILE_IMAGE.jpg",
-                project_detail_labels: {
-                    description: "Complete Description",
-                    challenges: "Technical Challenges",
-                    tools: "Tools Used",
-                    dev_info: "Development Info",
-                    dev_time: "Development Time",
-                    status: "Current Status"
-                },
-                gallery_modal_labels: {
-                    description: "Description",
-                    tools: "Tools Used",
-                    process: "Development Process"
-                }
+        },
+        es: {
+            language_toggle: "EN",
+            tabs: {
+                stats: "ESTADÍSTICAS",
+                projects: "PROYECTOS",
+                gallery: "GALERÍA",
+                skills: "HABILIDADES",
+                achievements: "CERTIFICACIONES",
+                contact: "CONTACTO"
             },
-            es: {
-                language_toggle: "EN",
-                tabs: {
-                    stats: "ESTADÍSTICAS",
-                    projects: "PROYECTOS",
-                    gallery: "GALERÍA",
-                    skills: "HABILIDADES",
-                    achievements: "CERTIFICACIONES",
-                    contact: "CONTACTO"
-                },
-                section_title_stats: "PERFIL_JUGADOR.exe",
-                hero_status: "EN_LÍNEA_PARA_PROYECTOS",
-                hero_name: "MARCELO_HERRERA",
-                hero_class: "PROGRAMADOR_GAMEPLAY • DISEÑADOR_JUEGOS",
-                hero_bio: "Soy un Gameplay Programmer y Game Designer especializado en Unity, actualmente cursando mi tercer año en la carrera de Diseño de Juegos Digitales en la Universidad Andrés Bello. Mi pasión radica en experimentar con tecnologías emergentes y desarrollar prototipos para plataformas innovadoras como la Realidad Virtual. Me fascina especialmente la generación y animación procedural, así como el desarrollo de herramientas personalizadas en Unity mediante código, buscando siempre expandir los límites de la interactividad y la jugabilidad.",
-                stats_title: "⚡ ESTAD&Iacute;STICAS_N&Uacute;CLEO",
-                stat_labels: {
-                    exp: "EXPERIENCIA",
-                    games: "JUEGOS",
-                    tech: "TECNOLOGÍA",
-                    innovation: "INNOVACIÓN"
-                },
-                section_title_projects: "COLECCIÓN_PROYECTOS.zip",
-                rarity_legend: "★ COM&Uacute;N | ★★ RARO | ★★★ &Eacute;PICO | ★★★★ LEGENDARIO",
-                section_title_gallery: "GALERÍA_CREATIVA.colección",
-
-                gallery_filters: {
-                    all: "TODOS_PROYECTOS",
-                    modeling: "MODELADO_3D",
-                    virtual: "PRODUCCIÓN_VIRTUAL",
-                    interactive: "INSTALACIONES",
-                    motion: "MOTION_GFX"
-                },
-                section_title_skills: "ÁRBOL_HABILIDADES.dat",
-                skill_categories: {
-                    programming: "RAMA_PROGRAMACIÓN",
-                    engine: "DOMINIO_MOTORES",
-                    special: "HABILIDADES_ESPECIALES",
-                    creative: "HERRAMIENTAS_CREATIVAS"
-                },
-                section_title_achievements: "LOGROS_DESBLOQUEADOS.log",
-                achievements_subtitle: "TOTAL DESBLOQUEADOS: 6/∞ | TASA COMPLETADO: 95.2%",
-                section_title_contact: "ESTABLECER_CONEXIÓN.exe",
-                contact_status: "ESTADO: ACEPTANDO_COLABORACIONES",
-                contact_description: "Listo para colaborar en proyectos de juegos innovadores. Especializado en experiencias VR, programación de gameplay y empujar los límites de la narrativa interactiva. Creemos algo extraordinario juntos.",
-                contact_availability: "🌍 DISPONIBILIDAD: REMOTO_MUNDIAL",
-                contact_response: "⚡ TIEMPO_RESPUESTA: &lt; 24_HORAS",
-                contact_links: {
-                    email: "📧 PROTOCOLO_EMAIL",
-                    github: "💻 REPOSITORIO_GITHUB",
-                    linkedin: "💼 RED_LINKEDIN",
-                    artstation: "🎨 GALER&Iacute;A_ARTSTATION",
-                    cv: "📄 DESCARGAR_CV.pdf"
-                },
-                profile_photo_label: "IMAGEN_PERFIL.jpg",
-                project_detail_labels: {
-                    description: "Descripci\u00f3n Completa",
-                    challenges: "Desaf\u00edos T\u00e9cnicos",
-                    tools: "Herramientas Utilizadas",
-                    dev_info: "Informaci\u00f3n de Desarrollo",
-                    dev_time: "Tiempo de Desarrollo",
-                    status: "Estado Actual"
-                },
-                gallery_modal_labels: {
-                    description: "Descripci\u00f3n",
-                    tools: "Herramientas Utilizadas",
-                    process: "Proceso de Desarrollo"
-                }
+            section_title_stats: "PERFIL_JUGADOR.exe",
+            hero_status: "EN_LÍNEA_PARA_PROYECTOS",
+            hero_name: "MARCELO_HERRERA",
+            hero_class: "PROGRAMADOR_GAMEPLAY • DISEÑADOR_JUEGOS",
+            hero_bio: "Soy un Gameplay Programmer y Game Designer especializado en Unity, actualmente cursando mi tercer año en la carrera de Diseño de Juegos Digitales en la Universidad Andrés Bello. Mi pasión radica en experimentar con tecnologías emergentes y desarrollar prototipos para plataformas innovadoras como la Realidad Virtual. Me fascina especialmente la generación y animación procedural, así como el desarrollo de herramientas personalizadas en Unity mediante código, buscando siempre expandir los límites de la interactividad y la jugabilidad.",
+            stats_title: "⚡ ESTADÍSTICAS_NÚCLEO",
+            stat_labels: {
+                exp: "EXPERIENCIA",
+                games: "Prototipos",
+                tech: "JUEGOS • DEMOS",
+                innovation: "INNOVACIÓN • DESEO DE APRENDER"
+            },
+            section_title_projects: "COLECCIÓN_PROYECTOS.zip",
+            rarity_legend: "★ COMÚN | ★★ RARO | ★★★ ÉPICO | ★★★★ LEGENDARIO",
+            section_title_gallery: "GALERÍA_CREATIVA.colección",
+            gallery_filters: {
+                all: "TODOS_PROYECTOS",
+                modeling: "MODELADO_3D",
+                virtual: "PRODUCCIÓN_VIRTUAL",
+                interactive: "INSTALACIONES"
+            },
+            section_title_skills: "ÁRBOL_HABILIDADES.dat",
+            skill_categories: {
+                programming: "RAMA_PROGRAMACIÓN",
+                engines: "DOMINIO_MOTORES",
+                creative: "HERRAMIENTAS_CREATIVAS",
+                languages: "IDIOMAS"
+            },
+            section_title_achievements: "LOGROS_DESBLOQUEADOS.log",
+            achievements_subtitle: "TOTAL DESBLOQUEADOS: 1/∞ | TASA COMPLETADO: 100%",
+            section_title_contact: "ESTABLECER_CONEXIÓN.exe",
+            contact_status: "ESTADO: ACEPTANDO_COLABORACIONES",
+            contact_description: "Listo para colaborar en proyectos de juegos innovadores. Especializado en experiencias VR, programación de gameplay y empujar los límites de la narrativa interactiva. Creemos algo extraordinario juntos.",
+            contact_availability: "🌍 DISPONIBILIDAD: REMOTO_MUNDIAL",
+            contact_response: "⚡ TIEMPO_RESPUESTA: &lt; 24_HORAS",
+            contact_links: {
+                email: "📧 PROTOCOLO_EMAIL",
+                github: "💻 REPOSITORIO_GITHUB",
+                linkedin: "💼 RED_LINKEDIN",
+                artstation: "🎨 GALERÍA_ARTSTATION",
+                cv: "📄 DESCARGAR_CV.pdf"
+            },
+            profile_photo_label: "IMAGEN_PERFIL.jpg",
+            project_detail_labels: {
+                description: "Descripción Completa",
+                challenges: "Desafíos Técnicos",
+                tools: "Herramientas Utilizadas",
+                dev_info: "Información de Desarrollo",
+                dev_time: "Tiempo de Desarrollo",
+                status: "Estado Actual"
+            },
+            gallery_modal_labels: {
+                description: "Descripción",
+                tools: "Herramientas Utilizadas",
+                process: "Proceso de Desarrollo"
             }
-        };
+        }
+    };
 
-        function toggleLanguage() {
-            currentLanguage = currentLanguage === 'en' ? 'es' : 'en';
-            updateLanguage();
+    function toggleLanguage() {
+        currentLanguage = currentLanguage === 'en' ? 'es' : 'en';
+        updateLanguage();
+    }
+
+    function updateLanguage() {
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            const translation = getNestedTranslation(translations[currentLanguage], key);
+            if (translation) {
+                element.textContent = translation;
+            }
+        });
+    }
+
+    function getNestedTranslation(obj, path) {
+        return path.split('.').reduce((current, key) => current && current[key], obj);
+    }
+
+    // Navigation system
+    function showSection(sectionId) {
+        // Hide all sections
+        document.querySelectorAll('.section').forEach(section => {
+            section.classList.remove('active');
+        });
+
+        // Show selected section
+        document.getElementById(sectionId).classList.add('active');
+
+        // Update nav tabs
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
+    }
+
+    // Project details system
+    function showProjectDetails(projectId) {
+        const project = projectData[projectId];
+        if (!project) return;
+
+        currentDetailProject = projectId;
+        currentDetailImageIndex = 0;
+
+        // Remove selection from all cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.classList.remove('selected');
+        });
+
+        // Add selection to current card
+        const projectCard = document.querySelector(`[data-project="${projectId}"]`);
+        if (projectCard) {
+            projectCard.classList.add('selected');
         }
 
-        function updateLanguage() {
-            const elements = document.querySelectorAll('[data-i18n]');
-            elements.forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                const translation = getNestedTranslation(translations[currentLanguage], key);
-                if (translation) {
-                    element.textContent = translation;
-                }
+        // Populate panel with project data
+        const lang = currentLanguage;
+        document.getElementById('detailProjectTitle').textContent = project[`title_${lang}`];
+        document.getElementById('detailDescription').textContent = project[`description_${lang}`];
+        document.getElementById('detailDevTime').textContent = project[`development_time_${lang}`];
+        document.getElementById('detailStatus').textContent = project[`status_${lang}`];
+
+        // Populate challenges
+        const challengesList = document.getElementById('detailChallenges');
+        challengesList.innerHTML = '';
+        project[`challenges_${lang}`].forEach(challenge => {
+            const li = document.createElement('li');
+            li.textContent = challenge;
+            challengesList.appendChild(li);
+        });
+
+        // Populate tools
+        const toolsContainer = document.getElementById('detailTools');
+        toolsContainer.innerHTML = '';
+        project.tools.forEach(tool => {
+            const span = document.createElement('span');
+            span.className = 'tool-tag';
+            span.textContent = tool;
+            toolsContainer.appendChild(span);
+        });
+
+        // Setup detail carousel
+        setupDetailCarousel(projectId);
+
+        // Show panel
+        const panel = document.getElementById('projectDetailPanel');
+        panel.classList.add('active');
+
+        // Scroll to panel
+        panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function setupDetailCarousel(projectId) {
+        const images = projectImages[projectId];
+        if (!images) return;
+
+        const track = document.getElementById('detail-carousel-track');
+        const controls = document.getElementById('detail-carousel-controls');
+        const counter = document.getElementById('detail-carousel-counter');
+
+        // Clear existing content
+        track.innerHTML = '';
+        controls.innerHTML = '';
+
+        // Create slides
+        images.forEach((imagePath, index) => {
+            const slide = document.createElement('div');
+            slide.className = 'carousel-slide';
+            slide.style.backgroundImage = `url('${imagePath}')`;
+            // Fallback content if image doesn't load
+            slide.innerHTML = '🎮';
+            track.appendChild(slide);
+        });
+
+        // Create dots
+        images.forEach((_, index) => {
+            const dot = document.createElement('span');
+            dot.className = `carousel-dot-detail ${index === 0 ? 'active' : ''}`;
+            dot.onclick = () => setDetailImage(index);
+            controls.appendChild(dot);
+        });
+
+        // Update counter
+        counter.textContent = `1/${images.length}`;
+
+        // Reset to first image
+        currentDetailImageIndex = 0;
+        updateDetailCarousel();
+    }
+
+    function setDetailImage(index) {
+        if (!currentDetailProject) return;
+
+        const images = projectImages[currentDetailProject];
+        if (!images || index < 0 || index >= images.length) return;
+
+        currentDetailImageIndex = index;
+        updateDetailCarousel();
+    }
+
+    function prevDetailImage() {
+        if (!currentDetailProject) return;
+
+        const images = projectImages[currentDetailProject];
+        if (!images) return;
+
+        currentDetailImageIndex = (currentDetailImageIndex - 1 + images.length) % images.length;
+        updateDetailCarousel();
+    }
+
+    function nextDetailImage() {
+        if (!currentDetailProject) return;
+
+        const images = projectImages[currentDetailProject];
+        if (!images) return;
+
+        currentDetailImageIndex = (currentDetailImageIndex + 1) % images.length;
+        updateDetailCarousel();
+    }
+
+    function updateDetailCarousel() {
+        if (!currentDetailProject) return;
+
+        const images = projectImages[currentDetailProject];
+        if (!images) return;
+
+        const track = document.getElementById('detail-carousel-track');
+        const dots = document.querySelectorAll('.carousel-dot-detail');
+        const counter = document.getElementById('detail-carousel-counter');
+
+        // Update track position
+        track.style.transform = `translateX(-${currentDetailImageIndex * 100}%)`;
+
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentDetailImageIndex);
+        });
+
+        // Update counter
+        counter.textContent = `${currentDetailImageIndex + 1}/${images.length}`;
+    }
+
+    function closeProjectDetails() {
+        document.getElementById('projectDetailPanel').classList.remove('active');
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.classList.remove('selected');
+        });
+        currentDetailProject = null;
+        currentDetailImageIndex = 0;
+    }
+
+    // Gallery modal system
+    function openGalleryModal(itemId) {
+        const item = galleryData[itemId];
+        if (!item) return;
+
+        currentGalleryIndex = galleryItems.indexOf(itemId);
+        populateGalleryModal(itemId, item);
+        document.getElementById('galleryModal').classList.add('active');
+    }
+
+    function closeGalleryModal() {
+        document.getElementById('galleryModal').classList.remove('active');
+    }
+
+    function populateGalleryModal(itemId, item) {
+        const lang = currentLanguage;
+        document.getElementById('modalTitle').textContent = item[`title_${lang}`];
+
+        // Sistema inteligente que detecta el tipo de archivo
+        const modalPreview = document.getElementById('modalPreview');
+        modalPreview.innerHTML = ''; // Limpiar contenido previo
+
+        if (item.mediaPath) {
+            const fileExtension = item.mediaPath.split('.').pop().toLowerCase();
+            const isVideo = ['mp4', 'webm', 'ogg', 'mov', 'avi'].includes(fileExtension);
+            const isImage = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp'].includes(fileExtension);
+
+            if (isVideo) {
+                const video = document.createElement('video');
+                video.controls = true;
+                video.style.width = '100%';
+                video.style.height = '100%';
+                video.style.objectFit = 'contain';
+
+                const source = document.createElement('source');
+                source.src = item.mediaPath;
+                source.type = `video/${fileExtension === 'mov' ? 'quicktime' : fileExtension}`;
+
+                video.appendChild(source);
+                video.appendChild(document.createTextNode('Tu navegador no soporta el elemento de video.'));
+                modalPreview.appendChild(video);
+
+            } else if (isImage) {
+                const img = document.createElement('img');
+                img.src = item.mediaPath;
+                img.alt = item[`title_${lang}`];
+                img.style.width = '100%';
+                img.style.height = '100%';
+                img.style.objectFit = 'contain';
+                modalPreview.appendChild(img);
+
+            } else {
+                // Fallback a emoji si no se reconoce el tipo
+                modalPreview.textContent = '🎮';
+                modalPreview.style.fontSize = '4rem';
+                modalPreview.style.display = 'flex';
+                modalPreview.style.alignItems = 'center';
+                modalPreview.style.justifyContent = 'center';
+            }
+        } else {
+            // Fallback si no hay mediaPath
+            modalPreview.textContent = '🎮';
+            modalPreview.style.fontSize = '4rem';
+            modalPreview.style.display = 'flex';
+            modalPreview.style.alignItems = 'center';
+            modalPreview.style.justifyContent = 'center';
+        }
+
+        document.getElementById('modalDescription').textContent = item[`description_${lang}`];
+        document.getElementById('modalProcess').textContent = item[`process_${lang}`];
+
+        // Populate tools
+        const toolsContainer = document.getElementById('modalTools');
+        toolsContainer.innerHTML = '';
+        item.tools.forEach(tool => {
+            const span = document.createElement('span');
+            span.className = 'modal-tool-tag';
+            span.textContent = tool;
+            toolsContainer.appendChild(span);
+        });
+    }
+
+    function prevGalleryItem() {
+        currentGalleryIndex = (currentGalleryIndex - 1 + galleryItems.length) % galleryItems.length;
+        const itemId = galleryItems[currentGalleryIndex];
+        const item = galleryData[itemId];
+        populateGalleryModal(itemId, item);
+    }
+
+    function nextGalleryItem() {
+        currentGalleryIndex = (currentGalleryIndex + 1) % galleryItems.length;
+        const itemId = galleryItems[currentGalleryIndex];
+        const item = galleryData[itemId];
+        populateGalleryModal(itemId, item);
+    }
+
+    // Gallery filtering
+    function filterGallery(category) {
+        const items = document.querySelectorAll('.gallery-item');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        // Update active filter button
+        filterButtons.forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-filter') === category);
+        });
+
+        // Show/hide items based on category
+        items.forEach(item => {
+            if (category === 'all' || item.getAttribute('data-category') === category) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set up navigation
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                showSection(this.getAttribute('data-section'));
             });
-        }
+        });
 
-        function getNestedTranslation(obj, path) {
-            return path.split('.').reduce((current, key) => current && current[key], obj);
-        }
-
-        // Navigation system
-        function showSection(sectionId) {
-            // Hide all sections
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
+        // Set up gallery filters
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterGallery(this.getAttribute('data-filter'));
             });
-            
-            // Show selected section
-            document.getElementById(sectionId).classList.add('active');
-            
-            // Update nav tabs
-            document.querySelectorAll('.nav-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
-        }
+        });
 
-        // Project details system
-        function showProjectDetails(projectId) {
-            const project = projectData[projectId];
-            if (!project) return;
-            
-            currentDetailProject = projectId;
-            currentDetailImageIndex = 0;
-            
-            // Remove selection from all cards
-            document.querySelectorAll('.project-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            
-            // Add selection to current card
-            document.querySelector(`[data-project="${projectId}"]`).classList.add('selected');
-            
-            // Populate panel with project data
-            const lang = currentLanguage;
-            document.getElementById('detailProjectTitle').textContent = project[`title_${lang}`];
-            document.getElementById('detailDescription').textContent = project[`description_${lang}`];
-            document.getElementById('detailDevTime').textContent = project[`development_time_${lang}`];
-            document.getElementById('detailStatus').textContent = project[`status_${lang}`];
-            
-            // Populate challenges
-            const challengesList = document.getElementById('detailChallenges');
-            challengesList.innerHTML = '';
-            project[`challenges_${lang}`].forEach(challenge => {
-                const li = document.createElement('li');
-                li.textContent = challenge;
-                challengesList.appendChild(li);
-            });
-            
-            // Populate tools
-            const toolsContainer = document.getElementById('detailTools');
-            toolsContainer.innerHTML = '';
-            project.tools.forEach(tool => {
-                const span = document.createElement('span');
-                span.className = 'tool-tag';
-                span.textContent = tool;
-                toolsContainer.appendChild(span);
-            });
-            
-            // Setup detail carousel
-            setupDetailCarousel(projectId);
-            
-            // Show panel
-            const panel = document.getElementById('projectDetailPanel');
-            panel.classList.add('active');
-            
-            // Scroll to panel
-            panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-        
-        function setupDetailCarousel(projectId) {
-            const images = projectImages[projectId];
-            if (!images) return;
-            
-            const track = document.getElementById('detail-carousel-track');
-            const controls = document.getElementById('detail-carousel-controls');
-            const counter = document.getElementById('detail-carousel-counter');
-            
-            // Clear existing content
-            track.innerHTML = '';
-            controls.innerHTML = '';
-            
-            // Create slides
-            images.forEach((imagePath, index) => {
-                const slide = document.createElement('div');
-                slide.className = 'carousel-slide';
-                slide.style.backgroundImage = `url('${imagePath}')`;
-                // Fallback content if image doesn't load
-                slide.innerHTML = '🎮';
-                track.appendChild(slide);
-            });
-            
-            // Create dots
-            images.forEach((_, index) => {
-                const dot = document.createElement('span');
-                dot.className = `carousel-dot-detail ${index === 0 ? 'active' : ''}`;
-                dot.onclick = () => setDetailImage(index);
-                controls.appendChild(dot);
-            });
-            
-            // Update counter
-            counter.textContent = `1/${images.length}`;
-            
-            // Reset to first image
-            currentDetailImageIndex = 0;
-            updateDetailCarousel();
-        }
-        
-        function setDetailImage(index) {
-            if (!currentDetailProject) return;
-            
-            const images = projectImages[currentDetailProject];
-            if (!images || index < 0 || index >= images.length) return;
-            
-            currentDetailImageIndex = index;
-            updateDetailCarousel();
-        }
-        
-        function prevDetailImage() {
-            if (!currentDetailProject) return;
-            
-            const images = projectImages[currentDetailProject];
-            if (!images) return;
-            
-            currentDetailImageIndex = (currentDetailImageIndex - 1 + images.length) % images.length;
-            updateDetailCarousel();
-        }
-        
-        function nextDetailImage() {
-            if (!currentDetailProject) return;
-            
-            const images = projectImages[currentDetailProject];
-            if (!images) return;
-            
-            currentDetailImageIndex = (currentDetailImageIndex + 1) % images.length;
-            updateDetailCarousel();
-        }
-        
-        function updateDetailCarousel() {
-            if (!currentDetailProject) return;
-            
-            const images = projectImages[currentDetailProject];
-            if (!images) return;
-            
-            const track = document.getElementById('detail-carousel-track');
-            const dots = document.querySelectorAll('.carousel-dot-detail');
-            const counter = document.getElementById('detail-carousel-counter');
-            
-            // Update track position
-            track.style.transform = `translateX(-${currentDetailImageIndex * 100}%)`;
-            
-            // Update dots
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentDetailImageIndex);
-            });
-            
-            // Update counter
-            counter.textContent = `${currentDetailImageIndex + 1}/${images.length}`;
-        }
-        
-        function closeProjectDetails() {
-            document.getElementById('projectDetailPanel').classList.remove('active');
-            document.querySelectorAll('.project-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            currentDetailProject = null;
-            currentDetailImageIndex = 0;
-        }
-        
-        // Gallery modal system
-        function openGalleryModal(itemId) {
-            const item = galleryData[itemId];
-            if (!item) return;
+        // Initialize carousels
+        initCarousels();
 
-            currentGalleryIndex = galleryItems.indexOf(itemId);
-            populateGalleryModal(itemId, item);
-            document.getElementById('galleryModal').classList.add('active');
-        }
-        
-        function closeGalleryModal() {
-            document.getElementById('galleryModal').classList.remove('active');
-        }
+        // Set up language
+        updateLanguage();
 
-        function populateGalleryModal(itemId, item) {
-            const lang = currentLanguage;
-            document.getElementById('modalTitle').textContent = item[`title_${lang}`];
+        // Close modal on outside click
+        document.getElementById('galleryModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeGalleryModal();
+            }
+        });
 
-            // Sistema inteligente que detecta el tipo de archivo
-            const modalPreview = document.getElementById('modalPreview');
-            modalPreview.innerHTML = ''; // Limpiar contenido previo
-
-            if (item.mediaPath) {
-                const fileExtension = item.mediaPath.split('.').pop().toLowerCase();
-                const isVideo = ['mp4', 'webm', 'ogg', 'mov', 'avi'].includes(fileExtension);
-                const isImage = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp'].includes(fileExtension);
-
-                if (isVideo) {
-                    const video = document.createElement('video');
-                    video.controls = true;
-                    video.style.width = '100%';
-                    video.style.maxHeight = '400px';
-
-                    const source = document.createElement('source');
-                    source.src = item.mediaPath;
-                    source.type = `video/${fileExtension === 'mov' ? 'quicktime' : fileExtension}`;
-
-                    video.appendChild(source);
-                    video.appendChild(document.createTextNode('Tu navegador no soporta el elemento de video.'));
-                    modalPreview.appendChild(video);
-
-                } else if (isImage) {
-                    const img = document.createElement('img');
-                    img.src = item.mediaPath;
-                    img.alt = item[`title_${lang}`];
-                    img.style.width = '100%';
-                    img.style.maxHeight = '400px';
-                    img.style.objectFit = 'contain';
-                    modalPreview.appendChild(img);
-
-                } else {
-                    // Fallback a emoji si no se reconoce el tipo
-                    modalPreview.textContent = item.icon;
-                    modalPreview.style.fontSize = '4rem';
-                    modalPreview.style.display = 'flex';
-                    modalPreview.style.alignItems = 'center';
-                    modalPreview.style.justifyContent = 'center';
-                }
-            } 
-
-            document.getElementById('modalDescription').textContent = item[`description_${lang}`];
-            document.getElementById('modalProcess').textContent = item[`process_${lang}`];
-
-            // Populate tools
-            const toolsContainer = document.getElementById('modalTools');
-            toolsContainer.innerHTML = '';
-            item.tools.forEach(tool => {
-                const span = document.createElement('span');
-                span.className = 'modal-tool-tag';
-                span.textContent = tool;
-                toolsContainer.appendChild(span);
-            });
-        }
-
-        function prevGalleryItem() {
-            currentGalleryIndex = (currentGalleryIndex - 1 + galleryItems.length) % galleryItems.length;
-            const itemId = galleryItems[currentGalleryIndex];
-            const item = galleryData[itemId];
-            populateGalleryModal(itemId, item);
-        }
-
-        function nextGalleryItem() {
-            currentGalleryIndex = (currentGalleryIndex + 1) % galleryItems.length;
-            const itemId = galleryItems[currentGalleryIndex];
-            const item = galleryData[itemId];
-            populateGalleryModal(itemId, item);
-        }
-        /*
-        ==============================================
-          INICIALIZACIÓN Y EVENT LISTENERS
-        ==============================================
-        El sistema se inicializa automáticamente cuando carga la página:
-
-        1. NAVEGACIÓN:
-           - Cada nav-tab tiene data-section que corresponde al ID de sección
-           - showSection() maneja el cambio de secciones
-
-        2. FILTROS DE GALERÍA:
-           - Cada filter-btn tiene data-filter para categoría
-           - filterGallery() muestra/oculta elementos
-
-        3. CARRUSELES:
-           - initProjectCarousels() configura todos los carruseles
-           - Estado se mantiene en carouselStates
-
-        4. IDIOMAS:
-           - updateLanguage() aplica traducciones iniciales
-           - toggleLanguage() cambia entre en/es
-
-        EVENTOS GLOBALES:
-        - ESC: Cierra modales y paneles de detalle
-        - Click fuera: Cierra modal de galería
-        - Navegación con teclado disponible
-
-        FUNCIONES DE UTILIDAD:
-        - getNestedTranslation(): Accede a traducciones anidadas
-        - updateProjectCarousel(): Actualiza estado visual
-        - populateGalleryModal(): Llena datos de modal
-        ==============================================
-        */
-    </script>
+        // Close modal with ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeGalleryModal();
+                closeProjectDetails();
+            }
+        });
+    });
+</script>
 </body>
 </html>
