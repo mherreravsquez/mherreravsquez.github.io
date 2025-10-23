@@ -1052,7 +1052,7 @@
         }
 
         .gallery-preview {
-            height: 200px;
+            aspect-ratio: 1.3 / 1;            
             background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
             display: flex;
             align-items: center;
@@ -1090,6 +1090,58 @@
             color: var(--text-muted);
             font-size: 0.8rem;
             line-height: 1.4;
+        }
+
+        /* Modal Gallery */
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .modal-preview-container {
+            background: rgba(0, 255, 65, 0.05);
+            border: 1px solid var(--border-green);
+            border-radius: 10px;
+            padding: 1rem;
+            position: relative;
+        }
+
+        .modal-preview {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-info-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .modal-info-section {
+            background: rgba(0, 255, 65, 0.05);
+            border: 1px solid var(--border-green);
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .modal-body {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .modal-preview {
+                height: 250px;
+            }
         }
 
         /* Skills Section */
@@ -1582,11 +1634,12 @@
                     <video width="100%" height="100%" preload="metadata">
                         <source src="assets/Gallery/BB/BB_gameplay1.mp4" type="video/mp4">
                     </video>
-                </div>                    <div class="gallery-info">
-                <h3 class="gallery-title">Boombastic - Interactive Installation</h3>
-                <div class="gallery-category">Interactive Installation</div>
-                <p class="gallery-description">Interactive installation of mixes of songs from the 90s, using Kinect and project mapping.</p>
-            </div>
+                </div>
+                <div class="gallery-info">
+                    <h3 class="gallery-title" data-i18n="gallery_items.boombastic.title">Boombastic - Interactive Installation</h3>
+                    <div class="gallery-category" data-i18n="gallery_items.boombastic.category">Interactive Installation</div>
+                    <p class="gallery-description" data-i18n="gallery_items.boombastic.description">Interactive installation of mixes of songs from the 90s, using Kinect and project mapping.</p>
+                </div>
             </div>
 
             <div class="gallery-item" data-category="modeling" onclick="openGalleryModal('beep')">
@@ -1594,9 +1647,9 @@
                     <img src="assets/Gallery/beep/beep_render1.gif" alt="Beep fighting animation" style="width:100%;">
                 </div>
                 <div class="gallery-info">
-                    <h3 class="gallery-title">Beep Animation</h3>
-                    <div class="gallery-category">3D Sculpting and Animation</div>
-                    <p class="gallery-description">Sculpted and textured in ZBrush of the character "Beep" from the video game Kenshi. Then animated in Blender using Mixamo animations.</p>
+                    <h3 class="gallery-title" data-i18n="gallery_items.beep.title">Beep Animation</h3>
+                    <div class="gallery-category" data-i18n="gallery_items.beep.category">3D Sculpting and Animation</div>
+                    <p class="gallery-description" data-i18n="gallery_items.beep.description">Sculpted and textured in ZBrush of the character "Beep" from the video game Kenshi. Then animated in Blender using Mixamo animations.</p>
                 </div>
             </div>
 
@@ -1605,9 +1658,9 @@
                     <img src="assets/Gallery/LB/LB_thumbnail.jpg" alt="Leblanc cafe render, made in Blender" style="width:100%;">
                 </div>
                 <div class="gallery-info">
-                    <h3 class="gallery-title">Leblanc cafe Diorama</h3>
-                    <div class="gallery-category">3D Modeling</div>
-                    <p class="gallery-description">Diorama of the Leblanc cafe from the Persona 5 Royal video game. 3D modeled and textured using materials from the Blender Kit website.</p>
+                    <h3 class="gallery-title" data-i18n="gallery_items.leblanc_diorama.title">Leblanc cafe Diorama</h3>
+                    <div class="gallery-category" data-i18n="gallery_items.leblanc_diorama.category">3D Modeling</div>
+                    <p class="gallery-description" data-i18n="gallery_items.leblanc_diorama.description">Diorama of the Leblanc cafe from the Persona 5 Royal video game. 3D modeled and textured using materials from the Blender Kit website.</p>
                 </div>
             </div>
         </div>
@@ -1620,8 +1673,10 @@
                     <button class="modal-close" onclick="closeGalleryModal()">✕</button>
                 </div>
                 <div class="modal-body">
-                    <div class="modal-preview" id="modalPreview"></div>
-                    <div class="modal-info-grid">
+                    <div class="modal-preview-container">
+                        <div class="modal-preview" id="modalPreview"></div>
+                    </div>
+                    <div class="modal-info-container">
                         <div class="modal-info-section">
                             <h4>📝 <span data-i18n="gallery_modal_labels.description">Descripción</span></h4>
                             <p class="modal-description" id="modalDescription"></p>
@@ -1762,7 +1817,7 @@
             <div class="skill-category">
                 <h3 class="skill-category-title" data-i18n="skill_categories.languages">LANGUAGES</h3>
                 <div class="skill-item">
-                    <span class="skill-name">Spanish</span>
+                    <span class="skill-name">Español - Spanish</span>
                     <div class="skill-level">
                         <span class="skill-dot filled"></span>
                         <span class="skill-dot filled"></span>
@@ -1772,7 +1827,7 @@
                     </div>
                 </div>
                 <div class="skill-item">
-                    <span class="skill-name">English</span>
+                    <span class="skill-name">Inglés - English</span>
                     <div class="skill-level">
                         <span class="skill-dot filled"></span>
                         <span class="skill-dot filled"></span>
@@ -2023,6 +2078,7 @@
     const translations = {
         es: {
             language_toggle: "EN",
+            
             tabs: {
                 stats: "ESTADÍSTICAS",
                 projects: "PROYECTOS",
@@ -2031,6 +2087,7 @@
                 achievements: "CERTIFICACIONES",
                 contact: "CONECTA"
             },
+            
             section_title_stats: "PERFIL_USUARIO.exe",
             hero_status: "DISPONIBLE_PARA_PROYECTOS",
             hero_name: "MARCELO_HERRERA",
@@ -2043,8 +2100,19 @@
                 tech: "JUEGOS • DEMOS",
                 innovation: "INNOVACIÓN • GANAS DE APRENDER"
             },
+            profile_photo_label: "FOTO_DE_PERFIL.jpg",
+            
             section_title_projects: "COLECCIÓN_DE_PROYECTOS.zip",
             rarity_legend: "★ COMÚN | ★★ RARO | ★★★ ÉPICO | ★★★★ LEGENDARIO",
+            project_detail_labels: {
+                description: "DESCRIPCIÓN",
+                challenges: "DEAFÍOS_TÉCNICOS",
+                tools: "HERRAMIENTAS_DE_DESARROLLO",
+                dev_info: "INFORMACIÓN_DEL_DESARROLLO",
+                dev_time: "TIEMPO_DE_DESARROLLO",
+                status: "ESTADO"
+            },
+            
             section_title_gallery: "GALERIA_CREATIVA.collection",
             gallery_filters: {
                 all: "TODOS_LOS_PROYECTOS",
@@ -2052,6 +2120,29 @@
                 virtual: "VIRTUAL_PROD",
                 interactive: "INSTALACIONES"
             },
+            gallery_modal_labels: {
+                description: "DESCRIPCIÓN",
+                tools: "HERRAMIENTAS_DE_DESARROLLO",
+                process: "PROCESO_DE_DESARROLLO",
+            },
+            gallery_items: {
+                boombastic: {
+                    title: "Boombastic - Instalación Interactiva",
+                    category: "Instalación Interactiva",
+                    description: "Instalación interactiva de mezclas de canciones de los 90s, usando Kinect y mapeo de proyección."
+                },
+                beep: {
+                    title: "Animación de Beep",
+                    category: "Escultura 3D y Animación",
+                    description: "Esculpido y texturizado en ZBrush del personaje \"Beep\" del videojuego Kenshi. Luego animado en Blender usando animaciones de Mixamo."
+                },
+                leblanc_diorama: {
+                    title: "Diorama de la Cafetería Leblanc",
+                    category: "Modelado 3D",
+                    description: "Diorama de la cafetería Leblanc del videojuego Persona 5 Royal. Modelado en 3D y texturizado usando materiales del sitio web Blender Kit."
+                }
+            },
+            
             section_title_skills: "ÁRBOL_DE_HABILIDADES.dat",
             skill_categories: {
                 programming: "RAMA_PROGRAMACIÓN",
@@ -2059,8 +2150,10 @@
                 creative: "HERRAMIENTAS_CREATIVAS",
                 languages: "IDIOMAS"
             },
+            
             section_title_achievements: "LOGROS_DESBLOQUEADOS.log",
             achievements_subtitle: "TOTAL DESBLOQUEADO: 1/∞ | ÍNDICE DE FINALIZACIÓN: 100%",
+            
             section_title_contact: "ESTABLECER_CONEXIÓN.exe",
             contact_status: "ESTADO: ACEPTANDO_COLABORACIONES",
             contact_description: "Listo para colaborar en proyectos de videojuegos innovadores. Creemos juntos algo extraordinario.",
@@ -2073,23 +2166,10 @@
                 artstation: "🎨 GALERÍA_ARTSTATION",
                 cv: "📄 DESCARGAR_CV.pdf"
             },
-            profile_photo_label: "FOTO_DE_PERFIL.jpg",
-            project_detail_labels: {
-                description: "DESCRIPCIÓN",
-                challenges: "DEAFÍOS_TÉCNICOS",
-                tools: "HERRAMIENTAS_DE_DESARROLLO",
-                dev_info: "INFORMACIÓN_DEL_DESARROLLO",
-                dev_time: "TIEMPO_DE_DESARROLLO",
-                status: "ESTADO"
-            },
-            gallery_modal_labels: {
-                description: "DESCRIPCIÓN",
-                tools: "HERRAMIENTAS_DE_DESARROLLO",
-                process: "PROCESO_DE_DESARROLLO",
-            }
         },
         en: {
             language_toggle: "ES",
+            
             tabs: {
                 stats: "STATS",
                 projects: "PROJECTS",
@@ -2098,6 +2178,7 @@
                 achievements: "CERTS",
                 contact: "CONECT"
             },
+            
             section_title_stats: "PLAYER_PROFILE.exe",
             hero_status: "AVAILABLE_FOR_PROJECTS",
             hero_name: "MARCELO_HERRERA",
@@ -2110,8 +2191,19 @@
                 tech: "GAMES • DEMOS",
                 innovation: "INNOVATION • DESIRE TO LEARN"
             },
+            profile_photo_label: "PROFILE_PHOTO.jpg",
+            
             section_title_projects: "PROJECT_COLLECTION.zip",
             rarity_legend: "★ COMMON | ★★ RARE | ★★★ EPIC | ★★★★ LEGENDARY ",
+            project_detail_labels: {
+                description: "DESCRIPTION",
+                challenges: "TECHNICAL_CHALLENGES",
+                tools: "DEV_TOOLS",
+                dev_info: "DEV_INFO",
+                dev_time: "DEV_TIME",
+                status: "STATUS"
+            },
+            
             section_title_gallery: "CREATIVE_GALLERY.colección",
             gallery_filters: {
                 all: "ALL_PROJECTS",
@@ -2119,6 +2211,29 @@
                 virtual: "VIRTUAL_PROD",
                 interactive: "INSTALATIONS"
             },
+            gallery_modal_labels: {
+                description: "DESCRIPTION",
+                tools: "DEV_TOOLS",
+                process: "DEV_PROCESS"
+            },
+            gallery_items: {
+                boombastic: {
+                    title: "Boombastic - Interactive Installation",
+                    category: "Interactive Installation",
+                    description: "Interactive installation of mixes of songs from the 90s, using Kinect and project mapping."
+                },
+                beep: {
+                    title: "Beep Animation",
+                    category: "3D Sculpting and Animation",
+                    description: "Sculpted and textured in ZBrush of the character \"Beep\" from the video game Kenshi. Then animated in Blender using Mixamo animations."
+                },
+                leblanc_diorama: {
+                    title: "Leblanc cafe Diorama",
+                    category: "3D Modeling",
+                    description: "Diorama of the Leblanc cafe from the Persona 5 Royal video game. 3D modeled and textured using materials from the Blender Kit website."
+                }
+            },
+            
             section_title_skills: "SKILLS_TREE.dat",
             skill_categories: {
                 programming: "PROGRAMMING_BRANCH",
@@ -2126,8 +2241,10 @@
                 creative: "CREATIVE_TOOLS",
                 languages: "LANGUAGES"
             },
+            
             section_title_achievements: "UNLOCKED_ACHIEVEMENTS.log",
             achievements_subtitle: "TOTAL UNLOCKED: 1/∞ | COMPLETION RATE: 100%",
+            
             section_title_contact: "ESTABLISH_CONECTION.exe",
             contact_status: "STATUS: ACCEPTING_COLABORATIONS",
             contact_description: "Ready to collaborate on innovative game projects. Let's create something extraordinary together.",
@@ -2140,20 +2257,6 @@
                 artstation: "🎨 ARTSTATION_GALLERY",
                 cv: "📄 DOWNLOAD_CV.pdf"
             },
-            profile_photo_label: "PROFILE_PHOTO.jpg",
-            project_detail_labels: {
-                description: "DESCRIPTION",
-                challenges: "TECHNICAL_CHALLENGES",
-                tools: "DEV_TOOLS",
-                dev_info: "DEV_INFO",
-                dev_time: "DEV_TIME",
-                status: "STATUS"
-            },
-            gallery_modal_labels: {
-                description: "DESCRIPTION",
-                tools: "DEV_TOOLS",
-                process: "DEV_PROCESS"
-            }
         }
     };
 
@@ -2171,6 +2274,15 @@
                 element.textContent = translation;
             }
         });
+
+        updateGalleryItems();
+
+        const modal = document.getElementById('galleryModal');
+        if (modal.classList.contains('active') && currentGalleryIndex !== null) {
+            const currentItemId = galleryItems[currentGalleryIndex];
+            const currentItem = galleryData[currentItemId];
+            populateGalleryModal(currentItemId, currentItem);
+        }
     }
 
     function getNestedTranslation(obj, path) {
@@ -2354,6 +2466,17 @@
     }
 
     // Gallery modal system
+    function updateGalleryItems() {
+        const elements = document.querySelectorAll('[data-i18n^="gallery_items"]');
+        elements.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            const translation = getNestedTranslation(translations[currentLanguage], key);
+            if (translation) {
+                element.textContent = translation;
+            }
+        });
+    }
+    
     function openGalleryModal(itemId) {
         const item = galleryData[itemId];
         if (!item) return;
