@@ -1,1489 +1,983 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marcelo Herrera | Gameplay Programmer & Game Designer Portfolio</title>
+    <title>Marcelo Herrera - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-green: #00ff41;
-            --secondary-green: #008f11;
-            --dark-bg: #0a0a0a;
-            --darker-bg: #050505;
-            --panel-bg: #111111;
-            --border-green: #00ff41;
-            --text-primary: #00ff41;
-            --text-secondary: #ffffff;
-            --text-muted: #888888;
-            --red-accent: #ff3030;
-            --blue-accent: #3030ff;
-            --gold-accent: #ffd700;
-        }
-
+        /* CSS Reset & Base */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #4A90E2;
+            --secondary: #6C5CE7;
+            --accent: #74B9FF;
+            --background: #F8F9FA;
+            --card-bg: #FFFFFF;
+            --text-primary: #2C3E50;
+            --text-secondary: #7F8C8D;
+            --hover: #A29BFE;
+            --success: #00D9A3;
+            --shadow: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-lg: 0 4px 16px rgba(0,0,0,0.12);
+            --radius: 12px;
+            --transition: 300ms ease;
+        }
+
         body {
-            font-family: 'Courier New', monospace;
-            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
-            color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
             overflow-x: hidden;
-            min-height: 100vh;
-            position: relative;
-        }
-
-        /* Animated background grid */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                    linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
         }
 
         /* Header */
-        .header {
+        header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(17, 17, 17, 0.95);
-            border-bottom: 2px solid var(--border-green);
+            height: 70px;
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
             z-index: 1000;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--primary-green);
-            text-shadow: 0 0 10px var(--primary-green);
-        }
-
-        .nav-tabs {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .nav-tab {
-            padding: 0.5rem 1rem;
-            background: transparent;
-            border: 1px solid var(--border-green);
-            color: var(--primary-green);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: inherit;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-        }
-
-        .nav-tab:hover,
-        .nav-tab.active {
-            background: var(--primary-green);
-            color: var(--dark-bg);
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
-        }
-
-        .language-toggle {
-            padding: 0.5rem 1rem;
-            background: transparent;
-            border: 1px solid var(--gold-accent);
-            color: var(--gold-accent);
-            cursor: pointer;
-            font-family: inherit;
-            transition: all 0.3s ease;
-            font-weight: bold;
-        }
-
-        .language-toggle:hover {
-            background: var(--gold-accent);
-            color: var(--dark-bg);
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-        }
-
-        /* Main Content */
-        .main-content {
-            margin-top: 80px;
-            padding: 2rem;
-        }
-
-        .section {
-            display: none;
-            min-height: calc(100vh - 120px);
-            animation: fadeIn 0.5s ease-in;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .section-title {
-            font-size: 2rem;
-            color: var(--primary-green);
-            text-align: center;
-            margin-bottom: 2rem;
-            text-shadow: 0 0 10px var(--primary-green);
-            border: 2px solid var(--border-green);
-            padding: 1rem;
-            background: rgba(17, 17, 17, 0.8);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* Stats Section */
-        .hero-container {
-            display: grid;
-            grid-template-columns: 300px 1fr 400px;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .profile-photo-section {
-            background: var(--panel-bg);
-            border: 2px solid var(--border-green);
-            border-radius: 10px;
-            padding: 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .profile-photo-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.1), transparent);
-            animation: scan 3s infinite;
-        }
-
-        .profile-image {
-            width: 200px;
-            height: 267px;
-            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-            border: 2px solid var(--primary-green);
-            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary-green);
-            font-size: 3rem;
-            margin-bottom: 1rem;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color var(--transition);
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .lang-toggle {
+            padding: 8px 16px;
+            border: 2px solid var(--primary);
+            border-radius: var(--radius);
+            background: transparent;
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            font-size: 14px;
+            min-width: 56px;
+            text-align: center;
+        }
+
+        .lang-toggle:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        /* Hero Section - New Design */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--background) 0%, #E8EAF6 100%);
+            padding: 100px 24px 60px;
             position: relative;
             overflow: hidden;
         }
 
-        .profile-image img {
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            min-height: calc(100vh - 160px);
+        }
+
+        /* Hero Carousel Container */
+        .hero-carousel-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+        }
+
+        /* Hero Carousel */
+        .hero-carousel {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            height: 500px;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 12px 48px rgba(0,0,0,0.15);
+            background: #f0f0f0;
+        }
+
+        .hero-carousel-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hero-carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .hero-carousel-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 8px;
         }
 
-        .profile-image::after {
-            content: '3:4';
+        /* Hero Carousel Buttons - Centered */
+        .hero-carousel-btn {
             position: absolute;
-            bottom: 5px;
-            right: 5px;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            background: rgba(0, 0, 0, 0.8);
-            padding: 2px 6px;
-            border-radius: 3px;
-        }
-
-        .photo-label {
-            color: var(--primary-green);
-            font-size: 0.9rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(254, 84, 111, 0.95);
+            border: none;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 36px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition);
+            z-index: 100;
+            opacity: 1;
+            box-shadow: 0 4px 16px rgba(254, 84, 111, 0.4);
+            color: white;
+            line-height: 56px;
+            padding: 0;
             text-align: center;
-            text-shadow: 0 0 5px var(--primary-green);
         }
 
-        .main-info {
-            background: var(--panel-bg);
-            border: 2px solid var(--border-green);
-            border-radius: 10px;
-            padding: 1.5rem;
-            position: relative;
-            overflow: hidden;
+        .hero-carousel-btn:hover {
+            background: rgb(254, 84, 111);
+            transform: translateY(-50%) scale(1.15);
+            box-shadow: 0 6px 20px rgba(254, 84, 111, 0.6);
         }
 
-        .main-info::before {
-            content: '';
+        .hero-carousel-btn.prev { left: 32px; }
+        .hero-carousel-btn.next { right: 32px; }
+
+        .hero-carousel-dots {
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.1), transparent);
-            animation: scan 3s infinite;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 20;
         }
 
-        @keyframes scan {
-            0% { left: -100%; }
-            100% { left: 100%; }
+        .hero-carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            transition: all var(--transition);
+            border: 2px solid rgba(255, 255, 255, 0.8);
         }
 
-        .status-indicator {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            background: var(--secondary-green);
+        .hero-carousel-dot.active {
+            background: white;
+            width: 36px;
+            border-radius: 6px;
+        }
+
+        /* Hero Project Info */
+        .hero-project-info {
+            text-align: center;
+            max-width: 700px;
+        }
+
+        .hero-project-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .hero-project-tech {
+            font-size: 16px;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .hero-project-description {
+            font-size: 18px;
+            line-height: 1.7;
             color: var(--text-secondary);
-            border-radius: 15px;
-            font-size: 0.8rem;
-            margin-bottom: 1rem;
+            margin-bottom: 32px;
+        }
+
+        .hero-project-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Status Badge */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: white;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            margin-bottom: 24px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
             0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+            50% { opacity: 0.5; }
         }
 
-        .main-info h1 {
-            color: var(--primary-green);
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 10px var(--primary-green);
+        .btn {
+            padding: 14px 32px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all var(--transition);
+            text-decoration: none;
+            display: inline-block;
+            border: none;
         }
 
-        .class-info {
-            color: var(--gold-accent);
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
+        .btn-primary {
+            background: var(--primary);
+            color: white;
         }
 
-        .bio-text {
-            color: var(--text-muted);
-            line-height: 1.6;
-            font-size: 0.9rem;
-        }
-
-        .stats-panel {
-            background: var(--panel-bg);
-            border: 2px solid var(--border-green);
-            border-radius: 10px;
-            padding: 1.5rem;
-        }
-
-        .stats-title {
-            color: var(--primary-green);
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            text-align: center;
-            text-shadow: 0 0 10px var(--primary-green);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.8rem;
-        }
-
-        .stat-item {
-            background: rgba(0, 255, 65, 0.1);
-            border: 1px solid var(--border-green);
-            border-radius: 5px;
-            padding: 0.8rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .stat-item:hover {
-            background: rgba(0, 255, 65, 0.2);
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+        .btn-primary:hover {
+            background: var(--secondary);
             transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
         }
 
-        .stat-value {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-green);
-            display: block;
-            margin-bottom: 0.3rem;
-            text-shadow: 0 0 10px var(--primary-green);
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
         }
 
-        .stat-label {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
         }
 
-        /* Projects Section */
-        .rarity-legend {
+        /* Section Styles */
+        section {
+            padding: 80px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section.alt-bg {
+            background: white;
+            margin: 0;
+            max-width: 100%;
+            padding: 80px 24px;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 700;
             text-align: center;
-            margin-bottom: 2rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            margin-bottom: 16px;
+            color: var(--text-primary);
         }
 
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+        }
+
+        /* Projects Grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem 1.5rem;
-            padding: 0 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
         }
 
         .project-card {
-            background: var(--panel-bg);
-            border: 2px solid;
-            border-radius: 10px;
-            overflow: visible;
-            transition: all 0.3s ease;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: all var(--transition);
             cursor: pointer;
-            position: relative;
-            margin: 2rem 2rem;
-            padding-bottom: 2rem;
         }
-
-        .project-card.rarity-4 { border-color: var(--gold-accent); }
-        .project-card.rarity-3 { border-color: #9f40ff; }
-        .project-card.rarity-2 { border-color: var(--blue-accent); }
-        .project-card.rarity-1 { border-color: var(--text-muted); }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 255, 65, 0.3);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
         }
 
-        .project-card.selected {
-            border-color: var(--gold-accent);
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
-        }
-
-        .project-header {
-            padding: 1rem;
-            border-bottom: 1px solid var(--border-green);
-            overflow: hidden;
-            border-radius: 10px 10px 0 0;
-        }
-
-        .project-title {
-            color: var(--primary-green);
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-rarity {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-type {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-        }
-
-        .project-image-container {
-            aspect-ratio: 1.3 / 1;
+        .project-carousel {
             position: relative;
-            overflow: hidden;
-            border-radius: 0 0 10px 10px;
-        }
-
-        .carousel-container {
             width: 100%;
-            height: 100%;
-            position: relative;
+            height: 250px;
             overflow: hidden;
+            background: #f0f0f0;
         }
 
         .carousel-track {
             display: flex;
+            transition: transform var(--transition);
             height: 100%;
-            transition: transform 0.5s ease;
         }
 
-        .carousel-slide {
+        .carousel-image {
             min-width: 100%;
             height: 100%;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 2rem;
+            object-fit: cover;
         }
 
-        .carousel-nav {
+        .carousel-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.7);
-            border: 1px solid var(--primary-green);
-            color: var(--primary-green);
-            width: 30px;
-            height: 30px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            border-radius: 3px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-
-        .carousel-nav:hover {
-            background: var(--primary-green);
-            color: var(--dark-bg);
-        }
-
-        .carousel-nav.prev {
-            left: -35px;
-        }
-
-        .carousel-nav.next {
-            right: -35px;
-        }
-
-        .carousel-counter {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background: rgba(0, 0, 0, 0.8);
-            color: var(--primary-green);
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-size: 10px;
-            z-index: 10;
-        }
-
-        .carousel-controls {
-            position: absolute;
-            bottom: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 5px;
-        }
-
-        .carousel-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .carousel-dot.active {
-            background: var(--primary-green);
-            box-shadow: 0 0 10px var(--primary-green);
-        }
-
-        /* Project Detail Panel */
-        .detail-body {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .detail-carousel-section {
-            background: rgba(0, 255, 65, 0.05);
-            border: 1px solid var(--border-green);
-            border-radius: 10px;
-            padding: 1rem;
-            position: relative;
-        }
-
-        .detail-carousel-container {
-            position: relative;
-            width: 100%;
-            height: 500px;
-            overflow: hidden;
-            border-radius: 8px;
-            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
-        }
-
-        .detail-carousel-container .carousel-slide {
-            min-width: 100%;
-            height: 100%;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .detail-carousel-container .carousel-slide:empty {
-            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
-        }
-
-        .carousel-track {
-            display: flex;
-            height: 100%;
-            transition: transform 0.5s ease;
-        }
-
-        .carousel-slide {
-            min-width: 100%;
-            height: 100%;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .carousel-slide:empty {
-            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
-        }
-
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 255, 65, 0.8);
-            color: var(--dark-bg);
+            background: rgba(254, 84, 111, 0.95);
             border: none;
-            font-size: 1.5rem;
-            padding: 0.5rem 0.8rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
             cursor: pointer;
-            border-radius: 3px;
-            transition: all 0.3s ease;
-            user-select: none;
-        }
-
-        .carousel-nav:hover {
-            background: var(--primary-green);
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .carousel-nav.prev {
-            left: 10px;
-        }
-
-        .carousel-nav.next {
-            right: 10px;
-        }
-
-        .carousel-counter {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.8);
-            color: var(--primary-green);
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
+            font-size: 24px;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition);
+            z-index: 50;
+            color: white;
+            box-shadow: 0 4px 12px rgba(254, 84, 111, 0.4);
+            line-height: 1;
         }
 
-        .carousel-controls {
+        .carousel-btn:hover {
+            background: rgb(254, 84, 111);
+            transform: translateY(-50%) scale(1.15);
+            box-shadow: 0 6px 16px rgba(254, 84, 111, 0.6);
+        }
+
+        .carousel-btn.prev { left: -60px; }
+        .carousel-btn.next { right: -60px; }
+
+        .carousel-dots {
             position: absolute;
-            bottom: 10px;
+            bottom: 12px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             gap: 8px;
         }
 
-        .carousel-dot-detail {
-            width: 10px;
-            height: 10px;
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.6);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all var(--transition);
         }
 
-        .carousel-dot-detail.active {
-            background: var(--primary-green);
-            box-shadow: 0 0 10px var(--primary-green);
+        .carousel-dot.active {
+            background: white;
+            width: 24px;
+            border-radius: 4px;
         }
 
-        .detail-info-section {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-        .project-detail-panel {
-            display: none;
-            background: var(--panel-bg);
-            border: 2px solid var(--border-green);
-            border-radius: 15px;
-            margin-top: 2rem;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-            animation: slideDown 0.5s ease-out;
+        .project-content {
+            padding: 24px;
         }
 
-        .project-detail-panel.active {
-            display: block;
+        .project-header {
+            margin-bottom: 12px;
         }
 
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-                max-height: 0;
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-                max-height: 800px;
-            }
+        .project-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
         }
-
-        .project-detail-panel::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.1), transparent);
-            animation: scan 4s infinite;
-        }
-
-        .detail-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--border-green);
-        }
-
-        .detail-project-title {
-            color: var(--primary-green);
-            font-size: 2rem;
-            text-shadow: 0 0 15px var(--primary-green);
-            margin: 0;
-        }
-
-        .close-detail {
-            background: transparent;
-            border: 2px solid var(--red-accent);
-            color: var(--red-accent);
-            font-size: 1.2rem;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: inherit;
-        }
-
-        .close-detail:hover {
-            background: var(--red-accent);
-            color: var(--dark-bg);
-            box-shadow: 0 0 15px var(--red-accent);
-        }
-
-        .detail-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .detail-section {
-            background: rgba(0, 255, 65, 0.05);
-            border: 1px solid var(--border-green);
-            border-radius: 10px;
-            padding: 1.5rem;
-        }
-
-        .detail-section h4 {
-            color: var(--primary-green);
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .detail-description {
+        
+        .project-tech {
+            font-size: 13px;
             color: var(--text-secondary);
-            line-height: 1.8;
-            font-size: 1rem;
+            margin-bottom: 12px;
         }
 
-        .detail-challenges {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .detail-challenges li {
+        .project-description {
+            font-size: 15px;
             color: var(--text-secondary);
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(0, 255, 65, 0.1);
-            position: relative;
-            padding-left: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
         }
 
-        .detail-challenges li:before {
-            content: '⚡';
-            position: absolute;
-            left: 0;
-            color: var(--gold-accent);
-        }
-
-        .detail-challenges li:last-child {
-            border-bottom: none;
-        }
-
-        .detail-tools {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tool-tag {
-            background: var(--secondary-green);
-            color: var(--text-secondary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            border: 1px solid var(--primary-green);
-        }
-
-        .detail-dev-info {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .dev-info-item {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 1rem;
-            border-radius: 8px;
-            border-left: 3px solid var(--gold-accent);
-        }
-
-        .dev-info-label {
-            color: var(--gold-accent);
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-        }
-
-        .dev-info-value {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        /* Gallery Section */
-        .gallery-filters {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 0.5rem 1rem;
-            background: transparent;
-            border: 1px solid var(--border-green);
-            color: var(--primary-green);
-            cursor: pointer;
-            font-family: inherit;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--primary-green);
-            color: var(--dark-bg);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .gallery-item {
-            background: var(--panel-bg);
-            border: 2px solid var(--border-green);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 255, 65, 0.2);
-        }
-
-        /* Gallery Modal System */
-        .gallery-modal {
+        /* Modal */
+        .modal {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
             z-index: 2000;
-            backdrop-filter: blur(10px);
-        }
-
-        .gallery-modal.active {
-            display: flex;
             align-items: center;
             justify-content: center;
-            animation: modalFadeIn 0.3s ease-out;
+            padding: 24px;
+            animation: fadeIn 0.3s ease;
         }
 
-        @keyframes modalFadeIn {
-            from {
-                opacity: 0;
-                backdrop-filter: blur(0px);
-            }
-            to {
-                opacity: 1;
-                backdrop-filter: blur(10px);
-            }
+        .modal.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .modal-content {
-            background: var(--panel-bg);
-            border: 3px solid var(--border-green);
-            border-radius: 15px;
-            max-width: 90vw;
+            background: white;
+            border-radius: var(--radius);
+            max-width: 900px;
+            width: 100%;
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
-            animation: modalSlideIn 0.4s ease-out;
+            animation: slideUp 0.3s ease;
         }
 
-        @keyframes modalSlideIn {
-            from {
-                transform: translateY(-50px) scale(0.9);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0) scale(1);
-                opacity: 1;
-            }
-        }
-
-        .modal-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.1), transparent);
-            animation: scan 3s infinite;
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem;
-            border-bottom: 2px solid var(--border-green);
-        }
-
-        .modal-title {
-            color: var(--primary-green);
-            font-size: 1.5rem;
-            margin: 0;
-            text-shadow: 0 0 10px var(--primary-green);
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .modal-close {
-            background: transparent;
-            border: 2px solid var(--red-accent);
-            color: var(--red-accent);
-            font-size: 1.5rem;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: inherit;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            z-index: 10;
+            transition: all var(--transition);
         }
 
         .modal-close:hover {
-            background: var(--red-accent);
-            color: var(--dark-bg);
-            box-shadow: 0 0 15px var(--red-accent);
+            transform: rotate(90deg);
+            background: var(--primary);
+            color: white;
         }
 
         .modal-body {
-            padding: 2rem;
+            padding: 48px;
         }
 
-        .modal-preview {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
-            border: 2px solid var(--primary-green);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: var(--primary-green);
-            margin-bottom: 2rem;
-            overflow: hidden;
-        }
-
-        .modal-preview img,
-        .modal-preview video {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .modal-info-grid {
+        /* Gallery Grid */
+        .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 24px;
         }
 
-        .modal-info-section {
-            background: rgba(0, 255, 65, 0.05);
-            border: 1px solid var(--border-green);
-            border-radius: 10px;
-            padding: 1.5rem;
-        }
-
-        .modal-info-section h4 {
-            color: var(--primary-green);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .modal-description {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 1rem;
-            white-space: pre-line;
-        }
-
-        .modal-tools {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .modal-tool-tag {
-            background: var(--secondary-green);
-            color: var(--text-secondary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            border: 1px solid var(--primary-green);
-        }
-
-        .modal-process {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 1rem;
-            border-radius: 8px;
-            border-left: 3px solid var(--gold-accent);
-        }
-
-        .modal-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 255, 65, 0.8);
-            border: none;
-            color: var(--dark-bg);
-            font-size: 2rem;
-            padding: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .modal-nav:hover {
-            background: var(--primary-green);
-            box-shadow: 0 0 20px var(--primary-green);
-        }
-
-        .modal-nav.prev {
-            left: 20px;
-            border-radius: 0 10px 10px 0;
-        }
-
-        .modal-nav.next {
-            right: 20px;
-            border-radius: 10px 0 0 10px;
-        }
-
-        .gallery-preview {
-            aspect-ratio: 1.3 / 1;            
-            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 2rem;
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius);
             overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+            box-shadow: var(--shadow);
         }
 
-        .gallery-preview img,
-        .gallery-preview video {
+        .gallery-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform var(--transition);
         }
 
-        .gallery-info {
-            padding: 1rem;
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.1);
         }
 
-        .gallery-title {
-            color: var(--primary-green);
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(74, 144, 226, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--transition);
+            padding: 24px;
+            text-align: center;
         }
 
-        .gallery-category {
-            color: var(--gold-accent);
-            font-size: 0.8rem;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
         }
 
-        .gallery-description {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            line-height: 1.4;
+        .gallery-overlay h3 {
+            color: white;
+            font-size: 22px;
+            margin-bottom: 8px;
         }
 
-        /* Modal Gallery */
-        .modal-body {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            padding: 2rem;
+        .gallery-overlay p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
         }
 
-        .modal-preview-container {
-            background: rgba(0, 255, 65, 0.05);
-            border: 1px solid var(--border-green);
-            border-radius: 10px;
-            padding: 1rem;
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
             position: relative;
         }
 
-        .modal-preview {
-            width: 100%;
-            height: 500px;
-            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
-            border-radius: 8px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: var(--radius);
         }
 
-        .modal-info-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 36px;
+            cursor: pointer;
         }
 
-        .modal-info-section {
-            background: rgba(0, 255, 65, 0.05);
-            border: 1px solid var(--border-green);
-            border-radius: 10px;
-            padding: 1.5rem;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .modal-body {
-                grid-template-columns: 1fr;
-                padding: 1rem;
-            }
-
-            .modal-preview {
-                height: 250px;
-            }
-        }
-
-        /* Skills Section */
+        /* Skills Grid */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
         }
 
         .skill-category {
-            background: var(--panel-bg);
-            border: 2px solid var(--border-green);
-            border-radius: 10px;
-            padding: 1.5rem;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
         }
 
-        .skill-category-title {
-            color: var(--primary-green);
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            text-align: center;
-            text-transform: uppercase;
+        .skill-category h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--primary);
         }
 
-        .skill-item {
+        .skill-list {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding: 0.5rem;
-            background: rgba(0, 255, 65, 0.05);
-            border-radius: 5px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .skill-name {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+        .skill-badge {
+            padding: 8px 16px;
+            background: var(--accent);
+            color: white;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
         }
 
-        .skill-level {
-            display: flex;
-            gap: 2px;
-        }
-
-        .skill-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--text-muted);
-        }
-
-        .skill-dot.filled {
-            background: var(--primary-green);
-            box-shadow: 0 0 5px var(--primary-green);
-        }
-
-        /* Achievements Section */
-        .achievements-subtitle {
-            text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-
-        .achievements-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
+        /* Achievements */
         .achievement-card {
-            background: var(--panel-bg);
-            border: 2px solid var(--gold-accent);
-            border-radius: 10px;
-            padding: 1.5rem;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
             text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .achievement-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
-            animation: goldScan 4s infinite;
-        }
-
-        @keyframes goldScan {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        .achievement-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+            max-width: 500px;
+            margin: 0 auto;
         }
 
         .achievement-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 64px;
+            margin-bottom: 24px;
         }
 
-        .achievement-title {
-            color: var(--gold-accent);
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .achievement-description {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.4;
+        .achievement-card h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: var(--primary);
         }
 
         /* Contact Section */
-        .contact-container {
-            max-width: 600px;
+        .contact-section {
+            background: linear-gradient(135deg, var(--background) 0%, #E8EAF6 100%);
+            padding: 80px 24px;
+        }
+
+        .contact-content {
+            max-width: 800px;
             margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-status {
-            display: inline-block;
-            padding: 0.5rem 1.5rem;
-            background: var(--secondary-green);
-            color: var(--text-secondary);
-            border-radius: 25px;
-            margin-bottom: 2rem;
-            font-weight: bold;
-        }
-
-        .contact-description {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .contact-info {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .contact-info-item {
-            background: rgba(0, 255, 65, 0.1);
-            border: 1px solid var(--border-green);
-            border-radius: 10px;
-            padding: 1rem;
-            color: var(--text-secondary);
         }
 
         .contact-links {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+            gap: 16px;
+            margin-bottom: 48px;
         }
 
         .contact-link {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: var(--radius);
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-primary);
+            box-shadow: var(--shadow);
+            transition: all var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1rem;
-            background: transparent;
-            border: 2px solid var(--border-green);
-            color: var(--primary-green);
-            text-decoration: none;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            font-family: inherit;
+            gap: 12px;
         }
 
         .contact-link:hover {
-            background: var(--primary-green);
-            color: var(--dark-bg);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 255, 65, 0.3);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            background: var(--primary);
+            color: white;
         }
 
-        /* Responsive Design */
+        .contact-form {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #E0E0E0;
+            border-radius: var(--radius);
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            transition: border-color var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-primary);
+            color: white;
+            text-align: center;
+            padding: 32px 24px;
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: var(--shadow-lg);
+            transition: all var(--transition);
+            z-index: 999;
+        }
+
+        .scroll-top.visible {
+            display: flex;
+        }
+
+        .scroll-top:hover {
+            background: var(--secondary);
+            transform: translateY(-4px);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-carousel-btn.prev { left: 8px; }
+            .hero-carousel-btn.next { right: 8px; }
+            .carousel-btn.prev { left: 8px; }
+            .carousel-btn.next { right: 8px; }
+        }
+
         @media (max-width: 768px) {
-            .header {
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
                 flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
+                padding: 24px;
+                box-shadow: var(--shadow);
+                display: none;
+                gap: 16px;
             }
 
-            .nav-tabs {
-                flex-wrap: wrap;
-                justify-content: center;
+            nav.active {
+                display: flex;
             }
 
-            .main-content {
-                margin-top: 140px;
-                padding: 1rem;
+            .mobile-menu-btn {
+                display: block;
             }
 
-            .hero-container {
-                grid-template-columns: 1fr;
+            .hero h1 {
+                font-size: 36px;
             }
 
-            .profile-image {
-                width: 150px;
-                height: 200px;
-            }
-
-            .projects-grid {
-                padding: 0;
-                gap: 1.5rem;
-            }
-
-            .project-card {
-                margin: 0;
-            }
-
-            .carousel-nav.prev {
-                left: 5px;
-            }
-
-            .carousel-nav.next {
-                right: 5px;
-            }
-
-            .modal-content {
-                margin: 1rem;
-                max-height: 95vh;
-            }
-
-            .modal-body {
-                padding: 1rem;
-            }
-
-            .modal-info-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .detail-body {
-                grid-template-columns: 1fr;
-            }
-
-            .detail-carousel-container {
-                height: 250px;
-            }
-
-            .detail-dev-info {
-                grid-template-columns: 1fr;
-            }
-
-            .modal-nav {
-                font-size: 1.5rem;
-                padding: 0.5rem;
-            }
-
-            .modal-nav.prev {
-                left: 10px;
-            }
-
-            .modal-nav.next {
-                right: 10px;
+            .hero h2 {
+                font-size: 20px;
             }
 
             .section-title {
-                font-size: 1.5rem;
+                font-size: 32px;
             }
 
-            .stats-grid {
-                grid-template-columns: 1fr;
+            .hero-buttons {
+                flex-direction: column;
             }
 
+            .modal-body {
+                padding: 24px;
+            }
+
+            .projects-grid,
             .gallery-grid,
-            .skills-grid,
-            .achievements-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-info {
+            .skills-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
-
 <body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo" data-i18n="logo">Marcelo Herrera</a>
+            <nav id="mainNav">
+                <a href="#about" data-i18n="nav_about">About</a>
+                <a href="#projects" data-i18n="nav_projects">Projects</a>
+                <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
+                <a href="#skills" data-i18n="nav_skills">Skills</a>
+                <a href="#contact" data-i18n="nav_contact">Contact</a>
+            </nav>
+            <button class="lang-toggle" id="langToggle">ES</button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </header>
 
-<header class="header">
-    <div class="logo">MARCHEL.dev</div>
-
-    <nav class="nav-tabs">
-        <button class="nav-tab active" data-section="stats" data-i18n="tabs.stats">STATS</button>
-        <button class="nav-tab" data-section="projects" data-i18n="tabs.projects">PROJECTS</button>
-        <button class="nav-tab" data-section="gallery" data-i18n="tabs.gallery">GALLERY</button>
-        <button class="nav-tab" data-section="skills" data-i18n="tabs.skills">SKILLS</button>
-        <button class="nav-tab" data-section="achievements" data-i18n="tabs.achievements">CERTS</button>
-        <button class="nav-tab" data-section="contact" data-i18n="tabs.contact">CONNECT</button>
-    </nav>
-
-    <button class="language-toggle" onclick="toggleLanguage()" data-i18n="language_toggle">ES</button>
-</header>
-
-<main class="main-content">
-    <!-- Stats Section -->
-    <section id="stats" class="section active">
-        <h2 class="section-title" data-i18n="section_title_stats">PLAYER_PROFILE.exe</h2>
-
+    <!-- Hero Section - New Design -->
+    <section class="hero" id="hero">
         <div class="hero-container">
-            <div class="profile-photo-section">
-                <div class="profile-image">
-                    <img src="assets/profile-photo.jpg" alt="Marcelo Herrera">
+            <!-- Sticky Profile Photo -->
+
+
+            <!-- Carousel and Project Info -->
+            <div class="hero-carousel-container">
+                <!-- Hero Carousel -->
+                <div class="hero-carousel">
+                    <div class="hero-carousel-track" id="heroCarouselTrack"></div>
+                    <button class="hero-carousel-btn prev" id="heroCarouselPrev">‹</button>
+                    <button class="hero-carousel-btn next" id="heroCarouselNext">›</button>
+                    <div class="hero-carousel-dots" id="heroCarouselDots"></div>
                 </div>
-                <div class="photo-label" data-i18n="profile_photo_label">PROFILE_PHOTO.jpg</div>
-            </div>
 
-            <div class="main-info">
-                <div class="status-indicator" data-i18n="hero_status">ONLINE_FOR_PROJECTS</div>
-                <h1 data-i18n="hero_name">MARCELO_HERRERA</h1>
-                <div class="class-info" data-i18n="hero_class">GAMEPLAY_PROGRAMMER • GAME_DESIGNER</div>
-                <p class="bio-text" data-i18n="hero_bio">I am a Gameplay Programmer and Game Designer specializing in Unity, currently in my third year studying Digital Game Design at Universidad Andrés Bello. My passion lies in experimenting with emerging technologies and developing prototypes for innovative platforms such as Virtual Reality. I am particularly fascinated by procedural generation and animation, as well as developing custom Unity tools through code, constantly seeking to push the boundaries of interactivity and gameplay.</p>
+                <!-- Project Info -->
+                <div class="hero-project-info">
+                    <h2 class="hero-project-title" id="heroProjectTitle">CAR_LOOP</h2>
+                    <p class="hero-project-tech" id="heroProjectTech">Unity • C# • VR • Psychological Horror</p>
+                    <p class="hero-project-description" id="heroProjectDescription">A VR psychological horror experience that traps players in an infinite driving loop.</p>
+                    <div class="hero-project-buttons">
+                        <button class="btn btn-primary" id="heroViewProject" data-i18n="hero_view_project">View Project</button>
+                        <a href="#projects" class="btn btn-secondary" data-i18n="hero_see_all">See All Work</a>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="stats-panel">
-                <h3 class="stats-title" data-i18n="stats_title">⚡ CORE_STATS</h3>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <span class="stat-value">-</span>
-                        <span class="stat-label" data-i18n="stat_labels.exp">EXP</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">4</span>
-                        <span class="stat-label" data-i18n="stat_labels.games">Prototypes</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">1</span>
-                        <span class="stat-label" data-i18n="stat_labels.tech">GAMES • DEMOS</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">∞</span>
-                        <span class="stat-label" data-i18n="stat_labels.innovation">INNOVATION • DESIRE TO LEARN</span>
+    <!-- About Section -->
+    <section id="about" class="alt-bg">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title" data-i18n="nav_about">About</h2>
+            
+            <div style="display: flex; gap: 48px; align-items: flex-start; margin-top: 48px; flex-wrap: wrap;">
+                <!-- Profile Photo - Now in About Section -->
+                <div style="flex-shrink: 0;">
+                    <img src="assets/profile-photo.jpg" alt="Marcelo Herrera" style="width: 220px; height: 220px; border-radius: 50%; object-fit: cover; border: 6px solid white; box-shadow: 0 8px 32px rgba(0,0,0,0.15); position: sticky; top: 100px;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27220%27 height=%27220%27%3E%3Crect width=%27220%27 height=%27220%27 fill=%27%234A90E2%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2732%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3EMH%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div style="flex: 1; min-width: 300px;">
+                    <h3 style="font-size: 28px; margin-bottom: 8px; color: var(--text-primary);" data-i18n="name">Marcelo Herrera</h3>
+                    <p style="font-size: 20px; color: var(--secondary); margin-bottom: 24px; font-weight: 500;" data-i18n="title">Gameplay Programmer &amp; Game Designer</p>
+                    
+                    <p style="font-size: 16px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 32px; text-align: left;" data-i18n="bio_full">I am a Gameplay Programmer and Game Designer specializing in Unity, currently in my third year studying Digital Game Design at Universidad Andrés Bello. My passion lies in experimenting with emerging technologies and developing prototypes for innovative platforms such as Virtual Reality. I am particularly fascinated by procedural generation and animation, as well as developing custom Unity tools through code, constantly seeking to push the boundaries of interactivity and gameplay.</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+                        <div style="background: var(--background); padding: 20px; border-radius: var(--radius); border: 1px solid rgba(0,0,0,0.05);">
+                            <div style="font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 4px;">3+</div>
+                            <div style="font-size: 14px; color: var(--text-secondary); font-weight: 500;" data-i18n="stat_experience">Years of Experience</div>
+                        </div>
+                        <div style="background: var(--background); padding: 20px; border-radius: var(--radius); border: 1px solid rgba(0,0,0,0.05);">
+                            <div style="font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 4px;">🎓</div>
+                            <div style="font-size: 14px; color: var(--text-secondary); font-weight: 500;" data-i18n="stat_education">Digital Game Design Student</div>
+                        </div>
+                        <div style="background: var(--background); padding: 20px; border-radius: var(--radius); border: 1px solid rgba(0,0,0,0.05);">
+                            <div style="font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 4px;">Unity &amp; VR</div>
+                            <div style="font-size: 14px; color: var(--text-secondary); font-weight: 500;" data-i18n="stat_specialization">Specialization</div>
+                        </div>
+                        <div style="background: var(--background); padding: 20px; border-radius: var(--radius); border: 1px solid rgba(0,0,0,0.05);">
+                            <div style="font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 4px;">⚙️</div>
+                            <div style="font-size: 14px; color: var(--text-secondary); font-weight: 500;" data-i18n="stat_focus">Procedural Generation</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1491,1146 +985,722 @@
     </section>
 
     <!-- Projects Section -->
-    <div id="projects" class="section">
-        <h2 class="section-title" data-i18n="section_title_projects">PROJECT_COLLECTION.zip</h2>
-        <p class="rarity-legend" data-i18n="rarity_legend">★ COMMON | ★★ RARE | ★★★ EPIC | ★★★★ LEGENDARY</p>
-
-        <div class="projects-grid">
-            <div class="project-card rarity-4" onclick="showProjectDetails('cl')" data-project="cl">
-                <div class="project-header">
-                    <h3 class="project-title">CAR_LOOP</h3>
-                    <div class="project-rarity">★★★★</div>
-                    <div class="project-type">Unity • C# • VR • Psychological Horror</div>
-                </div>
-                <div class="project-image-container">
-                    <div class="carousel-container">
-                        <div class="carousel-track" id="cl-track">
-                            <div class="carousel-slide" style="background: url('assets/Main Projects/CL/CL_thumbnail.png') center/cover;"></div>
-                            <div class="carousel-slide" style="background: url('assets/Main Projects/CL/CL_gameplay1.png') center/cover;"></div>
-                        </div>
-                        <button class="carousel-nav prev" onclick="prevCarouselImage('cl')">‹</button>
-                        <button class="carousel-nav next" onclick="nextCarouselImage('cl')">›</button>
-                        <div class="carousel-counter">1/2</div>
-                        <div class="carousel-controls">
-                            <span class="carousel-dot active" onclick="setCarouselImage('cl', 0)"></span>
-                            <span class="carousel-dot" onclick="setCarouselImage('cl', 1)"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card rarity-4" onclick="showProjectDetails('btb')" data-project="btb">
-                <div class="project-header">
-                    <h3 class="project-title">Break the Bubble</h3>
-                    <div class="project-rarity">★★★★</div>
-                    <div class="project-type">Unity • C# • GGJ 2025 • Metroidvania</div>
-                </div>
-                <div class="project-image-container">
-                    <div class="carousel-container">
-                        <div class="carousel-track" id="btb-track">
-                            <div class="carousel-slide" style="background: url('assets/Main Projects/BTB/BTB_thumbnail.png') center/cover;"></div>
-                            <div class="carousel-slide" style="background: url('assets/Main Projects/BTB/BTB_gameplay1.png') center/cover;"></div>
-                        </div>
-                        <button class="carousel-nav prev" onclick="prevCarouselImage('btb')">‹</button>
-                        <button class="carousel-nav next" onclick="nextCarouselImage('btb')">›</button>
-                        <div class="carousel-counter">1/2</div>
-                        <div class="carousel-controls">
-                            <span class="carousel-dot active" onclick="setCarouselImage('btb', 0)"></span>
-                            <span class="carousel-dot" onclick="setCarouselImage('btb', 1)"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card rarity-4" onclick="showProjectDetails('ha')" data-project="ha">
-                <div class="project-header">
-                    <h3 class="project-title">HUNTERS: Awakening</h3>
-                    <div class="project-rarity">★★★★</div>
-                    <div class="project-type">Unity • C# • JRPG</div>
-                </div>
-                <div class="project-image-container">
-                    <div class="carousel-container">
-                        <div class="carousel-track" id="ha-track">
-                            <div class="carousel-slide" style="background: url('assets/Main Projects/HA/HA_thumbnail.png') center/cover;"></div>
-                            <div class="carousel-slide" style="background: url('assets/Main Projects/HA/HA_gameplay1.png') center/cover;"></div>
-                        </div>
-                        <button class="carousel-nav prev" onclick="prevCarouselImage('ha')">‹</button>
-                        <button class="carousel-nav next" onclick="nextCarouselImage('ha')">›</button>
-                        <div class="carousel-counter">1/2</div>
-                        <div class="carousel-controls">
-                            <span class="carousel-dot active" onclick="setCarouselImage('ha', 0)"></span>
-                            <span class="carousel-dot" onclick="setCarouselImage('ha', 1)"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Project Detail Panel -->
-        <div class="project-detail-panel" id="projectDetailPanel">
-            <div class="detail-header">
-                <h3 class="detail-project-title" id="detailProjectTitle"></h3>
-                <button class="close-detail" onclick="closeProjectDetails()">✕</button>
-            </div>
-            <div class="detail-body">
-                <div class="detail-carousel-section">
-                    <div class="detail-carousel-container">
-                        <div class="carousel-track" id="detail-carousel-track">
-                            <!-- Slides dinámicos -->
-                        </div>
-                        <div class="carousel-nav prev" onclick="prevDetailImage()">‹</div>
-                        <div class="carousel-nav next" onclick="nextDetailImage()">›</div>
-                        <div class="carousel-counter" id="detail-carousel-counter">1/4</div>
-                        <div class="carousel-controls" id="detail-carousel-controls">
-                            <!-- Dots dinámicos -->
-                        </div>
-                    </div>
-                </div>
-                <div class="detail-info-section">
-                    <div class="detail-section">
-                        <h4>📝 <span data-i18n="project_detail_labels.description">Descripción Completa</span></h4>
-                        <p class="detail-description" id="detailDescription"></p>
-                    </div>
-                    <div class="detail-section">
-                        <h4>⚡ <span data-i18n="project_detail_labels.challenges">Desafíos Técnicos</span></h4>
-                        <ul class="detail-challenges" id="detailChallenges"></ul>
-                    </div>
-                    <div class="detail-section">
-                        <h4>🛠️ <span data-i18n="project_detail_labels.tools">Herramientas Utilizadas</span></h4>
-                        <div class="detail-tools" id="detailTools"></div>
-                    </div>
-                    <div class="detail-section">
-                        <h4>⏱️ <span data-i18n="project_detail_labels.dev_info">Información de Desarrollo</span></h4>
-                        <div class="detail-dev-info">
-                            <div class="dev-info-item">
-                                <div class="dev-info-label" data-i18n="project_detail_labels.dev_time">Tiempo de Desarrollo</div>
-                                <div class="dev-info-value" id="detailDevTime"></div>
-                            </div>
-                            <div class="dev-info-item">
-                                <div class="dev-info-label" data-i18n="project_detail_labels.status">Estado Actual</div>
-                                <div class="dev-info-value" id="detailStatus"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <section id="projects">
+        <h2 class="section-title" data-i18n="section_projects">Featured Projects</h2>
+        
+        <div class="projects-grid" id="projectsGrid"></div>
+    </section>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="section">
-        <h2 class="section-title" data-i18n="section_title_gallery">CREATIVE_GALLERY.collection</h2>
-
-        <div class="gallery-filters">
-            <button class="filter-btn active" data-filter="all" data-i18n="gallery_filters.all">ALL_PROJECTS</button>
-            <button class="filter-btn" data-filter="modeling" data-i18n="gallery_filters.modeling">3D_MODELING</button>
-            <button class="filter-btn" data-filter="virtual" data-i18n="gallery_filters.virtual">VIRTUAL_PROD</button>
-            <button class="filter-btn" data-filter="installation" data-i18n="gallery_filters.interactive">INSTALLATIONS</button>
-        </div>
-
-        <div class="gallery-grid">
-            <div class="gallery-item" data-category="installation" onclick="openGalleryModal('boombastic')">
-                <div class="gallery-preview">
-                    <video width="100%" height="100%" preload="metadata">
-                        <source src="assets/Gallery/BB/BB_gameplay1.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="gallery-info">
-                    <h3 class="gallery-title" data-i18n="gallery_items.boombastic.title">Boombastic - Interactive Installation</h3>
-                    <div class="gallery-category" data-i18n="gallery_items.boombastic.category">Interactive Installation</div>
-                    <p class="gallery-description" data-i18n="gallery_items.boombastic.description">Interactive installation of mixes of songs from the 90s, using Kinect and project mapping.</p>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="modeling" onclick="openGalleryModal('beep')">
-                <div class="gallery-preview">
-                    <img src="assets/Gallery/beep/beep_render1.gif" alt="Beep fighting animation" style="width:100%;">
-                </div>
-                <div class="gallery-info">
-                    <h3 class="gallery-title" data-i18n="gallery_items.beep.title">Beep Animation</h3>
-                    <div class="gallery-category" data-i18n="gallery_items.beep.category">3D Sculpting and Animation</div>
-                    <p class="gallery-description" data-i18n="gallery_items.beep.description">Sculpted and textured in ZBrush of the character "Beep" from the video game Kenshi. Then animated in Blender using Mixamo animations.</p>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="modeling" onclick="openGalleryModal('leblanc_diorama')">
-                <div class="gallery-preview">
-                    <img src="assets/Gallery/LB/LB_thumbnail.jpg" alt="Leblanc cafe render, made in Blender" style="width:100%;">
-                </div>
-                <div class="gallery-info">
-                    <h3 class="gallery-title" data-i18n="gallery_items.leblanc_diorama.title">Leblanc cafe Diorama</h3>
-                    <div class="gallery-category" data-i18n="gallery_items.leblanc_diorama.category">3D Modeling</div>
-                    <p class="gallery-description" data-i18n="gallery_items.leblanc_diorama.description">Diorama of the Leblanc cafe from the Persona 5 Royal video game. 3D modeled and textured using materials from the Blender Kit website.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Gallery Modal -->
-        <div class="gallery-modal" id="galleryModal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="modalTitle"></h3>
-                    <button class="modal-close" onclick="closeGalleryModal()">✕</button>
-                </div>
-                <div class="modal-body">
-                    <div class="modal-preview-container">
-                        <div class="modal-preview" id="modalPreview"></div>
-                    </div>
-                    <div class="modal-info-container">
-                        <div class="modal-info-section">
-                            <h4>📝 <span data-i18n="gallery_modal_labels.description">Descripción</span></h4>
-                            <p class="modal-description" id="modalDescription"></p>
-                        </div>
-                        <div class="modal-info-section">
-                            <h4>🛠️ <span data-i18n="gallery_modal_labels.tools">Herramientas Utilizadas</span></h4>
-                            <div class="modal-tools" id="modalTools"></div>
-                        </div>
-                        <div class="modal-info-section">
-                            <h4>⚙️ <span data-i18n="gallery_modal_labels.process">Proceso de Desarrollo</span></h4>
-                            <div class="modal-process" id="modalProcess"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="modal-nav prev" onclick="prevGalleryItem()">❮</button>
-            <button class="modal-nav next" onclick="nextGalleryItem()">❯</button>
+    <section id="gallery" class="alt-bg">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title" data-i18n="section_gallery">Creative Gallery</h2>
+            <p class="section-subtitle">3D Art &amp; Interactive Installations</p>
+            
+            <div class="gallery-grid" id="galleryGrid"></div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section">
-        <h2 class="section-title" data-i18n="section_title_skills">SKILL_TREE.dat</h2>
-
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3 class="skill-category-title" data-i18n="skill_categories.programming">PROGRAMMING_BRANCH</h3>
-                <div class="skill-item">
-                    <span class="skill-name">C#</span>
-                    <div class="skill-level">
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot"></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3 class="skill-category-title" data-i18n="skill_categories.engines">ENGINE_MASTERY</h3>
-                <div class="skill-item">
-                    <span class="skill-name">Unity</span>
-                    <div class="skill-level">
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot"></span>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">RenPy</span>
-                    <div class="skill-level">
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot"></span>
-                        <span class="skill-dot"></span>
-                        <span class="skill-dot"></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3 class="skill-category-title" data-i18n="skill_categories.creative">CREATIVE_TOOLS</h3>
-                <div class="skill-item">
-                    <span class="skill-name">ZBrush</span>
-                    <div class="skill-level">
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot"></span>
-                        <span class="skill-dot"></span>
-                        <span class="skill-dot"></span>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Blender</span>
-                    <div class="skill-level">
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot"></span>
-                        <span class="skill-dot"></span>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Adobe Premiere</span>
-                    <div class="skill-level">
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot"></span>
-                        <span class="skill-dot"></span>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Adobe After Effects</span>
-                    <div class="skill-level">
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot"></span>
-                        <span class="skill-dot"></span>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Adobe Photoshop</span>
-                    <div class="skill-level">
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot"></span>
-                        <span class="skill-dot"></span>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Reaper</span>
-                    <div class="skill-level">
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot"></span>
-                        <span class="skill-dot"></span>
-                        <span class="skill-dot"></span>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Audacity</span>
-                    <div class="skill-level">
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot"></span>
-                        <span class="skill-dot"></span>
-                        <span class="skill-dot"></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <h3 class="skill-category-title" data-i18n="skill_categories.languages">LANGUAGES</h3>
-                <div class="skill-item">
-                    <span class="skill-name">Español - Spanish</span>
-                    <div class="skill-level">
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Inglés - English</span>
-                    <div class="skill-level">
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot filled"></span>
-                        <span class="skill-dot"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section id="skills">
+        <h2 class="section-title" data-i18n="section_skills">Skills &amp; Tools</h2>
+        
+        <div class="skills-grid" id="skillsGrid"></div>
     </section>
 
     <!-- Achievements Section -->
-    <section id="achievements" class="section">
-        <h2 class="section-title" data-i18n="section_title_achievements">ACHIEVEMENTS_UNLOCKED.log</h2>
-        <p class="achievements-subtitle" data-i18n="achievements_subtitle">TOTAL UNLOCKED: 1/∞ | COMPLETION RATE: 100%</p>
-
-        <div class="achievements-grid">
+    <section id="achievements" class="alt-bg">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title" data-i18n="section_achievements">Achievements &amp; Certifications</h2>
+            
             <div class="achievement-card">
-                <div class="achievement-icon">📱</div>
-                <h3 class="achievement-title">Meta Spark AR Certificate</h3>
-                <p class="achievement-description">Meta Spark AR Certificate from Meta awarded by CRTIC</p>
+                <div class="achievement-icon">🏆</div>
+                <h3>Meta Spark AR Certificate</h3>
+                <p data-i18n="achievement_desc">Awarded by CRTIC</p>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section">
-        <h2 class="section-title" data-i18n="section_title_contact">ESTABLISH_CONNECTION.exe</h2>
-
-        <div class="contact-container">
-            <div class="contact-status" data-i18n="contact_status">STATUS: ACCEPTING_COLLABORATIONS</div>
-
-            <p class="contact-description" data-i18n="contact_description">Ready to collaborate on innovative gaming projects. Specializing in VR experiences, gameplay programming, and pushing the boundaries of interactive storytelling. Let's create something extraordinary together.</p>
-
-            <div class="contact-info">
-                <div class="contact-info-item">
-                    <span data-i18n="contact_availability">🌍 AVAILABILITY: REMOTE_WORLDWIDE</span>
-                </div>
-                <div class="contact-info-item">
-                    <span data-i18n="contact_response">⚡ RESPONSE_TIME: &lt; 24_HOURS</span>
-                </div>
-            </div>
-
+    <section id="contact" class="contact-section">
+        <div class="contact-content">
+            <h2 class="section-title" data-i18n="section_contact">Let's Connect</h2>
+            <p class="section-subtitle" data-i18n="contact_subtitle">Ready to collaborate on innovative gaming projects</p>
+            
             <div class="contact-links">
-                <a href="mailto:m.herreravsquez@outlook.com" class="contact-link" data-i18n="contact_links.email">📧 EMAIL_PROTOCOL</a>
-                <a href="https://github.com/mherreravsquez" target="_blank" class="contact-link" data-i18n="contact_links.github">💻 GITHUB_REPO</a>
-                <a href="https://linkedin.com/in/mherreravsquez" target="_blank" class="contact-link" data-i18n="contact_links.linkedin">💼 LINKEDIN_NET</a>
-                <a href="https://mherreravsquez.artstation.com" target="_blank" class="contact-link" data-i18n="contact_links.artstation">🎨 ARTSTATION_GALLERY</a>
-                <a href="#" class="contact-link" data-i18n="contact_links.cv">📄 DOWNLOAD_CV.pdf</a>
+                <a href="mailto:contact@example.com" class="contact-link" target="_blank">
+                    <span>📧</span>
+                    <span>Email</span>
+                </a>
+                <a href="https://linkedin.com" class="contact-link" target="_blank">
+                    <span>💼</span>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com" class="contact-link" target="_blank">
+                    <span>💻</span>
+                    <span>GitHub</span>
+                </a>
             </div>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name" data-i18n="contact_form_name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" data-i18n="contact_form_email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message" data-i18n="contact_form_message">Message</label>
+                    <textarea id="message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;" data-i18n="contact_form_submit">Send Message</button>
+            </form>
         </div>
     </section>
-    
-</main>
 
-<script>
-    // Language system
-    let currentLanguage = 'en';
+    <!-- Footer -->
+    <footer>
+        <p data-i18n="footer_text">&copy; 2025 Marcelo Herrera. All rights reserved.</p>
+    </footer>
 
-    // Project images data
-    const projectImages = {
-        cl: [
-            'assets/Main Projects/CL/CL_thumbnail.png',
-            'assets/Main Projects/CL/CL_gameplay1.png'
-        ],
-        btb: [
-            'assets/Main Projects/BTB/BTB_thumbnail.png',
-            'assets/Main Projects/BTB/BTB_gameplay1.png'
-        ],
-        ha: [
-            'assets/Main Projects/HA/HA_thumbnail.png',
-            'assets/Main Projects/HA/HA_gameplay1.png'
-        ]
-    };
+    <!-- Modal -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
 
-    // Detail carousel state
-    let currentDetailProject = null;
-    let currentDetailImageIndex = 0;
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose">&times;</button>
+            <img src="" alt="Gallery" class="lightbox-image" id="lightboxImage">
+        </div>
+    </div>
 
-    // Project data
-    const projectData = {
-        cl: {
-            title_en: "Car-Loop",
-            title_es: "CAR-Loop",
-            description_en: "Psychological horror VR experience where you're trapped in a time loop with your wife on an endless road. Revolutionary hand-tracking communication system that redefines interactive storytelling. Each loop reveals new horrors and secrets, while your gestural choices determine the fate of both characters.",
-            description_es: "Experiencia de horror psicológico en VR donde estás atrapado en un bucle temporal con tu esposa en una carretera infinita. Sistema revolucionario de comunicación por seguimiento de manos que redefine la narrativa interactiva. Cada bucle revela nuevos horrores y secretos, mientras tus decisiones gestuales determinan el destino de ambos personajes.",
-            challenges_en: [
-                "VR optimization for smooth 90fps performance in complex environments",
-                "Hand tracking precision for natural gesture recognition and emotional responses",
-                "Time loop mechanics with seamless transitions and progressive story revelation",
-                "Psychological tension balance - maintaining horror without motion sickness",
-                "Dynamic narrative branching based on subtle hand gestures and timing"
-            ],
-            challenges_es: [
-                "Optimización VR para rendimiento fluido de 90fps en entornos complejos",
-                "Precisión del seguimiento de manos para reconocimiento natural de gestos y respuestas emocionales",
-                "Mecánicas de bucle temporal con transiciones perfectas y revelación progresiva de la historia",
-                "Balance de tensión psicológica - mantener el horror sin mareo por movimiento",
-                "Ramificación narrativa dinámica basada en gestos sutiles y timing"
-            ],
-            tools: ["Unity 2023.1 LTS", "Meta XR SDK v57", "Visual Studio 2022", "Blender 4.0", "Photoshop 2024", "FMOD Studio"],
-            development_time_en: "8 months (ongoing)",
-            development_time_es: "8 meses (en progreso)",
-            status_en: "65% complete - Beta testing phase",
-            status_es: "65% completo - Fase de pruebas beta"
-        },
-        btb: {
-            title_en: "Break the Bubble",
-            title_es: "Break the Bubble",
-            description_en: "A metroidvania game developed for Global Game Jam 2025. Players navigate through a surreal world, breaking bubbles to progress and unlock new abilities. Features innovative movement mechanics and a unique art style.",
-            description_es: "Un juego metroidvania desarrollado para Global Game Jam 2025. Los jugadores navegan por un mundo surrealista, rompiendo burbujas para progresar y desbloquear nuevas habilidades. Cuenta con mecánicas de movimiento innovadoras y un estilo artístico único.",
-            challenges_en: [
-                "Metroidvania level design with interconnected areas",
-                "Progressive ability unlocking system",
-                "Bubble physics and interaction mechanics",
-                "Art style consistency across different environments"
-            ],
-            challenges_es: [
-                "Diseño de niveles metroidvania con áreas interconectadas",
-                "Sistema progresivo de desbloqueo de habilidades",
-                "Física de burbujas y mecánicas de interacción",
-                "Consistencia del estilo artístico en diferentes entornos"
-            ],
-            tools: ["Unity", "C#", "Aseprite", "FMOD"],
-            development_time_en: "48 hours (Game Jam)",
-            development_time_es: "48 horas (Game Jam)",
-            status_en: "Completed - Game Jam submission",
-            status_es: "Completado - Entrega de Game Jam"
-        },
-        ha: {
-            title_en: "HUNTERS: Awakening",
-            title_es: "HUNTERS: Awakening",
-            description_en: "JRPG-style game featuring turn-based combat, character progression, and an engaging storyline. Players control a team of hunters exploring a mysterious world filled with challenges and secrets.",
-            description_es: "Juego estilo JRPG con combate por turnos, progresión de personajes y una historia atractiva. Los jugadores controlan un equipo de cazadores que exploran un mundo misterioso lleno de desafíos y secretos.",
-            challenges_en: [
-                "Turn-based combat system with strategic depth",
-                "Character progression and skill trees",
-                "Balancing enemy encounters and difficulty",
-                "Creating an engaging narrative with multiple paths"
-            ],
-            challenges_es: [
-                "Sistema de combate por turnos con profundidad estratégica",
-                "Progresión de personajes y árboles de habilidades",
-                "Equilibrio de encuentros con enemigos y dificultad",
-                "Creación de una narrativa atractiva con múltiples caminos"
-            ],
-            tools: ["Unity", "C#", "Blender", "Photoshop"],
-            development_time_en: "6 months",
-            development_time_es: "6 meses",
-            status_en: "In development - Core systems complete",
-            status_es: "En desarrollo - Sistemas principales completos"
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop">↑</button>
+
+    <script>
+        // Data
+        // Hero Carousel Projects
+        const heroCarouselProjects = [
+            {
+                id: 'car_loop',
+                title: 'Car-Loop',
+                tech: 'Unity • C# • VR • Psychological Horror',
+                description: {
+                    en: 'A VR psychological horror experience that traps players in an infinite driving loop. Built with Unity and C#, featuring advanced procedural generation and atmospheric storytelling.',
+                    es: 'Una experiencia de terror psicológico en VR que atrapa a los jugadores en un bucle infinito de conducción. Construido con Unity y C#, con generación procedural avanzada y narrativa atmosférica.'
+                },
+                image: 'assets/Main Projects/CL/CL_thumbnail.png',
+                button: { en: 'Explore CAR_LOOP', es: 'Explorar CAR_LOOP' }
+            },
+            {
+                id: 'break_bubble',
+                title: 'Break the Bubble',
+                tech: 'Unity • C# • PC • Metroidvania',
+                description: {
+                    en: 'A mobile arcade game with addictive bubble-breaking mechanics. Features smooth touch controls and progressive difficulty scaling.',
+                    es: 'Un juego arcade móvil con mecánicas adictivas de romper burbujas. Cuenta con controles táctiles suaves y escalado progresivo de dificultad.'
+                },
+                image: 'assets/Main Projects/BTB/BTB_thumbnail.png',
+                button: { en: 'Play Break the Bubble', es: 'Jugar Break the Bubble' }
+            },
+            {
+                id: 'hunters',
+                title: 'HUNTERS: Awakening',
+                tech: 'Unity • C# • PC • JRPG',
+                description: {
+                    en: 'An action RPG featuring dynamic combat systems and character progression. Built for PC with Unity.',
+                    es: 'Un RPG de acción con sistemas de combate dinámicos y progresión de personajes. Construido para PC con Unity.'
+                },
+                image: 'assets/Main Projects/HUNTERS/HUNTERS_thumbnail.png',
+                button: { en: 'Discover HUNTERS', es: 'Descubrir HUNTERS' }
+            }
+        ];
+
+        const translations = {
+            en: {
+                logo: 'Marcelo Herrera',
+                name: 'Marcelo Herrera',
+                title: 'Gameplay Programmer & Game Designer',
+                status: 'Available for Projects',
+                bio: 'I am a Gameplay Programmer and Game Designer specializing in Unity, currently in my third year studying Digital Game Design at Universidad Andrés Bello. My passion lies in experimenting with emerging technologies and developing prototypes for innovative platforms such as Virtual Reality.',
+                bio_full: 'I am a Gameplay Programmer and Game Designer specializing in Unity, currently in my third year studying Digital Game Design at Universidad Andrés Bello. My passion lies in experimenting with emerging technologies and developing prototypes for innovative platforms such as Virtual Reality. I am particularly fascinated by procedural generation and animation, as well as developing custom Unity tools through code, constantly seeking to push the boundaries of interactivity and gameplay.',
+                nav_about: 'About',
+                nav_projects: 'Projects',
+                nav_gallery: 'Gallery',
+                nav_skills: 'Skills',
+                nav_contact: 'Contact',
+                section_projects: 'Featured Projects',
+                section_gallery: 'Creative Gallery',
+                section_skills: 'Skills & Tools',
+                section_achievements: 'Achievements & Certifications',
+                section_contact: "Let's Connect",
+
+                btn_learn_more: 'Learn More',
+                btn_view_projects: 'View Projects',
+                btn_contact_me: 'Contact Me',
+                hero_view_project: 'View Project',
+                hero_see_all: 'See All Work',
+                contact_subtitle: 'Ready to collaborate on innovative gaming projects',
+                contact_form_name: 'Name',
+                contact_form_email: 'Email',
+                contact_form_message: 'Message',
+                contact_form_submit: 'Send Message',
+                footer_text: '© 2025 Marcelo Herrera. All rights reserved.',
+                stat_experience: 'Years of Experience',
+                stat_education: 'Digital Game Design Student',
+                stat_specialization: 'Specialization',
+                stat_focus: 'Procedural Generation',
+                achievement_desc: 'Awarded by CRTIC',
+                skill_programming: 'Programming',
+                skill_engines: 'Game Engines',
+                skill_creative: 'Creative Tools',
+                skill_languages: 'Languages'
+            },
+            es: {
+                logo: 'Marcelo Herrera',
+                name: 'Marcelo Herrera',
+                title: 'Programador de Gameplay y Diseñador de Juegos',
+                status: 'Disponible para Proyectos',
+                bio: 'Soy un Programador de Gameplay y Diseñador de Juegos especializado en Unity, actualmente en mi tercer año estudiando Diseño de Videojuegos Digitales en la Universidad Andrés Bello. Mi pasión radica en experimentar con tecnologías emergentes y desarrollar prototipos para plataformas innovadoras como la Realidad Virtual.',
+                bio_full: 'Soy un Programador de Gameplay y Diseñador de Juegos especializado en Unity, actualmente en mi tercer año estudiando Diseño de Videojuegos Digitales en la Universidad Andrés Bello. Mi pasión radica en experimentar con tecnologías emergentes y desarrollar prototipos para plataformas innovadoras como la Realidad Virtual. Me fascina particularmente la generación procedural y la animación, así como el desarrollo de herramientas personalizadas de Unity a través de código, buscando constantemente empujar los límites de la interactividad y el gameplay.',
+                nav_about: 'Acerca',
+                nav_projects: 'Proyectos',
+                nav_gallery: 'Galería',
+                nav_skills: 'Habilidades',
+                nav_contact: 'Contacto',
+                section_projects: 'Proyectos Destacados',
+                section_gallery: 'Galería Creativa',
+                section_skills: 'Habilidades y Herramientas',
+                section_achievements: 'Logros y Certificaciones',
+                section_contact: 'Conectemos',
+
+                btn_learn_more: 'Saber Más',
+                btn_view_projects: 'Ver Proyectos',
+                btn_contact_me: 'Contáctame',
+                hero_view_project: 'Ver Proyecto',
+                hero_see_all: 'Ver Todos los Trabajos',
+                contact_subtitle: 'Listo para colaborar en proyectos innovadores de videojuegos',
+                contact_form_name: 'Nombre',
+                contact_form_email: 'Correo',
+                contact_form_message: 'Mensaje',
+                contact_form_submit: 'Enviar Mensaje',
+                footer_text: '© 2025 Marcelo Herrera. Todos los derechos reservados.',
+                stat_experience: 'Años de Experiencia',
+                stat_education: 'Estudiante de Diseño de Videojuegos',
+                stat_specialization: 'Especialización',
+                stat_focus: 'Generación Procedural',
+                achievement_desc: 'Otorgado por CRTIC',
+                skill_programming: 'Programación',
+                skill_engines: 'Motores de Juego',
+                skill_creative: 'Herramientas Creativas',
+                skill_languages: 'Idiomas'
+            }
+        };
+
+        const projects = [
+            {
+                id: 'car_loop',
+                title: 'CAR_LOOP',
+                tech: 'Unity • C# • VR • PC • Psychological Horror',
+                description: {
+                    en: 'A VR psychological horror experience that traps players in an infinite driving loop. Built with Unity and C#, featuring advanced procedural generation and atmospheric storytelling.',
+                    es: 'Una experiencia de terror psicológico en VR que atrapa a los jugadores en un bucle infinito de conducción. Construido con Unity y C#, con generación procedural avanzada y narrativa atmosférica.'
+                },
+                details: {
+                    en: 'Car-Loop is a VR psychological horror game where players find themselves trapped in an endless driving sequence. The game uses procedural generation to create subtle variations in each loop, making players question their perception of reality.',
+                    es: 'Car_Loop es un juego de terror psicológico en VR donde los jugadores se encuentran atrapados en una secuencia infinita de conducción. El juego utiliza generación procedural para crear variaciones sutiles en cada bucle, haciendo que los jugadores cuestionen su percepción de la realidad.'
+                },
+                images: ['assets/Main Projects/CL/CL_thumbnail.png', 'assets/Main Projects/CL/CL_gameplay1.png']
+            },
+            {
+                id: 'break_bubble',
+                title: 'Break the Bubble',
+                tech: 'Unity • C# • PC • Metroidvania',
+                description: {
+                    en: 'A mobile arcade game with addictive bubble-breaking mechanics. Features smooth touch controls and progressive difficulty scaling.',
+                    es: 'Un juego arcade móvil con mecánicas adictivas de romper burbujas. Cuenta con controles táctiles suaves y escalado progresivo de dificultad.'
+                },
+                details: {
+                    en: 'An engaging mobile arcade game that challenges players to break bubbles with strategic timing and precision.',
+                    es: 'Un juego arcade móvil atractivo que desafía a los jugadores a romper burbujas con sincronización estratégica y precisión.'
+                },
+                images: ['assets/Main Projects/BTB/BTB_thumbnail.png', 'assets/Main Projects/BTB/BTB_gameplay1.png']
+            },
+            {
+                id: 'hunters',
+                title: 'HUNTERS: Awakening',
+                tech: 'Unity • C# • PC • JRPG',
+                description: {
+                    en: 'An action RPG featuring dynamic combat systems and character progression. Built for PC with Unity.',
+                    es: 'Un RPG de acción con sistemas de combate dinámicos y progresión de personajes. Construido para PC con Unity.'
+                },
+                details: {
+                    en: 'HUNTERS: Awakening is an action RPG that combines fast-paced combat with strategic character building.',
+                    es: 'HUNTERS: Awakening es un RPG de acción que combina combate rápido con construcción estratégica de personajes.'
+                },
+                images: ['assets/Main Projects/HUNTERS/HUNTERS_thumbnail.png']
+            }
+        ];
+
+        const gallery = [
+            {
+                id: 'boombastic',
+                title: { en: 'Boombastic - Interactive Installation', es: 'Boombastic - Instalación Interactiva' },
+                category: { en: 'Interactive Installation', es: 'Instalación Interactiva' },
+                description: {
+                    en: 'Boombastic is an interactive installation that uses hand-tracking technology to allow users to move virtual cassettes onto a virtual boom box. Placing a cassette on the boom box sends a signal to REAPER a digital audio workstation to create beats with samples of representative songs from the 1990s. MadMapper is implemented to perform mapping projections on the boom box model, displaying various visual reactions and animations in real time.',
+                    es: 'Boombastic es una instalación interactiva que utiliza tecnología de seguimiento manual para que los usuarios puedan mover casetes virtuales hacia un radiocasete virtual. Al colocar un casete en el radiocasete, se envía una señal a REAPER una estación de trabajo de audio digital para crear ritmos con muestras de canciones representativas de los años 90. MadMapper se implementa para realizar proyecciones de mapas en el modelo del radiocasete, mostrando diversas reacciones visuales y animaciones en tiempo real.'
+                },
+                media: 'assets/Gallery/BB/BB_gameplay1.mp4',
+                tools: ['Unity 6.2', 'Kinect SDK 2.0', 'Reaper 7.48', 'MadMapper 5.6.8'],
+                process: {
+                    en: 'Concept art → Base mesh → High-poly sculpting → Retopology → UV mapping → PBR texturing → Rigging → Animation tests',
+                    es: 'Arte conceptual → Malla base → Esculpido de alta poligonización → Retopología → Mapeo UV → Texturizado PBR → Rigging → Pruebas de animación'
+                }
+            },
+            {
+                id: 'beep',
+                title: { en: 'Beep Animation and Sculpting', es: 'Animación y Esculpido de Beep' },
+                category: { en: '3D Sculpting and Animation', es: 'Escultura 3D y Animación' },
+                description: {
+                    en: 'Sculpted and textured in ZBrush of the character Beep from the video game Kenshi. Then animated in Blender using Mixamo animations. This piece showcases advanced sculpting techniques and smooth character animation integration.',
+                    es: 'Esculpido y texturizado en ZBrush del personaje Beep del videojuego Kenshi. Luego animado en Blender haciendo uso de las animaciones de Mixamo. Esta pieza muestra técnicas de esculpido avanzadas e integración fluida de animación de caracteres.'
+                },
+                media: 'assets/Gallery/beep/beep_render1.gif',
+                tools: ['Blender 4.0', 'ZBrush', 'Mixamo', 'Rokoko Studio addon'],
+                process: {
+                    en: 'Conceptualization → Character selection → Blocking in ZBrush → Sculpting → Texture creation → Model mesh optimization → Blender integration → Animation with Rokoko Studio → Render',
+                    es: 'Conceptualización → Selección de personaje → Blocking en ZBrush → Esculpido → Creación de texturas → Optimización de malla → Integración en Blender → Animación con Rokoko Studio → Render'
+                }
+            },
+            {
+                id: 'leblanc',
+                title: { en: 'Leblanc Cafe Diorama', es: 'Diorama de la Cafetería Leblanc' },
+                category: { en: '3D Modeling', es: 'Modelado 3D' },
+                description: {
+                    en: 'Diorama of the Leblanc cafe from the Persona 5 Royal video game. 3D modeled and textured using materials from the Blender Kit website. This environment showcases detailed prop modeling, lighting, and composition skills.',
+                    es: 'Diorama del café Leblanc del videojuego Persona 5 Royal. Modelado en 3D y texturizado haciendo uso de materiales de la web Blender Kit. Este entorno muestra habilidades de modelado de props detallado, iluminación y composición.'
+                },
+                media: 'assets/Gallery/LB/LB_thumbnail.jpg',
+                tools: ['Blender 4.0', 'BlenderKit', 'Substance Painter'],
+                process: {
+                    en: 'Choosing scene location → Blocking → Detailed prop modeling → Material selection → Camera positioning → Lighting setup → Final render',
+                    es: 'Elección de escena/ubicación → Blocking → Modelado de props a detalle → Elección de materiales → Posicionamiento de cámara → Configuración de iluminación → Render final'
+                }
+            }
+        ];
+
+        const skills = {
+            programming: {
+                title: { en: 'Programming', es: 'Programación' },
+                items: ['C#', 'Python', 'JavaScript', 'HLSL']
+            },
+            engines: {
+                title: { en: 'Game Engines', es: 'Motores de Juego' },
+                items: ['Unity', 'Unreal Engine', 'Godot']
+            },
+            creative: {
+                title: { en: 'Creative Tools', es: 'Herramientas Creativas' },
+                items: ['ZBrush', 'Blender', 'Photoshop', 'Substance Painter']
+            },
+            languages: {
+                title: { en: 'Languages', es: 'Idiomas' },
+                items: { en: ['Spanish (Native)', 'English (Professional)'], es: ['Español (Nativo)', 'Inglés (Profesional)'] }
+            }
+        };
+
+        // State
+        let currentLang = 'en';
+        const carouselStates = {};
+        let heroCarouselIndex = 0;
+        let heroCarouselInterval = null;
+
+        // Initialize
+        function init() {
+            renderHeroCarousel();
+            renderProjects();
+            renderGallery();
+            renderSkills();
+            setupEventListeners();
+            updateLanguage();
+            startHeroCarouselAutoplay();
         }
-    };
 
-    // Gallery data
-    const galleryData = {
-        boombastic: {
-            title_en: "Boombastic - Interactive Installation",
-            title_es: "Boombastic - Instalación Interactiva",
-            mediaPath: "assets/Gallery/BB/BB_gameplay1.mp4",
-            description_en: "Boombastic is an interactive installation that uses hand-tracking technology to allow users to move virtual cassettes onto a virtual boom box. Placing a cassette on the boom box sends a signal to REAPER (a digital audio workstation) to create beats with samples of representative songs from the 1990s.\n\nAdditionally, MadMapper is implemented to perform mapping projections on the boom box model, displaying various visual reactions and animations in real time.",
-            description_es: "Boombastic es una instalación interactiva que utiliza tecnología de seguimiento manual para que los usuarios puedan mover casetes virtuales hacia un radiocasete virtual. Al colocar un casete en el radiocasete, se envía una señal a REAPER (una estación de trabajo de audio digital) para crear ritmos con muestras de canciones representativas de los años 90.\n\nAdemás, MadMapper se implementa para realizar proyecciones de mapas en el modelo del radiocasete, mostrando diversas reacciones visuales y animaciones en tiempo real.",
-            tools: ["Unity 6.2", "Kinect SDK 2.0", "Reaper 7.48", "Madmapper 5.6.8"],
-            process_en: "Concept art → Base mesh → High-poly sculpting → Retopology → UV mapping → PBR texturing → Rigging → Animation tests",
-            process_es: "Arte conceptual → Malla base → Esculpido de alta poligonización → Retopología → Mapeo UV → Texturizado PBR → Rigging → Pruebas de animación"
-        },
-        beep: {
-            title_en: "Beep Animation and Sculpting",
-            title_es: "Animación y Esculpido de Beep",
-            mediaPath: "assets/Gallery/beep/beep_render1.gif",
-            description_en: "Sculpted and textured in ZBrush of the character \"Beep\" from the video game Kenshi. Then animated in Blender using Mixamo animations.",
-            description_es: "Esculpido y texturizado en ZBrush del personaje \"Beep\" del videojuego Kenshi. Luego animado en Blender haciendo uso de las animaciones de Mixamo.",
-            tools: ["Blender 4.0", "ZBrush", "Mixamo", "Rokoko Studio addon"],
-            process_en: "Conceptualization of idea → Character and animations selection → Blocking on ZBrush → Sculpting → Texture creation → Model mesh optimization → Integration on Blender → Animations integration with Rokoko Studio addon → Render",
-            process_es: "Conceptualización de la idea → Elección del personaje y las animaciones → Blocking en ZBrush → Esculpido → Optimización de la malla del modelo → Integración en Blender → Integración de animaciones con addon Rokoko Studio → Render"
-        },
-        leblanc_diorama: {
-            title_en: "Environment Assets Pack",
-            title_es: "Pack de Assets de Entorno",
-            mediaPath: "assets/Gallery/LB/LB_thumbnail.jpg",
-            description_en: "Diorama of the Leblanc cafe from the Persona 5 Royal video game. 3D modeled and textured using materials from the Blender Kit website.",
-            description_es: "Diorama del cafe Leblanc del videojuego Persona 5 Royal. Modelado en 3D y texturizado haciendo uso de materiales de la web Blender Kit.",
-            tools: ["Blender 4.0", "BlenderKit"],
-            process_en: "Choosing a scene/location of a video game → Blocking → Detailed prop modeling → Material selection → Camera positioning → Render",
-            process_es: "Elección de escena/lugar de un videojuego → Blocking → Modelado de props a detalle → Elección de materiales → Posicionamiento de cámara → Render"
+        // Hero Carousel Functions
+        function renderHeroCarousel() {
+            const track = document.getElementById('heroCarouselTrack');
+            const dots = document.getElementById('heroCarouselDots');
+            
+            track.innerHTML = heroCarouselProjects.map(project => `
+                <div class="hero-carousel-slide">
+                    <img src="${project.image}" alt="${project.title}" class="hero-carousel-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27800%27 height=%27500%27%3E%3Crect width=%27800%27 height=%27500%27 fill=%27%234A90E2%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2732%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${project.title}%3C/text%3E%3C/svg%3E'">
+                </div>
+            `).join('');
+            
+            dots.innerHTML = heroCarouselProjects.map((_, i) => `
+                <span class="hero-carousel-dot ${i === 0 ? 'active' : ''}" onclick="goToHeroSlide(${i})"></span>
+            `).join('');
+            
+            updateHeroProjectInfo();
         }
-    };
 
-    // Current gallery item for navigation
-    let currentGalleryIndex = 0;
-    const galleryItems = ['boombastic', 'beep', 'leblanc_diorama'];
+        function moveHeroCarousel(direction) {
+            heroCarouselIndex = (heroCarouselIndex + direction + heroCarouselProjects.length) % heroCarouselProjects.length;
+            updateHeroCarousel();
+            resetHeroCarouselAutoplay();
+        }
 
-    // Carousel states
-    const carouselStates = {};
+        function goToHeroSlide(index) {
+            heroCarouselIndex = index;
+            updateHeroCarousel();
+            resetHeroCarouselAutoplay();
+        }
 
-    // Initialize carousels
-    function initCarousels() {
-        Object.keys(projectImages).forEach(projectId => {
-            carouselStates[projectId] = {
-                currentIndex: 0,
-                totalImages: projectImages[projectId].length
-            };
+        function updateHeroCarousel() {
+            const track = document.getElementById('heroCarouselTrack');
+            const dots = document.querySelectorAll('.hero-carousel-dot');
+            
+            track.style.transform = `translateX(-${heroCarouselIndex * 100}%)`;
+            
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === heroCarouselIndex);
+            });
+            
+            updateHeroProjectInfo();
+        }
+
+        function updateHeroProjectInfo() {
+            const project = heroCarouselProjects[heroCarouselIndex];
+            document.getElementById('heroProjectTitle').textContent = project.title;
+            document.getElementById('heroProjectTech').textContent = project.tech;
+            document.getElementById('heroProjectDescription').textContent = project.description[currentLang];
+            
+            const viewBtn = document.getElementById('heroViewProject');
+            viewBtn.onclick = () => openProjectModal(project.id);
+        }
+
+        function startHeroCarouselAutoplay() {
+            heroCarouselInterval = setInterval(() => {
+                moveHeroCarousel(1);
+            }, 5000);
+        }
+
+        function resetHeroCarouselAutoplay() {
+            clearInterval(heroCarouselInterval);
+            startHeroCarouselAutoplay();
+        }
+
+        function stopHeroCarouselAutoplay() {
+            clearInterval(heroCarouselInterval);
+        }
+
+        // Render Functions
+        function renderProjects() {
+            const grid = document.getElementById('projectsGrid');
+            grid.innerHTML = projects.map(project => {
+                carouselStates[project.id] = 0;
+                return `
+                    <div class="project-card" data-project="${project.id}">
+                        <div class="project-carousel">
+                            <div class="carousel-track" id="carousel-${project.id}">
+                                ${project.images.map(img => `
+                                    <img src="${img}" alt="${project.title}" class="carousel-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27250%27%3E%3Crect width=%27400%27 height=%27250%27 fill=%27%234A90E2%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2720%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${project.title}%3C/text%3E%3C/svg%3E'">
+                                `).join('')}
+                            </div>
+                            ${project.images.length > 1 ? `
+                                <button class="carousel-btn prev" onclick="moveCarousel('${project.id}', -1)">‹</button>
+                                <button class="carousel-btn next" onclick="moveCarousel('${project.id}', 1)">›</button>
+                                <div class="carousel-dots">
+                                    ${project.images.map((_, i) => `<span class="carousel-dot ${i === 0 ? 'active' : ''}" onclick="goToSlide('${project.id}', ${i})"></span>`).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h3 class="project-title">${project.title}</h3>
+                            </div>
+                            <p class="project-tech">${project.tech}</p>
+                            <p class="project-description" data-i18n-dynamic="project-desc-${project.id}">${project.description[currentLang]}</p>
+                            <button class="btn btn-primary" onclick="openProjectModal('${project.id}')" data-i18n="btn_learn_more">Learn More</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderGallery() {
+            const grid = document.getElementById('galleryGrid');
+            grid.innerHTML = gallery.map((item, index) => `
+                <div class="gallery-item" onclick="openGalleryModal('${item.id}')">
+                    <img src="${item.media}" alt="${item.title[currentLang]}" class="gallery-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Crect width=%27400%27 height=%27300%27 fill=%27%236C5CE7%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2720%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${item.title[currentLang]}%3C/text%3E%3C/svg%3E'">
+                    <div class="gallery-overlay">
+                        <h3>${item.title[currentLang]}</h3>
+                        <p>${item.category[currentLang]}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderSkills() {
+            const grid = document.getElementById('skillsGrid');
+            grid.innerHTML = Object.entries(skills).map(([key, category]) => {
+                const items = Array.isArray(category.items) ? category.items : category.items[currentLang];
+                return `
+                    <div class="skill-category">
+                        <h3 data-i18n="skill_${key}">${category.title[currentLang]}</h3>
+                        <div class="skill-list">
+                            ${items.map(skill => `<span class="skill-badge">${skill}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Carousel Functions
+        function moveCarousel(projectId, direction) {
+            const project = projects.find(p => p.id === projectId);
+            const maxIndex = project.images.length - 1;
+            carouselStates[projectId] = Math.max(0, Math.min(maxIndex, carouselStates[projectId] + direction));
             updateCarousel(projectId);
-        });
-    }
-
-    // Update carousel display
-    function updateCarousel(projectId) {
-        const state = carouselStates[projectId];
-        const track = document.getElementById(`${projectId}-track`);
-        const counter = document.querySelector(`[data-project="${projectId}"] .carousel-counter`);
-        const dots = document.querySelectorAll(`[data-project="${projectId}"] .carousel-dot`);
-
-        if (track) {
-            track.style.transform = `translateX(-${state.currentIndex * 100}%)`;
         }
 
-        if (counter) {
-            counter.textContent = `${state.currentIndex + 1}/${state.totalImages}`;
+        function goToSlide(projectId, index) {
+            carouselStates[projectId] = index;
+            updateCarousel(projectId);
         }
 
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === state.currentIndex);
-        });
-    }
-
-    // Carousel navigation functions
-    function prevCarouselImage(projectId) {
-        const state = carouselStates[projectId];
-        state.currentIndex = (state.currentIndex - 1 + state.totalImages) % state.totalImages;
-        updateCarousel(projectId);
-    }
-
-    function nextCarouselImage(projectId) {
-        const state = carouselStates[projectId];
-        state.currentIndex = (state.currentIndex + 1) % state.totalImages;
-        updateCarousel(projectId);
-    }
-
-    function setCarouselImage(projectId, index) {
-        const state = carouselStates[projectId];
-        state.currentIndex = index;
-        updateCarousel(projectId);
-    }
-
-    // Translations
-    const translations = {
-        es: {
-            language_toggle: "EN",
-            
-            tabs: {
-                stats: "ESTADÍSTICAS",
-                projects: "PROYECTOS",
-                gallery: "GALERIA",
-                skills: "HABILIDADES",
-                achievements: "CERTIFICACIONES",
-                contact: "CONECTA"
-            },
-            
-            section_title_stats: "PERFIL_USUARIO.exe",
-            hero_status: "DISPONIBLE_PARA_PROYECTOS",
-            hero_name: "MARCELO_HERRERA",
-            hero_class: "GAMEPLAY_PROGRAMMER • GAME_DESIGNER",
-            hero_bio: "Soy programador de jugabilidad y diseñador de juegos especializado en Unity, actualmente cursando mi tercer año de Diseño de Juegos Digitales en la Universidad Andrés Bello. Mi pasión es experimentar con tecnologías emergentes y desarrollar prototipos para plataformas innovadoras como la realidad virtual. Me fascina especialmente la generación y animación procedural, así como el desarrollo de herramientas Unity personalizadas a través del código, buscando constantemente ampliar los límites de la interactividad y la jugabilidad.",
-            stats_title: "⚡ ESTADÍSTICAS_PRINCIPALES",
-            stat_labels: {
-                exp: "EXPERIENCIA",
-                games: "PROTOTIPOS",
-                tech: "JUEGOS • DEMOS",
-                innovation: "INNOVACIÓN • GANAS DE APRENDER"
-            },
-            profile_photo_label: "FOTO_DE_PERFIL.jpg",
-            
-            section_title_projects: "COLECCIÓN_DE_PROYECTOS.zip",
-            rarity_legend: "★ COMÚN | ★★ RARO | ★★★ ÉPICO | ★★★★ LEGENDARIO",
-            project_detail_labels: {
-                description: "DESCRIPCIÓN",
-                challenges: "DEAFÍOS_TÉCNICOS",
-                tools: "HERRAMIENTAS_DE_DESARROLLO",
-                dev_info: "INFORMACIÓN_DEL_DESARROLLO",
-                dev_time: "TIEMPO_DE_DESARROLLO",
-                status: "ESTADO"
-            },
-            
-            section_title_gallery: "GALERIA_CREATIVA.collection",
-            gallery_filters: {
-                all: "TODOS_LOS_PROYECTOS",
-                modeling: "MODELADO_3D",
-                virtual: "VIRTUAL_PROD",
-                interactive: "INSTALACIONES"
-            },
-            gallery_modal_labels: {
-                description: "DESCRIPCIÓN",
-                tools: "HERRAMIENTAS_DE_DESARROLLO",
-                process: "PROCESO_DE_DESARROLLO",
-            },
-            gallery_items: {
-                boombastic: {
-                    title: "Boombastic - Instalación Interactiva",
-                    category: "Instalación Interactiva",
-                    description: "Instalación interactiva de mezclas de canciones de los 90s, usando Kinect y mapeo de proyección."
-                },
-                beep: {
-                    title: "Animación de Beep",
-                    category: "Escultura 3D y Animación",
-                    description: "Esculpido y texturizado en ZBrush del personaje \"Beep\" del videojuego Kenshi. Luego animado en Blender usando animaciones de Mixamo."
-                },
-                leblanc_diorama: {
-                    title: "Diorama de la Cafetería Leblanc",
-                    category: "Modelado 3D",
-                    description: "Diorama de la cafetería Leblanc del videojuego Persona 5 Royal. Modelado en 3D y texturizado usando materiales del sitio web Blender Kit."
-                }
-            },
-            
-            section_title_skills: "ÁRBOL_DE_HABILIDADES.dat",
-            skill_categories: {
-                programming: "RAMA_PROGRAMACIÓN",
-                engines: "MAESTRÍA_MOTORES",
-                creative: "HERRAMIENTAS_CREATIVAS",
-                languages: "IDIOMAS"
-            },
-            
-            section_title_achievements: "LOGROS_DESBLOQUEADOS.log",
-            achievements_subtitle: "TOTAL DESBLOQUEADO: 1/∞ | ÍNDICE DE FINALIZACIÓN: 100%",
-            
-            section_title_contact: "ESTABLECER_CONEXIÓN.exe",
-            contact_status: "ESTADO: ACEPTANDO_COLABORACIONES",
-            contact_description: "Listo para colaborar en proyectos de videojuegos innovadores. Creemos juntos algo extraordinario.",
-            contact_availability: "🌍 DISPONIBILIDAD: REMOTA_MUNDIAL • PRESCENCIAL_EN_SANTIAGO_CHILE",
-            contact_response: "⚡ TIEMPO_DE_RESPUESTA: 24_HORAS",
-            contact_links: {
-                email: "📧 PROTOCOLO_EMAIL",
-                github: "💻 REPOSITORIO_GITHUB",
-                linkedin: "💼 RED_LINKEDIN",
-                artstation: "🎨 GALERÍA_ARTSTATION",
-                cv: "📄 DESCARGAR_CV.pdf"
-            },
-        },
-        en: {
-            language_toggle: "ES",
-            
-            tabs: {
-                stats: "STATS",
-                projects: "PROJECTS",
-                gallery: "GALLERY",
-                skills: "SKILLS",
-                achievements: "CERTS",
-                contact: "CONECT"
-            },
-            
-            section_title_stats: "PLAYER_PROFILE.exe",
-            hero_status: "AVAILABLE_FOR_PROJECTS",
-            hero_name: "MARCELO_HERRERA",
-            hero_class: "GAMEPLAY_PROGRAMMER • GAME_DESIGNER",
-            hero_bio: "I am a Gameplay Programmer and Game Designer specializing in Unity, currently in my third year of studying Digital Game Design at Andrés Bello University. My passion lies in experimenting with emerging technologies and developing prototypes for innovative platforms such as Virtual Reality. I am particularly fascinated by procedural generation and animation, as well as developing custom tools in Unity through code, always seeking to expand the limits of interactivity and gameplay.",
-            stats_title: "⚡ CORE_STATS",
-            stat_labels: {
-                exp: "EXP",
-                games: "PROTOTYPES",
-                tech: "GAMES • DEMOS",
-                innovation: "INNOVATION • DESIRE TO LEARN"
-            },
-            profile_photo_label: "PROFILE_PHOTO.jpg",
-            
-            section_title_projects: "PROJECT_COLLECTION.zip",
-            rarity_legend: "★ COMMON | ★★ RARE | ★★★ EPIC | ★★★★ LEGENDARY ",
-            project_detail_labels: {
-                description: "DESCRIPTION",
-                challenges: "TECHNICAL_CHALLENGES",
-                tools: "DEV_TOOLS",
-                dev_info: "DEV_INFO",
-                dev_time: "DEV_TIME",
-                status: "STATUS"
-            },
-            
-            section_title_gallery: "CREATIVE_GALLERY.colección",
-            gallery_filters: {
-                all: "ALL_PROJECTS",
-                modeling: "3D_MODELING",
-                virtual: "VIRTUAL_PROD",
-                interactive: "INSTALATIONS"
-            },
-            gallery_modal_labels: {
-                description: "DESCRIPTION",
-                tools: "DEV_TOOLS",
-                process: "DEV_PROCESS"
-            },
-            gallery_items: {
-                boombastic: {
-                    title: "Boombastic - Interactive Installation",
-                    category: "Interactive Installation",
-                    description: "Interactive installation of mixes of songs from the 90s, using Kinect and project mapping."
-                },
-                beep: {
-                    title: "Beep Animation",
-                    category: "3D Sculpting and Animation",
-                    description: "Sculpted and textured in ZBrush of the character \"Beep\" from the video game Kenshi. Then animated in Blender using Mixamo animations."
-                },
-                leblanc_diorama: {
-                    title: "Leblanc cafe Diorama",
-                    category: "3D Modeling",
-                    description: "Diorama of the Leblanc cafe from the Persona 5 Royal video game. 3D modeled and textured using materials from the Blender Kit website."
-                }
-            },
-            
-            section_title_skills: "SKILLS_TREE.dat",
-            skill_categories: {
-                programming: "PROGRAMMING_BRANCH",
-                engines: "ENGINE_MASTERY",
-                creative: "CREATIVE_TOOLS",
-                languages: "LANGUAGES"
-            },
-            
-            section_title_achievements: "UNLOCKED_ACHIEVEMENTS.log",
-            achievements_subtitle: "TOTAL UNLOCKED: 1/∞ | COMPLETION RATE: 100%",
-            
-            section_title_contact: "ESTABLISH_CONECTION.exe",
-            contact_status: "STATUS: ACCEPTING_COLABORATIONS",
-            contact_description: "Ready to collaborate on innovative game projects. Let's create something extraordinary together.",
-            contact_availability: "🌍 AVAILABILITY: REMOTE_WORLDWIDE • IN-PERSON_IN_SANTIAGO_CHILE",
-            contact_response: "⚡ RESPONSE_TIME: 24_HOURS",
-            contact_links: {
-                email: "📧 EMAIL_PROTOCOL",
-                github: "💻 GITHUB_REPO",
-                linkedin: "💼 LINKEDIN_NET",
-                artstation: "🎨 ARTSTATION_GALLERY",
-                cv: "📄 DOWNLOAD_CV.pdf"
-            },
-        }
-    };
-
-    function toggleLanguage() {
-        currentLanguage = currentLanguage === 'en' ? 'es' : 'en';
-        updateLanguage();
-    }
-
-    function updateLanguage() {
-        const elements = document.querySelectorAll('[data-i18n]');
-        elements.forEach(element => {
-            const key = element.getAttribute('data-i18n');
-            const translation = getNestedTranslation(translations[currentLanguage], key);
-            if (translation) {
-                element.textContent = translation;
-            }
-        });
-
-        updateGalleryItems();
-
-        const modal = document.getElementById('galleryModal');
-        if (modal.classList.contains('active') && currentGalleryIndex !== null) {
-            const currentItemId = galleryItems[currentGalleryIndex];
-            const currentItem = galleryData[currentItemId];
-            populateGalleryModal(currentItemId, currentItem);
-        }
-    }
-
-    function getNestedTranslation(obj, path) {
-        return path.split('.').reduce((current, key) => current && current[key], obj);
-    }
-
-    // Navigation system
-    function showSection(sectionId) {
-        // Hide all sections
-        document.querySelectorAll('.section').forEach(section => {
-            section.classList.remove('active');
-        });
-
-        // Show selected section
-        document.getElementById(sectionId).classList.add('active');
-
-        // Update nav tabs
-        document.querySelectorAll('.nav-tab').forEach(tab => {
-            tab.classList.remove('active');
-        });
-        document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
-    }
-
-    // Project details system
-    function showProjectDetails(projectId) {
-        const project = projectData[projectId];
-        if (!project) return;
-
-        currentDetailProject = projectId;
-        currentDetailImageIndex = 0;
-
-        // Remove selection from all cards
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.classList.remove('selected');
-        });
-
-        // Add selection to current card
-        const projectCard = document.querySelector(`[data-project="${projectId}"]`);
-        if (projectCard) {
-            projectCard.classList.add('selected');
-        }
-
-        // Populate panel with project data
-        const lang = currentLanguage;
-        document.getElementById('detailProjectTitle').textContent = project[`title_${lang}`];
-        document.getElementById('detailDescription').textContent = project[`description_${lang}`];
-        document.getElementById('detailDevTime').textContent = project[`development_time_${lang}`];
-        document.getElementById('detailStatus').textContent = project[`status_${lang}`];
-
-        // Populate challenges
-        const challengesList = document.getElementById('detailChallenges');
-        challengesList.innerHTML = '';
-        project[`challenges_${lang}`].forEach(challenge => {
-            const li = document.createElement('li');
-            li.textContent = challenge;
-            challengesList.appendChild(li);
-        });
-
-        // Populate tools
-        const toolsContainer = document.getElementById('detailTools');
-        toolsContainer.innerHTML = '';
-        project.tools.forEach(tool => {
-            const span = document.createElement('span');
-            span.className = 'tool-tag';
-            span.textContent = tool;
-            toolsContainer.appendChild(span);
-        });
-
-        // Setup detail carousel
-        setupDetailCarousel(projectId);
-
-        // Show panel
-        const panel = document.getElementById('projectDetailPanel');
-        panel.classList.add('active');
-
-        // Scroll to panel
-        panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    function setupDetailCarousel(projectId) {
-        const images = projectImages[projectId];
-        if (!images) return;
-
-        const track = document.getElementById('detail-carousel-track');
-        const controls = document.getElementById('detail-carousel-controls');
-        const counter = document.getElementById('detail-carousel-counter');
-
-        // Clear existing content
-        track.innerHTML = '';
-        controls.innerHTML = '';
-
-        // Create slides
-        images.forEach((imagePath, index) => {
-            const slide = document.createElement('div');
-            slide.className = 'carousel-slide';
-            const img = document.createElement('img');
-            img.src = imagePath;
-            img.alt = `Image ${index + 1} for ${projectId}`;
-            img.style.width = '100%';
-            img.style.height = '100%';
-            img.style.objectFit = 'contain';
-            slide.appendChild(img);
-            track.appendChild(slide);
-        });
-
-        // Create dots
-        images.forEach((_, index) => {
-            const dot = document.createElement('span');
-            dot.className = `carousel-dot-detail ${index === 0 ? 'active' : ''}`;
-            dot.onclick = () => setDetailImage(index);
-            controls.appendChild(dot);
-        });
-
-        // Update counter
-        counter.textContent = `1/${images.length}`;
-
-        // Reset to first image
-        currentDetailImageIndex = 0;
-        updateDetailCarousel();
-    }
-
-    function setDetailImage(index) {
-        if (!currentDetailProject) return;
-
-        const images = projectImages[currentDetailProject];
-        if (!images || index < 0 || index >= images.length) return;
-
-        currentDetailImageIndex = index;
-        updateDetailCarousel();
-    }
-
-    function prevDetailImage() {
-        if (!currentDetailProject) return;
-
-        const images = projectImages[currentDetailProject];
-        if (!images) return;
-
-        currentDetailImageIndex = (currentDetailImageIndex - 1 + images.length) % images.length;
-        updateDetailCarousel();
-    }
-
-    function nextDetailImage() {
-        if (!currentDetailProject) return;
-
-        const images = projectImages[currentDetailProject];
-        if (!images) return;
-
-        currentDetailImageIndex = (currentDetailImageIndex + 1) % images.length;
-        updateDetailCarousel();
-    }
-
-    function updateDetailCarousel() {
-        if (!currentDetailProject) return;
-
-        const images = projectImages[currentDetailProject];
-        if (!images) return;
-
-        const track = document.getElementById('detail-carousel-track');
-        const dots = document.querySelectorAll('.carousel-dot-detail');
-        const counter = document.getElementById('detail-carousel-counter');
-
-        // Update track position
-        track.style.transform = `translateX(-${currentDetailImageIndex * 100}%)`;
-
-        // Update dots
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentDetailImageIndex);
-        });
-
-        // Update counter
-        counter.textContent = `${currentDetailImageIndex + 1}/${images.length}`;
-    }
-
-    function closeProjectDetails() {
-        document.getElementById('projectDetailPanel').classList.remove('active');
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.classList.remove('selected');
-        });
-        currentDetailProject = null;
-        currentDetailImageIndex = 0;
-    }
-
-    // Gallery modal system
-    function updateGalleryItems() {
-        const elements = document.querySelectorAll('[data-i18n^="gallery_items"]');
-        elements.forEach(element => {
-            const key = element.getAttribute('data-i18n');
-            const translation = getNestedTranslation(translations[currentLanguage], key);
-            if (translation) {
-                element.textContent = translation;
-            }
-        });
-    }
-    
-    function openGalleryModal(itemId) {
-        const item = galleryData[itemId];
-        if (!item) return;
-
-        currentGalleryIndex = galleryItems.indexOf(itemId);
-        populateGalleryModal(itemId, item);
-        document.getElementById('galleryModal').classList.add('active');
-    }
-
-    function closeGalleryModal() {
-        document.getElementById('galleryModal').classList.remove('active');
-    }
-
-    function populateGalleryModal(itemId, item) {
-        const lang = currentLanguage;
-        document.getElementById('modalTitle').textContent = item[`title_${lang}`];
-
-        // Sistema inteligente que detecta el tipo de archivo
-        const modalPreview = document.getElementById('modalPreview');
-        modalPreview.innerHTML = ''; // Limpiar contenido previo
-
-        if (item.mediaPath) {
-            const fileExtension = item.mediaPath.split('.').pop().toLowerCase();
-            const isVideo = ['mp4', 'webm', 'ogg', 'mov', 'avi'].includes(fileExtension);
-            const isImage = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp'].includes(fileExtension);
-
-            if (isVideo) {
-                const video = document.createElement('video');
-                video.controls = true;
-                video.style.width = '100%';
-                video.style.height = '100%';
-                video.style.objectFit = 'contain';
-
-                const source = document.createElement('source');
-                source.src = item.mediaPath;
-                source.type = `video/${fileExtension === 'mov' ? 'quicktime' : fileExtension}`;
-
-                video.appendChild(source);
-                video.appendChild(document.createTextNode('Tu navegador no soporta el elemento de video.'));
-                modalPreview.appendChild(video);
-
-            } else if (isImage) {
-                const img = document.createElement('img');
-                img.src = item.mediaPath;
-                img.alt = item[`title_${lang}`];
-                img.style.width = '100%';
-                img.style.height = '100%';
-                img.style.objectFit = 'contain';
-                modalPreview.appendChild(img);
-
-            } else {
-                // Fallback a emoji si no se reconoce el tipo
-                modalPreview.textContent = '🎮';
-                modalPreview.style.fontSize = '4rem';
-                modalPreview.style.display = 'flex';
-                modalPreview.style.alignItems = 'center';
-                modalPreview.style.justifyContent = 'center';
-            }
-        } else {
-            // Fallback si no hay mediaPath
-            modalPreview.textContent = '🎮';
-            modalPreview.style.fontSize = '4rem';
-            modalPreview.style.display = 'flex';
-            modalPreview.style.alignItems = 'center';
-            modalPreview.style.justifyContent = 'center';
-        }
-
-        document.getElementById('modalDescription').textContent = item[`description_${lang}`];
-        document.getElementById('modalProcess').textContent = item[`process_${lang}`];
-
-        // Populate tools
-        const toolsContainer = document.getElementById('modalTools');
-        toolsContainer.innerHTML = '';
-        item.tools.forEach(tool => {
-            const span = document.createElement('span');
-            span.className = 'modal-tool-tag';
-            span.textContent = tool;
-            toolsContainer.appendChild(span);
-        });
-    }
-
-    function prevGalleryItem() {
-        currentGalleryIndex = (currentGalleryIndex - 1 + galleryItems.length) % galleryItems.length;
-        const itemId = galleryItems[currentGalleryIndex];
-        const item = galleryData[itemId];
-        populateGalleryModal(itemId, item);
-    }
-
-    function nextGalleryItem() {
-        currentGalleryIndex = (currentGalleryIndex + 1) % galleryItems.length;
-        const itemId = galleryItems[currentGalleryIndex];
-        const item = galleryData[itemId];
-        populateGalleryModal(itemId, item);
-    }
-
-    // Gallery filtering
-    function filterGallery(category) {
-        const items = document.querySelectorAll('.gallery-item');
-        const filterButtons = document.querySelectorAll('.filter-btn');
-
-        // Update active filter button
-        filterButtons.forEach(btn => {
-            btn.classList.toggle('active', btn.getAttribute('data-filter') === category);
-        });
-
-        // Show/hide items based on category
-        items.forEach(item => {
-            if (category === 'all' || item.getAttribute('data-category') === category) {
-                item.style.display = 'block';
-            } else {
-                item.style.display = 'none';
-            }
-        });
-    }
-
-    // Initialize the page
-    document.addEventListener('DOMContentLoaded', function() {
-        // Set up navigation
-        document.querySelectorAll('.nav-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                showSection(this.getAttribute('data-section'));
+        function updateCarousel(projectId) {
+            const track = document.getElementById(`carousel-${projectId}`);
+            const dots = track.parentElement.querySelectorAll('.carousel-dot');
+            track.style.transform = `translateX(-${carouselStates[projectId] * 100}%)`;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === carouselStates[projectId]);
             });
-        });
+        }
 
-        // Set up gallery filters
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                filterGallery(this.getAttribute('data-filter'));
+        // Modal Functions
+        function openProjectModal(projectId) {
+            const project = projects.find(p => p.id === projectId);
+            const modal = document.getElementById('projectModal');
+            const body = document.getElementById('modalBody');
+            
+            body.innerHTML = `
+                <div class="project-carousel" style="margin-bottom: 32px;">
+                    <div class="carousel-track" id="modal-carousel-${projectId}">
+                        ${project.images.map(img => `
+                            <img src="${img}" alt="${project.title}" class="carousel-image" style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27800%27 height=%27400%27%3E%3Crect width=%27800%27 height=%27400%27 fill=%27%234A90E2%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2732%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${project.title}%3C/text%3E%3C/svg%3E'">
+                        `).join('')}
+                    </div>
+                    ${project.images.length > 1 ? `
+                        <button class="carousel-btn prev" onclick="moveCarousel('${projectId}', -1); updateCarousel('${projectId}')">‹</button>
+                        <button class="carousel-btn next" onclick="moveCarousel('${projectId}', 1); updateCarousel('${projectId}')">›</button>
+                    ` : ''}
+                </div>
+                <h2 style="font-size: 32px; margin: 0 0 16px 0;">${project.title}</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 16px;">${project.tech}</p>
+                <p style="font-size: 18px; line-height: 1.8; color: var(--text-secondary);">${project.details[currentLang]}</p>
+            `;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('projectModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Gallery Modal Functions
+        function openGalleryModal(galleryId) {
+            const item = gallery.find(g => g.id === galleryId);
+            const modal = document.getElementById('projectModal');
+            const body = document.getElementById('modalBody');
+            
+            const mediaHtml = item.media.endsWith('.mp4') 
+                ? `<video controls style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 32px;">
+                    <source src="${item.media}" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>`
+                : `<img src="${item.media}" alt="${item.title[currentLang]}" style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 32px;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27800%27 height=%27400%27%3E%3Crect width=%27800%27 height=%27400%27 fill=%27%236C5CE7%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2732%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${item.title[currentLang]}%3C/text%3E%3C/svg%3E'">`;
+            
+            body.innerHTML = `
+                ${mediaHtml}
+                <h2 style="font-size: 32px; margin: 0 0 8px 0;">${item.title[currentLang]}</h2>
+                <p style="color: var(--secondary); margin-bottom: 24px; font-size: 16px; font-weight: 600;">${item.category[currentLang]}</p>
+                
+                <div style="margin-bottom: 32px;">
+                    <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--primary);">Description</h3>
+                    <p style="font-size: 16px; line-height: 1.8; color: var(--text-secondary);">${item.description[currentLang]}</p>
+                </div>
+                
+                <div style="margin-bottom: 32px;">
+                    <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--primary);">Tools &amp; Software</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        ${item.tools.map(tool => `<span style="padding: 8px 16px; background: var(--accent); color: white; border-radius: 20px; font-size: 14px; font-weight: 500;">${tool}</span>`).join('')}
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--primary);">Development Process</h3>
+                    <p style="font-size: 16px; line-height: 1.8; color: var(--text-secondary);">${item.process[currentLang]}</p>
+                </div>
+            `;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Lightbox Functions
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const image = document.getElementById('lightboxImage');
+            image.src = imageSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Language Toggle
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'es' : 'en';
+            updateLanguage();
+            updateLanguageButton();
+        }
+
+        function updateLanguageButton() {
+            const langBtn = document.getElementById('langToggle');
+            langBtn.textContent = currentLang === 'en' ? 'ES' : 'EN';
+        }
+
+        function updateLanguage() {
+            // Update all elements with data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.textContent = translations[currentLang][key];
+                }
             });
-        });
 
-        // Initialize carousels
-        initCarousels();
+            // Update dynamic content
+            projects.forEach(project => {
+                const descEl = document.querySelector(`[data-i18n-dynamic="project-desc-${project.id}"]`);
+                if (descEl) descEl.textContent = project.description[currentLang];
+            });
 
-        // Set up language
-        updateLanguage();
+            // Update hero carousel project info
+            updateHeroProjectInfo();
 
-        // Close modal on outside click
-        document.getElementById('galleryModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeGalleryModal();
-            }
-        });
+            // Re-render gallery to update language
+            renderGallery();
 
-        // Close modal with ESC key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeGalleryModal();
-                closeProjectDetails();
-            }
-        });
-    });
-</script>
+            // Re-render skills to update language-specific items
+            renderSkills();
+        }
 
+        // Event Listeners
+        function setupEventListeners() {
+            // Hero carousel controls
+            document.getElementById('heroCarouselPrev').addEventListener('click', () => moveHeroCarousel(-1));
+            document.getElementById('heroCarouselNext').addEventListener('click', () => moveHeroCarousel(1));
+            
+            // Pause autoplay on hover
+            const heroCarousel = document.querySelector('.hero-carousel');
+            heroCarousel.addEventListener('mouseenter', stopHeroCarouselAutoplay);
+            heroCarousel.addEventListener('mouseleave', startHeroCarouselAutoplay);
+            
+            // Language toggle
+            document.getElementById('langToggle').addEventListener('click', toggleLanguage);
+
+            // Mobile menu
+            document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+                document.getElementById('mainNav').classList.toggle('active');
+            });
+
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        document.getElementById('mainNav').classList.remove('active');
+                    }
+                });
+            });
+
+            // Modal close
+            document.getElementById('modalClose').addEventListener('click', closeProjectModal);
+            document.getElementById('projectModal').addEventListener('click', (e) => {
+                if (e.target.id === 'projectModal') closeProjectModal();
+            });
+
+            // Lightbox close
+            document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+            document.getElementById('lightbox').addEventListener('click', (e) => {
+                if (e.target.id === 'lightbox') closeLightbox();
+            });
+
+            // Scroll to top
+            const scrollTopBtn = document.getElementById('scrollTop');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
+            });
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Active nav indicator
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Contact form
+            document.getElementById('contactForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert(currentLang === 'en' ? 'Message sent successfully!' : '¡Mensaje enviado exitosamente!');
+                e.target.reset();
+            });
+        }
+
+
+
+        // Initialize on load
+        init();
+        updateLanguageButton();
+    </script>
 </body>
-
 </html>
