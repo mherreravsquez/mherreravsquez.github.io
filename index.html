@@ -176,20 +176,17 @@
             mix-blend-mode: overlay;
         }
 
-        .hero-title-overlay {
+        .hero-title-bottom-left {
             position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
+            left: 48px;
+            bottom: 48px;
             color: white;
             z-index: 40;
             text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            width: 90%;
-            max-width: 800px;
+            max-width: 600px;
         }
 
-        .hero-title-overlay h1 {
+        .hero-title-bottom-left h1 {
             font-size: 72px;
             line-height: 0.9;
             font-weight: 800;
@@ -197,7 +194,7 @@
             letter-spacing: -1px;
         }
 
-        .hero-title-overlay p {
+        .hero-title-bottom-left p {
             font-size: 24px;
             font-weight: 600;
             opacity: 0.95;
@@ -264,10 +261,15 @@
             .hero-carousel {
                 height: 620px;
             }
-            .hero-title-overlay h1 {
+            .hero-title-bottom-left {
+                left: 28px;
+                bottom: 28px;
+                max-width: 420px;
+            }
+            .hero-title-bottom-left h1 {
                 font-size: 48px;
             }
-            .hero-title-overlay p {
+            .hero-title-bottom-left p {
                 font-size: 20px;
             }
         }
@@ -276,10 +278,15 @@
             .hero-carousel {
                 height: 56vh;
             }
-            .hero-title-overlay h1 {
+            .hero-title-bottom-left {
+                left: 18px;
+                bottom: 18px;
+                max-width: none;
+            }
+            .hero-title-bottom-left h1 {
                 font-size: 32px;
             }
-            .hero-title-overlay p {
+            .hero-title-bottom-left p {
                 font-size: 16px;
             }
             .hero-carousel-btn {
@@ -827,7 +834,7 @@
         <div class="header-content">
             <a href="#" class="logo" data-i18n="logo">Marcelo Herrera</a>
             <nav id="mainNav">
-                <a href="#about" data-i18n="nav_about">About</a>
+                <a href="#about" data-i18n="nav_about">About Me</a>
                 <a href="#projects" data-i18n="nav_projects">Projects</a>
                 <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
                 <a href="#skills" data-i18n="nav_skills">Skills</a>
@@ -842,7 +849,7 @@
     <section class="hero" id="hero">
         <div class="hero-carousel">
             <div class="hero-carousel-track" id="heroCarouselTrack"></div>
-            <div class="hero-title-overlay" id="heroTitleOverlay">
+            <div class="hero-title-bottom-left" id="heroTitleBottomLeft">
                 <h1 id="heroOverlayTitle">Break the Bubble</h1>
                 <p id="heroOverlayTech">Unity • C# • PC • Metroidvania</p>
             </div>
@@ -873,7 +880,7 @@
                     
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
                         <div style="background: var(--background); padding: 20px; border-radius: var(--radius); border: 1px solid rgba(0,0,0,0.05);">
-                            <div style="font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 4px;">3+</div>
+                            <div style="font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 4px;">-</div>
                             <div style="font-size: 14px; color: var(--text-secondary); font-weight: 500;" data-i18n="stat_experience">Years of Experience</div>
                         </div>
                         <div style="background: var(--background); padding: 20px; border-radius: var(--radius); border: 1px solid rgba(0,0,0,0.05);">
@@ -881,11 +888,11 @@
                             <div style="font-size: 14px; color: var(--text-secondary); font-weight: 500;" data-i18n="stat_education">Digital Game Design Student</div>
                         </div>
                         <div style="background: var(--background); padding: 20px; border-radius: var(--radius); border: 1px solid rgba(0,0,0,0.05);">
-                            <div style="font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 4px;">Unity &amp; VR</div>
+                            <div style="font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 4px;">Unity 3D &amp; VR</div>
                             <div style="font-size: 14px; color: var(--text-secondary); font-weight: 500;" data-i18n="stat_specialization">Specialization</div>
                         </div>
                         <div style="background: var(--background); padding: 20px; border-radius: var(--radius); border: 1px solid rgba(0,0,0,0.05);">
-                            <div style="font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 4px;">⚙️</div>
+                            <div style="font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 4px;">👀</div>
                             <div style="font-size: 14px; color: var(--text-secondary); font-weight: 500;" data-i18n="stat_focus">Procedural Generation</div>
                         </div>
                     </div>
