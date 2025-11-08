@@ -25,6 +25,7 @@
             --text-secondary: #7F8C8D;
             --hover: #A29BFE;
             --success: #00D9A3;
+            --pink: #ff6b85;
             --shadow: 0 2px 8px rgba(0,0,0,0.08);
             --shadow-lg: 0 4px 16px rgba(0,0,0,0.12);
             --radius: 12px;
@@ -102,10 +103,10 @@
 
         .lang-toggle {
             padding: 8px 16px;
-            border: 2px solid var(--primary);
+            border: 2px solid #fde24f;
             border-radius: var(--radius);
             background: transparent;
-            color: var(--primary);
+            color: #2c3e50;
             font-weight: 600;
             cursor: pointer;
             transition: all var(--transition);
@@ -115,8 +116,8 @@
         }
 
         .lang-toggle:hover {
-            background: var(--primary);
-            color: white;
+            background: #fde24f;
+            color: var(--text-primary);
         }
 
         .mobile-menu-btn {
@@ -128,50 +129,28 @@
             cursor: pointer;
         }
 
-        /* Hero Section - New Design */
+        /* Hero Section */
         .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, var(--background) 0%, #E8EAF6 100%);
-            padding: 100px 24px 60px;
             position: relative;
+            min-height: 80vh;
             overflow: hidden;
+            padding-top: 70px;
         }
 
-        .hero-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 48px;
-            min-height: calc(100vh - 160px);
-        }
-
-        /* Hero Carousel Container */
-        .hero-carousel-container {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 32px;
-        }
-
-        /* Hero Carousel */
         .hero-carousel {
-            position: relative;
             width: 100%;
-            max-width: 100%;
-            height: 500px;
-            border-radius: 0;
+            height: 720px;
+            max-height: 80vh;
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 12px 48px rgba(0,0,0,0.15);
-            background: #f0f0f0;
+            display: block;
         }
 
         .hero-carousel-track {
             display: flex;
             height: 100%;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+            transition: transform 0.6s cubic-bezier(.4,0,.2,1);
         }
 
         .hero-carousel-slide {
@@ -184,162 +163,141 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
+            filter: contrast(0.9) saturate(0.9);
         }
 
-        /* Hero Carousel Buttons - Centered */
-        .hero-carousel-btn {
+        .hero::after {
+            content: '';
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(254, 84, 111, 0.95);
-            border: none;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 36px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all var(--transition);
-            z-index: 100;
-            opacity: 1;
-            box-shadow: 0 4px 16px rgba(254, 84, 111, 0.4);
+            inset: 0;
+            pointer-events: none;
+            background-image: linear-gradient(rgba(0,0,0,0) 96%, rgba(0,0,0,0.02) 100%);
+            mix-blend-mode: overlay;
+        }
+
+        .hero-badge {
+            position: absolute;
+            left: 48px;
+            bottom: 48px;
+            background: var(--pink);
             color: white;
-            line-height: 56px;
-            padding: 0;
-            text-align: center;
+            padding: 24px 32px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            max-width: 520px;
+            z-index: 40;
         }
 
-        .hero-carousel-btn:hover {
-            background: rgb(254, 84, 111);
-            transform: translateY(-50%) scale(1.15);
-            box-shadow: 0 6px 20px rgba(254, 84, 111, 0.6);
+        .hero-badge h1 {
+            font-size: 72px;
+            line-height: 0.9;
+            font-weight: 800;
+            margin-bottom: 6px;
+            letter-spacing: -1px;
         }
 
-        .hero-carousel-btn.prev { left: 32px; }
-        .hero-carousel-btn.next { right: 32px; }
+        .hero-badge p {
+            font-size: 18px;
+            font-weight: 700;
+            opacity: 0.95;
+        }
 
         .hero-carousel-dots {
             position: absolute;
-            bottom: 24px;
             left: 50%;
             transform: translateX(-50%);
+            bottom: 28px;
             display: flex;
             gap: 12px;
-            z-index: 20;
+            z-index: 45;
         }
 
         .hero-carousel-dot {
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255,255,255,0.6);
+            border: 2px solid rgba(255,255,255,0.8);
             cursor: pointer;
             transition: all var(--transition);
-            border: 2px solid rgba(255, 255, 255, 0.8);
         }
 
         .hero-carousel-dot.active {
-            background: white;
             width: 36px;
             border-radius: 6px;
-        }
-
-        /* Hero Project Info */
-        .hero-project-info {
-            text-align: center;
-            max-width: 700px;
-        }
-
-        .hero-project-title {
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 12px;
-        }
-
-        .hero-project-tech {
-            font-size: 16px;
-            color: var(--secondary);
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
-        .hero-project-description {
-            font-size: 18px;
-            line-height: 1.7;
-            color: var(--text-secondary);
-            margin-bottom: 32px;
-        }
-
-        .hero-project-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* Status Badge */
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
             background: white;
-            border-radius: 24px;
-            box-shadow: var(--shadow);
-            margin-bottom: 24px;
-            font-weight: 500;
-            color: var(--text-primary);
         }
 
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--success);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .btn {
-            padding: 14px 32px;
-            border-radius: var(--radius);
-            font-weight: 600;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all var(--transition);
-            text-decoration: none;
-            display: inline-block;
+        .hero-carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.45);
             border: none;
-        }
-
-        .btn-primary {
-            background: var(--primary);
             color: white;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            z-index: 50;
+            cursor: pointer;
         }
 
-        .btn-primary:hover {
-            background: var(--secondary);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+        .hero-carousel-btn.prev {
+            left: 20px;
         }
 
-        .btn-secondary {
-            background: white;
-            color: var(--primary);
-            border: 2px solid var(--primary);
+        .hero-carousel-btn.next {
+            right: 20px;
         }
 
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: white;
+        .hero-carousel-btn:hover {
+            transform: translateY(-50%) scale(1.06);
+            background: rgba(0,0,0,0.6);
+        }
+
+        @media (max-width: 1100px) {
+            .hero-carousel {
+                height: 620px;
+            }
+            .hero-badge {
+                left: 28px;
+                bottom: 28px;
+                padding: 18px 22px;
+                max-width: 420px;
+            }
+            .hero-badge h1 {
+                font-size: 48px;
+            }
+            .hero-badge p {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-carousel {
+                height: 56vh;
+            }
+            .hero-badge {
+                left: 18px;
+                right: 18px;
+                bottom: 18px;
+                max-width: none;
+                padding: 14px 18px;
+            }
+            .hero-badge h1 {
+                font-size: 32px;
+            }
+            .hero-badge p {
+                font-size: 14px;
+            }
+            .hero-carousel-btn {
+                display: none;
+            }
         }
 
         /* Section Styles */
@@ -440,8 +398,13 @@
             box-shadow: 0 6px 16px rgba(254, 84, 111, 0.6);
         }
 
-        .carousel-btn.prev { left: -60px; }
-        .carousel-btn.next { right: -60px; }
+        .carousel-btn.prev {
+            left: -60px;
+        }
+
+        .carousel-btn.next {
+            right: -60px;
+        }
 
         .carousel-dots {
             position: absolute;
@@ -492,6 +455,30 @@
             color: var(--text-secondary);
             line-height: 1.6;
             margin-bottom: 16px;
+        }
+
+        /* project buttons */
+        .btn {
+            padding: 12px 24px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all var(--transition);
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
         }
 
         /* Modal */
@@ -737,7 +724,6 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 16px;
-            margin-bottom: 48px;
         }
 
         .contact-link {
@@ -760,46 +746,6 @@
             box-shadow: var(--shadow-lg);
             background: var(--primary);
             color: white;
-        }
-
-        .contact-form {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #E0E0E0;
-            border-radius: var(--radius);
-            font-size: 16px;
-            font-family: 'Inter', sans-serif;
-            transition: border-color var(--transition);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
         }
 
         /* Footer */
@@ -842,10 +788,12 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .hero-carousel-btn.prev { left: 8px; }
-            .hero-carousel-btn.next { right: 8px; }
-            .carousel-btn.prev { left: 8px; }
-            .carousel-btn.next { right: 8px; }
+            .carousel-btn.prev {
+                left: 8px;
+            }
+            .carousel-btn.next {
+                right: 8px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -870,20 +818,8 @@
                 display: block;
             }
 
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            .hero h2 {
-                font-size: 20px;
-            }
-
             .section-title {
                 font-size: 32px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
             }
 
             .modal-body {
@@ -915,33 +851,17 @@
         </div>
     </header>
 
-    <!-- Hero Section - New Design -->
+    <!-- Hero Section -->
     <section class="hero" id="hero">
-        <div class="hero-container">
-            <!-- Sticky Profile Photo -->
-
-
-            <!-- Carousel and Project Info -->
-            <div class="hero-carousel-container">
-                <!-- Hero Carousel -->
-                <div class="hero-carousel">
-                    <div class="hero-carousel-track" id="heroCarouselTrack"></div>
-                    <button class="hero-carousel-btn prev" id="heroCarouselPrev">‹</button>
-                    <button class="hero-carousel-btn next" id="heroCarouselNext">›</button>
-                    <div class="hero-carousel-dots" id="heroCarouselDots"></div>
-                </div>
-
-                <!-- Project Info -->
-                <div class="hero-project-info">
-                    <h2 class="hero-project-title" id="heroProjectTitle">CAR_LOOP</h2>
-                    <p class="hero-project-tech" id="heroProjectTech">Unity • C# • VR • Psychological Horror</p>
-                    <p class="hero-project-description" id="heroProjectDescription">A VR psychological horror experience that traps players in an infinite driving loop.</p>
-                    <div class="hero-project-buttons">
-                        <button class="btn btn-primary" id="heroViewProject" data-i18n="hero_view_project">View Project</button>
-                        <a href="#projects" class="btn btn-secondary" data-i18n="hero_see_all">See All Work</a>
-                    </div>
-                </div>
+        <div class="hero-carousel">
+            <div class="hero-carousel-track" id="heroCarouselTrack"></div>
+            <div class="hero-badge" id="heroBadge">
+                <h1 id="heroOverlayTitle">Break the Bubble</h1>
+                <p id="heroOverlayTech">Unity • C# • PC • Metroidvania</p>
             </div>
+            <button class="hero-carousel-btn prev" id="heroCarouselPrev">‹</button>
+            <button class="hero-carousel-btn next" id="heroCarouselNext">›</button>
+            <div class="hero-carousel-dots" id="heroCarouselDots"></div>
         </div>
     </section>
 
@@ -995,7 +915,7 @@
     <section id="gallery" class="alt-bg">
         <div style="max-width: 1200px; margin: 0 auto;">
             <h2 class="section-title" data-i18n="section_gallery">Creative Gallery</h2>
-            <p class="section-subtitle">3D Art &amp; Interactive Installations</p>
+            <p class="section-subtitle">3D Art • Interactive Installations • Animations • Cinematics • & more</p>
             
             <div class="gallery-grid" id="galleryGrid"></div>
         </div>
@@ -1028,35 +948,19 @@
             <p class="section-subtitle" data-i18n="contact_subtitle">Ready to collaborate on innovative gaming projects</p>
             
             <div class="contact-links">
-                <a href="mailto:contact@example.com" class="contact-link" target="_blank">
+                <a href="mailto:m.herreravsquez@outlook.com" class="contact-link" target="_blank">
                     <span>📧</span>
                     <span>Email</span>
                 </a>
-                <a href="https://linkedin.com" class="contact-link" target="_blank">
+                <a href="www.linkedin.com/in/mherreravsquez" class="contact-link" target="_blank">
                     <span>💼</span>
                     <span>LinkedIn</span>
                 </a>
-                <a href="https://github.com" class="contact-link" target="_blank">
+                <a href="https://github.com/mherreravsquez" class="contact-link" target="_blank">
                     <span>💻</span>
                     <span>GitHub</span>
                 </a>
             </div>
-
-            <form class="contact-form" id="contactForm">
-                <div class="form-group">
-                    <label for="name" data-i18n="contact_form_name">Name</label>
-                    <input type="text" id="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email" data-i18n="contact_form_email">Email</label>
-                    <input type="email" id="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message" data-i18n="contact_form_message">Message</label>
-                    <textarea id="message" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;" data-i18n="contact_form_submit">Send Message</button>
-            </form>
         </div>
     </section>
 
@@ -1097,18 +1001,18 @@
                     es: 'Una experiencia de terror psicológico en VR que atrapa a los jugadores en un bucle infinito de conducción. Construido con Unity y C#, con generación procedural avanzada y narrativa atmosférica.'
                 },
                 image: 'assets/Main Projects/CL/CL_thumbnail.png',
-                button: { en: 'Explore CAR_LOOP', es: 'Explorar CAR_LOOP' }
+                button: { en: 'Discover Car-Loop', es: 'Descubrir Car-Loop' }
             },
             {
                 id: 'break_bubble',
                 title: 'Break the Bubble',
                 tech: 'Unity • C# • PC • Metroidvania',
                 description: {
-                    en: 'A mobile arcade game with addictive bubble-breaking mechanics. Features smooth touch controls and progressive difficulty scaling.',
-                    es: 'Un juego arcade móvil con mecánicas adictivas de romper burbujas. Cuenta con controles táctiles suaves y escalado progresivo de dificultad.'
+                    en: ' ',
+                    es: ' '
                 },
                 image: 'assets/Main Projects/BTB/BTB_thumbnail.png',
-                button: { en: 'Play Break the Bubble', es: 'Jugar Break the Bubble' }
+                button: { en: 'Discover Break the Bubble', es: 'Descubrir Break the Bubble' }
             },
             {
                 id: 'hunters',
@@ -1207,7 +1111,7 @@
         const projects = [
             {
                 id: 'car_loop',
-                title: 'CAR_LOOP',
+                title: 'Car-Loop',
                 tech: 'Unity • C# • VR • PC • Psychological Horror',
                 description: {
                     en: 'A VR psychological horror experience that traps players in an infinite driving loop. Built with Unity and C#, featuring advanced procedural generation and atmospheric storytelling.',
@@ -1215,21 +1119,37 @@
                 },
                 details: {
                     en: 'Car-Loop is a VR psychological horror game where players find themselves trapped in an endless driving sequence. The game uses procedural generation to create subtle variations in each loop, making players question their perception of reality.',
-                    es: 'Car_Loop es un juego de terror psicológico en VR donde los jugadores se encuentran atrapados en una secuencia infinita de conducción. El juego utiliza generación procedural para crear variaciones sutiles en cada bucle, haciendo que los jugadores cuestionen su percepción de la realidad.'
+                    es: 'Car-Loop es un juego de terror psicológico en VR donde los jugadores se encuentran atrapados en una secuencia infinita de conducción. El juego utiliza generación procedural para crear variaciones sutiles en cada bucle, haciendo que los jugadores cuestionen su percepción de la realidad.'
                 },
                 images: ['assets/Main Projects/CL/CL_thumbnail.png', 'assets/Main Projects/CL/CL_gameplay1.png']
             },
             {
                 id: 'break_bubble',
                 title: 'Break the Bubble',
-                tech: 'Unity • C# • PC • Metroidvania',
+                tech: 'Unity • C# • PC • Metroidvania • Immersive Narrative',
                 description: {
-                    en: 'A mobile arcade game with addictive bubble-breaking mechanics. Features smooth touch controls and progressive difficulty scaling.',
-                    es: 'Un juego arcade móvil con mecánicas adictivas de romper burbujas. Cuenta con controles táctiles suaves y escalado progresivo de dificultad.'
+                    en: 'Break the Bubble is a game developed for GGJ 2025, with the theme of “Bubble.” This game tells ' +
+                        'the story of a developer who wants to develop a new video game, showing us his creative process ' +
+                        'toward creating the Metroidvania genre in his world.',
+                    es: 'Break the Bubble es un juego desarrollado para la GGJ 2025, el tema era Burbuja. En este juego, ' +
+                        'se narra la historia de un desarrollador que quiere desarrollar un nuevo videojuego, se nos ' +
+                        'muestra su proceso creativo hacia la creación del genero Metroidvania en su mundo.'
                 },
                 details: {
-                    en: 'An engaging mobile arcade game that challenges players to break bubbles with strategic timing and precision.',
-                    es: 'Un juego arcade móvil atractivo que desafía a los jugadores a romper burbujas con sincronización estratégica y precisión.'
+                    en: 'Break the Bubble is a game developed for GGJ 2025, with the theme of “Bubble.” This game tells ' +
+                        'the story of a developer who wants to develop a new video game, showing us his creative process ' +
+                        'toward creating the Metroidvania genre in his world. \n' +
+                        '\n' +
+                        'During the Metroidvania stage, we can see mechanics such as the transformation of the character ' +
+                        'to be able to move through confined spaces, and the movement of platforms with runes, in order ' +
+                        'to reach places that you could not reach with a conventional jump.',
+                    es: 'Break the Bubble es un juego desarrollado para la GGJ 2025, el tema era Burbuja. En este juego, ' +
+                        'se narra la historia de un desarrollador que quiere desarrollar un nuevo videojuego, se nos muestra ' +
+                        'su proceso creativo hacia la creación del genero Metroidvania en su mundo. \n' +
+                        '\n' +
+                        'Durante la etapa de metroidvania, podemos notar mecánicas como la transformación del personaje ' +
+                        'para poder avanzar por espacios reducidos, y el movimiento de plataformas con runas, con el fin ' +
+                        'de alcanzar lugares que no podrías alcanzar con un salto convencional.'
                 },
                 images: ['assets/Main Projects/BTB/BTB_thumbnail.png', 'assets/Main Projects/BTB/BTB_gameplay1.png']
             },
@@ -1238,12 +1158,12 @@
                 title: 'HUNTERS: Awakening',
                 tech: 'Unity • C# • PC • JRPG',
                 description: {
-                    en: 'An action RPG featuring dynamic combat systems and character progression. Built for PC with Unity.',
-                    es: 'Un RPG de acción con sistemas de combate dinámicos y progresión de personajes. Construido para PC con Unity.'
+                    en: 'HUNTERS: Awakening is an action JRPG ',
+                    es: 'HUNTERS: Awakening es un JRPG '
                 },
                 details: {
-                    en: 'HUNTERS: Awakening is an action RPG that combines fast-paced combat with strategic character building.',
-                    es: 'HUNTERS: Awakening es un RPG de acción que combina combate rápido con construcción estratégica de personajes.'
+                    en: 'HUNTERS: Awakening is an action JRPG ',
+                    es: 'HUNTERS: Awakening es un JRPG '
                 },
                 images: ['assets/Main Projects/HUNTERS/HUNTERS_thumbnail.png']
             }
@@ -1300,27 +1220,32 @@
         const skills = {
             programming: {
                 title: { en: 'Programming', es: 'Programación' },
-                items: ['C#', 'Python', 'JavaScript', 'HLSL']
+                items: ['C#', 'Python']
             },
             engines: {
                 title: { en: 'Game Engines', es: 'Motores de Juego' },
-                items: ['Unity', 'Unreal Engine', 'Godot']
+                items: ['Unity', 'Unreal Engine', 'RenPy', 'Twine']
             },
             creative: {
                 title: { en: 'Creative Tools', es: 'Herramientas Creativas' },
-                items: ['ZBrush', 'Blender', 'Photoshop', 'Substance Painter']
+                items: ['ZBrush', 'Blender', 'Photoshop', 'Illustrator', 
+                    'Premiere Pro', 'After Effects', 'TouchDesigner', 'Audacity', 
+                    'Reaper']
             },
             languages: {
                 title: { en: 'Languages', es: 'Idiomas' },
-                items: { en: ['Spanish (Native)', 'English (Professional)'], es: ['Español (Nativo)', 'Inglés (Profesional)'] }
+                items: { en: ['Spanish (Native)', 'English (Advanced)'], 
+                    es: ['Español (Nativo)', 'Inglés (Avanzado)'] }
             }
         };
 
         // State
         let currentLang = 'en';
         const carouselStates = {};
-        let heroCarouselIndex = 0;
-        let heroCarouselInterval = null;
+        
+        // Hero Carousel State (from hero.html)
+        let heroIndex = 0;
+        let heroInterval = null;
 
         // Initialize
         function init() {
@@ -1330,75 +1255,61 @@
             renderSkills();
             setupEventListeners();
             updateLanguage();
-            startHeroCarouselAutoplay();
+            startHeroAutoplay();
         }
 
-        // Hero Carousel Functions
-        function renderHeroCarousel() {
+        // Hero Carousel Functions (from hero.html)
+        function renderHeroCarousel(){
             const track = document.getElementById('heroCarouselTrack');
             const dots = document.getElementById('heroCarouselDots');
-            
-            track.innerHTML = heroCarouselProjects.map(project => `
+
+            track.innerHTML = heroCarouselProjects.map(p => `
                 <div class="hero-carousel-slide">
-                    <img src="${project.image}" alt="${project.title}" class="hero-carousel-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27800%27 height=%27500%27%3E%3Crect width=%27800%27 height=%27500%27 fill=%27%234A90E2%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2732%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${project.title}%3C/text%3E%3C/svg%3E'">
+                    <img src="${p.image}" alt="${p.title}" class="hero-carousel-image">
                 </div>
             `).join('');
-            
-            dots.innerHTML = heroCarouselProjects.map((_, i) => `
-                <span class="hero-carousel-dot ${i === 0 ? 'active' : ''}" onclick="goToHeroSlide(${i})"></span>
-            `).join('');
-            
-            updateHeroProjectInfo();
+
+            dots.innerHTML = heroCarouselProjects.map((_, i) => `<span class="hero-carousel-dot ${i===0? 'active':''}" onclick="goToHeroSlide(${i})"></span>`).join('');
+
+            updateHeroOverlay();
         }
 
-        function moveHeroCarousel(direction) {
-            heroCarouselIndex = (heroCarouselIndex + direction + heroCarouselProjects.length) % heroCarouselProjects.length;
-            updateHeroCarousel();
-            resetHeroCarouselAutoplay();
-        }
-
-        function goToHeroSlide(index) {
-            heroCarouselIndex = index;
-            updateHeroCarousel();
-            resetHeroCarouselAutoplay();
-        }
-
-        function updateHeroCarousel() {
+        function updateHeroCarousel(){
             const track = document.getElementById('heroCarouselTrack');
-            const dots = document.querySelectorAll('.hero-carousel-dot');
-            
-            track.style.transform = `translateX(-${heroCarouselIndex * 100}%)`;
-            
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === heroCarouselIndex);
-            });
-            
-            updateHeroProjectInfo();
+            track.style.transform = `translateX(-${heroIndex * 100}%)`;
+            document.querySelectorAll('.hero-carousel-dot').forEach((d,i)=> d.classList.toggle('active', i===heroIndex));
+            updateHeroOverlay();
         }
 
-        function updateHeroProjectInfo() {
-            const project = heroCarouselProjects[heroCarouselIndex];
-            document.getElementById('heroProjectTitle').textContent = project.title;
-            document.getElementById('heroProjectTech').textContent = project.tech;
-            document.getElementById('heroProjectDescription').textContent = project.description[currentLang];
-            
-            const viewBtn = document.getElementById('heroViewProject');
-            viewBtn.onclick = () => openProjectModal(project.id);
+        function moveHero(dir){ 
+            heroIndex = (heroIndex + dir + heroCarouselProjects.length) % heroCarouselProjects.length; 
+            updateHeroCarousel(); 
+            resetHeroAutoplay(); 
         }
 
-        function startHeroCarouselAutoplay() {
-            heroCarouselInterval = setInterval(() => {
-                moveHeroCarousel(1);
-            }, 5000);
+        function goToHeroSlide(i){ 
+            heroIndex = i; 
+            updateHeroCarousel(); 
+            resetHeroAutoplay(); 
         }
 
-        function resetHeroCarouselAutoplay() {
-            clearInterval(heroCarouselInterval);
-            startHeroCarouselAutoplay();
+        function updateHeroOverlay(){ 
+            const p = heroCarouselProjects[heroIndex]; 
+            document.getElementById('heroOverlayTitle').textContent = p.title; 
+            document.getElementById('heroOverlayTech').textContent = p.tech; 
         }
 
-        function stopHeroCarouselAutoplay() {
-            clearInterval(heroCarouselInterval);
+        function startHeroAutoplay(){ 
+            heroInterval = setInterval(()=> moveHero(1), 5000); 
+        }
+
+        function stopHeroAutoplay(){ 
+            clearInterval(heroInterval); 
+        }
+
+        function resetHeroAutoplay(){ 
+            stopHeroAutoplay(); 
+            startHeroAutoplay(); 
         }
 
         // Render Functions
@@ -1428,7 +1339,7 @@
                             </div>
                             <p class="project-tech">${project.tech}</p>
                             <p class="project-description" data-i18n-dynamic="project-desc-${project.id}">${project.description[currentLang]}</p>
-                            <button class="btn btn-primary" onclick="openProjectModal('${project.id}')" data-i18n="btn_learn_more">Learn More</button>
+                            <button class="btn btn-secondary" onclick="openProjectModal('${project.id}')" data-i18n="btn_learn_more">Learn More</button>
                         </div>
                     </div>
                 `;
@@ -1601,7 +1512,7 @@
             });
 
             // Update hero carousel project info
-            updateHeroProjectInfo();
+            updateHeroOverlay();
 
             // Re-render gallery to update language
             renderGallery();
@@ -1613,13 +1524,13 @@
         // Event Listeners
         function setupEventListeners() {
             // Hero carousel controls
-            document.getElementById('heroCarouselPrev').addEventListener('click', () => moveHeroCarousel(-1));
-            document.getElementById('heroCarouselNext').addEventListener('click', () => moveHeroCarousel(1));
+            document.getElementById('heroCarouselPrev').addEventListener('click', () => moveHero(-1));
+            document.getElementById('heroCarouselNext').addEventListener('click', () => moveHero(1));
             
             // Pause autoplay on hover
             const heroCarousel = document.querySelector('.hero-carousel');
-            heroCarousel.addEventListener('mouseenter', stopHeroCarouselAutoplay);
-            heroCarousel.addEventListener('mouseleave', startHeroCarouselAutoplay);
+            heroCarousel.addEventListener('mouseenter', stopHeroAutoplay);
+            heroCarousel.addEventListener('mouseleave', startHeroAutoplay);
             
             // Language toggle
             document.getElementById('langToggle').addEventListener('click', toggleLanguage);
@@ -1687,16 +1598,7 @@
                     }
                 });
             });
-
-            // Contact form
-            document.getElementById('contactForm').addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert(currentLang === 'en' ? 'Message sent successfully!' : '¡Mensaje enviado exitosamente!');
-                e.target.reset();
-            });
         }
-
-
 
         // Initialize on load
         init();
