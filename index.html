@@ -560,17 +560,19 @@
             cursor: pointer;
             aspect-ratio: 4/3;
             box-shadow: var(--shadow);
+            background: #f0f0f0;
         }
 
         .gallery-image {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             transition: transform var(--transition);
+            background: #f0f0f0;
         }
 
         .gallery-item:hover .gallery-image {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .gallery-overlay {
@@ -628,11 +630,17 @@
             max-width: 90%;
             max-height: 90%;
             position: relative;
+            background: #f0f0f0;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .lightbox-image {
             max-width: 100%;
             max-height: 90vh;
+            object-fit: contain;
             border-radius: var(--radius);
         }
 
@@ -885,7 +893,7 @@
                             <div style="font-size: 14px; color: var(--text-secondary); font-weight: 500;" data-i18n="stat_experience">Years of Experience</div>
                         </div>
                         <div style="background: var(--background); padding: 20px; border-radius: var(--radius); border: 1px solid rgba(0,0,0,0.05);">
-                            <div style="font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 4px;">🎓</div>
+                            <div style="font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 4px;" data-i18n="stat_education_value">Estudies</div>
                             <div style="font-size: 14px; color: var(--text-secondary); font-weight: 500;" data-i18n="stat_education">Digital Game Design Student</div>
                         </div>
                         <div style="background: var(--background); padding: 20px; border-radius: var(--radius); border: 1px solid rgba(0,0,0,0.05);">
@@ -893,8 +901,8 @@
                             <div style="font-size: 14px; color: var(--text-secondary); font-weight: 500;" data-i18n="stat_specialization">Specialization</div>
                         </div>
                         <div style="background: var(--background); padding: 20px; border-radius: var(--radius); border: 1px solid rgba(0,0,0,0.05);">
-                            <div style="font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 4px;">👀</div>
-                            <div style="font-size: 14px; color: var(--text-secondary); font-weight: 500;" data-i18n="stat_focus">Procedural Generation</div>
+                            <div style="font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 4px;" data-i18n="stat_interests_value">Interests</div>
+                            <div style="font-size: 14px; color: var(--text-secondary); font-weight: 500;" data-i18n="stat_interests">Procedural Animation & Procedural Generation</div>
                         </div>
                     </div>
                 </div>
@@ -1164,10 +1172,12 @@
                 // ABOUT SECTION
                 bio_full: 'I am a Gameplay Programmer and Game Designer specializing in Unity, currently in my third year studying Digital Game Design at Universidad Andrés Bello. My passion lies in experimenting with emerging technologies and developing prototypes for innovative platforms such as Virtual Reality. I am particularly fascinated by procedural generation and animation, as well as developing custom Unity tools through code, constantly seeking to push the boundaries of interactivity and gameplay.',
                 stat_experience: 'Years of Experience',
+                stat_education_value: 'Estudies',
                 stat_education: 'Digital Game Design Student',
                 stat_specialization: 'Specialization',
                 stat_specialization_value: 'Unity 3D & VR',
-                stat_focus: 'Animation & Procedural Generation',
+                stat_interests_value: 'Interests',
+                stat_interests: 'Procedural Animation & Procedural Generation',
 
                 // PROJECTS SECTION
                 section_projects: 'Featured Projects',
@@ -1216,10 +1226,12 @@
                 // SECCIÓN ABOUT
                 bio_full: 'Soy un Programador de Gameplay y Diseñador de Juegos especializado en Unity, actualmente en mi tercer año estudiando Diseño de Videojuegos Digitales en la Universidad Andrés Bello. Mi pasión radica en experimentar con tecnologías emergentes y desarrollar prototipos para plataformas innovadoras como la Realidad Virtual. Me fascina particularmente la generación procedural y la animación, así como el desarrollo de herramientas personalizadas de Unity a través de código, buscando constantemente empujar los límites de la interactividad y el gameplay.',
                 stat_experience: 'Años de Experiencia',
-                stat_education: 'Estudiante de Diseño de Videojuegos',
+                stat_education_value: 'Estudios',
+                stat_education: 'Estudiante de Diseño de Juegos Digitales',
                 stat_specialization: 'Especialización',
                 stat_specialization_value: 'Unity 3D & VR',
-                stat_focus: 'Animación y Generación Procedural',
+                stat_interests_value: 'Intereses',
+                stat_interests: 'Animación y Generación Procedural',
 
                 // SECCIÓN PROYECTOS
                 section_projects: 'Proyectos Destacados',
