@@ -361,7 +361,8 @@
         .carousel-image {
             min-width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            background: #f0f0f0;
         }
 
         .carousel-btn {
@@ -888,7 +889,7 @@
                             <div style="font-size: 14px; color: var(--text-secondary); font-weight: 500;" data-i18n="stat_education">Digital Game Design Student</div>
                         </div>
                         <div style="background: var(--background); padding: 20px; border-radius: var(--radius); border: 1px solid rgba(0,0,0,0.05);">
-                            <div style="font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 4px;">Unity 3D &amp; VR</div>
+                            <div style="font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 4px;" data-i18n="stat_specialization_value">Unity 3D &amp; VR</div>
                             <div style="font-size: 14px; color: var(--text-secondary); font-weight: 500;" data-i18n="stat_specialization">Specialization</div>
                         </div>
                         <div style="background: var(--background); padding: 20px; border-radius: var(--radius); border: 1px solid rgba(0,0,0,0.05);">
@@ -1165,6 +1166,7 @@
                 stat_experience: 'Years of Experience',
                 stat_education: 'Digital Game Design Student',
                 stat_specialization: 'Specialization',
+                stat_specialization_value: 'Unity 3D & VR',
                 stat_focus: 'Animation & Procedural Generation',
 
                 // PROJECTS SECTION
@@ -1216,6 +1218,7 @@
                 stat_experience: 'Años de Experiencia',
                 stat_education: 'Estudiante de Diseño de Videojuegos',
                 stat_specialization: 'Especialización',
+                stat_specialization_value: 'Unity 3D & VR',
                 stat_focus: 'Animación y Generación Procedural',
 
                 // SECCIÓN PROYECTOS
@@ -1446,10 +1449,10 @@
             const body = document.getElementById('modalBody');
 
             body.innerHTML = `
-                <div class="project-carousel" style="margin-bottom: 32px;">
-                    <div class="carousel-track" id="modal-carousel-${projectId}">
+                <div class="project-carousel" style="margin-bottom: 32px; height: 400px;">
+                    <div class="carousel-track" id="modal-carousel-${projectId}" style="height: 100%;">
                         ${project.images.map(img => `
-                            <img src="${img}" alt="${project.title}" class="carousel-image" style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27800%27 height=%27400%27%3E%3Crect width=%27800%27 height=%27400%27 fill=%27%234A90E2%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2732%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${project.title}%3C/text%3E%3C/svg%3E'">
+                            <img src="${img}" alt="${project.title}" class="carousel-image" style="width: 100%; height: 100%; object-fit: contain; border-radius: 12px; background: #f0f0f0;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27800%27 height=%27400%27%3E%3Crect width=%27800%27 height=%27400%27 fill=%27%234A90E2%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2732%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${project.title}%3C/text%3E%3C/svg%3E'">
                         `).join('')}
                     </div>
                     ${project.images.length > 1 ? `
@@ -1484,11 +1487,11 @@
             const process = item.process[currentLang];
 
             const mediaHtml = item.media.endsWith('.mp4') 
-                ? `<video controls style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 32px;">
+                ? `<video controls style="width: 100%; height: 400px; object-fit: contain; border-radius: 12px; margin-bottom: 32px; background: #f0f0f0;">
                     <source src="${item.media}" type="video/mp4">
                     Your browser does not support the video tag.
                   </video>`
-                : `<img src="${item.media}" alt="${title}" style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 32px;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27800%27 height=%27400%27%3E%3Crect width=%27800%27 height=%27400%27 fill=%27%236C5CE7%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2732%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${title}%3C/text%3E%3C/svg%3E'">`;
+                : `<img src="${item.media}" alt="${title}" style="width: 100%; height: 400px; object-fit: contain; border-radius: 12px; margin-bottom: 32px; background: #f0f0f0;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27800%27 height=%27400%27%3E%3Crect width=%27800%27 height=%27400%27 fill=%27%236C5CE7%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2732%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${title}%3C/text%3E%3C/svg%3E'">`;
 
             body.innerHTML = `
                 ${mediaHtml}
