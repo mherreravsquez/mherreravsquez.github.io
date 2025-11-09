@@ -323,6 +323,38 @@
             margin-bottom: 48px;
         }
 
+        /* Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background: var(--card-bg);
+            border: 2px solid var(--primary);
+            border-radius: var(--radius);
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            font-size: 14px;
+        }
+
+        .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
         /* Projects Grid */
         .projects-grid {
             display: grid;
@@ -439,10 +471,20 @@
             color: var(--text-primary);
         }
         
-        .project-tech {
-            font-size: 13px;
-            color: var(--text-secondary);
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
             margin-bottom: 12px;
+        }
+
+        .project-tag {
+            padding: 6px 12px;
+            background: var(--accent);
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
         }
 
         .project-description {
@@ -450,6 +492,38 @@
             color: var(--text-secondary);
             line-height: 1.6;
             margin-bottom: 16px;
+        }
+
+        /* Gallery Filter Buttons */
+        .gallery-filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .gallery-filter-btn {
+            padding: 10px 20px;
+            background: var(--card-bg);
+            border: 2px solid var(--secondary);
+            border-radius: var(--radius);
+            color: var(--secondary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            font-size: 14px;
+        }
+
+        .gallery-filter-btn:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .gallery-filter-btn.active {
+            background: var(--secondary);
+            color: white;
         }
 
         /* project buttons */
@@ -474,6 +548,17 @@
         .btn-secondary:hover {
             background: var(--primary);
             color: white;
+        }
+
+        .btn-download {
+            background: var(--success);
+            color: white;
+            border: 2px solid var(--success);
+        }
+
+        .btn-download:hover {
+            background: transparent;
+            color: var(--success);
         }
 
         /* Modal */
@@ -504,7 +589,7 @@
         .modal-content {
             background: white;
             border-radius: var(--radius);
-            max-width: 900px;
+            max-width: 1000px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
@@ -544,6 +629,300 @@
 
         .modal-body {
             padding: 48px;
+        }
+
+        /* PDF Modal */
+        .pdf-modal-content {
+            max-width: 90%;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.3s ease;
+            background: white;
+            border-radius: var(--radius);
+        }
+
+        .pdf-modal-body {
+            padding: 0;
+            height: 100%;
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: 100%;
+            border: none;
+            min-height: 600px;
+            border-radius: var(--radius);
+        }
+
+        /* Project Modal Layout */
+        .project-modal-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+
+        .project-modal-left {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .project-modal-right {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .modal-carousel {
+            height: 300px;
+            margin-bottom: 0;
+        }
+
+        .project-description-section {
+            margin-top: 0;
+        }
+
+        .project-description-section h3 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .project-description-section p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .project-info-section {
+            background: var(--background);
+            padding: 24px;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary);
+        }
+
+        .project-info-section h3 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .project-info-section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .project-info-section li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .project-info-section li:before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: 8px;
+        }
+
+        .project-tags-section {
+            background: var(--background);
+            padding: 20px;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--success);
+        }
+
+        .project-tags-section h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--success);
+        }
+
+        .project-tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .project-tag-modal {
+            padding: 6px 12px;
+            background: var(--accent);
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .download-section {
+            text-align: center;
+            padding: 20px;
+            background: var(--background);
+            border-radius: var(--radius);
+            border: 2px dashed var(--success);
+        }
+
+        /* Gallery Modal Layout */
+        .gallery-modal-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .gallery-modal-header {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .gallery-modal-header h2 {
+            font-size: 32px;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .gallery-modal-header p {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .gallery-modal-carousel {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: var(--radius);
+            background: #f0f0f0;
+            margin-bottom: 0;
+        }
+
+        .gallery-modal-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 32px;
+        }
+
+        .gallery-modal-description {
+            background: var(--background);
+            padding: 24px;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .gallery-modal-description h3 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: var(--secondary);
+        }
+
+        .gallery-modal-description p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .gallery-modal-details {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .gallery-modal-tools {
+            background: var(--background);
+            padding: 20px;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--accent);
+        }
+
+        .gallery-modal-tools h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+
+        .gallery-modal-tools-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .gallery-modal-tool {
+            padding: 6px 12px;
+            background: var(--accent);
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .gallery-modal-objectives {
+            background: var(--background);
+            padding: 20px;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--success);
+        }
+
+        .gallery-modal-objectives h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: var(--success);
+        }
+
+        .gallery-modal-objectives ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .gallery-modal-objectives li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 10px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .gallery-modal-objectives li:before {
+            content: "•";
+            color: var(--success);
+            font-weight: bold;
+            position: absolute;
+            left: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .project-modal-layout,
+            .gallery-modal-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            
+            .modal-body {
+                padding: 24px;
+            }
+
+            .gallery-modal-carousel {
+                height: 300px;
+            }
+
+            .filter-buttons,
+            .gallery-filter-buttons {
+                gap: 8px;
+            }
+
+            .filter-btn,
+            .gallery-filter-btn {
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+
+            .pdf-modal-content {
+                max-width: 95%;
+            }
         }
 
         /* Gallery Grid */
@@ -607,54 +986,6 @@
             font-size: 14px;
         }
 
-        /* Lightbox */
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 3000;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-        }
-
-        .lightbox.active {
-            display: flex;
-        }
-
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 90%;
-            position: relative;
-            background: #f0f0f0;
-            border-radius: var(--radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .lightbox-image {
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-            border-radius: var(--radius);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: -50px;
-            right: 0;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 36px;
-            cursor: pointer;
-        }
-
         /* Skills Grid */
         .skills-grid {
             display: grid;
@@ -699,6 +1030,13 @@
             text-align: center;
             max-width: 500px;
             margin: 0 auto;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
         }
 
         .achievement-icon {
@@ -914,6 +1252,18 @@
     <section id="projects">
         <h2 class="section-title" data-i18n="section_projects">Featured Projects</h2>
         
+        <!-- Filter Buttons -->
+        <div class="filter-buttons" id="filterButtons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="Unity">Unity</button>
+            <button class="filter-btn" data-filter="RenPy">RenPy</button>
+            <button class="filter-btn" data-filter="2D">2D</button>
+            <button class="filter-btn" data-filter="3D">3D</button>
+            <button class="filter-btn" data-filter="VR">VR</button>
+            <button class="filter-btn" data-filter="PC">PC</button>
+            <button class="filter-btn" data-filter="Mobile">Mobile</button>
+        </div>
+        
         <div class="projects-grid" id="projectsGrid"></div>
     </section>
 
@@ -925,23 +1275,33 @@
         </div>
     </div>
 
+    <!-- PDF Modal -->
+    <div class="modal" id="pdfModal">
+        <div class="pdf-modal-content">
+            <button class="modal-close" id="pdfModalClose">&times;</button>
+            <div class="pdf-modal-body">
+                <iframe id="pdfViewer" class="pdf-viewer"></iframe>
+            </div>
+        </div>
+    </div>
+
     <!-- Gallery Section -->
     <section id="gallery" class="alt-bg">
         <div style="max-width: 1200px; margin: 0 auto;">
             <h2 class="section-title" data-i18n="section_gallery">Creative Gallery</h2>
             <p class="section-subtitle" data-i18n="gallery_subtitle">3D Art • Interactive Installations • Animations • Cinematics • & more</p>
             
+            <!-- Gallery Filter Buttons -->
+            <div class="gallery-filter-buttons" id="galleryFilterButtons">
+                <button class="gallery-filter-btn active" data-gallery-filter="all">All</button>
+                <button class="gallery-filter-btn" data-gallery-filter="3D Art" data-i18n="gallery_filter_3d_art">3D Art</button>
+                <button class="gallery-filter-btn" data-gallery-filter="Interactive Installations" data-i18n="gallery_filter_interactive">Interactive Installations</button>
+                <button class="gallery-filter-btn" data-gallery-filter="Animations" data-i18n="gallery_filter_animations">Animations</button>
+            </div>
+            
             <div class="gallery-grid" id="galleryGrid"></div>
         </div>
     </section>
-
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-content">
-            <button class="lightbox-close" id="lightboxClose">&times;</button>
-            <img src="" alt="Gallery" class="lightbox-image" id="lightboxImage">
-        </div>
-    </div>
     
     <!-- Skills Section -->
     <section id="skills">
@@ -999,35 +1359,20 @@
             {
                 id: 'car_loop',
                 title: 'Car-Loop',
-                tech: 'Unity • C# • VR • Psychological Horror',
-                description: {
-                    en: 'A VR psychological horror experience that traps players in an infinite driving loop. Built with Unity and C#, featuring advanced procedural generation and atmospheric storytelling.',
-                    es: 'Una experiencia de terror psicológico en VR que atrapa a los jugadores en un bucle infinito de conducción. Construido con Unity y C#, con generación procedural avanzada y narrativa atmosférica.'
-                },
-                image: 'assets/Main Projects/CL/CL_thumbnail.png',
-                button: { en: 'Discover Car-Loop', es: 'Descubrir Car-Loop' }
+                tags: ['Unity', 'VR', '3D', 'PC'],
+                image: 'assets/Main Projects/CL/CL_thumbnail.png'
             },
             {
                 id: 'break_bubble',
                 title: 'Break the Bubble',
-                tech: 'Unity • C# • PC • Metroidvania',
-                description: {
-                    en: ' ',
-                    es: ' '
-                },
-                image: 'assets/Main Projects/BTB/BTB_thumbnail.png',
-                button: { en: 'Discover Break the Bubble', es: 'Descubrir Break the Bubble' }
+                tags: ['Unity', '2D', 'PC'],
+                image: 'assets/Main Projects/BTB/BTB_thumbnail.png'
             },
             {
                 id: 'hunters',
                 title: 'HUNTERS: Awakening',
-                tech: 'Unity • C# • PC • JRPG',
-                description: {
-                    en: 'An action RPG featuring dynamic combat systems and character progression. Built for PC with Unity.',
-                    es: 'Un RPG de acción con sistemas de combate dinámicos y progresión de personajes. Construido para PC con Unity.'
-                },
-                image: 'assets/Main Projects/HUNTERS/HUNTERS_thumbnail.png',
-                button: { en: 'Discover HUNTERS', es: 'Descubrir HUNTERS' }
+                tags: ['Unity', '3D', 'PC'],
+                image: 'assets/Main Projects/HUNTERS/HUNTERS_thumbnail.png'
             }
         ];
 
@@ -1035,44 +1380,125 @@
             {
                 id: 'car_loop',
                 title: 'Car-Loop',
-                tech: 'Unity • C# • VR • PC • Psychological Horror',
+                tags: ['Unity', 'VR', '3D', 'PC'],
                 description: {
                     en: 'A VR psychological horror experience that traps players in an infinite driving loop. Built with Unity and C#, featuring advanced procedural generation and atmospheric storytelling.',
                     es: 'Una experiencia de terror psicológico en VR que atrapa a los jugadores en un bucle infinito de conducción. Construido con Unity y C#, con generación procedural avanzada y narrativa atmosférica.'
                 },
-                details: {
+                projectDetails: {
                     en: 'Car-Loop is a VR psychological horror game where players find themselves trapped in an endless driving sequence. The game uses procedural generation to create subtle variations in each loop, making players question their perception of reality.',
                     es: 'Car-Loop es un juego de terror psicológico en VR donde los jugadores se encuentran atrapados en una secuencia infinita de conducción. El juego utiliza generación procedural para crear variaciones sutiles en cada bucle, haciendo que los jugadores cuestionen su percepción de la realidad.'
                 },
-                images: ['assets/Main Projects/CL/CL_thumbnail.png', 'assets/Main Projects/CL/CL_gameplay1.png']
+                images: ['assets/Main Projects/CL/CL_thumbnail.png', 'assets/Main Projects/CL/CL_gameplay1.png'],
+                demoUrl: 'https://example.com/download/car_loop',
+                objectives: {
+                    en: [
+                        'Create an immersive VR horror experience that plays with player perception',
+                        'Implement procedural generation to create unique experiences in each playthrough',
+                        'Develop comfortable VR movement mechanics to prevent motion sickness',
+                        'Create an atmospheric narrative that unfolds through environmental storytelling'
+                    ],
+                    es: [
+                        'Crear una experiencia de terror inmersiva en VR que juegue con la percepción del jugador',
+                        'Implementar generación procedural para crear experiencias únicas en cada partida',
+                        'Desarrollar mecánicas de movimiento cómodas en VR para prevenir mareos',
+                        'Crear una narrativa atmosférica que se desarrolle a través de la narrativa ambiental'
+                    ]
+                },
+                technicalDifficulties: {
+                    en: [
+                        'Implementing seamless VR movement without causing motion sickness',
+                        'Procedural generation of the environment that feels both repetitive and varied',
+                        'Optimizing performance for VR platforms'
+                    ],
+                    es: [
+                        'Implementar movimiento en VR sin interrupciones que no cause mareo',
+                        'Generación procedural del entorno que se sienta repetitivo y variado a la vez',
+                        'Optimizar el rendimiento para plataformas de VR'
+                    ]
+                }
             },
             {
                 id: 'break_bubble',
                 title: 'Break the Bubble',
-                tech: 'Unity • C# • PC • Metroidvania • Immersive Narrative',
+                tags: ['Unity', '2D', 'PC'],
                 description: {
                     en: 'Break the Bubble is a game developed for GGJ 2025, with the theme of "Bubble." This game tells the story of a developer who wants to develop a new video game, showing us his creative process toward creating the Metroidvania genre in his world.',
                     es: 'Break the Bubble es un juego desarrollado para la GGJ 2025, el tema era Burbuja. En este juego, se narra la historia de un desarrollador que quiere desarrollar un nuevo videojuego, se nos muestra su proceso creativo hacia la creación del genero Metroidvania en su mundo.'
                 },
-                details: {
+                projectDetails: {
                     en: 'Break the Bubble is a game developed for GGJ 2025, with the theme of "Bubble." This game tells the story of a developer who wants to develop a new video game, showing us his creative process toward creating the Metroidvania genre in his world.\n\nDuring the Metroidvania stage, we can see mechanics such as the transformation of the character to be able to move through confined spaces, and the movement of platforms with runes, in order to reach places that you could not reach with a conventional jump.',
                     es: 'Break the Bubble es un juego desarrollado para la GGJ 2025, el tema era Burbuja. En este juego, se narra la historia de un desarrollador que quiere desarrollar un nuevo videojuego, se nos muestra su proceso creativo hacia la creación del genero Metroidvania en su mundo.\n\nDurante la etapa de metroidvania, podemos notar mecánicas como la transformación del personaje para poder avanzar por espacios reducidos, y el movimiento de plataformas con runas, con el fin de alcanzar lugares que no podrías alcanzar con un salto convencional.'
                 },
-                images: ['assets/Main Projects/BTB/BTB_thumbnail.png', 'assets/Main Projects/BTB/BTB_gameplay1.png']
+                images: ['assets/Main Projects/BTB/BTB_thumbnail.png', 'assets/Main Projects/BTB/BTB_gameplay1.png'],
+                demoUrl: 'https://example.com/download/break_the_bubble',
+                objectives: {
+                    en: [
+                        'Develop a complete game in 48 hours for Global Game Jam 2025',
+                        'Create a Metroidvania-style game with transformation mechanics',
+                        'Implement rune-based platform movement systems',
+                        'Tell a story about the creative process of game development'
+                    ],
+                    es: [
+                        'Desarrollar un juego completo en 48 horas para la Global Game Jam 2025',
+                        'Crear un juego estilo Metroidvania con mecánicas de transformación',
+                        'Implementar sistemas de movimiento de plataformas basados en runas',
+                        'Contar una historia sobre el proceso creativo del desarrollo de videojuegos'
+                    ]
+                },
+                technicalDifficulties: {
+                    en: [
+                        'Implementing character transformation mechanics',
+                        'Creating platform movement systems with rune-based interactions',
+                        'Designing non-linear level progression typical of Metroidvania games'
+                    ],
+                    es: [
+                        'Implementar mecánicas de transformación de personaje',
+                        'Crear sistemas de movimiento de plataformas con interacciones basadas en runas',
+                        'Diseñar progresión de niveles no lineal típica de juegos Metroidvania'
+                    ]
+                }
             },
             {
                 id: 'hunters',
                 title: 'HUNTERS: Awakening',
-                tech: 'Unity • C# • PC • JRPG',
+                tags: ['Unity', '3D', 'PC'],
                 description: {
-                    en: 'HUNTERS: Awakening is an action JRPG',
-                    es: 'HUNTERS: Awakening es un JRPG'
+                    en: 'HUNTERS: Awakening is an action JRPG featuring dynamic combat systems and deep character progression.',
+                    es: 'HUNTERS: Awakening es un JRPG de acción con sistemas de combate dinámicos y progresión de personajes profunda.'
                 },
-                details: {
-                    en: 'HUNTERS: Awakening is an action JRPG',
-                    es: 'HUNTERS: Awakening es un JRPG'
+                projectDetails: {
+                    en: 'HUNTERS: Awakening is an action JRPG that combines fast-paced combat with deep character customization and progression systems. Players can explore a vast world, engage in strategic battles, and develop their characters through an extensive skill tree.',
+                    es: 'HUNTERS: Awakening es un JRPG de acción que combina combate rápido con personalización profunda de personajes y sistemas de progresión. Los jugadores pueden explorar un mundo vasto, participar en batallas estratégicas y desarrollar sus personajes a través de un extenso árbol de habilidades.'
                 },
-                images: ['assets/Main Projects/HUNTERS/HUNTERS_thumbnail.png']
+                images: ['assets/Main Projects/HUNTERS/HUNTERS_thumbnail.png'],
+                demoUrl: 'https://example.com/download/hunters',
+                objectives: {
+                    en: [
+                        'Create a dynamic combat system that blends action and strategy',
+                        'Develop an extensive character progression system with skill trees',
+                        'Design a compelling JRPG-style narrative with memorable characters',
+                        'Build a vast explorable world with diverse environments'
+                    ],
+                    es: [
+                        'Crear un sistema de combate dinámico que combine acción y estrategia',
+                        'Desarrollar un sistema extenso de progresión de personajes con árboles de habilidades',
+                        'Diseñar una narrativa convincente al estilo JRPG con personajes memorables',
+                        'Construir un mundo vasto y explorable con entornos diversos'
+                    ]
+                },
+                technicalDifficulties: {
+                    en: [
+                        'Developing dynamic combat systems',
+                        'Creating character progression and skill trees',
+                        'Implementing JRPG-style narrative systems'
+                    ],
+                    es: [
+                        'Desarrollar sistemas de combate dinámicos',
+                        'Crear progresión de personajes y árboles de habilidades',
+                        'Implementar sistemas narrativos al estilo JRPG'
+                    ]
+                }
             }
         ];
 
@@ -1081,45 +1507,78 @@
                 id: 'boombastic',
                 title: { en: 'Boombastic - Interactive Installation', es: 'Boombastic - Instalación Interactiva' },
                 category: { en: 'Interactive Installation', es: 'Instalación Interactiva' },
+                tags: ['Interactive Installations'],
                 description: {
                     en: 'Boombastic is an interactive installation that uses hand-tracking technology to allow users to move virtual cassettes onto a virtual boom box. Placing a cassette on the boom box sends a signal to REAPER a digital audio workstation to create beats with samples of representative songs from the 1990s. MadMapper is implemented to perform mapping projections on the boom box model, displaying various visual reactions and animations in real time.',
                     es: 'Boombastic es una instalación interactiva que utiliza tecnología de seguimiento manual para que los usuarios puedan mover casetes virtuales hacia un radiocasete virtual. Al colocar un casete en el radiocasete, se envía una señal a REAPER una estación de trabajo de audio digital para crear ritmos con muestras de canciones representativas de los años 90. MadMapper se implementa para realizar proyecciones de mapas en el modelo del radiocasete, mostrando diversas reacciones visuales y animaciones en tiempo real.'
                 },
-                media: 'assets/Gallery/BB/BB_gameplay1.mp4',
+                images: ['assets/Gallery/BB/BB_gameplay1.png'],
                 tools: ['Unity 6.2', 'Kinect SDK 2.0', 'Reaper 7.48', 'MadMapper 5.6.8'],
-                process: {
-                    en: 'Concept art → Base mesh → High-poly sculpting → Retopology → UV mapping → PBR texturing → Rigging → Animation tests',
-                    es: 'Arte conceptual → Malla base → Esculpido de alta poligonización → Retopología → Mapeo UV → Texturizado PBR → Rigging → Pruebas de animación'
+                objectives: {
+                    en: [
+                        'Create an interactive music experience using hand-tracking technology',
+                        'Integrate audio software with visual projections for a multisensory experience',
+                        'Develop a responsive system that reacts to user interactions in real time',
+                        'Combine nostalgic elements (cassettes) with modern technology'
+                    ],
+                    es: [
+                        'Crear una experiencia musical interactiva utilizando tecnología de seguimiento manual',
+                        'Integrar software de audio con proyecciones visuales para una experiencia multisensorial',
+                        'Desarrollar un sistema receptivo que reaccione a las interacciones del usuario en tiempo real',
+                        'Combinar elementos nostálgicos (casetes) con tecnología moderna'
+                    ]
                 }
             },
             {
                 id: 'beep',
                 title: { en: 'Beep Animation and Sculpting', es: 'Animación y Esculpido de Beep' },
                 category: { en: '3D Sculpting and Animation', es: 'Escultura 3D y Animación' },
+                tags: ['3D Art', 'Animations'],
                 description: {
                     en: 'Sculpted and textured in ZBrush of the character Beep from the video game Kenshi. Then animated in Blender using Mixamo animations. This piece showcases advanced sculpting techniques and smooth character animation integration.',
                     es: 'Esculpido y texturizado en ZBrush del personaje Beep del videojuego Kenshi. Luego animado en Blender haciendo uso de las animaciones de Mixamo. Esta pieza muestra técnicas de esculpido avanzadas e integración fluida de animación de caracteres.'
                 },
-                media: 'assets/Gallery/beep/beep_render1.gif',
+                images: ['assets/Gallery/beep/beep_render1.gif'],
                 tools: ['Blender 4.0', 'ZBrush', 'Mixamo', 'Rokoko Studio addon'],
-                process: {
-                    en: 'Conceptualization → Character selection → Blocking in ZBrush → Sculpting → Texture creation → Model mesh optimization → Blender integration → Animation with Rokoko Studio → Render',
-                    es: 'Conceptualización → Selección de personaje → Blocking en ZBrush → Esculpido → Creación de texturas → Optimización de malla → Integración en Blender → Animación con Rokoko Studio → Render'
+                objectives: {
+                    en: [
+                        'Master advanced sculpting techniques in ZBrush',
+                        'Create a faithful recreation of a character from an existing game',
+                        'Integrate Mixamo animations with custom character models',
+                        'Develop skills in character rigging and animation workflow'
+                    ],
+                    es: [
+                        'Dominar técnicas avanzadas de esculpido en ZBrush',
+                        'Crear una recreación fiel de un personaje de un juego existente',
+                        'Integrar animaciones de Mixamo con modelos de personajes personalizados',
+                        'Desarrollar habilidades en rigging de personajes y flujo de trabajo de animación'
+                    ]
                 }
             },
             {
                 id: 'leblanc',
                 title: { en: 'Leblanc Cafe Diorama', es: 'Diorama de la Cafetería Leblanc' },
                 category: { en: '3D Modeling', es: 'Modelado 3D' },
+                tags: ['3D Art'],
                 description: {
                     en: 'Diorama of the Leblanc cafe from the Persona 5 Royal video game. 3D modeled and textured using materials from the Blender Kit website. This environment showcases detailed prop modeling, lighting, and composition skills.',
                     es: 'Diorama del café Leblanc del videojuego Persona 5 Royal. Modelado en 3D y texturizado haciendo uso de materiales de la web Blender Kit. Este entorno muestra habilidades de modelado de props detallado, iluminación y composición.'
                 },
-                media: 'assets/Gallery/LB/LB_thumbnail.jpg',
+                images: ['assets/Gallery/LB/LB_thumbnail.jpg'],
                 tools: ['Blender 4.0', 'BlenderKit', 'Substance Painter'],
-                process: {
-                    en: 'Choosing scene location → Blocking → Detailed prop modeling → Material selection → Camera positioning → Lighting setup → Final render',
-                    es: 'Elección de escena/ubicación → Blocking → Modelado de props a detalle → Elección de materiales → Posicionamiento de cámara → Configuración de iluminación → Render final'
+                objectives: {
+                    en: [
+                        'Recreate a recognizable location from a popular video game',
+                        'Practice detailed prop modeling and environmental storytelling',
+                        'Master lighting techniques to create mood and atmosphere',
+                        'Utilize material libraries effectively for texturing workflows'
+                    ],
+                    es: [
+                        'Recrear una ubicación reconocible de un videojuego popular',
+                        'Practicar el modelado detallado de props y la narrativa ambiental',
+                        'Dominar técnicas de iluminación para crear ambiente y estado de ánimo',
+                        'Utilizar bibliotecas de materiales de manera efectiva para flujos de trabajo de texturizado'
+                    ]
                 }
             }
         ];
@@ -1149,7 +1608,8 @@
                 title: { en: 'Meta Spark Creator Certification', es: 'Certificación Meta Spark Creator' },
                 issuer: 'Meta',
                 date: '2024',
-                icon: '🔥'
+                icon: '🔥',
+                pdfPath: 'assets/Certifications/Meta_Spark_AR_CRTIC.pdf'
             }
         ];
 
@@ -1182,31 +1642,33 @@
                 // PROJECTS SECTION
                 section_projects: 'Featured Projects',
                 btn_learn_more: 'Learn More',
+                btn_download_demo: 'Download Demo',
+                technical_difficulties: 'Technical Challenges',
+                objectives: 'Project Objectives',
+                project_tags: 'Project Tags',
+                description: 'Description',
 
                 // GALLERY SECTION
                 section_gallery: 'Creative Gallery',
                 gallery_subtitle: '3D Art • Interactive Installations • Animations • Cinematics • & more',
+                gallery_tools: 'Tools & Software',
+                gallery_description: 'Description',
+                gallery_filter_3d_art: '3D Art',
+                gallery_filter_interactive: 'Interactive Installations',
+                gallery_filter_animations: 'Animations',
 
                 // SKILLS SECTION
                 section_skills: 'Skills & Tools',
 
                 // ACHIEVEMENTS SECTION
                 section_achievements: 'Achievements & Certifications',
-                achievement_desc: 'Awarded by CRTIC',
 
                 // CONTACT SECTION
                 section_contact: 'Let\'s Connect',
                 contact_subtitle: 'Ready to collaborate on innovative gaming projects',
 
                 // FOOTER
-                footer_text: '© 2025 Marcelo Herrera. All rights reserved.',
-
-                // COMMON BUTTONS & TEXTS
-                btn_view_projects: 'View Projects',
-                btn_contact_me: 'Contact me',
-                gallery_tools: 'Tools & Software',
-                gallery_process: 'Development Process',
-                gallery_description: 'Description'
+                footer_text: '© 2025 Marcelo Herrera. All rights reserved.'
             },
 
             es: {
@@ -1236,31 +1698,33 @@
                 // SECCIÓN PROYECTOS
                 section_projects: 'Proyectos Destacados',
                 btn_learn_more: 'Saber Más',
+                btn_download_demo: 'Descargar Demo',
+                technical_difficulties: 'Desafíos Técnicos',
+                objectives: 'Objetivos del Proyecto',
+                project_tags: 'Etiquetas del Proyecto',
+                description: 'Descripción',
 
                 // SECCIÓN GALERÍA
                 section_gallery: 'Galería Creativa',
                 gallery_subtitle: '3D Art • Instalaciones Interactivas • Animaciones • Cinemática • y más',
+                gallery_tools: 'Herramientas y Software',
+                gallery_description: 'Descripción',
+                gallery_filter_3d_art: 'Arte 3D',
+                gallery_filter_interactive: 'Instalaciones Interactivas',
+                gallery_filter_animations: 'Animaciones',
 
                 // SECCIÓN HABILIDADES
                 section_skills: 'Habilidades y Herramientas',
 
                 // SECCIÓN LOGROS
                 section_achievements: 'Logros y Certificaciones',
-                achievement_desc: 'Otorgado por CRTIC',
 
                 // SECCIÓN CONTACTO
                 section_contact: 'Conectemos',
                 contact_subtitle: 'Listo para colaborar en proyectos innovadores de videojuegos',
 
                 // PIE DE PÁGINA
-                footer_text: '© 2025 Marcelo Herrera. Todos los derechos reservados.',
-
-                // BOTONES Y TEXTOS COMUNES
-                btn_view_projects: 'Ver Proyectos',
-                btn_contact_me: 'Contáctame',
-                gallery_tools: 'Herramientas y Software',
-                gallery_process: 'Proceso de Desarrollo',
-                gallery_description: 'Descripción'
+                footer_text: '© 2025 Marcelo Herrera. Todos los derechos reservados.'
             }
         };
 
@@ -1272,6 +1736,9 @@
         // State
         let currentLang = 'en';
         const carouselStates = {};
+        const galleryCarouselStates = {};
+        let activeFilter = 'all';
+        let activeGalleryFilter = 'all';
 
         // Hero Carousel State
         let heroIndex = 0;
@@ -1327,7 +1794,7 @@
         function updateHeroOverlay(){ 
             const p = heroCarouselProjects[heroIndex];
             document.getElementById('heroOverlayTitle').textContent = p.title;
-            document.getElementById('heroOverlayTech').textContent = p.tech;
+            document.getElementById('heroOverlayTech').textContent = p.tags.join(' • ');
         }
 
         function startHeroAutoplay(){ 
@@ -1343,10 +1810,44 @@
             startHeroAutoplay(); 
         }
 
+        // Filter Projects
+        function filterProjects(filter) {
+            activeFilter = filter;
+            
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.filter === filter);
+            });
+            
+            // Filter projects
+            const filteredProjects = filter === 'all' 
+                ? projects 
+                : projects.filter(project => project.tags.includes(filter));
+            
+            renderProjects(filteredProjects);
+        }
+
+        // Filter Gallery
+        function filterGallery(filter) {
+            activeGalleryFilter = filter;
+            
+            // Update active button
+            document.querySelectorAll('.gallery-filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.galleryFilter === filter);
+            });
+            
+            // Filter gallery items
+            const filteredGallery = filter === 'all' 
+                ? gallery 
+                : gallery.filter(item => item.tags.includes(filter));
+            
+            renderGallery(filteredGallery);
+        }
+
         // Render Functions
-        function renderProjects() {
+        function renderProjects(projectsToRender = projects) {
             const grid = document.getElementById('projectsGrid');
-            grid.innerHTML = projects.map(project => {
+            grid.innerHTML = projectsToRender.map(project => {
                 carouselStates[project.id] = 0;
                 const projectTrans = project;
 
@@ -1370,7 +1871,9 @@
                             <div class="project-header">
                                 <h3 class="project-title">${projectTrans.title}</h3>
                             </div>
-                            <p class="project-tech">${projectTrans.tech}</p>
+                            <div class="project-tags">
+                                ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
+                            </div>
                             <p class="project-description">${projectTrans.description[currentLang]}</p>
                             <button class="btn btn-secondary" onclick="openProjectModal('${project.id}')">${getTranslation('btn_learn_more')}</button>
                         </div>
@@ -1379,15 +1882,15 @@
             }).join('');
         }
 
-        function renderGallery() {
+        function renderGallery(galleryToRender = gallery) {
             const grid = document.getElementById('galleryGrid');
-            grid.innerHTML = gallery.map((item, index) => {
+            grid.innerHTML = galleryToRender.map((item, index) => {
                 const title = item.title[currentLang];
                 const category = item.category[currentLang];
 
                 return `
                     <div class="gallery-item" onclick="openGalleryModal('${item.id}')">
-                        <img src="${item.media}" alt="${title}" class="gallery-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Crect width=%27400%27 height=%27300%27 fill=%27%236C5CE7%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2720%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${title}%3C/text%3E%3C/svg%3E'">
+                        <img src="${item.images[0]}" alt="${title}" class="gallery-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Crect width=%27400%27 height=%27300%27 fill=%27%236C5CE7%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2720%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${title}%3C/text%3E%3C/svg%3E'">
                         <div class="gallery-overlay">
                             <h3>${title}</h3>
                             <p>${category}</p>
@@ -1422,9 +1925,9 @@
                 const title = cert.title[currentLang] || cert.title.en;
 
                 return `
-                    <div style="background: white; padding: 24px; border-radius: 12px; box-shadow: var(--shadow); transition: all var(--transition); cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow)'">
-                        <div style="font-size: 40px; margin-bottom: 16px;">${cert.icon}</div>
-                        <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 8px; color: var(--text-primary);">${title}</h3>
+                    <div class="achievement-card" onclick="openPdfModal('${cert.pdfPath}')">
+                        <div class="achievement-icon">${cert.icon}</div>
+                        <h3>${title}</h3>
                         <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 4px;">${cert.issuer}</p>
                         <p style="color: var(--primary); font-weight: 500; font-size: 13px;">${cert.date}</p>
                     </div>
@@ -1454,6 +1957,28 @@
             });
         }
 
+        // Gallery Carousel Functions
+        function moveGalleryCarousel(galleryId, direction) {
+            const item = gallery.find(g => g.id === galleryId);
+            const maxIndex = item.images.length - 1;
+            galleryCarouselStates[galleryId] = Math.max(0, Math.min(maxIndex, galleryCarouselStates[galleryId] + direction));
+            updateGalleryCarousel(galleryId);
+        }
+
+        function goToGallerySlide(galleryId, index) {
+            galleryCarouselStates[galleryId] = index;
+            updateGalleryCarousel(galleryId);
+        }
+
+        function updateGalleryCarousel(galleryId) {
+            const track = document.getElementById(`gallery-carousel-${galleryId}`);
+            const dots = track.parentElement.querySelectorAll('.carousel-dot');
+            track.style.transform = `translateX(-${galleryCarouselStates[galleryId] * 100}%)`;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === galleryCarouselStates[galleryId]);
+            });
+        }
+
         // Modal Functions
         function openProjectModal(projectId) {
             const project = projects.find(p => p.id === projectId);
@@ -1461,20 +1986,124 @@
             const body = document.getElementById('modalBody');
 
             body.innerHTML = `
-                <div class="project-carousel" style="margin-bottom: 32px; height: 400px;">
-                    <div class="carousel-track" id="modal-carousel-${projectId}" style="height: 100%;">
-                        ${project.images.map(img => `
-                            <img src="${img}" alt="${project.title}" class="carousel-image" style="width: 100%; height: 100%; object-fit: contain; border-radius: 12px; background: #f0f0f0;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27800%27 height=%27400%27%3E%3Crect width=%27800%27 height=%27400%27 fill=%27%234A90E2%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2732%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${project.title}%3C/text%3E%3C/svg%3E'">
-                        `).join('')}
-                    </div>
-                    ${project.images.length > 1 ? `
-                        <button class="carousel-btn prev" onclick="moveCarousel('${projectId}', -1)">‹</button>
-                        <button class="carousel-btn next" onclick="moveCarousel('${projectId}', 1)">›</button>
-                    ` : ''}
-                </div>
                 <h2 style="font-size: 32px; margin: 0 0 16px 0;">${project.title}</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 16px;">${project.tech}</p>
-                <p style="font-size: 18px; line-height: 1.8; color: var(--text-secondary); white-space: pre-line;">${project.details[currentLang]}</p>
+                
+                <div class="project-modal-layout">
+                    <div class="project-modal-left">
+                        <div class="project-carousel modal-carousel">
+                            <div class="carousel-track" id="modal-carousel-${projectId}" style="height: 100%;">
+                                ${project.images.map(img => `
+                                    <img src="${img}" alt="${project.title}" class="carousel-image" style="width: 100%; height: 100%; object-fit: contain; border-radius: 12px; background: #f0f0f0;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27800%27 height=%27400%27%3E%3Crect width=%27800%27 height=%27400%27 fill=%27%234A90E2%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2732%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${project.title}%3C/text%3E%3C/svg%3E'">
+                                `).join('')}
+                            </div>
+                            ${project.images.length > 1 ? `
+                                <button class="carousel-btn prev" onclick="moveCarousel('${projectId}', -1)">‹</button>
+                                <button class="carousel-btn next" onclick="moveCarousel('${projectId}', 1)">›</button>
+                            ` : ''}
+                        </div>
+                        
+                        <div class="project-description-section">
+                            <h3>${getTranslation('description')}</h3>
+                            <p style="white-space: pre-line;">${project.projectDetails[currentLang]}</p>
+                        </div>
+                        
+                        <div class="project-tags-section">
+                            <h3>${getTranslation('project_tags')}</h3>
+                            <div class="project-tags-list">
+                                ${project.tags.map(tag => `<span class="project-tag-modal">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                        
+                        ${project.demoUrl ? `
+                        <div class="download-section">
+                            <a href="${project.demoUrl}" target="_blank" class="btn btn-download">${getTranslation('btn_download_demo')}</a>
+                        </div>
+                        ` : ''}
+                    </div>
+                    
+                    <div class="project-modal-right">
+                        ${project.objectives && project.objectives[currentLang] && project.objectives[currentLang].length > 0 ? `
+                        <div class="project-info-section">
+                            <h3>${getTranslation('objectives')}</h3>
+                            <ul>
+                                ${project.objectives[currentLang].map(objective => `<li>${objective}</li>`).join('')}
+                            </ul>
+                        </div>
+                        ` : ''}
+                        
+                        ${project.technicalDifficulties && project.technicalDifficulties[currentLang] && project.technicalDifficulties[currentLang].length > 0 ? `
+                        <div class="project-info-section">
+                            <h3>${getTranslation('technical_difficulties')}</h3>
+                            <ul>
+                                ${project.technicalDifficulties[currentLang].map(difficulty => `<li>${difficulty}</li>`).join('')}
+                            </ul>
+                        </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Gallery Modal Functions
+        function openGalleryModal(galleryId) {
+            const item = gallery.find(g => g.id === galleryId);
+            const modal = document.getElementById('projectModal');
+            const body = document.getElementById('modalBody');
+
+            galleryCarouselStates[galleryId] = 0;
+
+            const title = item.title[currentLang];
+            const category = item.category[currentLang];
+            const description = item.description[currentLang];
+
+            body.innerHTML = `
+                <div class="gallery-modal-layout">
+                    <div class="gallery-modal-header">
+                        <h2>${title}</h2>
+                        <p>${category}</p>
+                    </div>
+                    
+                    <div class="gallery-modal-carousel">
+                        <div class="carousel-track" id="gallery-carousel-${galleryId}" style="height: 100%;">
+                            ${item.images.map(img => `
+                                <img src="${img}" alt="${title}" class="carousel-image" style="width: 100%; height: 100%; object-fit: contain; border-radius: 12px; background: #f0f0f0;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27800%27 height=%27400%27%3E%3Crect width=%27800%27 height=%27400%27 fill=%27%236C5CE7%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2732%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${title}%3C/text%3E%3C/svg%3E'">
+                            `).join('')}
+                        </div>
+                        ${item.images.length > 1 ? `
+                            <button class="carousel-btn prev" onclick="moveGalleryCarousel('${galleryId}', -1)">‹</button>
+                            <button class="carousel-btn next" onclick="moveGalleryCarousel('${galleryId}', 1)">›</button>
+                            <div class="carousel-dots">
+                                ${item.images.map((_, i) => `<span class="carousel-dot ${i === 0 ? 'active' : ''}" onclick="goToGallerySlide('${galleryId}', ${i})"></span>`).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                    
+                    <div class="gallery-modal-content">
+                        <div class="gallery-modal-description">
+                            <h3>${getTranslation('gallery_description')}</h3>
+                            <p>${description}</p>
+                        </div>
+                        
+                        <div class="gallery-modal-details">
+                            <div class="gallery-modal-tools">
+                                <h3>${getTranslation('gallery_tools')}</h3>
+                                <div class="gallery-modal-tools-list">
+                                    ${item.tools.map(tool => `<span class="gallery-modal-tool">${tool}</span>`).join('')}
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-modal-objectives">
+                                <h3>${getTranslation('objectives')}</h3>
+                                <ul>
+                                    ${item.objectives[currentLang].map(objective => `<li>${objective}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             `;
 
             modal.classList.add('active');
@@ -1487,63 +2116,20 @@
             document.body.style.overflow = '';
         }
 
-        // Gallery Modal Functions
-        function openGalleryModal(galleryId) {
-            const item = gallery.find(g => g.id === galleryId);
-            const modal = document.getElementById('projectModal');
-            const body = document.getElementById('modalBody');
-
-            const title = item.title[currentLang];
-            const category = item.category[currentLang];
-            const description = item.description[currentLang];
-            const process = item.process[currentLang];
-
-            const mediaHtml = item.media.endsWith('.mp4') 
-                ? `<video controls style="width: 100%; height: 400px; object-fit: contain; border-radius: 12px; margin-bottom: 32px; background: #f0f0f0;">
-                    <source src="${item.media}" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>`
-                : `<img src="${item.media}" alt="${title}" style="width: 100%; height: 400px; object-fit: contain; border-radius: 12px; margin-bottom: 32px; background: #f0f0f0;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27800%27 height=%27400%27%3E%3Crect width=%27800%27 height=%27400%27 fill=%27%236C5CE7%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2732%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${title}%3C/text%3E%3C/svg%3E'">`;
-
-            body.innerHTML = `
-                ${mediaHtml}
-                <h2 style="font-size: 32px; margin: 0 0 8px 0;">${title}</h2>
-                <p style="color: var(--secondary); margin-bottom: 24px; font-size: 16px; font-weight: 600;">${category}</p>
-
-                <div style="margin-bottom: 32px;">
-                    <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--primary);">${getTranslation('gallery_description')}</h3>
-                    <p style="font-size: 16px; line-height: 1.8; color: var(--text-secondary);">${description}</p>
-                </div>
-
-                <div style="margin-bottom: 32px;">
-                    <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--primary);">${getTranslation('gallery_tools')}</h3>
-                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                        ${item.tools.map(tool => `<span style="padding: 8px 16px; background: var(--accent); color: white; border-radius: 20px; font-size: 14px; font-weight: 500;">${tool}</span>`).join('')}
-                    </div>
-                </div>
-
-                <div>
-                    <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--primary);">${getTranslation('gallery_process')}</h3>
-                    <p style="font-size: 16px; line-height: 1.8; color: var(--text-secondary);">${process}</p>
-                </div>
-            `;
-
+        // PDF Modal Functions
+        function openPdfModal(pdfPath) {
+            const modal = document.getElementById('pdfModal');
+            const iframe = document.getElementById('pdfViewer');
+            iframe.src = pdfPath;
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
-        // Lightbox Functions
-        function openLightbox(imageSrc) {
-            const lightbox = document.getElementById('lightbox');
-            const image = document.getElementById('lightboxImage');
-            image.src = imageSrc;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.classList.remove('active');
+        function closePdfModal() {
+            const modal = document.getElementById('pdfModal');
+            const iframe = document.getElementById('pdfViewer');
+            modal.classList.remove('active');
+            iframe.src = '';
             document.body.style.overflow = '';
         }
 
@@ -1596,6 +2182,20 @@
                 document.getElementById('mainNav').classList.toggle('active');
             });
 
+            // Filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterProjects(btn.dataset.filter);
+                });
+            });
+
+            // Gallery filter buttons
+            document.querySelectorAll('.gallery-filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterGallery(btn.dataset.galleryFilter);
+                });
+            });
+
             // Smooth scroll
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
@@ -1614,10 +2214,10 @@
                 if (e.target.id === 'projectModal') closeProjectModal();
             });
 
-            // Lightbox close
-            document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
-            document.getElementById('lightbox').addEventListener('click', (e) => {
-                if (e.target.id === 'lightbox') closeLightbox();
+            // PDF Modal close
+            document.getElementById('pdfModalClose').addEventListener('click', closePdfModal);
+            document.getElementById('pdfModal').addEventListener('click', (e) => {
+                if (e.target.id === 'pdfModal') closePdfModal();
             });
 
             // Scroll to top
