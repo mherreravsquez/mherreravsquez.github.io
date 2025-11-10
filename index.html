@@ -428,11 +428,11 @@
         }
 
         .carousel-btn.prev {
-            left: -60px;
+            left: 8px;
         }
 
         .carousel-btn.next {
-            right: -60px;
+            right: 8px;
         }
 
         .carousel-dots {
@@ -680,6 +680,83 @@
         .modal-carousel {
             height: 300px;
             margin-bottom: 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius);
+            background: #f0f0f0;
+        }
+
+        .modal-carousel-track {
+            display: flex;
+            transition: transform var(--transition);
+            height: 100%;
+        }
+
+        .modal-carousel-image {
+            min-width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #f0f0f0;
+        }
+
+        .modal-carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(254, 84, 111, 0.95);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition);
+            z-index: 50;
+            color: white;
+            box-shadow: 0 4px 12px rgba(254, 84, 111, 0.4);
+            line-height: 1;
+        }
+
+        .modal-carousel-btn:hover {
+            background: rgb(254, 84, 111);
+            transform: translateY(-50%) scale(1.15);
+            box-shadow: 0 6px 16px rgba(254, 84, 111, 0.6);
+        }
+
+        .modal-carousel-btn.prev {
+            left: 8px;
+        }
+
+        .modal-carousel-btn.next {
+            right: 8px;
+        }
+
+        .modal-carousel-dots {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .modal-carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .modal-carousel-dot.active {
+            background: white;
+            width: 24px;
+            border-radius: 4px;
         }
 
         .project-description-section {
@@ -1054,7 +1131,7 @@
 
         /* Contact Section */
         .contact-section {
-            background: var(--card-bg);
+            background: var(--background);
             padding: 80px 24px;
         }
 
@@ -1070,7 +1147,7 @@
         }
 
         .contact-link {
-            background: var(--background);
+            background: var(--card-bg);
             padding: 20px;
             border-radius: var(--radius);
             text-align: center;
@@ -1317,13 +1394,12 @@
         <div style="max-width: 1200px; margin: 0 auto;">
             <h2 class="section-title" data-i18n="section_achievements">Achievements &amp; Certifications</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-top: 48px;" id="achievementsGrid">
-                <!-- Renderizado dinámicamente -->
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact-section">
+    <section id="contact">
         <div class="contact-content">
             <h2 class="section-title" data-i18n="section_contact">Let's Connect</h2>
             <p class="section-subtitle" data-i18n="contact_subtitle">Ready to collaborate on innovative gaming projects</p>
@@ -1362,23 +1438,66 @@
                 id: 'car_loop',
                 title: 'Car-Loop',
                 tags: ['Unity', 'VR', '3D', 'PC'],
-                image: 'assets/Main Projects/CL/CL_thumbnail.png'
+                image: 'assets/Main Projects/CL/CL_gameplay1.png'
             },
             {
                 id: 'break_bubble',
                 title: 'Break the Bubble',
                 tags: ['Unity', '2D', 'PC'],
-                image: 'assets/Main Projects/BTB/BTB_thumbnail.png'
+                image: 'assets/Main Projects/BTB/BTB_gameplay1.png'
             },
             {
                 id: 'hunters',
                 title: 'HUNTERS: Awakening',
                 tags: ['Unity', '3D', 'PC'],
-                image: 'assets/Main Projects/HUNTERS/HUNTERS_thumbnail.png'
+                image: 'assets/Main Projects/HUNTERS/HUNTERS_gameplay1.png'
             }
         ];
 
         const projects = [
+            {
+                id: 'tmlh',
+                title: 'Tragones y Mazmorras x Lugares que Hablan',
+                tags: ['RenPy', '2D', 'PC'],
+                description: {
+                    en: 'Tragones y Mazmorras x Lugares que Hablan is a visual novel developed in RenPy, only available in Spanish. The story unfolds as it normally would in the first chapter of the manga of the anime Tragones y Mazmorras, introducing in certain scenes Francisco Saavedra, also known as Pancho Saavedra, host of the program Lugares que hablan, where he visits different places in Chile, learning about their culture and tasting their food, just as can be seen in this project, which mixes Pancho\'s humor with that of the rest of the group of Laos and Marcielle.',
+                    es: 'Tragones y Mazmorras x Lugares que Hablan es una novela visual desarrollada en RenPy, solamente disponible en español. La historia se desarrolla como normalmente sucedería en el primer capítulo del manga del anime Tragones y Mazmorras, introduciendo en ciertas escenas a Francisco Saavedra, también conocido como Pancho Saavedra, conductor del programa Lugares que hablan, donde se visita diferentes sitios en Chile, aprendiendo de su cultura y probando su comida, tal y como se puede apreciar en este proyecto, donde se mezcla el humor de Pancho con el del resto del grupo de Laos y Marcielle.'
+                },
+                projectDetails: {
+                    en: 'Tragones y Mazmorras x Lugares que Hablan is a visual novel developed in RenPy, only available in Spanish. The story unfolds as it normally would in the first chapter of the manga of the anime Tragones y Mazmorras, introducing in certain scenes Francisco Saavedra, also known as Pancho Saavedra, host of the program Lugares que hablan, where he visits different places in Chile, learning about their culture and tasting their food, just as can be seen in this project, which mixes Pancho\'s humor with that of the rest of the group of Laos and Marcielle.\n\nThe art for the project was entirely made by Antonia Benz.',
+                    es: 'Tragones y Mazmorras x Lugares que Hablan es una novela visual desarrollada en RenPy, solamente disponible en español. La historia se desarrolla como normalmente sucedería en el primer capítulo del manga del anime Tragones y Mazmorras, introduciendo en ciertas escenas a Francisco Saavedra, también conocido como Pancho Saavedra, conductor del programa Lugares que hablan, donde se visita diferentes sitios en Chile, aprendiendo de su cultura y probando su comida, tal y como se puede apreciar en este proyecto, donde se mezcla el humor de Pancho con el del resto del grupo de Laos y Marcielle.\n\nEl arte del proyecto fue hecho en su totalidad por Antonia Benz.'
+                },
+                images: ['assets/Main Projects/TMLH/TMLH_thumbnail.png', 'assets/Main Projects/TMLH/TMLH_gameplay1.png', 'assets/Main Projects/TMLH/TMLH_gameplay2.png'],
+                demoUrl: 'https://mherreravsquez.itch.io/tragones-y-mazmorras-x-lugares-que-hablan',
+                objectives: {
+                    en: [
+                        'Create a project that mixes a character from Chilean culture with a fantasy universe',
+                        'Develop a visual novel using RenPy engine',
+                        'Combine humor from different cultural references into a cohesive narrative',
+                        'Explore the integration of real-world personalities into fictional universes'
+                    ],
+                    es: [
+                        'Crear un proyecto que mezcle un personaje de la cultura chilena con un universo de fantasía',
+                        'Desarrollar una novela visual utilizando el motor RenPy',
+                        'Combinar el humor de diferentes referencias culturales en una narrativa cohesiva',
+                        'Explorar la integración de personalidades del mundo real en universos ficticios'
+                    ]
+                },
+                technicalDifficulties: {
+                    en: [
+                        'First time working with RenPy engine',
+                        'Integrating an established character into a fantasy universe',
+                        'Balancing humor from different cultural references',
+                        'Adapting the visual novel format to include interactive elements'
+                    ],
+                    es: [
+                        'Primera vez trabajando con el motor RenPy',
+                        'Integración de un personaje ya establecido dentro de un universo fantástico',
+                        'Equilibrar el humor de diferentes referencias culturales',
+                        'Adaptar el formato de novela visual para incluir elementos interactivos'
+                    ]
+                }
+            },
             {
                 id: 'car_loop',
                 title: 'Car-Loop',
@@ -1392,7 +1511,7 @@
                     es: 'Car-Loop es un juego de terror psicológico en VR donde los jugadores se encuentran atrapados en una secuencia infinita de conducción. El juego utiliza generación procedural para crear variaciones sutiles en cada bucle, haciendo que los jugadores cuestionen su percepción de la realidad.'
                 },
                 images: ['assets/Main Projects/CL/CL_thumbnail.png', 'assets/Main Projects/CL/CL_gameplay1.png'],
-                demoUrl: 'https://example.com/download/car_loop',
+                demoUrl: 'https://plants-path-co.itch.io/car-loop',
                 objectives: {
                     en: [
                         'Create an immersive VR horror experience that plays with player perception',
@@ -1433,7 +1552,7 @@
                     es: 'Break the Bubble es un juego desarrollado para la GGJ 2025, el tema era Burbuja. En este juego, se narra la historia de un desarrollador que quiere desarrollar un nuevo videojuego, se nos muestra su proceso creativo hacia la creación del genero Metroidvania en su mundo.\n\nDurante la etapa de metroidvania, podemos notar mecánicas como la transformación del personaje para poder avanzar por espacios reducidos, y el movimiento de plataformas con runas, con el fin de alcanzar lugares que no podrías alcanzar con un salto convencional.'
                 },
                 images: ['assets/Main Projects/BTB/BTB_thumbnail.png', 'assets/Main Projects/BTB/BTB_gameplay1.png'],
-                demoUrl: 'https://example.com/download/break_the_bubble',
+                demoUrl: 'https://plants-path-co.itch.io/romper-la-burbuja-ggj-2025',
                 objectives: {
                     en: [
                         'Develop a complete game in 48 hours for Global Game Jam 2025',
@@ -1473,8 +1592,8 @@
                     en: 'HUNTERS: Awakening is an action JRPG that combines fast-paced combat with deep character customization and progression systems. Players can explore a vast world, engage in strategic battles, and develop their characters through an extensive skill tree.',
                     es: 'HUNTERS: Awakening es un JRPG de acción que combina combate rápido con personalización profunda de personajes y sistemas de progresión. Los jugadores pueden explorar un mundo vasto, participar en batallas estratégicas y desarrollar sus personajes a través de un extenso árbol de habilidades.'
                 },
-                images: ['assets/Main Projects/HUNTERS/HUNTERS_thumbnail.png'],
-                demoUrl: 'https://example.com/download/hunters',
+                images: ['assets/Main Projects/HUNTERS/HUNTERS_thumbnail.png', 'assets/Main Projects/HUNTERS/HUNTERS_gameplay1.png'],
+                demoUrl: 'https://plants-path-co.itch.io/hunters-awakening',
                 objectives: {
                     en: [
                         'Create a dynamic combat system that blends action and strategy',
@@ -1514,7 +1633,7 @@
                     en: 'Boombastic is an interactive installation that uses hand-tracking technology to allow users to move virtual cassettes onto a virtual boom box. Placing a cassette on the boom box sends a signal to REAPER a digital audio workstation to create beats with samples of representative songs from the 1990s. MadMapper is implemented to perform mapping projections on the boom box model, displaying various visual reactions and animations in real time.',
                     es: 'Boombastic es una instalación interactiva que utiliza tecnología de seguimiento manual para que los usuarios puedan mover casetes virtuales hacia un radiocasete virtual. Al colocar un casete en el radiocasete, se envía una señal a REAPER una estación de trabajo de audio digital para crear ritmos con muestras de canciones representativas de los años 90. MadMapper se implementa para realizar proyecciones de mapas en el modelo del radiocasete, mostrando diversas reacciones visuales y animaciones en tiempo real.'
                 },
-                images: ['assets/Gallery/BB/BB_gameplay1.png'],
+                images: ['assets/Gallery/BB/BB_gameplay1.mp4'],
                 tools: ['Unity 6.2', 'Kinect SDK 2.0', 'Reaper 7.48', 'MadMapper 5.6.8'],
                 objectives: {
                     en: [
@@ -1566,7 +1685,7 @@
                     en: 'Diorama of the Leblanc cafe from the Persona 5 Royal video game. 3D modeled and textured using materials from the Blender Kit website. This environment showcases detailed prop modeling, lighting, and composition skills.',
                     es: 'Diorama del café Leblanc del videojuego Persona 5 Royal. Modelado en 3D y texturizado haciendo uso de materiales de la web Blender Kit. Este entorno muestra habilidades de modelado de props detallado, iluminación y composición.'
                 },
-                images: ['assets/Gallery/LB/LB_thumbnail.jpg'],
+                images: ['assets/Gallery/LB/LB_thumbnail.jpg', 'assets/Gallery/LB/LB_render1.jpg'],
                 tools: ['Blender 4.0', 'BlenderKit', 'Substance Painter'],
                 objectives: {
                     en: [
@@ -1608,8 +1727,8 @@
             {
                 id: 'meta_spark',
                 title: { en: 'Meta Spark Creator Certification', es: 'Certificación Meta Spark Creator' },
-                issuer: 'Meta',
-                date: '2024',
+                issuer: { en: 'CRTIC', es: 'CRTIC' },
+                date: { en: 'October 2023', es: 'Octubre 2023' },
                 icon: '🔥',
                 pdfPath: 'assets/Certifications/Meta_Spark_AR_CRTIC.pdf'
             }
@@ -1745,6 +1864,11 @@
         // Hero Carousel State
         let heroIndex = 0;
         let heroInterval = null;
+
+        // Carruseles automáticos para proyectos
+        const carouselIntervals = {};
+        const modalCarouselIntervals = {};
+        const modalCarouselStates = {};
 
         // Initialize
         function init() {
@@ -1882,6 +2006,13 @@
                     </div>
                 `;
             }).join('');
+
+            // Iniciar autoplay para cada proyecto
+            projectsToRender.forEach(project => {
+                if (project.images.length > 1) {
+                    startCarouselAutoplay(project.id);
+                }
+            });
         }
 
         function renderGallery(galleryToRender = gallery) {
@@ -1925,13 +2056,15 @@
 
             grid.innerHTML = certifications.map(cert => {
                 const title = cert.title[currentLang] || cert.title.en;
+                const issuer = cert.issuer[currentLang] || cert.issuer.en;
+                const date = cert.date[currentLang] || cert.date.en;
 
                 return `
                     <div class="achievement-card" onclick="openPdfModal('${cert.pdfPath}')">
                         <div class="achievement-icon">${cert.icon}</div>
                         <h3>${title}</h3>
-                        <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 4px;">${cert.issuer}</p>
-                        <p style="color: var(--primary); font-weight: 500; font-size: 13px;">${cert.date}</p>
+                        <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 4px;">${issuer}</p>
+                        <p style="color: var(--primary); font-weight: 500; font-size: 13px;">${date}</p>
                     </div>
                 `;
             }).join('');
@@ -1943,11 +2076,21 @@
             const maxIndex = project.images.length - 1;
             carouselStates[projectId] = Math.max(0, Math.min(maxIndex, carouselStates[projectId] + direction));
             updateCarousel(projectId);
+            
+            // Reiniciar autoplay
+            if (carouselIntervals[projectId]) {
+                startCarouselAutoplay(projectId);
+            }
         }
 
         function goToSlide(projectId, index) {
             carouselStates[projectId] = index;
             updateCarousel(projectId);
+            
+            // Reiniciar autoplay
+            if (carouselIntervals[projectId]) {
+                startCarouselAutoplay(projectId);
+            }
         }
 
         function updateCarousel(projectId) {
@@ -1957,6 +2100,65 @@
             dots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === carouselStates[projectId]);
             });
+        }
+
+        // Modal Carousel Functions
+        function moveModalCarousel(projectId, direction) {
+            const project = projects.find(p => p.id === projectId);
+            const maxIndex = project.images.length - 1;
+            modalCarouselStates[projectId] = Math.max(0, Math.min(maxIndex, modalCarouselStates[projectId] + direction));
+            updateModalCarousel(projectId);
+            
+            // Reiniciar autoplay
+            if (modalCarouselIntervals[projectId]) {
+                startModalCarouselAutoplay(projectId);
+            }
+        }
+
+        function goToModalSlide(projectId, index) {
+            modalCarouselStates[projectId] = index;
+            updateModalCarousel(projectId);
+            
+            // Reiniciar autoplay
+            if (modalCarouselIntervals[projectId]) {
+                startModalCarouselAutoplay(projectId);
+            }
+        }
+
+        function updateModalCarousel(projectId) {
+            const track = document.getElementById(`modal-carousel-track-${projectId}`);
+            const dots = track.parentElement.querySelectorAll('.modal-carousel-dot');
+            track.style.transform = `translateX(-${modalCarouselStates[projectId] * 100}%)`;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === modalCarouselStates[projectId]);
+            });
+        }
+
+        // Funciones para el autoplay de carruseles
+        function startCarouselAutoplay(projectId) {
+            stopCarouselAutoplay(projectId);
+            carouselIntervals[projectId] = setInterval(() => {
+                moveCarousel(projectId, 1);
+            }, 5000);
+        }
+
+        function stopCarouselAutoplay(projectId) {
+            if (carouselIntervals[projectId]) {
+                clearInterval(carouselIntervals[projectId]);
+            }
+        }
+
+        function startModalCarouselAutoplay(projectId) {
+            stopModalCarouselAutoplay(projectId);
+            modalCarouselIntervals[projectId] = setInterval(() => {
+                moveModalCarousel(projectId, 1);
+            }, 5000);
+        }
+
+        function stopModalCarouselAutoplay(projectId) {
+            if (modalCarouselIntervals[projectId]) {
+                clearInterval(modalCarouselIntervals[projectId]);
+            }
         }
 
         // Gallery Carousel Functions
@@ -1987,20 +2189,26 @@
             const modal = document.getElementById('projectModal');
             const body = document.getElementById('modalBody');
 
+            // Inicializar estado del carrusel del modal
+            modalCarouselStates[projectId] = 0;
+
             body.innerHTML = `
                 <h2 style="font-size: 32px; margin: 0 0 16px 0;">${project.title}</h2>
                 
                 <div class="project-modal-layout">
                     <div class="project-modal-left">
-                        <div class="project-carousel modal-carousel">
-                            <div class="carousel-track" id="modal-carousel-${projectId}" style="height: 100%;">
+                        <div class="modal-carousel">
+                            <div class="modal-carousel-track" id="modal-carousel-track-${projectId}">
                                 ${project.images.map(img => `
-                                    <img src="${img}" alt="${project.title}" class="carousel-image" style="width: 100%; height: 100%; object-fit: contain; border-radius: 12px; background: #f0f0f0;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27800%27 height=%27400%27%3E%3Crect width=%27800%27 height=%27400%27 fill=%27%234A90E2%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2732%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${project.title}%3C/text%3E%3C/svg%3E'">
+                                    <img src="${img}" alt="${project.title}" class="modal-carousel-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27800%27 height=%27400%27%3E%3Crect width=%27800%27 height=%27400%27 fill=%27%234A90E2%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2732%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${project.title}%3C/text%3E%3C/svg%3E'">
                                 `).join('')}
                             </div>
                             ${project.images.length > 1 ? `
-                                <button class="carousel-btn prev" onclick="moveCarousel('${projectId}', -1)">‹</button>
-                                <button class="carousel-btn next" onclick="moveCarousel('${projectId}', 1)">›</button>
+                                <button class="modal-carousel-btn prev" onclick="moveModalCarousel('${project.id}', -1)">‹</button>
+                                <button class="modal-carousel-btn next" onclick="moveModalCarousel('${project.id}', 1)">›</button>
+                                <div class="modal-carousel-dots">
+                                    ${project.images.map((_, i) => `<span class="modal-carousel-dot ${i === 0 ? 'active' : ''}" onclick="goToModalSlide('${project.id}', ${i})"></span>`).join('')}
+                                </div>
                             ` : ''}
                         </div>
                         
@@ -2047,6 +2255,16 @@
 
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
+            
+            // Iniciar autoplay para el modal
+            if (project.images.length > 1) {
+                startModalCarouselAutoplay(projectId);
+                
+                // Pausar autoplay al hacer hover
+                const modalCarousel = document.querySelector(`#modal-carousel-track-${projectId}`).parentElement;
+                modalCarousel.addEventListener('mouseenter', () => stopModalCarouselAutoplay(projectId));
+                modalCarousel.addEventListener('mouseleave', () => startModalCarouselAutoplay(projectId));
+            }
         }
 
         // Gallery Modal Functions
@@ -2116,6 +2334,11 @@
             const modal = document.getElementById('projectModal');
             modal.classList.remove('active');
             document.body.style.overflow = '';
+            
+            // Detener todos los autoplay de modal
+            Object.keys(modalCarouselIntervals).forEach(projectId => {
+                stopModalCarouselAutoplay(projectId);
+            });
         }
 
         // PDF Modal Functions
