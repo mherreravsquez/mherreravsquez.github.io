@@ -661,7 +661,7 @@
         /* Project Modal Layout */
         .project-modal-layout {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 3fr 2fr;
             gap: 48px;
             align-items: stretch;
         }
@@ -679,7 +679,8 @@
         }
 
         .modal-carousel {
-            height: 300px;
+            height: auto;
+            max-height: 400px;
             margin-bottom: 0;
             position: relative;
             overflow: hidden;
@@ -1727,7 +1728,7 @@
         const certifications = [
             {
                 id: 'meta_spark',
-                title: { en: 'Meta Spark Creator Certification', es: 'Certificación Meta Spark Creator' },
+                title: { en: 'Meta Spark AR Certification', es: 'Certificación Meta Spark AR' },
                 issuer: { en: 'CRTIC', es: 'CRTIC' },
                 date: { en: 'October 2023', es: 'Octubre 2023' },
                 icon: '🔥',
@@ -1865,8 +1866,7 @@
         // Hero Carousel State
         let heroIndex = 0;
         let heroInterval = null;
-
-        // Carruseles automáticos para proyectos
+        
         const carouselIntervals = {};
         const modalCarouselIntervals = {};
         const modalCarouselStates = {};
@@ -2007,8 +2007,7 @@
                     </div>
                 `;
             }).join('');
-
-            // Iniciar autoplay para cada proyecto
+            
             projectsToRender.forEach(project => {
                 if (project.images.length > 1) {
                     startCarouselAutoplay(project.id);
@@ -2021,16 +2020,22 @@
             grid.innerHTML = galleryToRender.map((item, index) => {
                 const title = item.title[currentLang];
                 const category = item.category[currentLang];
+                const isVideo = item.images[0].endsWith('.mp4');
 
                 return `
-                    <div class="gallery-item" onclick="openGalleryModal('${item.id}')">
-                        <img src="${item.images[0]}" alt="${title}" class="gallery-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Crect width=%27400%27 height=%27300%27 fill=%27%236C5CE7%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2720%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${title}%3C/text%3E%3C/svg%3E'">
-                        <div class="gallery-overlay">
-                            <h3>${title}</h3>
-                            <p>${category}</p>
-                        </div>
-                    </div>
-                `;
+            <div class="gallery-item" onclick="openGalleryModal('${item.id}')">
+                ${isVideo ?
+                    `<video autoplay loop muted class="gallery-image">
+                        <source src="${item.images[0]}" type="video/mp4">
+                    </video>` :
+                    `<img src="${item.images[0]}" alt="${title}" class="gallery-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Crect width=%27400%27 height=%27300%27 fill=%27%236C5CE7%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2720%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${title}%3C/text%3E%3C/svg%3E'">`
+                }
+                <div class="gallery-overlay">
+                    <h3>${title}</h3>
+                    <p>${category}</p>
+                </div>
+            </div>
+        `;
             }).join('');
         }
 
@@ -2087,7 +2092,6 @@
             carouselStates[projectId] = index;
             updateCarousel(projectId);
             
-            // Reiniciar autoplay
             if (carouselIntervals[projectId]) {
                 startCarouselAutoplay(projectId);
             }
@@ -2105,11 +2109,10 @@
         // Modal Carousel Functions
         function moveModalCarousel(projectId, direction) {
             const project = projects.find(p => p.id === projectId);
-            // Carrusel infinito: si llega al final, vuelve al principio
+
             modalCarouselStates[projectId] = (modalCarouselStates[projectId] + direction + project.images.length) % project.images.length;
             updateModalCarousel(projectId);
             
-            // Reiniciar autoplay
             if (modalCarouselIntervals[projectId]) {
                 startModalCarouselAutoplay(projectId);
             }
@@ -2119,7 +2122,6 @@
             modalCarouselStates[projectId] = index;
             updateModalCarousel(projectId);
             
-            // Reiniciar autoplay
             if (modalCarouselIntervals[projectId]) {
                 startModalCarouselAutoplay(projectId);
             }
@@ -2134,7 +2136,6 @@
             });
         }
 
-        // Funciones para el autoplay de carruseles
         function startCarouselAutoplay(projectId) {
             stopCarouselAutoplay(projectId);
             carouselIntervals[projectId] = setInterval(() => {
@@ -2164,7 +2165,7 @@
         // Gallery Carousel Functions
         function moveGalleryCarousel(galleryId, direction) {
             const item = gallery.find(g => g.id === galleryId);
-            // Carrusel infinito: si llega al final, vuelve al principio
+
             galleryCarouselStates[galleryId] = (galleryCarouselStates[galleryId] + direction + item.images.length) % item.images.length;
             updateGalleryCarousel(galleryId);
         }
@@ -2189,7 +2190,6 @@
             const modal = document.getElementById('projectModal');
             const body = document.getElementById('modalBody');
 
-            // Inicializar estado del carrusel del modal
             modalCarouselStates[projectId] = 0;
 
             body.innerHTML = `
@@ -2256,11 +2256,9 @@
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
             
-            // Iniciar autoplay para el modal
             if (project.images.length > 1) {
                 startModalCarouselAutoplay(projectId);
                 
-                // Pausar autoplay al hacer hover
                 const modalCarousel = document.querySelector(`#modal-carousel-track-${projectId}`).parentElement;
                 modalCarousel.addEventListener('mouseenter', () => stopModalCarouselAutoplay(projectId));
                 modalCarousel.addEventListener('mouseleave', () => startModalCarouselAutoplay(projectId));
@@ -2288,9 +2286,14 @@
                     
                     <div class="gallery-modal-carousel">
                         <div class="carousel-track" id="gallery-carousel-${galleryId}" style="height: 100%;">
-                            ${item.images.map(img => `
-                                <img src="${img}" alt="${title}" class="carousel-image" style="width: 100%; height: 100%; object-fit: contain; border-radius: 12px; background: #f0f0f0;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27800%27 height=%27400%27%3E%3Crect width=%27800%27 height=%27400%27 fill=%27%236C5CE7%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2732%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${title}%3C/text%3E%3C/svg%3E'">
-                            `).join('')}
+                            ${item.images.map(img => {
+                const isVideo = img.endsWith('.mp4');
+                return isVideo ?
+                    `<video autoplay loop muted class="carousel-image" style="width: 100%; height: 100%; object-fit: contain; border-radius: 12px; background: #f0f0f0;">
+                                        <source src="${img}" type="video/mp4">
+                                    </video>` :
+                    `<img src="${img}" alt="${title}" class="carousel-image" style="width: 100%; height: 100%; object-fit: contain; border-radius: 12px; background: #f0f0f0;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27800%27 height=%27400%27%3E%3Crect width=%27800%27 height=%27400%27 fill=%27%236C5CE7%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2732%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${title}%3C/text%3E%3C/svg%3E'">`
+            }).join('')}
                         </div>
                         ${item.images.length > 1 ? `
                             <button class="carousel-btn prev" onclick="moveGalleryCarousel('${galleryId}', -1)">‹</button>
@@ -2335,7 +2338,6 @@
             modal.classList.remove('active');
             document.body.style.overflow = '';
             
-            // Detener todos los autoplay de modal
             Object.keys(modalCarouselIntervals).forEach(projectId => {
                 stopModalCarouselAutoplay(projectId);
             });
