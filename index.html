@@ -663,6 +663,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 48px;
+            align-items: stretch;
         }
 
         .project-modal-left {
@@ -2073,11 +2074,10 @@
         // Carousel Functions
         function moveCarousel(projectId, direction) {
             const project = projects.find(p => p.id === projectId);
-            const maxIndex = project.images.length - 1;
-            carouselStates[projectId] = Math.max(0, Math.min(maxIndex, carouselStates[projectId] + direction));
+
+            carouselStates[projectId] = (carouselStates[projectId] + direction + project.images.length) % project.images.length;
             updateCarousel(projectId);
             
-            // Reiniciar autoplay
             if (carouselIntervals[projectId]) {
                 startCarouselAutoplay(projectId);
             }
@@ -2105,8 +2105,8 @@
         // Modal Carousel Functions
         function moveModalCarousel(projectId, direction) {
             const project = projects.find(p => p.id === projectId);
-            const maxIndex = project.images.length - 1;
-            modalCarouselStates[projectId] = Math.max(0, Math.min(maxIndex, modalCarouselStates[projectId] + direction));
+            // Carrusel infinito: si llega al final, vuelve al principio
+            modalCarouselStates[projectId] = (modalCarouselStates[projectId] + direction + project.images.length) % project.images.length;
             updateModalCarousel(projectId);
             
             // Reiniciar autoplay
@@ -2164,8 +2164,8 @@
         // Gallery Carousel Functions
         function moveGalleryCarousel(galleryId, direction) {
             const item = gallery.find(g => g.id === galleryId);
-            const maxIndex = item.images.length - 1;
-            galleryCarouselStates[galleryId] = Math.max(0, Math.min(maxIndex, galleryCarouselStates[galleryId] + direction));
+            // Carrusel infinito: si llega al final, vuelve al principio
+            galleryCarouselStates[galleryId] = (galleryCarouselStates[galleryId] + direction + item.images.length) % item.images.length;
             updateGalleryCarousel(galleryId);
         }
 
