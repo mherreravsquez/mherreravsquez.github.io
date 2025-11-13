@@ -1443,34 +1443,25 @@
     <script>
         // ===== DATA - ALL CONTENT =====
 
-        // Hero Carousel Projects - Updated to use arrays like main projects
+        // Hero Carousel Projects - CORREGIDO: Solo usar imágenes _gameplay1.png
         const heroCarouselData = [
             {
                 id: 'break_bubble',
                 title: 'Break the Bubble',
                 tags: ['Unity', 'C#', 'PC', 'Metroidvania'],
-                images: [
-                    'assets/Main Projects/BTB/BTB_gameplay1.png',
-                    'assets/Main Projects/BTB/BTB_thumbnail.png'
-                ]
+                image: 'assets/Main Projects/BTB/BTB_gameplay1.png'
             },
             {
                 id: 'car_loop', 
                 title: 'Car-Loop',
                 tags: ['Unity', 'VR', '3D', 'PC'],
-                images: [
-                    'assets/Main Projects/CL/CL_gameplay1.png',
-                    'assets/Main Projects/CL/CL_thumbnail.png'
-                ]
+                image: 'assets/Main Projects/CL/CL_gameplay1.png'
             },
             {
                 id: 'hunters',
                 title: 'HUNTERS: Awakening', 
                 tags: ['Unity', '3D', 'PC', 'JRPG'],
-                images: [
-                    'assets/Main Projects/HUNTERS/HUNTERS_gameplay1.png',
-                    'assets/Main Projects/HUNTERS/HUNTERS_thumbnail.png'
-                ]
+                image: 'assets/Main Projects/HUNTERS/HUNTERS_gameplay1.png'
             }
         ];
 
@@ -1883,7 +1874,7 @@
         let activeFilter = 'all';
         let activeGalleryFilter = 'all';
 
-        // Hero Carousel State - Updated to use same logic as projects
+        // Hero Carousel State
         let heroCurrentIndex = 0;
         let heroInterval = null;
         
@@ -1903,23 +1894,20 @@
             startHeroAutoplay();
         }
 
-        // ===== HERO CAROUSEL FUNCTIONS - UPDATED =====
+        // ===== HERO CAROUSEL FUNCTIONS - CORREGIDO =====
         function renderHeroCarousel() {
             const track = document.getElementById('heroCarouselTrack');
             const dots = document.getElementById('heroCarouselDots');
 
             if (!track) return;
 
+            // CORREGIDO: Usar solo una imagen por slide (las _gameplay1.png)
             track.innerHTML = heroCarouselData.map(item => `
-        <div class="hero-carousel-slide">
-            <div class="carousel-track" id="hero-carousel-track-${item.id}">
-                ${item.images.map(img => `
-                    <img src="${img}" alt="${item.title}" class="carousel-image" 
+                <div class="hero-carousel-slide">
+                    <img src="${item.image}" alt="${item.title}" class="hero-carousel-image" 
                          onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzRBOEU0MiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkhlcm8gSW1hZ2UgTm90IEZvdW5kPC90ZXh0Pjwvc3ZnPg=='">
-                `).join('')}
-            </div>
-        </div>
-    `).join('');
+                </div>
+            `).join('');
 
             // Dots para navegación entre slides principales
             dots.innerHTML = heroCarouselData.map((_, i) =>
@@ -2439,7 +2427,7 @@
 
         // Event Listeners
         function setupEventListeners() {
-            // Hero carousel controls - updated
+            // Hero carousel controls
             document.getElementById('heroCarouselPrev').addEventListener('click', () => moveHeroMain(-1));
             document.getElementById('heroCarouselNext').addEventListener('click', () => moveHeroMain(1));
 
