@@ -1909,23 +1909,23 @@
             const dots = document.getElementById('heroCarouselDots');
 
             if (!track) return;
-            
+
             track.innerHTML = heroCarouselData.map(item => `
-                <div class="hero-carousel-slide">
-                    <div class="carousel-track" id="hero-carousel-track-${item.id}">
-                        ${item.images.map(img => `
-                            <img src="${img}" alt="${item.title}" class="carousel-image" 
-                                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzRBOEU0MiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPiR7aXRlbS50aXRsZX08L3RleHQ+PC9zdmc+'">
-                        `).join('')}
-                    </div>
-                </div>
-            `).join('');
-            
+        <div class="hero-carousel-slide">
+            <div class="carousel-track" id="hero-carousel-track-${item.id}">
+                ${item.images.map(img => `
+                    <img src="${img}" alt="${item.title}" class="carousel-image" 
+                         onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzRBOEU0MiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkhlcm8gSW1hZ2UgTm90IEZvdW5kPC90ZXh0Pjwvc3ZnPg=='">
+                `).join('')}
+            </div>
+        </div>
+    `).join('');
+
             // Dots para navegación entre slides principales
-            dots.innerHTML = heroCarouselData.map((_, i) => 
+            dots.innerHTML = heroCarouselData.map((_, i) =>
                 `<span class="hero-carousel-dot ${i === 0 ? 'active' : ''}" onclick="goToHeroMainSlide(${i})"></span>`
             ).join('');
-            
+
             updateHeroOverlay();
         }
 
