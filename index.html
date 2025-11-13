@@ -1410,7 +1410,7 @@
         <div class="contact-content">
             <h2 class="section-title" data-i18n="section_contact">Let's Connect</h2>
             <p class="section-subtitle" data-i18n="contact_subtitle">Ready to collaborate on innovative gaming projects</p>
-            
+
             <div class="contact-links">
                 <a href="mailto:m.herreravsquez@outlook.com" class="contact-link" target="_blank">
                     <span>📧</span>
@@ -1423,6 +1423,10 @@
                 <a href="https://github.com/mherreravsquez" class="contact-link" target="_blank">
                     <span>💻</span>
                     <span>GitHub</span>
+                </a>
+                <a href="assets/CV_Technic_Marcelo_Herrera.pdf" class="contact-link" target="_blank" download>
+                    <span>📄</span>
+                    <span data-i18n="cv_download">Download CV</span>
                 </a>
             </div>
         </div>
@@ -1439,25 +1443,34 @@
     <script>
         // ===== DATA - ALL CONTENT =====
 
-        // Hero Carousel Projects
-        const heroCarouselProjects = [
-            {
-                id: 'car_loop',
-                title: 'Car-Loop',
-                tags: ['Unity', 'VR', '3D', 'PC'],
-                image: 'assets/Main Projects/CL/CL_gameplay1.png'
-            },
+        // Hero Carousel Projects - Updated to use arrays like main projects
+        const heroCarouselData = [
             {
                 id: 'break_bubble',
                 title: 'Break the Bubble',
-                tags: ['Unity', '2D', 'PC'],
-                image: 'assets/Main Projects/BTB/BTB_gameplay1.png'
+                tags: ['Unity', 'C#', 'PC', 'Metroidvania'],
+                images: [
+                    'assets/Main Projects/BTB/BTB_gameplay1.png',
+                    'assets/Main Projects/BTB/BTB_thumbnail.png'
+                ]
+            },
+            {
+                id: 'car_loop', 
+                title: 'Car-Loop',
+                tags: ['Unity', 'VR', '3D', 'PC'],
+                images: [
+                    'assets/Main Projects/CL/CL_gameplay1.png',
+                    'assets/Main Projects/CL/CL_thumbnail.png'
+                ]
             },
             {
                 id: 'hunters',
-                title: 'HUNTERS: Awakening',
-                tags: ['Unity', '3D', 'PC'],
-                image: 'assets/Main Projects/HUNTERS/HUNTERS_gameplay1.png'
+                title: 'HUNTERS: Awakening', 
+                tags: ['Unity', '3D', 'PC', 'JRPG'],
+                images: [
+                    'assets/Main Projects/HUNTERS/HUNTERS_gameplay1.png',
+                    'assets/Main Projects/HUNTERS/HUNTERS_thumbnail.png'
+                ]
             }
         ];
 
@@ -1794,6 +1807,7 @@
                 // CONTACT SECTION
                 section_contact: 'Let\'s Connect',
                 contact_subtitle: 'Ready to collaborate on innovative gaming projects',
+                cv_download: 'Download CV',
 
                 // FOOTER
                 footer_text: '© 2025 Marcelo Herrera. All rights reserved.'
@@ -1850,7 +1864,8 @@
                 // SECCIÓN CONTACTO
                 section_contact: 'Conectemos',
                 contact_subtitle: 'Listo para colaborar en proyectos innovadores de videojuegos',
-
+                cv_download: 'Descargar CV',
+                
                 // PIE DE PÁGINA
                 footer_text: '© 2025 Marcelo Herrera. Todos los derechos reservados.'
             }
@@ -1868,8 +1883,8 @@
         let activeFilter = 'all';
         let activeGalleryFilter = 'all';
 
-        // Hero Carousel State
-        let heroIndex = 0;
+        // Hero Carousel State - Updated to use same logic as projects
+        let heroCurrentIndex = 0;
         let heroInterval = null;
         
         const carouselIntervals = {};
@@ -1888,58 +1903,85 @@
             startHeroAutoplay();
         }
 
-        // Hero Carousel Functions
-        function renderHeroCarousel(){
+        // ===== HERO CAROUSEL FUNCTIONS - UPDATED =====
+        function renderHeroCarousel() {
             const track = document.getElementById('heroCarouselTrack');
             const dots = document.getElementById('heroCarouselDots');
 
-            track.innerHTML = heroCarouselProjects.map(p => `
+            if (!track) return;
+            
+            track.innerHTML = heroCarouselData.map(item => `
                 <div class="hero-carousel-slide">
-                    <img src="${p.image}" alt="${p.title}" class="hero-carousel-image">
+                    <div class="carousel-track" id="hero-carousel-track-${item.id}">
+                        ${item.images.map(img => `
+                            <img src="${img}" alt="${item.title}" class="carousel-image" 
+                                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzRBOEU0MiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPiR7aXRlbS50aXRsZX08L3RleHQ+PC9zdmc+'">
+                        `).join('')}
+                    </div>
                 </div>
             `).join('');
-
-            dots.innerHTML = heroCarouselProjects.map((_, i) => `<span class="hero-carousel-dot ${i===0? 'active':''}" onclick="goToHeroSlide(${i})"></span>`).join('');
-
+            
+            // Dots para navegación entre slides principales
+            dots.innerHTML = heroCarouselData.map((_, i) => 
+                `<span class="hero-carousel-dot ${i === 0 ? 'active' : ''}" onclick="goToHeroMainSlide(${i})"></span>`
+            ).join('');
+            
             updateHeroOverlay();
         }
 
-        function updateHeroCarousel(){
+        function goToHeroMainSlide(index) {
+            heroCurrentIndex = index;
+            updateHeroMainCarousel();
+            resetHeroAutoplay();
+        }
+
+        function updateHeroMainCarousel() {
             const track = document.getElementById('heroCarouselTrack');
-            track.style.transform = `translateX(-${heroIndex * 100}%)`;
-            document.querySelectorAll('.hero-carousel-dot').forEach((d,i)=> d.classList.toggle('active', i===heroIndex));
+            if (track) {
+                track.style.transform = `translateX(-${heroCurrentIndex * 100}%)`;
+            }
+            
+            // Actualizar dots
+            document.querySelectorAll('.hero-carousel-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === heroCurrentIndex);
+            });
+            
             updateHeroOverlay();
         }
 
-        function moveHero(dir){ 
-            heroIndex = (heroIndex + dir + heroCarouselProjects.length) % heroCarouselProjects.length; 
-            updateHeroCarousel(); 
-            resetHeroAutoplay(); 
+        function moveHeroMain(dir) {
+            heroCurrentIndex = (heroCurrentIndex + dir + heroCarouselData.length) % heroCarouselData.length;
+            updateHeroMainCarousel();
+            resetHeroAutoplay();
         }
 
-        function goToHeroSlide(i){ 
-            heroIndex = i; 
-            updateHeroCarousel(); 
-            resetHeroAutoplay(); 
+        function updateHeroOverlay() {
+            const currentItem = heroCarouselData[heroCurrentIndex];
+            const titleElement = document.getElementById('heroOverlayTitle');
+            const techElement = document.getElementById('heroOverlayTech');
+            
+            if (titleElement && techElement && currentItem) {
+                titleElement.textContent = currentItem.title;
+                techElement.textContent = currentItem.tags.join(' • ');
+            }
         }
 
-        function updateHeroOverlay(){ 
-            const p = heroCarouselProjects[heroIndex];
-            document.getElementById('heroOverlayTitle').textContent = p.title;
-            document.getElementById('heroOverlayTech').textContent = p.tags.join(' • ');
+        // Autoplay functions
+        function startHeroAutoplay() {
+            stopHeroAutoplay();
+            heroInterval = setInterval(() => moveHeroMain(1), 5000);
         }
 
-        function startHeroAutoplay(){ 
-            heroInterval = setInterval(()=> moveHero(1), 5000); 
+        function stopHeroAutoplay() {
+            if (heroInterval) {
+                clearInterval(heroInterval);
+                heroInterval = null;
+            }
         }
 
-        function stopHeroAutoplay(){ 
-            clearInterval(heroInterval); 
-        }
-
-        function resetHeroAutoplay(){ 
-            stopHeroAutoplay(); 
-            startHeroAutoplay(); 
+        function resetHeroAutoplay() {
+            stopHeroAutoplay();
+            startHeroAutoplay();
         }
 
         // Filter Projects
@@ -2397,9 +2439,9 @@
 
         // Event Listeners
         function setupEventListeners() {
-            // Hero carousel controls
-            document.getElementById('heroCarouselPrev').addEventListener('click', () => moveHero(-1));
-            document.getElementById('heroCarouselNext').addEventListener('click', () => moveHero(1));
+            // Hero carousel controls - updated
+            document.getElementById('heroCarouselPrev').addEventListener('click', () => moveHeroMain(-1));
+            document.getElementById('heroCarouselNext').addEventListener('click', () => moveHeroMain(1));
 
             // Pause autoplay on hover
             const heroCarousel = document.querySelector('.hero-carousel');
