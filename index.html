@@ -1443,7 +1443,7 @@
     <script>
         // ===== DATA - ALL CONTENT =====
 
-        // Hero Carousel Projects - CORREGIDO: Solo usar imágenes _gameplay1.png
+        // Hero Carousel Projects - CORREGIDO: Array con título, tags y ruta de imagen
         const heroCarouselData = [
             {
                 id: 'break_bubble',
@@ -1901,11 +1901,11 @@
 
             if (!track) return;
 
-            // CORREGIDO: Usar solo una imagen por slide (las _gameplay1.png)
+            // Usar el array heroCarouselData para generar los slides
             track.innerHTML = heroCarouselData.map(item => `
                 <div class="hero-carousel-slide">
                     <img src="${item.image}" alt="${item.title}" class="hero-carousel-image" 
-                         onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzRBOEU0MiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkhlcm8gSW1hZ2UgTm90IEZvdW5kPC90ZXh0Pjwvc3ZnPg=='">
+                         onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzRBOEU0MiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkhlcm8gSW1hZ2UgTm90IEZvdW5kPC90ZXh0Pjwvc3ZnPg=='">
                 </div>
             `).join('');
 
