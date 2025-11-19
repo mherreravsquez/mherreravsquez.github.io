@@ -281,23 +281,37 @@ const gallery = [
             en: 'Virtual Production',
             es: 'Virtual Production'
         },
-        tags: ['3D Art', 'Virtual Production', 'Unreal Engine'],  // Debe coincidir con categorías existentes
+        tags: ['3D Art', 'Virtual Production', 'Unreal Engine'],
         description: {
-            en: 'Your detailed description here...',
-            es: 'Tu descripción detallada aquí...'
+            en: 'This Virtual Production project in Unreal Engine was developed as part of the Integrated 3D Tools course at Andrés Bello University (UNAB). The main goal was the creation of a realistic and immersive 3D environment, specifically designed for use in a virtual production studio.\n' +
+                '\n' +
+                'The iconic post-apocalyptic world of "The Last of Us" was chosen as the primary artistic reference. Drawing inspiration from its concept art, we built a scene that evokes an atmosphere of abandonment and decay, taking creative liberties to adapt it to our own vision. The asset creation pipeline combined custom modeling work and the use of external resources: main structures such as buildings, prison walls, and watchtowers were hand-modeled in Blender for total control over form and design. To enrich the environment and add a high level of realistic detail, assets from Quixel Megascans were used, efficiently integrating debris, vegetation, and terrain elements.\n' +
+                '\n' +
+                'The result is a fully realizable cinematic set, demonstrating the application of an integrated 3D workflow, from modeling and asset acquisition to final implementation and lighting in Unreal Engine.',
+            es: 'Este proyecto de Virtual Production en Unreal Engine se desarrolló como parte del ramo Herramientas Integradas 3D de la Universidad Andrés Bello (UNAB). El objetivo principal fue la creación de un entorno 3D realista e inmersivo, diseñado específicamente para ser utilizado en un estudio de producciones virtuales.\n' +
+                '\n' +
+                'Como referencia artística principal, se eligió el icónico mundo post-apocalíptico de "The Last of Us". Inspirándonos en su concept art, construimos una escena que evoca una atmósfera de abandono y decadencia, tomando libertades creativas para adaptarla a nuestra visión. El pipeline de creación de assets combinó trabajo de modelado propio y el uso de recursos externos: las estructuras principales, como edificios, muros de prisión y torres de vigilancia, fueron modeladas manualmente en Blender para un control total sobre la forma y el diseño. Para enriquecer el entorno y agregar un alto nivel de detalle realista, se utilizaron assets de Quixel Megascans, integrando escombros, vegetación y elementos de terreno de manera eficiente.\n' +
+                '\n' +
+                'El resultado es un escenario cinematográfico completamente realizable, que demuestra la aplicación de un flujo de trabajo integrado 3D, desde el modelado y la adquisición de assets hasta la implementación y iluminación final en Unreal Engine.'
         },
         images: [
             'https://imgur.com/242q1wa.jpg'
         ],
-        tools: ['Blender 5.0', 'Unreal Engine 5.4'],
+        tools: ['Unreal Engine 5.4', 'Blender 5.0'],
         objectives: {
             en: [
-                'Create a virtual production in Unreal Engine that can be rendered in real time and projected in a virtual production studio.',
-                'Objective 2 in English'
+                'Implement the principles and techniques learned in the Integrated 3D Tools course at UNAB in a practical, large-scale project.',
+                'Create an immersive and visually credible 3D environment by following an established artistic reference ("The Last of Us").',
+                'Effectively manage a 3D development pipeline that includes custom modeling, external asset acquisition, and integration into a game engine.',
+                'Incorporate and adapt high-quality assets from libraries like Quixel Megascans to complement the environment and streamline the production process.',
+                'Set up and optimize the scene in Unreal Engine to be functional and effective in a virtual production context, such as a professional studio.'
             ],
             es: [
-                'Crear una virtual production en unreal Engine, capaz de ser renderizada en tiempo real y proyectada en un estudio de virtual productions.',
-                'Objetivo 2 en Español'
+                'Implementar los principios y técnicas aprendidos en el ramo de Herramientas Integradas 3D de la UNAB en un proyecto práctico y de gran escala.',
+                'Crear un entorno 3D inmersivo y visualmente creíble, siguiendo un referente artístico establecido ("The Last of Us").',
+                'Gestionar de manera efectiva un pipeline de desarrollo 3D que incluye modelado propio, adquisición de assets externos e integración en motor de juego.',
+                'Incorporar y adaptar assets de alta calidad de librerías como Quixel Megascans para complementar el entorno y agilizar el proceso de producción.',
+                'Configurar y optimizar la escena en Unreal Engine para que sea funcional y efectiva en un contexto de virtual production, como el de un estudio profesional.'
             ]
         }
     }
