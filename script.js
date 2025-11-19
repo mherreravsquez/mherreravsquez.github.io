@@ -835,6 +835,10 @@ function closeProjectModal() {
     const modal = document.getElementById('projectModal');
     modal.classList.remove('active');
     document.body.style.overflow = '';
+
+    Object.keys(modalCarouselIntervals).forEach(projectId => {
+        stopModalCarouselAutoplay(projectId);
+    });
 }
 
 // PDF Modal Functions
