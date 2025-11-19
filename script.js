@@ -287,7 +287,7 @@ const gallery = [
             es: 'Tu descripción detallada aquí...'
         },
         images: [
-            'https://imgur.com/xxxxx.jpg'
+            'https://imgur.com/242q1wa.jpg'
         ],
         tools: ['Blender 5.0', 'Unreal Engine 5.4'],
         objectives: {
