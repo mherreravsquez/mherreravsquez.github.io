@@ -3,17 +3,17 @@
 // Hero Carousel Projects - CORREGIDO: Array con título, tags y ruta de imagen
 const heroCarouselData = [
     {
+        id: 'car_loop', 
+        title: 'Car-Loop',
+        tags: ['Unity', 'VR', '3D', 'PC', 'Psychological Horror'],
+        image: 'https://imgur.com/diJAbfY.jpg',
+        images: ['https://imgur.com/diJAbfY.jpg', 'https://imgur.com/BTx7b1s.jpg', 'https://imgur.com/RXFupZo.jpg', 'https://imgur.com/JSl88oB.jpg']
+    },
+    {
         id: 'break_bubble',
         title: 'Break the Bubble',
         tags: ['Unity', 'C#', 'PC', 'Metroidvania'],
         image: 'https://imgur.com/Oac1gLZ.jpg'
-    },
-    {
-        id: 'car_loop', 
-        title: 'Car-Loop',
-        tags: ['Unity', 'VR', '3D', 'PC'],
-        image: 'https://imgur.com/diJAbfY.jpg',
-        images: ['https://imgur.com/diJAbfY.jpg', 'https://imgur.com/BTx7b1s.jpg', 'https://imgur.com/RXFupZo.jpg', 'https://imgur.com/JSl88oB.jpg']
     },
     {
         id: 'hunters',
@@ -268,6 +268,36 @@ const gallery = [
                 'Practicar el modelado detallado de props y la narrativa ambiental',
                 'Dominar técnicas de iluminación para crear ambiente y estado de ánimo',
                 'Utilizar bibliotecas de materiales de manera efectiva para flujos de trabajo de texturizado'
+            ]
+        }
+    },
+    {
+        id: 'vphi3d',
+        title: {
+            en: 'Virtual Production in Unreal Engine',
+            es: 'Virtual Production en Unreal Engine'
+        },
+        category: {
+            en: 'Virtual Production',
+            es: 'Virtual Production'
+        },
+        tags: ['3D Art', 'Virtual Production', 'Unreal Engine'],  // Debe coincidir con categorías existentes
+        description: {
+            en: 'Your detailed description here...',
+            es: 'Tu descripción detallada aquí...'
+        },
+        images: [
+            'https://imgur.com/xxxxx.jpg'
+        ],
+        tools: ['Blender 5.0', 'Unreal Engine 5.4'],
+        objectives: {
+            en: [
+                'Create a virtual production in Unreal Engine that can be rendered in real time and projected in a virtual production studio.',
+                'Objective 2 in English'
+            ],
+            es: [
+                'Crear una virtual production en unreal Engine, capaz de ser renderizada en tiempo real y proyectada en un estudio de virtual productions.',
+                'Objetivo 2 en Español'
             ]
         }
     }
