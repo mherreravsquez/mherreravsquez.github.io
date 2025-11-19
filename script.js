@@ -468,6 +468,7 @@ let heroInterval = null;
 
 const carouselIntervals = {};
 const galleryCarouselIntervals = {};
+const modalCarouselIntervals = {};
 
 // Initialize
 function init() {
@@ -836,8 +837,12 @@ function closeProjectModal() {
     modal.classList.remove('active');
     document.body.style.overflow = '';
 
-    Object.keys(modalCarouselIntervals).forEach(projectId => {
-        stopModalCarouselAutoplay(projectId);
+    // Detener cualquier intervalo de carrusel de galería que esté activo
+    Object.keys(galleryCarouselIntervals).forEach(galleryId => {
+        if (galleryCarouselIntervals[galleryId]) {
+            clearInterval(galleryCarouselIntervals[galleryId]);
+            galleryCarouselIntervals[galleryId] = null;
+        }
     });
 }
 
@@ -919,6 +924,11 @@ function setupEventListeners() {
         btn.addEventListener('click', () => {
             filterGallery(btn.dataset.galleryFilter);
         });
+    });
+
+    document.getElementById('modalClose').addEventListener('click', closeProjectModal);
+    document.getElementById('projectModal').addEventListener('click', (e) => {
+        if (e.target.id === 'projectModal') closeProjectModal();
     });
 
     // Smooth scroll
