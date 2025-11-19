@@ -437,8 +437,7 @@ let heroCurrentIndex = 0;
 let heroInterval = null;
 
 const carouselIntervals = {};
-const modalCarouselIntervals = {};
-const modalCarouselStates = {};
+const galleryCarouselIntervals = {};
 
 // Initialize
 function init() {
@@ -595,7 +594,7 @@ function renderProjects(projectsToRender = projects) {
                         ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
                     </div>
                     <p class="project-description">${projectTrans.description[currentLang]}</p>
-                    <button class="btn btn-secondary" onclick="openProjectModal('${project.id}')">${getTranslation('btn_learn_more')}</button>
+                    <a href="project-details.html?id=${project.id}" class="btn btn-secondary">${getTranslation('btn_learn_more')}</a>
                 </div>
             </div>
         `;
@@ -699,36 +698,6 @@ function updateCarousel(projectId) {
     });
 }
 
-// Modal Carousel Functions
-function moveModalCarousel(projectId, direction) {
-    const project = projects.find(p => p.id === projectId);
-
-    modalCarouselStates[projectId] = (modalCarouselStates[projectId] + direction + project.images.length) % project.images.length;
-    updateModalCarousel(projectId);
-    
-    if (modalCarouselIntervals[projectId]) {
-        startModalCarouselAutoplay(projectId);
-    }
-}
-
-function goToModalSlide(projectId, index) {
-    modalCarouselStates[projectId] = index;
-    updateModalCarousel(projectId);
-    
-    if (modalCarouselIntervals[projectId]) {
-        startModalCarouselAutoplay(projectId);
-    }
-}
-
-function updateModalCarousel(projectId) {
-    const track = document.getElementById(`modal-carousel-track-${projectId}`);
-    const dots = track.parentElement.querySelectorAll('.modal-carousel-dot');
-    track.style.transform = `translateX(-${modalCarouselStates[projectId] * 100}%)`;
-    dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === modalCarouselStates[projectId]);
-    });
-}
-
 function startCarouselAutoplay(projectId) {
     stopCarouselAutoplay(projectId);
     carouselIntervals[projectId] = setInterval(() => {
@@ -739,19 +708,6 @@ function startCarouselAutoplay(projectId) {
 function stopCarouselAutoplay(projectId) {
     if (carouselIntervals[projectId]) {
         clearInterval(carouselIntervals[projectId]);
-    }
-}
-
-function startModalCarouselAutoplay(projectId) {
-    stopModalCarouselAutoplay(projectId);
-    modalCarouselIntervals[projectId] = setInterval(() => {
-        moveModalCarousel(projectId, 1);
-    }, 5000);
-}
-
-function stopModalCarouselAutoplay(projectId) {
-    if (modalCarouselIntervals[projectId]) {
-        clearInterval(modalCarouselIntervals[projectId]);
     }
 }
 
@@ -775,87 +731,6 @@ function updateGalleryCarousel(galleryId) {
     dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === galleryCarouselStates[galleryId]);
     });
-}
-
-// Modal Functions
-function openProjectModal(projectId) {
-    const project = projects.find(p => p.id === projectId);
-    const modal = document.getElementById('projectModal');
-    const body = document.getElementById('modalBody');
-
-    modalCarouselStates[projectId] = 0;
-
-    body.innerHTML = `
-        <h2 style="font-size: 32px; margin: 0 0 16px 0;">${project.title}</h2>
-        
-        <div class="project-modal-layout">
-            <div class="project-modal-left">
-                <div class="modal-carousel">
-                    <div class="modal-carousel-track" id="modal-carousel-track-${projectId}">
-                        ${project.images.map(img => `
-                            <img src="${img}" alt="${project.title}" class="modal-carousel-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27800%27 height=%27400%27%3E%3Crect width=%27800%27 height=%27400%27 fill=%27%234A90E2%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2732%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${project.title}%3C/text%3E%3C/svg%3E'">
-                        `).join('')}
-                    </div>
-                    ${project.images.length > 1 ? `
-                        <button class="modal-carousel-btn prev" onclick="moveModalCarousel('${project.id}', -1)">‹</button>
-                        <button class="modal-carousel-btn next" onclick="moveModalCarousel('${project.id}', 1)">›</button>
-                        <div class="modal-carousel-dots">
-                            ${project.images.map((_, i) => `<span class="modal-carousel-dot ${i === 0 ? 'active' : ''}" onclick="goToModalSlide('${project.id}', ${i})"></span>`).join('')}
-                        </div>
-                    ` : ''}
-                </div>
-                
-                <div class="project-description-section">
-                    <h3>${getTranslation('description')}</h3>
-                    <p style="white-space: pre-line;">${project.projectDetails[currentLang]}</p>
-                </div>
-                
-                <div class="project-tags-section">
-                    <h3>${getTranslation('project_tags')}</h3>
-                    <div class="project-tags-list">
-                        ${project.tags.map(tag => `<span class="project-tag-modal">${tag}</span>`).join('')}
-                    </div>
-                </div>
-                
-                ${project.demoUrl ? `
-                <div class="download-section">
-                    <a href="${project.demoUrl}" target="_blank" class="btn btn-download">${getTranslation('btn_download_demo')}</a>
-                </div>
-                ` : ''}
-            </div>
-            
-            <div class="project-modal-right">
-                ${project.objectives && project.objectives[currentLang] && project.objectives[currentLang].length > 0 ? `
-                <div class="project-info-section">
-                    <h3>${getTranslation('objectives')}</h3>
-                    <ul>
-                        ${project.objectives[currentLang].map(objective => `<li>${objective}</li>`).join('')}
-                    </ul>
-                </div>
-                ` : ''}
-                
-                ${project.technicalDifficulties && project.technicalDifficulties[currentLang] && project.technicalDifficulties[currentLang].length > 0 ? `
-                <div class="project-info-section">
-                    <h3>${getTranslation('technical_difficulties')}</h3>
-                    <ul>
-                        ${project.technicalDifficulties[currentLang].map(difficulty => `<li>${difficulty}</li>`).join('')}
-                    </ul>
-                </div>
-                ` : ''}
-            </div>
-        </div>
-    `;
-
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    
-    if (project.images.length > 1) {
-        startModalCarouselAutoplay(projectId);
-        
-        const modalCarousel = document.querySelector(`#modal-carousel-track-${projectId}`).parentElement;
-        modalCarousel.addEventListener('mouseenter', () => stopModalCarouselAutoplay(projectId));
-        modalCarousel.addEventListener('mouseleave', () => startModalCarouselAutoplay(projectId));
-    }
 }
 
 // Gallery Modal Functions
@@ -930,10 +805,6 @@ function closeProjectModal() {
     const modal = document.getElementById('projectModal');
     modal.classList.remove('active');
     document.body.style.overflow = '';
-    
-    Object.keys(modalCarouselIntervals).forEach(projectId => {
-        stopModalCarouselAutoplay(projectId);
-    });
 }
 
 // PDF Modal Functions
@@ -1026,12 +897,6 @@ function setupEventListeners() {
                 document.getElementById('mainNav').classList.remove('active');
             }
         });
-    });
-
-    // Modal close
-    document.getElementById('modalClose').addEventListener('click', closeProjectModal);
-    document.getElementById('projectModal').addEventListener('click', (e) => {
-        if (e.target.id === 'projectModal') closeProjectModal();
     });
 
     // PDF Modal close

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details - Marcelo Herrera</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .project-details-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 100px 24px 80px;
+        }
+        .project-details-title {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+        .project-details-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+        .project-details-carousel {
+            margin-bottom: 48px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            height: 500px;
+        }
+        .project-details-description {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 48px;
+            color: var(--text-secondary);
+            text-align: justify;
+            white-space: pre-line;
+        }
+        .project-details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 32px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all var(--transition);
+        }
+        .back-button:hover {
+            color: var(--secondary);
+            transform: translateX(-4px);
+        }
+        .project-details-carousel .modal-carousel {
+            height: 100%;
+            max-height: none;
+            margin-bottom: 0;
+        }
+
+        .project-details-carousel .modal-carousel-track {
+            height: 100%;
+        }
+
+        .project-details-carousel .modal-carousel-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+            background: #f0f0f0;
+        }
+        
+        .project-details-carousel .modal-carousel-btn {
+            z-index: 60;
+        }
+        
+        .project-details-carousel .modal-carousel-dots {
+            z-index: 60;
+        }
+
+        @media (max-width: 768px) {
+            .project-details-grid {
+                grid-template-columns: 1fr;
+            }
+            .project-details-title {
+                font-size: 36px;
+            }
+
+            .project-details-carousel {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .project-details-carousel {
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo" data-i18n="logo">Marcelo Herrera</a>
+            <nav id="mainNav">
+                <a href="index.html#about" data-i18n="nav_about">About Me</a>
+                <a href="index.html#projects" data-i18n="nav_projects">Projects</a>
+                <a href="index.html#gallery" data-i18n="nav_gallery">Gallery</a>
+                <a href="index.html#skills" data-i18n="nav_skills">Skills</a>
+                <a href="index.html#contact" data-i18n="nav_contact">Contact</a>
+            </nav>
+            <button class="lang-toggle" id="langToggle">ES</button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </header>
+
+    <main class="project-details-container">
+        <a href="index.html#projects" class="back-button">← Back to Projects</a>
+        
+        <h1 class="project-details-title" id="projectTitle"></h1>
+        <div class="project-details-tags" id="projectTags"></div>
+        
+        <div class="project-details-carousel">
+            <div class="modal-carousel">
+                <div class="modal-carousel-track" id="modal-carousel-track"></div>
+                <button class="modal-carousel-btn prev" id="carouselPrev">‹</button>
+                <button class="modal-carousel-btn next" id="carouselNext">›</button>
+                <div class="modal-carousel-dots" id="carouselDots"></div>
+            </div>
+        </div>
+
+        <div class="project-details-description" id="projectDescription"></div>
+
+        <div class="project-details-grid">
+            <div class="project-info-section">
+                <h3 data-i18n="objectives">Project Objectives</h3>
+                <ul id="projectObjectives"></ul>
+            </div>
+            <div class="project-info-section">
+                <h3 data-i18n="technical_difficulties">Technical Difficulties</h3>
+                <ul id="projectTechnicalDifficulties"></ul>
+            </div>
+        </div>
+
+        <div class="download-section" id="downloadSection" style="display: none; margin-top: 32px;">
+            <a href="#" target="_blank" class="btn btn-download" id="demoLink" data-i18n="btn_download_demo">Download Demo</a>
+        </div>
+    </main>
+
+    <footer>
+        <p data-i18n="footer_text">&copy; 2025 Marcelo Herrera. All rights reserved.</p>
+    </footer>
+
+    <script src="project-details.js"></script>
+</body>
+</html>
