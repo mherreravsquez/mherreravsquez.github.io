@@ -7,13 +7,12 @@ const heroCarouselData = [
         title: 'Car-Loop',
         tags: ['Unity', 'VR', '3D', 'PC', 'Psychological Horror'],
         image: 'https://imgur.com/diJAbfY.jpg',
-        images: ['https://imgur.com/diJAbfY.jpg', 'https://imgur.com/BTx7b1s.jpg', 'https://imgur.com/RXFupZo.jpg', 'https://imgur.com/JSl88oB.jpg']
     },
     {
         id: 'break_bubble',
         title: 'Break the Bubble',
         tags: ['Unity', 'C#', 'PC', 'Metroidvania'],
-        image: 'https://imgur.com/Oac1gLZ.jpg'
+        image: 'https://imgur.com/0nRsSsi.jpg'
     },
     {
         id: 'hunters',
@@ -161,7 +160,7 @@ const projects = [
             en: 'HUNTERS: Awakening is an action JRPG that combines fast-paced combat with deep character customization and progression systems. Players can explore a vast world, engage in strategic battles, and develop their characters through an extensive skill tree.',
             es: 'HUNTERS: Awakening es un JRPG de acción que combina combate rápido con personalización profunda de personajes y sistemas de progresión. Los jugadores pueden explorar un mundo vasto, participar en batallas estratégicas y desarrollar sus personajes a través de un extenso árbol de habilidades.'
         },
-        images: ['assets/Main Projects/HUNTERS/HUNTERS_thumbnail.png', 'assets/Main Projects/HUNTERS/HUNTERS_gameplay1.png'],
+        images: ['assets/Main Projects/HUNTERS/HUNTERS_gameplay1.png'],
         demoUrl: 'https://plants-path-co.itch.io/hunters-awakening',
         objectives: {
             en: [
@@ -202,7 +201,7 @@ const gallery = [
             en: 'Boombastic is an interactive installation that uses hand-tracking technology to allow users to move virtual cassettes onto a virtual boom box. Placing a cassette on the boom box sends a signal to REAPER a digital audio workstation to create beats with samples of representative songs from the 1990s. MadMapper is implemented to perform mapping projections on the boom box model, displaying various visual reactions and animations in real time.',
             es: 'Boombastic es una instalación interactiva que utiliza tecnología de seguimiento manual para que los usuarios puedan mover casetes virtuales hacia un radiocasete virtual. Al colocar un casete en el radiocasete, se envía una señal a REAPER una estación de trabajo de audio digital para crear ritmos con muestras de canciones representativas de los años 90. MadMapper se implementa para realizar proyecciones de mapas en el modelo del radiocasete, mostrando diversas reacciones visuales y animaciones en tiempo real.'
         },
-        images: ['https://imgur.com/IOShMuK.mp4'],
+        images: ['https://imgur.com/omz9qFD.mp4'],
         tools: ['Unity 6.2', 'Kinect SDK 2.0', 'Reaper 7.48', 'MadMapper 5.6.8'],
         objectives: {
             en: [
@@ -278,10 +277,10 @@ const gallery = [
             es: 'Virtual Production en Unreal Engine'
         },
         category: {
-            en: 'Virtual Production',
-            es: 'Virtual Production'
+            en: 'Virtual Production & Cinematic',
+            es: 'Virtual Production & Animación'
         },
-        tags: ['3D Art', 'Virtual Production', 'Unreal Engine'],
+        tags: ['3D Art', 'Virtual Production', 'Cinematic', 'Unreal Engine'],
         description: {
             en: 'This Virtual Production project in Unreal Engine was developed as part of the Integrated 3D Tools course at Andrés Bello University (UNAB). The main goal was the creation of a realistic and immersive 3D environment, specifically designed for use in a virtual production studio.\n' +
                 '\n' +
@@ -294,9 +293,7 @@ const gallery = [
                 '\n' +
                 'El resultado es un escenario cinematográfico completamente realizable, que demuestra la aplicación de un flujo de trabajo integrado 3D, desde el modelado y la adquisición de assets hasta la implementación y iluminación final en Unreal Engine.'
         },
-        images: [
-            'https://imgur.com/242q1wa.jpg'
-        ],
+        images: ['https://imgur.com/JpxlesD.jpg', 'https://imgur.com/4njNLR1.mp4'],
         tools: ['Unreal Engine 5.4', 'Blender 5.0'],
         objectives: {
             en: [
