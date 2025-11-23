@@ -253,6 +253,21 @@ nav a.active::after {
     box-shadow: 0 6px 16px rgba(254, 84, 111, 0.6);
 }
 
+/* Estilos para el carrusel hero con videos */
+.hero-carousel-slide video.hero-carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.hero-carousel-slide img.hero-carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
 @media (max-width: 1100px) {
     .hero-carousel {
         height: 620px;

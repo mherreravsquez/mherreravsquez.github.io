@@ -12,7 +12,7 @@ const heroCarouselData = [
         id: 'break_bubble',
         title: 'Break the Bubble',
         tags: ['Unity', 'C#', 'PC', 'Metroidvania'],
-        image: 'https://imgur.com/0nRsSsi.jpg'
+        image: 'https://imgur.com/l7SI2IB.mp4'
     },
     {
         id: 'hunters',
@@ -119,7 +119,7 @@ const projects = [
             en: 'Break the Bubble is a game developed for GGJ 2025, with the theme of "Bubble." This game tells the story of a developer who wants to develop a new video game, showing us his creative process toward creating the Metroidvania genre in his world.\n\nDuring the Metroidvania stage, we can see mechanics such as the transformation of the character to be able to move through confined spaces, and the movement of platforms with runes, in order to reach places that you could not reach with a conventional jump.',
             es: 'Break the Bubble es un juego desarrollado para la GGJ 2025, el tema era Burbuja. En este juego, se narra la historia de un desarrollador que quiere desarrollar un nuevo videojuego, se nos muestra su proceso creativo hacia la creación del genero Metroidvania en su mundo.\n\nDurante la etapa de metroidvania, podemos notar mecánicas como la transformación del personaje para poder avanzar por espacios reducidos, y el movimiento de plataformas con runas, con el fin de alcanzar lugares que no podrías alcanzar con un salto convencional.'
         },
-        images: ['https://imgur.com/Oac1gLZ.jpg', 'https://imgur.com/0nRsSsi.jpg'],
+        images: ['https://imgur.com/Oac1gLZ.jpg', 'https://imgur.com/0nRsSsi.jpg', 'https://imgur.com/l7SI2IB.mp4'],
         demoUrl: 'https://plants-path-co.itch.io/romper-la-burbuja-ggj-2025',
         objectives: {
             en: [
@@ -493,7 +493,7 @@ function init() {
     startHeroAutoplay();
 }
 
-// ===== HERO CAROUSEL FUNCTIONS - CORREGIDO =====
+// ===== HERO CAROUSEL FUNCTIONS - MODIFICADO PARA SOPORTAR IMÁGENES, GIFS Y VIDEOS =====
 function renderHeroCarousel() {
     const track = document.getElementById('heroCarouselTrack');
     const dots = document.getElementById('heroCarouselDots');
@@ -501,12 +501,35 @@ function renderHeroCarousel() {
     if (!track) return;
 
     // Usar el array heroCarouselData para generar los slides
-    track.innerHTML = heroCarouselData.map(item => `
-        <div class="hero-carousel-slide">
-            <img src="${item.image}" alt="${item.title}" class="hero-carousel-image" 
-                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzRBOEU0MiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkhlcm8gSW1hZ2UgTm90IEZvdW5kPC90ZXh0Pjwvc3ZnPg=='">
-        </div>
-    `).join('');
+    track.innerHTML = heroCarouselData.map(item => {
+        const isVideo = item.image.endsWith('.mp4') || item.image.endsWith('.webm');
+        const isGif = item.image.endsWith('.gif');
+
+        if (isVideo) {
+            return `
+                <div class="hero-carousel-slide">
+                    <video autoplay loop muted class="hero-carousel-image">
+                        <source src="${item.image}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            `;
+        } else if (isGif) {
+            return `
+                <div class="hero-carousel-slide">
+                    <img src="${item.image}" alt="${item.title}" class="hero-carousel-image" 
+                         style="object-fit: cover;">
+                </div>
+            `;
+        } else {
+            return `
+                <div class="hero-carousel-slide">
+                    <img src="${item.image}" alt="${item.title}" class="hero-carousel-image" 
+                         onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzRBOEU0MiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkhlcm8gSW1hZ2UgTm90IEZvdW5kPC90ZXh0Pjwvc3ZnPg=='">
+                </div>
+            `;
+        }
+    }).join('');
 
     // Dots para navegación entre slides principales
     dots.innerHTML = heroCarouselData.map((_, i) =>
@@ -556,7 +579,7 @@ function updateHeroOverlay() {
 // Autoplay functions
 function startHeroAutoplay() {
     stopHeroAutoplay();
-    heroInterval = setInterval(() => moveHeroMain(1), 5000);
+    heroInterval = setInterval(() => moveHeroMain(1), 10000);
 }
 
 function stopHeroAutoplay() {
