@@ -352,17 +352,37 @@ function loadProject() {
 function renderCarousel(project) {
     const track = document.getElementById('modal-carousel-track');
     const dots = document.getElementById('carouselDots');
-    
-    track.innerHTML = project.images.map(img => `
-        <img src="${img}" alt="${project.title}" class="modal-carousel-image" 
-             onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzRBOEU0MiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIE5vdCBGb3VuZDwvdGV4dD48L3N2Zz4='">
-    `).join('');
-    
+
+    track.innerHTML = project.images.map(mediaUrl => {
+        // Determinar el tipo de medio por la extensión del archivo
+        const extension = mediaUrl.split('.').pop().toLowerCase();
+        const isVideo = extension === 'mp4' || extension === 'webm' || extension === 'ogg';
+        const isGif = extension === 'gif';
+
+        if (isVideo) {
+            return `
+                <video class="modal-carousel-image" controls muted loop>
+                    <source src="${mediaUrl}" type="video/${extension}">
+                    Your browser does not support the video tag.
+                </video>
+            `;
+        } else if (isGif) {
+            return `
+                <img src="${mediaUrl}" alt="${project.title}" class="modal-carousel-image" />
+            `;
+        } else {
+            return `
+                <img src="${mediaUrl}" alt="${project.title}" class="modal-carousel-image" 
+                     onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzRBOEU0MiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIE5vdCBGb3VuZDwvdGV4dD48L3N2Zz4='">
+            `;
+        }
+    }).join('');
+
     if (project.images.length > 1) {
         dots.innerHTML = project.images.map((_, i) => `
             <span class="modal-carousel-dot ${i === 0 ? 'active' : ''}" onclick="goToSlide(${i})"></span>
         `).join('');
-        
+
         document.getElementById('carouselPrev').style.display = 'block';
         document.getElementById('carouselNext').style.display = 'block';
     } else {
@@ -370,7 +390,7 @@ function renderCarousel(project) {
         document.getElementById('carouselPrev').style.display = 'none';
         document.getElementById('carouselNext').style.display = 'none';
     }
-    
+
     updateCarousel();
 }
 

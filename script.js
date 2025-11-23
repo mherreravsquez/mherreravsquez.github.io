@@ -639,47 +639,111 @@ function filterGallery(filter) {
     renderGallery(filteredGallery);
 }
 
-// Render Functions
-function renderProjects(projectsToRender = projects) {
-    const grid = document.getElementById('projectsGrid');
-    grid.innerHTML = projectsToRender.map(project => {
-        carouselStates[project.id] = 0;
-        const projectTrans = project;
+// script.js - Actualizar la función que renderiza los proyectos
+
+// Función para renderizar proyectos en la página principal
+function renderProjects() {
+    const projectsGrid = document.getElementById('projectsGrid');
+
+    projectsGrid.innerHTML = projects.map(project => {
+        const mediaItems = project.images || [];
 
         return `
-            <div class="project-card" data-project="${project.id}">
+            <div class="project-card" data-tags="${project.tags.join(',')}">
                 <div class="project-carousel">
-                    <div class="carousel-track" id="carousel-${project.id}">
-                        ${project.images.map(img => `
-                            <img src="${img}" alt="${projectTrans.title}" class="carousel-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27250%27%3E%3Crect width=%27400%27 height=%27250%27 fill=%27%234A90E2%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2720%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3E${projectTrans.title}%3C/text%3E%3C/svg%3E'">
-                        `).join('')}
+                    <div class="carousel-track" id="carousel-track-${project.id}">
+                        ${mediaItems.map(mediaUrl => {
+            const extension = mediaUrl.split('.').pop().toLowerCase();
+            const isVideo = extension === 'mp4' || extension === 'webm' || extension === 'ogg';
+            const isGif = extension === 'gif';
+
+            if (isVideo) {
+                return `
+                                    <video class="carousel-image" muted loop>
+                                        <source src="${mediaUrl}" type="video/${extension}">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                `;
+            } else if (isGif) {
+                return `
+                                    <img src="${mediaUrl}" alt="${project.title}" class="carousel-image" />
+                                `;
+            } else {
+                return `
+                                    <img src="${mediaUrl}" alt="${project.title}" class="carousel-image" 
+                                         onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzRBOEU0MiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIE5vdCBGb3VuZDwvdGV4dD48L3N2Zz4='">
+                                `;
+            }
+        }).join('')}
                     </div>
-                    ${project.images.length > 1 ? `
-                        <button class="carousel-btn prev" onclick="moveCarousel('${project.id}', -1)">‹</button>
-                        <button class="carousel-btn next" onclick="moveCarousel('${project.id}', 1)">›</button>
-                        <div class="carousel-dots">
-                            ${project.images.map((_, i) => `<span class="carousel-dot ${i === 0 ? 'active' : ''}" onclick="goToSlide('${project.id}', ${i})"></span>`).join('')}
+                    ${mediaItems.length > 1 ? `
+                        <button class="carousel-btn prev" onclick="moveProjectCarousel('${project.id}', -1)">‹</button>
+                        <button class="carousel-btn next" onclick="moveProjectCarousel('${project.id}', 1)">›</button>
+                        <div class="carousel-dots" id="carousel-dots-${project.id}">
+                            ${mediaItems.map((_, i) => `
+                                <span class="carousel-dot ${i === 0 ? 'active' : ''}" onclick="goToProjectSlide('${project.id}', ${i})"></span>
+                            `).join('')}
                         </div>
                     ` : ''}
                 </div>
                 <div class="project-content">
                     <div class="project-header">
-                        <h3 class="project-title">${projectTrans.title}</h3>
+                        <h3 class="project-title">${project.title}</h3>
                     </div>
                     <div class="project-tags">
                         ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
                     </div>
-                    <p class="project-description">${projectTrans.description[currentLang]}</p>
-                    <a href="project-details.html?id=${project.id}" class="btn btn-secondary">${getTranslation('btn_learn_more')}</a>
+                    <p class="project-description">${project.description[currentLang]}</p>
+                    <a href="project-details.html?id=${project.id}" class="btn btn-secondary" data-i18n="btn_learn_more">Learn More</a>
                 </div>
             </div>
         `;
     }).join('');
-    
-    projectsToRender.forEach(project => {
-        if (project.images.length > 1) {
-            startCarouselAutoplay(project.id);
-        }
+}
+
+// Función para mover el carrusel de un proyecto específico
+function moveProjectCarousel(projectId, direction) {
+    const project = projects.find(p => p.id === projectId);
+    if (!project) return;
+
+    const track = document.getElementById(`carousel-track-${projectId}`);
+    const dotsContainer = document.getElementById(`carousel-dots-${projectId}`);
+
+    if (!track || !dotsContainer) return;
+
+    // Obtener el índice actual
+    const dots = dotsContainer.querySelectorAll('.carousel-dot');
+    let currentIndex = Array.from(dots).findIndex(dot => dot.classList.contains('active'));
+
+    // Calcular el nuevo índice
+    const newIndex = (currentIndex + direction + project.images.length) % project.images.length;
+
+    // Actualizar la posición del carrusel
+    track.style.transform = `translateX(-${newIndex * 100}%)`;
+
+    // Actualizar los puntos de navegación
+    dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === newIndex);
+    });
+}
+
+// Función para ir a una diapositiva específica del carrusel de un proyecto
+function goToProjectSlide(projectId, index) {
+    const project = projects.find(p => p.id === projectId);
+    if (!project) return;
+
+    const track = document.getElementById(`carousel-track-${projectId}`);
+    const dotsContainer = document.getElementById(`carousel-dots-${projectId}`);
+
+    if (!track || !dotsContainer) return;
+
+    // Actualizar la posición del carrusel
+    track.style.transform = `translateX(-${index * 100}%)`;
+
+    // Actualizar los puntos de navegación
+    const dots = dotsContainer.querySelectorAll('.carousel-dot');
+    dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
     });
 }
 

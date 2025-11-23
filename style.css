@@ -391,6 +391,25 @@ section.alt-bg {
     background: #f0f0f0;
 }
 
+/* Estilos para videos en carruseles de proyectos */
+.project-carousel video,
+.modal-carousel video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #f0f0f0;
+}
+
+/* Asegurar que los GIFs también se muestren correctamente */
+.project-carousel img,
+.modal-carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #f0f0f0;
+}
+Explicación de
+
 .carousel-track {
     display: flex;
     transition: transform var(--transition);
