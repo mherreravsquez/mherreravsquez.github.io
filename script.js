@@ -6,13 +6,13 @@ const heroCarouselData = [
         id: 'car_loop', 
         title: 'Car-Loop',
         tags: ['Unity', 'VR', '3D', 'PC', 'Psychological Horror'],
-        image: 'https://imgur.com/diJAbfY.jpg',
+        image: 'https://i.imgur.com/diJAbfY.jpg',
     },
     {
         id: 'break_bubble',
         title: 'Break the Bubble',
         tags: ['Unity', 'C#', 'PC', 'Metroidvania'],
-        image: 'https://imgur.com/l7SI2IB.mp4'
+        image: 'https://i.imgur.com/l7SI2IB.mp4'
     },
     {
         id: 'hunters',
@@ -493,7 +493,7 @@ function init() {
     startHeroAutoplay();
 }
 
-// ===== HERO CAROUSEL FUNCTIONS - MODIFICADO PARA SOPORTAR IMÁGENES, GIFS Y VIDEOS =====
+// ===== HERO CAROUSEL FUNCTIONS - CORREGIDO PARA FONDO =====
 function renderHeroCarousel() {
     const track = document.getElementById('heroCarouselTrack');
     const dots = document.getElementById('heroCarouselDots');
@@ -508,24 +508,16 @@ function renderHeroCarousel() {
         if (isVideo) {
             return `
                 <div class="hero-carousel-slide">
-                    <video autoplay loop muted class="hero-carousel-image">
+                    <video class="hero-video-bg" autoplay loop muted>
                         <source src="${item.image}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
             `;
-        } else if (isGif) {
-            return `
-                <div class="hero-carousel-slide">
-                    <img src="${item.image}" alt="${item.title}" class="hero-carousel-image" 
-                         style="object-fit: cover;">
-                </div>
-            `;
         } else {
             return `
                 <div class="hero-carousel-slide">
-                    <img src="${item.image}" alt="${item.title}" class="hero-carousel-image" 
-                         onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzRBOEU0MiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkhlcm8gSW1hZ2UgTm90IEZvdW5kPC90ZXh0Pjwvc3ZnPg=='">
+                    <div class="slide-bg" style="background-image: url('${item.image}')"></div>
                 </div>
             `;
         }
@@ -550,13 +542,32 @@ function updateHeroMainCarousel() {
     if (track) {
         track.style.transform = `translateX(-${heroCurrentIndex * 100}%)`;
     }
-    
+
     // Actualizar dots
     document.querySelectorAll('.hero-carousel-dot').forEach((dot, i) => {
         dot.classList.toggle('active', i === heroCurrentIndex);
     });
-    
+
+    // Manejar reproducción de videos
+    handleVideoPlayback();
+
     updateHeroOverlay();
+}
+
+function handleVideoPlayback() {
+    // Pausar todos los videos primero
+    document.querySelectorAll('.hero-video-bg').forEach(video => {
+        video.pause();
+    });
+
+    // Reproducir solo el video del slide actual
+    const currentSlide = document.querySelectorAll('.hero-carousel-slide')[heroCurrentIndex];
+    if (currentSlide) {
+        const video = currentSlide.querySelector('.hero-video-bg');
+        if (video) {
+            video.play().catch(e => console.log('Error playing video:', e));
+        }
+    }
 }
 
 function moveHeroMain(dir) {
@@ -569,7 +580,7 @@ function updateHeroOverlay() {
     const currentItem = heroCarouselData[heroCurrentIndex];
     const titleElement = document.getElementById('heroOverlayTitle');
     const techElement = document.getElementById('heroOverlayTech');
-    
+
     if (titleElement && techElement && currentItem) {
         titleElement.textContent = currentItem.title;
         techElement.textContent = currentItem.tags.join(' • ');

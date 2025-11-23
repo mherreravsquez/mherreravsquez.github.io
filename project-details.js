@@ -16,7 +16,7 @@ const projects = [
             en: 'Tragones y Mazmorras x Lugares que Hablan is a visual novel developed in RenPy, only available in Spanish. The story unfolds as it normally would in the first chapter of the manga of the anime Tragones y Mazmorras, introducing in certain scenes Francisco Saavedra, also known as Pancho Saavedra, host of the program Lugares que hablan, where he visits different places in Chile, learning about their culture and tasting their food, just as can be seen in this project, which mixes Pancho\'s humor with that of the rest of the group of Laos and Marcielle.\n\nThe art for the project was entirely made by Antonia Benz.',
             es: 'Tragones y Mazmorras x Lugares que Hablan es una novela visual desarrollada en RenPy, solamente disponible en español. La historia se desarrolla como normalmente sucedería en el primer capítulo del manga del anime Tragones y Mazmorras, introduciendo en ciertas escenas a Francisco Saavedra, también conocido como Pancho Saavedra, conductor del programa Lugares que hablan, donde se visita diferentes sitios en Chile, aprendiendo de su cultura y probando su comida, tal y como se puede apreciar en este proyecto, donde se mezcla el humor de Pancho con el del resto del grupo de Laos y Marcielle.\n\nEl arte del proyecto fue hecho en su totalidad por Antonia Benz.'
         },
-        images: ['https://imgur.com/lvCnT03.jpg', 'https://imgur.com/2kuJgAy.jpg', 'https://imgur.com/43BEx6q.jpg'],
+        images: ['https://i.imgur.com/lvCnT03.jpg', 'https://i.imgur.com/2kuJgAy.jpg', 'https://i.imgur.com/43BEx6q.jpg'],
         demoUrl: 'https://mherreravsquez.itch.io/tragones-y-mazmorras-x-lugares-que-hablan',
         objectives: {
             en: [
@@ -59,7 +59,7 @@ const projects = [
             en: 'Car-Loop is a VR psychological horror game where players find themselves trapped in an endless driving sequence. The game uses procedural generation to create subtle variations in each loop, making players question their perception of reality.',
             es: 'Car-Loop es un juego de terror psicológico en VR donde los jugadores se encuentran atrapados en una secuencia infinita de conducción. El juego utiliza generación procedural para crear variaciones sutiles en cada bucle, haciendo que los jugadores cuestionen su percepción de la realidad.'
         },
-        images: ['https://imgur.com/diJAbfY.jpg', 'https://imgur.com/BTx7b1s.jpg', 'https://imgur.com/RXFupZo.jpg', 'https://imgur.com/JSl88oB.jpg'],
+        images: ['https://i.imgur.com/diJAbfY.jpg', 'https://i.imgur.com/BTx7b1s.jpg', 'https://i.imgur.com/RXFupZo.jpg', 'https://i.imgur.com/JSl88oB.jpg'],
         demoUrl: 'https://plants-path-co.itch.io/car-loop',
         objectives: {
             en: [
@@ -100,7 +100,7 @@ const projects = [
             en: 'Break the Bubble is a game developed for GGJ 2025, with the theme of "Bubble." This game tells the story of a developer who wants to develop a new video game, showing us his creative process toward creating the Metroidvania genre in his world.\n\nDuring the Metroidvania stage, we can see mechanics such as the transformation of the character to be able to move through confined spaces, and the movement of platforms with runes, in order to reach places that you could not reach with a conventional jump.',
             es: 'Break the Bubble es un juego desarrollado para la GGJ 2025, el tema era Burbuja. En este juego, se narra la historia de un desarrollador que quiere desarrollar un nuevo videojuego, se nos muestra su proceso creativo hacia la creación del genero Metroidvania en su mundo.\n\nDurante la etapa de metroidvania, podemos notar mecánicas como la transformación del personaje para poder avanzar por espacios reducidos, y el movimiento de plataformas con runas, con el fin de alcanzar lugares que no podrías alcanzar con un salto convencional.'
         },
-        images: ['https://imgur.com/Oac1gLZ.jpg', 'https://imgur.com/0nRsSsi.jpg'],
+        images: ['https://i.imgur.com/Oac1gLZ.jpg', 'https://i.imgur.com/0nRsSsi.jpg', 'https://i.imgur.com/l7SI2IB.mp4'],
         demoUrl: 'https://plants-path-co.itch.io/romper-la-burbuja-ggj-2025',
         objectives: {
             en: [
