@@ -265,8 +265,10 @@ nav a.active::after {
 /* Media queries para responsividad */
 @media (max-width: 1100px) {
     .hero-carousel {
-        height: 620px;
+        min-width: 100%;
+        height: 100%;
         object-fit: contain;
+        background: #f0f0f0;
     }
     .hero-title-bottom-left {
         left: 28px;
@@ -283,7 +285,10 @@ nav a.active::after {
 
 @media (max-width: 768px) {
     .hero-carousel {
-        height: 56vh;
+        min-width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background: #f0f0f0;
     }
     .hero-title-bottom-left {
         left: 18px;
@@ -392,7 +397,6 @@ section.alt-bg {
     background: #f0f0f0;
 }
 
-/* Estilos para videos en carruseles de proyectos */
 .project-carousel video,
 .modal-carousel video {
     width: 100%;
@@ -401,7 +405,6 @@ section.alt-bg {
     background: #f0f0f0;
 }
 
-/* Asegurar que los GIFs también se muestren correctamente */
 .project-carousel img,
 .modal-carousel img {
     width: 100%;
@@ -409,7 +412,6 @@ section.alt-bg {
     object-fit: contain;
     background: #f0f0f0;
 }
-Explicación de
 
 .carousel-track {
     display: flex;
