@@ -1,6 +1,6 @@
-// ===== DATA - ALL CONTENT =====
+// ===== DATA SECTION =====
 
-// Hero Carousel Projects - CORREGIDO: Array con título, tags y ruta de imagen
+// ===== HERO CAROUSEL DATA SECTION =====
 const heroCarouselData = [
     {
         id: 'car_loop', 
@@ -22,6 +22,7 @@ const heroCarouselData = [
     }
 ];
 
+// ===== PROJECTS DATA SECTION =====
 const projects = [
     {
         id: 'tmlh',
@@ -191,6 +192,7 @@ const projects = [
     }
 ];
 
+// ===== GALLERY DATA SECTION =====
 const gallery = [
     {
         id: 'boombastic',
@@ -314,6 +316,7 @@ const gallery = [
     }
 ];
 
+// ===== SKILLS DATA SECTION =====
 const skills = {
     programming: {
         title: { en: 'Programming', es: 'Programación' },
@@ -333,6 +336,7 @@ const skills = {
     }
 };
 
+// ===== CERTIFICATIONS DATA SECTION =====
 const certifications = [
     {
         id: 'meta_spark',
@@ -344,7 +348,7 @@ const certifications = [
     }
 ];
 
-// ===== TRANSLATIONS - ORGANIZED BY SECTIONS =====
+// ===== TRANSLATIONS SECTION =====
 const translations = {
     en: {
         // HEADER & NAVIGATION
@@ -361,7 +365,7 @@ const translations = {
         status: 'Available for Projects',
 
         // ABOUT SECTION
-        bio_full: 'Gameplay Programmer and Game Designer specializing in Unity, currently in his third year of Digital Game Design at Andrés Bello University. Passionate about experimenting with emerging technologies—procedural generation, procedural animation, virtual reality—and developing innovative prototypes that enhance interactivity and gameplay. Founder and active member of Plants Path Collective, a group dedicated to indie video game development, where he leads multidisciplinary projects specializing in interactive narrative, complex mechanics, and transmedia IP design.',
+        bio_full: 'Gameplay Programmer and Game Designer specializing in Unity, currently in his third year studying Digital Game Design at Universidad Andrés Bello. My passion lies in experimenting with emerging technologies and developing prototypes for innovative platforms such as Virtual Reality. I am particularly fascinated by procedural generation and animation, as well as developing custom Unity tools through code, constantly seeking to push the boundaries of interactivity and gameplay.',
         stat_experience: 'Years of Experience',
         stat_education_value: 'Estudies',
         stat_education: 'Digital Game Design Student',
@@ -418,7 +422,7 @@ const translations = {
         status: 'Disponible para Proyectos',
 
         // SECCIÓN ABOUT
-        bio_full: 'Gameplay Programmer y Game Designer especializado en Unity, actualmente cursando el tercer año de Diseño de Juegos Digitales en la Universidad Andrés Bello. Apasionado por experimentar con tecnologías emergentes —generación procedural, animación procedural, realidad virtual— y desarrollar prototipos innovadores que potencien la interactividad y el gameplay. Fundador y miembro activo de Plants Path Collective, grupo dedicado al desarrollo de videojuegos indie, donde lidera proyectos multidisciplinarios con especialización en narrativa interactiva, mecánicas complejas e IP design transmedia.',
+        bio_full: 'Soy un Programador de Gameplay y Diseñador de Juegos especializado en Unity, actualmente en mi tercer año estudiando Diseño de Juegos Digitales en la Universidad Andrés Bello. Mi pasión radica en experimentar con tecnologías emergentes y desarrollar prototipos para plataformas innovadoras como la Realidad Virtual. Me fascinan especialmente la generación procedural y la animación, así como desarrollar herramientas personalizadas de Unity mediante código, buscando constantemente expandir los límites de la interactividad y el gameplay.',
         stat_experience: 'Años de Experiencia',
         stat_education_value: 'Estudios',
         stat_education: 'Estudiante de Diseño de Juegos Digitales',
@@ -461,10 +465,14 @@ const translations = {
     }
 };
 
+// ===== HELPER FUNCTIONS SECTION =====
+
 // HELPER FUNCTION: Get translation
 function getTranslation(key) {
     return translations[currentLang][key] || key;
 }
+
+// ===== GLOBAL STATE SECTION =====
 
 // State
 let currentLang = 'en';
@@ -481,6 +489,8 @@ const carouselIntervals = {};
 const galleryCarouselIntervals = {};
 const modalCarouselIntervals = {};
 
+// ===== INITIALIZATION SECTION =====
+
 // Initialize
 function init() {
     renderHeroCarousel();
@@ -493,7 +503,8 @@ function init() {
     startHeroAutoplay();
 }
 
-// ===== HERO CAROUSEL FUNCTIONS - CORREGIDO PARA FONDO =====
+// ===== HERO CAROUSEL FUNCTIONS SECTION =====
+
 function renderHeroCarousel() {
     const track = document.getElementById('heroCarouselTrack');
     const dots = document.getElementById('heroCarouselDots');
@@ -587,6 +598,8 @@ function updateHeroOverlay() {
     }
 }
 
+// ===== HERO AUTOPLAY FUNCTIONS SECTION =====
+
 // Autoplay functions
 function startHeroAutoplay() {
     stopHeroAutoplay();
@@ -605,6 +618,8 @@ function resetHeroAutoplay() {
     startHeroAutoplay();
 }
 
+// ===== PROJECTS FILTERING SECTION =====
+
 // Filter Projects
 function filterProjects(filter) {
     activeFilter = filter;
@@ -621,6 +636,8 @@ function filterProjects(filter) {
     
     renderProjects(filteredProjects);
 }
+
+// ===== GALLERY FILTERING SECTION =====
 
 // Filter Gallery
 function filterGallery(filter) {
@@ -639,7 +656,7 @@ function filterGallery(filter) {
     renderGallery(filteredGallery);
 }
 
-// script.js - Actualizar la función que renderiza los proyectos
+// ===== RENDERING FUNCTIONS SECTION =====
 
 // Función para renderizar proyectos en la página principal
 function renderProjects() {
@@ -808,7 +825,8 @@ function renderCertifications() {
     }).join('');
 }
 
-// Carousel Functions
+// ===== CAROUSEL FUNCTIONS SECTION =====
+
 function moveCarousel(projectId, direction) {
     const project = projects.find(p => p.id === projectId);
 
@@ -851,7 +869,8 @@ function stopCarouselAutoplay(projectId) {
     }
 }
 
-// Gallery Carousel Functions
+// ===== GALLERY CAROUSEL FUNCTIONS SECTION =====
+
 function moveGalleryCarousel(galleryId, direction) {
     const item = gallery.find(g => g.id === galleryId);
 
@@ -873,7 +892,8 @@ function updateGalleryCarousel(galleryId) {
     });
 }
 
-// Gallery Modal Functions
+// ===== GALLERY MODAL FUNCTIONS SECTION =====
+
 function openGalleryModal(galleryId) {
     const item = gallery.find(g => g.id === galleryId);
     const modal = document.getElementById('projectModal');
@@ -955,6 +975,8 @@ function closeProjectModal() {
     });
 }
 
+// ===== PDF MODAL FUNCTIONS SECTION =====
+
 // PDF Modal Functions
 function openPdfModal(pdfPath) {
     const modal = document.getElementById('pdfModal');
@@ -971,6 +993,8 @@ function closePdfModal() {
     iframe.src = '';
     document.body.style.overflow = '';
 }
+
+// ===== LANGUAGE FUNCTIONS SECTION =====
 
 // Language Toggle
 function toggleLanguage() {
@@ -1001,6 +1025,8 @@ function updateLanguage() {
     renderSkills();
     renderCertifications();
 }
+
+// ===== EVENT LISTENERS SECTION =====
 
 // Event Listeners
 function setupEventListeners() {
@@ -1093,6 +1119,8 @@ function setupEventListeners() {
         });
     });
 }
+
+// ===== DOCUMENT INITIALIZATION SECTION =====
 
 // Initialize on load
 document.addEventListener('DOMContentLoaded', function() {

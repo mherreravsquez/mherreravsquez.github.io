@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
+    <!-- HEADER SECTION -->
     <header>
         <div class="header-content">
             <a href="#" class="logo" data-i18n="logo">Marcelo Herrera</a>
@@ -26,7 +26,7 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- HERO SECTION -->
     <section class="hero" id="hero">
         <div class="hero-carousel">
             <div class="hero-carousel-track" id="heroCarouselTrack"></div>
@@ -40,13 +40,12 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- ABOUT ME SECTION -->
     <section id="about" class="alt-bg">
         <div style="max-width: 1200px; margin: 0 auto;">
             <h2 class="section-title" data-i18n="nav_about">About</h2>
             
             <div style="display: flex; gap: 48px; align-items: flex-start; margin-top: 48px; flex-wrap: wrap;">
-                <!-- Profile Photo - Now in About Section -->
                 <div style="flex-shrink: 0;">
                     <img src="assets/profile-photo.jpg" alt="Marcelo Herrera" style="width: 220px; height: 220px; border-radius: 50%; object-fit: cover; border: 6px solid white; box-shadow: 0 8px 32px rgba(0,0,0,0.15);" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27220%27 height=%27220%27%3E%3Crect width=%27220%27 height=%27220%27 fill=%27%234A90E2%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-size=%2732%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27%3EMH%3C/text%3E%3C/svg%3E'">
                 
@@ -82,11 +81,10 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- PROJECTS SECTION -->
     <section id="projects">
         <h2 class="section-title" data-i18n="section_projects">Featured Projects</h2>
         
-        <!-- Filter Buttons -->
         <div class="filter-buttons" id="filterButtons">
             <button class="filter-btn active" data-filter="all">All</button>
             <button class="filter-btn" data-filter="Unity">Unity</button>
@@ -101,13 +99,12 @@
         <div class="projects-grid" id="projectsGrid"></div>
     </section>
 
-    <!-- Gallery Section -->
+    <!-- GALLERY SECTION -->
     <section id="gallery" class="alt-bg">
         <div style="max-width: 1200px; margin: 0 auto;">
             <h2 class="section-title" data-i18n="section_gallery">Creative Gallery</h2>
             <p class="section-subtitle" data-i18n="gallery_subtitle">3D Art • Interactive Installations • Animations • Cinematics • & more</p>
             
-            <!-- Gallery Filter Buttons -->
             <div class="gallery-filter-buttons" id="galleryFilterButtons">
                 <button class="gallery-filter-btn active" data-gallery-filter="all">All</button>
                 <button class="gallery-filter-btn" data-gallery-filter="3D Art" data-i18n="gallery_filter_3d_art">3D Art</button>
@@ -119,14 +116,14 @@
         </div>
     </section>
     
-    <!-- Skills Section -->
+    <!-- SKILLS SECTION -->
     <section id="skills">
         <h2 class="section-title" data-i18n="section_skills">Skills &amp; Tools</h2>
         
         <div class="skills-grid" id="skillsGrid"></div>
     </section>
 
-    <!-- Achievements Section -->
+    <!-- ACHIEVEMENTS SECTION -->
     <section id="achievements" class="alt-bg">
         <div style="max-width: 1200px; margin: 0 auto;">
             <h2 class="section-title" data-i18n="section_achievements">Achievements &amp; Certifications</h2>
@@ -135,7 +132,7 @@
         </div>
     </section>
 
-    <!-- PDF Modal -->
+    <!-- MODALS SECTION -->
     <div class="modal" id="pdfModal">
         <div class="pdf-modal-content">
             <button class="modal-close" id="pdfModalClose">&times;</button>
@@ -145,7 +142,6 @@
         </div>
     </div>
 
-    <!-- Project Modal for Gallery -->
     <div class="modal" id="projectModal">
         <div class="modal-content">
             <button class="modal-close" id="modalClose">&times;</button>
@@ -153,7 +149,7 @@
         </div>
     </div>
     
-    <!-- Contact Section -->
+    <!-- CONTACT SECTION -->
     <section id="contact">
         <div class="contact-content">
             <h2 class="section-title" data-i18n="section_contact">Let's Connect</h2>
@@ -180,12 +176,12 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- FOOTER SECTION -->
     <footer>
         <p data-i18n="footer_text">&copy; 2025 Marcelo Herrera. All rights reserved.</p>
     </footer>
 
-    <!-- Scroll to Top -->
+    <!-- SCROLL TO TOP BUTTON -->
     <button class="scroll-top" id="scrollTop">↑</button>
 
     <script src="script.js"></script>

@@ -1,8 +1,10 @@
+// ===== PROJECT DETAILS DATA SECTION =====
+
 // Get project ID from URL
 const urlParams = new URLSearchParams(window.location.search);
 const projectId = urlParams.get('id');
 
-// Project data
+// ===== PROJECT DATA SECTION =====
 const projects = [
     {
         id: 'tmlh',
@@ -172,7 +174,7 @@ const projects = [
     }
 ];
 
-// Translations
+// ===== TRANSLATIONS SECTION =====
 const translations = {
     en: {
         // HEADER & NAVIGATION
@@ -289,13 +291,18 @@ const translations = {
     }
 };
 
+// ===== GLOBAL VARIABLES SECTION =====
 let currentLang = 'en';
 let currentSlide = 0;
+
+// ===== HELPER FUNCTIONS SECTION =====
 
 // Helper function to get translation
 function getTranslation(key) {
     return translations[currentLang][key] || key;
 }
+
+// ===== PROJECT LOADING SECTION =====
 
 // Load project data
 function loadProject() {
@@ -347,6 +354,8 @@ function loadProject() {
     // Update carousel
     renderCarousel(project);
 }
+
+// ===== CAROUSEL FUNCTIONS SECTION =====
 
 // Render carousel
 function renderCarousel(project) {
@@ -416,6 +425,8 @@ function goToSlide(index) {
     updateCarousel();
 }
 
+// ===== LANGUAGE FUNCTIONS SECTION =====
+
 // Language functions
 function toggleLanguage() {
     currentLang = currentLang === 'en' ? 'es' : 'en';
@@ -441,6 +452,8 @@ function updateLanguage() {
     // Reload project data with new language
     loadProject();
 }
+
+// ===== INITIALIZATION SECTION =====
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
