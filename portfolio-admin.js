@@ -722,47 +722,67 @@ function closeBlogPost() {
 function renderMarkdown(markdown) {
     let html = markdown;
     
-    // Code blocks
+    // Code blocks (do this FIRST to protect code from other transformations)
     html = html.replace(/```(\w+)?\n([\s\S]*?)```/g, (match, lang, code) => {
-        return `<pre><code class="language-${lang || 'text'}">${escapeHtml(code.trim())}</code></pre>`;
+        return `___CODE_BLOCK___${btoa(escapeHtml(code.trim()))}___${lang || 'text'}___`;
     });
     
-    // Images
-    html = html.replace(/!\[(.*?)\]\((.*?)\)/g, '<img src="$2" alt="$1" />');
+    // Images (do before links)
+    html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" />');
     
     // Links
     html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
     
-    // Headers
-    html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
-    html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
-    html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
+    // Headers (must be at start of line)
+    html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+    html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+    html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
     
-    // Bold
+    // Bold (before italic to handle ** properly)
     html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
     
     // Italic
     html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
     
-    // Lists
-    html = html.replace(/^\- (.+)$/gim, '<li>$1</li>');
-    html = html.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
-    
-    html = html.replace(/^\d+\. (.+)$/gim, '<li>$1</li>');
-    html = html.replace(/(<li>.*<\/li>)/s, (match) => {
-        if (!match.includes('<ul>')) {
-            return '<ol>' + match + '</ol>';
-        }
-        return match;
+    // Unordered lists
+    const ulRegex = /((?:^[\-\*] .+$\n?)+)/gm;
+    html = html.replace(ulRegex, (match) => {
+        const items = match.trim().split('\n').map(line => {
+            return line.replace(/^[\-\*] (.+)$/, '<li>$1</li>');
+        }).join('\n');
+        return `<ul>\n${items}\n</ul>\n`;
     });
     
-    // Paragraphs
-    html = html.split('\n\n').map(para => {
-        if (para.trim() && !para.startsWith('<')) {
-            return `<p>${para.trim()}</p>`;
+    // Ordered lists
+    const olRegex = /((?:^\d+\. .+$\n?)+)/gm;
+    html = html.replace(olRegex, (match) => {
+        const items = match.trim().split('\n').map(line => {
+            return line.replace(/^\d+\. (.+)$/, '<li>$1</li>');
+        }).join('\n');
+        return `<ol>\n${items}\n</ol>\n`;
+    });
+    
+    // Line breaks - replace single newlines with <br> (but not in lists/headers)
+    html = html.replace(/([^>\n])\n([^<\n])/g, '$1<br>\n$2');
+    
+    // Paragraphs - wrap text that isn't already in tags
+    html = html.split('\n\n').map(block => {
+        block = block.trim();
+        if (!block) return '';
+        // Don't wrap if already a tag
+        if (block.startsWith('<h') || block.startsWith('<ul') || 
+            block.startsWith('<ol') || block.startsWith('<img') || 
+            block.startsWith('<pre') || block.startsWith('___CODE')) {
+            return block;
         }
-        return para;
-    }).join('\n');
+        return `<p>${block}</p>`;
+    }).join('\n\n');
+    
+    // Restore code blocks
+    html = html.replace(/___CODE_BLOCK___([^_]+)___([^_]+)___/g, (match, encodedCode, lang) => {
+        const code = atob(encodedCode);
+        return `<pre><code class="language-${lang}">${code}</code></pre>`;
+    });
     
     return html;
 }
