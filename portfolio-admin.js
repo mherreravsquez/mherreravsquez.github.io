@@ -1203,16 +1203,15 @@ function createProjectBlogCard(post, container) {
 document.addEventListener('DOMContentLoaded', () => {
     // Wait a bit for DOM to be fully ready
     setTimeout(() => {
-        const projectCards = document.querySelectorAll('.project-card');
-        const projectIds = ['car-loop', 'break-the-bubble', 'hunters-awakening', 'tragones-y-mazmorras'];
+        const projectCards = document.querySelectorAll('.project-card[data-project-id]');
         
-        projectCards.forEach((card, index) => {
-            if (projectIds[index]) {
-                card.style.cursor = 'pointer';
+        projectCards.forEach((card) => {
+            const projectId = card.getAttribute('data-project-id');
+            if (projectId) {
                 card.addEventListener('click', (e) => {
                     // Don't trigger if clicking a link
-                    if (e.target.tagName === 'A') return;
-                    openProjectModal(projectIds[index]);
+                    if (e.target.tagName === 'A' || e.target.closest('a')) return;
+                    openProjectModal(projectId);
                 });
             }
         });
