@@ -718,77 +718,70 @@ function closeBlogPost() {
     }
 }
 
-// Simple markdown renderer
+// Robust markdown renderer
 function renderMarkdown(markdown) {
     if (!markdown) return '';
     
-    let html = markdown;
+    let html = String(markdown); // Ensure it's a string
     
-    // Code blocks (do this FIRST to protect code from other transformations)
+    // Step 1: Protect code blocks
     const codeBlocks = [];
-    html = html.replace(/```(\w+)?\n([\s\S]*?)```/g, (match, lang, code) => {
-        const placeholder = `___CODE_BLOCK_${codeBlocks.length}___`;
+    html = html.replace(/```(\w+)?\n?([\s\S]*?)```/g, (match, lang, code) => {
+        const id = `___CODE_${codeBlocks.length}___`;
         codeBlocks.push({ lang: lang || 'text', code: escapeHtml(code.trim()) });
-        return placeholder;
+        return id;
     });
     
-    // Images (do before links)
+    // Step 2: Images (before links to avoid conflict)
     html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" />');
     
-    // Links
+    // Step 3: Links
     html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
     
-    // Headers (must be at start of line)
+    // Step 4: Headers (process in order: h3, h2, h1 to avoid conflicts)
     html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
     html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
     html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
     
-    // Bold (before italic to handle ** properly)
+    // Step 5: Bold (before italic)
     html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
     
-    // Italic (but not ** from bold)
-    html = html.replace(/\*([^*]+?)\*/g, '<em>$1</em>');
+    // Step 6: Italic (avoid matching asterisks in bold)
+    html = html.replace(/(?<!\*)\*(?!\*)([^*]+?)\*(?!\*)/g, '<em>$1</em>');
     
-    // Unordered lists
-    const ulRegex = /((?:^[\-\*] .+$\n?)+)/gm;
-    html = html.replace(ulRegex, (match) => {
-        const items = match.trim().split('\n').map(line => {
-            return line.replace(/^[\-\*] (.+)$/, '<li>$1</li>');
-        }).join('\n');
+    // Step 7: Unordered lists
+    html = html.replace(/((?:^[\-\*] .+$\n?)+)/gm, (match) => {
+        const items = match.trim().split('\n')
+            .map(line => line.replace(/^[\-\*] (.+)$/, '<li>$1</li>'))
+            .join('\n');
         return `<ul>\n${items}\n</ul>\n`;
     });
     
-    // Ordered lists
-    const olRegex = /((?:^\d+\. .+$\n?)+)/gm;
-    html = html.replace(olRegex, (match) => {
-        const items = match.trim().split('\n').map(line => {
-            return line.replace(/^\d+\. (.+)$/, '<li>$1</li>');
-        }).join('\n');
+    // Step 8: Ordered lists  
+    html = html.replace(/((?:^\d+\. .+$\n?)+)/gm, (match) => {
+        const items = match.trim().split('\n')
+            .map(line => line.replace(/^\d+\. (.+)$/, '<li>$1</li>'))
+            .join('\n');
         return `<ol>\n${items}\n</ol>\n`;
     });
     
-    // Paragraphs - wrap text blocks that aren't already tags
+    // Step 9: Paragraphs (only wrap text that isn't already tagged)
     html = html.split('\n\n').map(block => {
         block = block.trim();
         if (!block) return '';
         
-        // Don't wrap if it's already a tag or placeholder
-        if (block.match(/^<[^>]+>/) || block.includes('___CODE_BLOCK')) {
-            return block;
-        }
-        
-        // Don't wrap single line tags
-        if (block.match(/^<h[123]>/) || block.match(/<\/h[123]>$/)) {
+        // Skip if already has HTML tags or code placeholder
+        if (block.startsWith('<') || block.includes('___CODE_')) {
             return block;
         }
         
         return `<p>${block}</p>`;
     }).join('\n\n');
     
-    // Restore code blocks
-    codeBlocks.forEach((block, index) => {
-        const placeholder = `___CODE_BLOCK_${index}___`;
-        html = html.replace(placeholder, `<pre><code class="language-${block.lang}">${block.code}</code></pre>`);
+    // Step 10: Restore code blocks
+    codeBlocks.forEach((block, i) => {
+        const id = `___CODE_${i}___`;
+        html = html.replace(id, `<pre><code class="language-${block.lang}">${block.code}</code></pre>`);
     });
     
     return html;
