@@ -33,12 +33,36 @@ const translations = {
         skills: {
             number: "02.",
             title: "Skills & Technologies",
-            description: "The tools and technologies I use to bring games to life"
+            description: "The tools and technologies I use to bring games to life",
+            engines: "Game Engines",
+            languages: "Programming Languages",
+            specializations: "Specializations",
+            specialist: "Specialist"
         },
         games: {
             number: "03.",
             title: "Game Projects",
-            description: "Professional game projects I've contributed to"
+            description: "Professional game projects I've contributed to",
+            carloop: {
+                type: "VR College Project · Demo",
+                desc: "A VR psychological horror game where players are trapped in an endless driving sequence. Uses procedural generation to create subtle variations in each loop, making players question their perception of reality. Features hand-tracking and gesture-based dialogue interactions.",
+                play: "Play on Itch.io"
+            },
+            bubble: {
+                type: "Game Jam · Global Game Jam 2025",
+                desc: "A Metroidvania developed for GGJ 2025 exploring the theme \"Bubble.\" Tells the story of a developer's creative process in building a Metroidvania. Features character transformation for tight spaces and rune-based platform movement mechanics.",
+                play: "Play on Itch.io"
+            },
+            hunters: {
+                type: "College Project · Demo",
+                desc: "An action JRPG combining fast-paced combat with deep character customization. Features an extensive skill tree system, strategic battles, and a vast explorable world with progression mechanics.",
+                play: "Play on Itch.io"
+            },
+            tragones: {
+                type: "College Project · Fangame Demo",
+                desc: "A visual novel fangame based on the Dungeon Meshi (Delicious in Dungeon) manga. Blends the original story with Chilean culture through the TV show \"Lugares que Hablan\", creating a unique crossover featuring the manga's characters in cultural storytelling scenarios.",
+                play: "Play on Itch.io"
+            }
         },
         blog: {
             number: "04.",
@@ -90,12 +114,36 @@ const translations = {
         skills: {
             number: "02.",
             title: "Habilidades y Tecnologías",
-            description: "Las herramientas y tecnologías que uso para dar vida a los juegos"
+            description: "Las herramientas y tecnologías que uso para dar vida a los juegos",
+            engines: "Motores de Juego",
+            languages: "Lenguajes de Programación",
+            specializations: "Especializaciones",
+            specialist: "Especialista"
         },
         games: {
             number: "03.",
             title: "Proyectos de Juegos",
-            description: "Proyectos de juegos profesionales en los que he contribuido"
+            description: "Proyectos de juegos profesionales en los que he contribuido",
+            carloop: {
+                type: "Proyecto Universitario VR · Demo",
+                desc: "Un juego de horror psicológico en VR donde los jugadores quedan atrapados en una secuencia de conducción sin fin. Usa generación procedural para crear variaciones sutiles en cada loop, haciendo que los jugadores cuestionen su percepción de la realidad. Cuenta con seguimiento de manos e interacciones de diálogo basadas en gestos.",
+                play: "Jugar en Itch.io"
+            },
+            bubble: {
+                type: "Game Jam · Global Game Jam 2025",
+                desc: "Un Metroidvania desarrollado para GGJ 2025 explorando el tema \"Burbuja\". Cuenta la historia del proceso creativo de un desarrollador al construir un Metroidvania. Incluye transformación de personaje para espacios reducidos y mecánicas de movimiento de plataformas basadas en runas.",
+                play: "Jugar en Itch.io"
+            },
+            hunters: {
+                type: "Proyecto Universitario · Demo",
+                desc: "Un JRPG de acción que combina combate rápido con personalización profunda de personajes. Cuenta con un extenso sistema de árbol de habilidades, batallas estratégicas y un vasto mundo explorable con mecánicas de progresión.",
+                play: "Jugar en Itch.io"
+            },
+            tragones: {
+                type: "Proyecto Universitario · Fangame Demo",
+                desc: "Una novela visual fangame basada en el manga Dungeon Meshi (Delicious in Dungeon). Mezcla la historia original con la cultura chilena a través del programa de TV \"Lugares que Hablan\", creando un crossover único con los personajes del manga en escenarios de narrativa cultural.",
+                play: "Jugar en Itch.io"
+            }
         },
         blog: {
             number: "04.",
@@ -169,9 +217,48 @@ function updateLanguage() {
     if (aboutParagraphs[1]) aboutParagraphs[1].textContent = lang.about.p2;
     if (aboutParagraphs[2]) aboutParagraphs[2].textContent = lang.about.p3;
     
-    // Update other sections
+    // Update Skills section
     updateSection('skills', lang.skills);
+    const skillCards = document.querySelectorAll('#skills .skill-card h4');
+    if (skillCards[0]) skillCards[0].textContent = lang.skills.engines;
+    if (skillCards[1]) skillCards[1].textContent = lang.skills.languages;
+    if (skillCards[2]) skillCards[2].textContent = lang.skills.specializations;
+    
+    // Update "Specialist" text
+    const specialistText = document.querySelector('#skills .skill-card li');
+    if (specialistText && specialistText.textContent.includes('Specialist')) {
+        specialistText.innerHTML = `Unity (${lang.skills.specialist})`;
+    }
+    
+    // Update Games/Projects section
     updateSection('games', lang.games);
+    
+    const projectCards = document.querySelectorAll('#games .project-card');
+    projectCards.forEach((card, index) => {
+        const projectType = card.querySelector('.project-type');
+        const projectDesc = card.querySelector('.project-description');
+        const projectLink = card.querySelector('.project-link');
+        
+        if (index === 0) { // Car-Loop
+            if (projectType) projectType.textContent = lang.games.carloop.type;
+            if (projectDesc) projectDesc.textContent = lang.games.carloop.desc;
+            if (projectLink) projectLink.textContent = lang.games.carloop.play + ' →';
+        } else if (index === 1) { // Break the Bubble
+            if (projectType) projectType.textContent = lang.games.bubble.type;
+            if (projectDesc) projectDesc.textContent = lang.games.bubble.desc;
+            if (projectLink) projectLink.textContent = lang.games.bubble.play + ' →';
+        } else if (index === 2) { // Hunters
+            if (projectType) projectType.textContent = lang.games.hunters.type;
+            if (projectDesc) projectDesc.textContent = lang.games.hunters.desc;
+            if (projectLink) projectLink.textContent = lang.games.hunters.play + ' →';
+        } else if (index === 3) { // Tragones
+            if (projectType) projectType.textContent = lang.games.tragones.type;
+            if (projectDesc) projectDesc.textContent = lang.games.tragones.desc;
+            if (projectLink) projectLink.textContent = lang.games.tragones.play + ' →';
+        }
+    });
+    
+    // Update other sections
     updateSection('blog', lang.blog);
     updateSection('contact', lang.contact);
     
@@ -577,6 +664,113 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ======================
+// BLOG POST VIEWER
+// ======================
+
+function openBlogPost(post) {
+    // Create modal overlay
+    const modal = document.createElement('div');
+    modal.className = 'blog-post-modal';
+    modal.innerHTML = `
+        <div class="blog-post-content">
+            <button class="close-post" onclick="closeBlogPost()">✕ Close</button>
+            <article class="blog-article">
+                <header class="blog-header">
+                    <h1>${post.title}</h1>
+                    <div class="blog-meta">
+                        <span class="blog-date">${new Date(post.date).toLocaleDateString(post.language === 'es' ? 'es-ES' : 'en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        })}</span>
+                    </div>
+                </header>
+                <div class="blog-body">
+                    ${renderMarkdown(post.content)}
+                </div>
+            </article>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    document.body.style.overflow = 'hidden';
+    
+    // Animate in
+    setTimeout(() => modal.classList.add('active'), 10);
+}
+
+function closeBlogPost() {
+    const modal = document.querySelector('.blog-post-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        setTimeout(() => {
+            modal.remove();
+            document.body.style.overflow = 'auto';
+        }, 300);
+    }
+}
+
+// Simple markdown renderer
+function renderMarkdown(markdown) {
+    let html = markdown;
+    
+    // Code blocks
+    html = html.replace(/```(\w+)?\n([\s\S]*?)```/g, (match, lang, code) => {
+        return `<pre><code class="language-${lang || 'text'}">${escapeHtml(code.trim())}</code></pre>`;
+    });
+    
+    // Images
+    html = html.replace(/!\[(.*?)\]\((.*?)\)/g, '<img src="$2" alt="$1" />');
+    
+    // Links
+    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+    
+    // Headers
+    html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+    html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+    html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
+    
+    // Bold
+    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    
+    // Italic
+    html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+    
+    // Lists
+    html = html.replace(/^\- (.+)$/gim, '<li>$1</li>');
+    html = html.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+    
+    html = html.replace(/^\d+\. (.+)$/gim, '<li>$1</li>');
+    html = html.replace(/(<li>.*<\/li>)/s, (match) => {
+        if (!match.includes('<ul>')) {
+            return '<ol>' + match + '</ol>';
+        }
+        return match;
+    });
+    
+    // Paragraphs
+    html = html.split('\n\n').map(para => {
+        if (para.trim() && !para.startsWith('<')) {
+            return `<p>${para.trim()}</p>`;
+        }
+        return para;
+    }).join('\n');
+    
+    return html;
+}
+
+function escapeHtml(text) {
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, m => map[m]);
+}
+
+// ======================
 // LOAD BLOG POSTS FOR PUBLIC VIEW
 // ======================
 
@@ -660,6 +854,7 @@ function createBlogCard(post, container) {
     const card = document.createElement('div');
     card.className = 'blog-card fade-in';
     card.setAttribute('data-lang', post.language);
+    card.style.cursor = 'pointer';
     
     const formattedDate = new Date(post.date).toLocaleDateString(post.language === 'es' ? 'es-ES' : 'en-US', {
         year: 'numeric',
@@ -673,8 +868,14 @@ function createBlogCard(post, container) {
             <div class="blog-date">${formattedDate}</div>
             <h3>${post.title}</h3>
             <p class="blog-excerpt">${post.excerpt}</p>
+            <a href="#" class="read-more" onclick="event.preventDefault();">Read More →</a>
         </div>
     `;
+    
+    // Add click handler to open full post
+    card.addEventListener('click', () => {
+        openBlogPost(post);
+    });
     
     container.appendChild(card);
 }
