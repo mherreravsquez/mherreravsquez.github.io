@@ -226,8 +226,8 @@ function updateLanguage() {
     
     // Update "Specialist" text
     const specialistText = document.querySelector('#skills .skill-card li');
-    if (specialistText && specialistText.textContent.includes('Specialist')) {
-        specialistText.innerHTML = `Unity (${lang.skills.specialist})`;
+    if (specialistText && (specialistText.textContent.includes('Specialist') || specialistText.textContent.includes('Especialista'))) {
+        specialistText.textContent = `Unity (${lang.skills.specialist})`;
     }
     
     // Update Games/Projects section
@@ -314,16 +314,6 @@ function filterBlogByLanguage() {
         }
     });
 }
-
-// Initialize language on load
-document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('preferredLanguage');
-    if (savedLang) {
-        currentLanguage = savedLang;
-        document.querySelector('.language-toggle').textContent = currentLanguage === 'en' ? 'ES' : 'EN';
-        updateLanguage();
-    }
-});
 
 // ======================
 // GITHUB BLOG ADMIN
@@ -649,8 +639,26 @@ function refreshPosts() {
     loadPosts();
 }
 
-// Handle admin link click
+// Handle admin link click and initialize everything
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize language
+    const savedLang = localStorage.getItem('preferredLanguage');
+    if (savedLang) {
+        currentLanguage = savedLang;
+    }
+    
+    // Update language toggle button text
+    const toggleBtn = document.querySelector('.language-toggle');
+    if (toggleBtn) {
+        toggleBtn.textContent = currentLanguage === 'en' ? 'ES' : 'EN';
+    }
+    
+    // Apply saved language preference (if not English)
+    if (currentLanguage !== 'en') {
+        updateLanguage();
+    }
+    
+    // Setup admin link
     const adminLink = document.querySelector('a[href="#admin"]');
     if (adminLink) {
         adminLink.addEventListener('click', (e) => {
