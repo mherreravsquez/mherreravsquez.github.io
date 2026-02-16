@@ -1199,21 +1199,6 @@ function createProjectBlogCard(post, container) {
     container.appendChild(card);
 }
 
-// Add click handlers to project cards
-document.addEventListener('DOMContentLoaded', () => {
-    // Wait a bit for DOM to be fully ready
-    setTimeout(() => {
-        const projectCards = document.querySelectorAll('.project-card[data-project-id]');
-        
-        projectCards.forEach((card) => {
-            const projectId = card.getAttribute('data-project-id');
-            if (projectId) {
-                card.addEventListener('click', (e) => {
-                    // Don't trigger if clicking a link
-                    if (e.target.tagName === 'A' || e.target.closest('a')) return;
-                    openProjectModal(projectId);
-                });
-            }
-        });
-    }, 500);
-});
+// Project modal handlers now use onclick in HTML links
+// No need for event listeners here anymore
+
