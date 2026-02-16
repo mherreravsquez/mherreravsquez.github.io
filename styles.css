@@ -1120,6 +1120,7 @@ footer p {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+}
 
 /* Project Modal */
 .project-modal {
@@ -1394,3 +1395,4 @@ footer p {
         font-size: 1.5rem;
     }
 }
+
