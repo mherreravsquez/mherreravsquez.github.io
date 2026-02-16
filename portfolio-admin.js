@@ -17,13 +17,18 @@ const translations = {
             title: "Game Developer",
             subtitle: "& Creative Coder",
             tagline: "Making experimental and fun games with code",
+            description: "I craft engaging games and interactive experiences that blend compelling gameplay with stunning visuals. From concept to completion, I bring ideas to life through code and creativity.",
             cta1: "View My Games",
             cta2: "Get In Touch"
         },
         about: {
             number: "01.",
             title: "About Me",
-            description: "Gameplay programmer passionate about experimental development"
+            description: "Gameplay programmer passionate about experimental development",
+            greeting: "Hello! I'm Marcelo Herrera",
+            p1: "I'm a Gameplay Programmer specializing in Unity development, currently in my third year studying Digital Game Design at Universidad Andrés Bello. I focus on writing clean, efficient code that brings experimental game concepts to life.",
+            p2: "My technical expertise centers on Virtual Reality programming, procedural generation systems, and building custom Unity editor tools. I'm passionate about solving complex technical challenges—from implementing advanced animation systems to architecting scalable gameplay frameworks.",
+            p3: "I thrive on pushing technical boundaries, whether that's optimizing VR performance, creating procedural generation algorithms, or developing tools that streamline game development workflows. Code is my primary creative medium."
         },
         skills: {
             number: "02.",
@@ -43,7 +48,16 @@ const translations = {
         contact: {
             number: "05.",
             title: "Get In Touch",
-            description: "Let's create something amazing together"
+            description: "Let's create something amazing together",
+            heading: "Let's Connect",
+            intro: "I'm always open to discussing new projects, technical challenges, or collaboration opportunities. Whether you're looking for a gameplay programmer or want to chat about VR development and procedural systems, feel free to reach out!",
+            resumeTitle: "Download My Resume",
+            resumeDesc: "Get a detailed overview of my experience, skills, and projects",
+            resumeBtn: "Download PDF Resume"
+        },
+        footer: {
+            credit: "Designed & Built by Marcelo Herrera",
+            rights: "© 2026 All Rights Reserved"
         }
     },
     es: {
@@ -60,13 +74,18 @@ const translations = {
             title: "Desarrollador de Juegos",
             subtitle: "& Programador Creativo",
             tagline: "Creando juegos experimentales y divertidos con código",
+            description: "Creo juegos atractivos y experiencias interactivas que combinan jugabilidad convincente con visuales impresionantes. Desde el concepto hasta la finalización, doy vida a las ideas a través del código y la creatividad.",
             cta1: "Ver Mis Juegos",
             cta2: "Contactar"
         },
         about: {
             number: "01.",
             title: "Sobre Mí",
-            description: "Programador de gameplay apasionado por el desarrollo experimental"
+            description: "Programador de gameplay apasionado por el desarrollo experimental",
+            greeting: "¡Hola! Soy Marcelo Herrera",
+            p1: "Soy Programador de Gameplay especializado en desarrollo con Unity, actualmente en mi tercer año estudiando Diseño de Juegos Digitales en la Universidad Andrés Bello. Me enfoco en escribir código limpio y eficiente que da vida a conceptos de juegos experimentales.",
+            p2: "Mi experiencia técnica se centra en programación de Realidad Virtual, sistemas de generación procedural y construcción de herramientas personalizadas para el editor de Unity. Me apasiona resolver desafíos técnicos complejos—desde implementar sistemas de animación avanzados hasta arquitecturar frameworks de gameplay escalables.",
+            p3: "Me encanta superar límites técnicos, ya sea optimizando el rendimiento de VR, creando algoritmos de generación procedural, o desarrollando herramientas que agilizan los flujos de trabajo de desarrollo de juegos. El código es mi medio creativo principal."
         },
         skills: {
             number: "02.",
@@ -86,7 +105,16 @@ const translations = {
         contact: {
             number: "05.",
             title: "Contacto",
-            description: "Creemos algo increíble juntos"
+            description: "Creemos algo increíble juntos",
+            heading: "Conectemos",
+            intro: "Siempre estoy abierto a discutir nuevos proyectos, desafíos técnicos u oportunidades de colaboración. Ya sea que estés buscando un programador de gameplay o quieras charlar sobre desarrollo VR y sistemas procedurales, ¡no dudes en contactarme!",
+            resumeTitle: "Descarga Mi CV",
+            resumeDesc: "Obtén una descripción detallada de mi experiencia, habilidades y proyectos",
+            resumeBtn: "Descargar CV en PDF"
+        },
+        footer: {
+            credit: "Diseñado y Construido por Marcelo Herrera",
+            rights: "© 2026 Todos los Derechos Reservados"
         }
     }
 };
@@ -122,16 +150,53 @@ function updateLanguage() {
         heroTagline.textContent = lang.hero.tagline;
     }
     
+    const heroDesc = document.querySelector('.hero p:not(.subtitle)');
+    if (heroDesc) {
+        heroDesc.textContent = lang.hero.description;
+    }
+    
     const ctaButtons = document.querySelectorAll('.cta-buttons .btn');
     if (ctaButtons[0]) ctaButtons[0].textContent = lang.hero.cta1;
     if (ctaButtons[1]) ctaButtons[1].textContent = lang.hero.cta2;
     
-    // Update section headers
+    // Update About section
     updateSection('about', lang.about);
+    const aboutH3 = document.querySelector('#about h3');
+    if (aboutH3) aboutH3.textContent = lang.about.greeting;
+    
+    const aboutParagraphs = document.querySelectorAll('#about .about-content p');
+    if (aboutParagraphs[0]) aboutParagraphs[0].textContent = lang.about.p1;
+    if (aboutParagraphs[1]) aboutParagraphs[1].textContent = lang.about.p2;
+    if (aboutParagraphs[2]) aboutParagraphs[2].textContent = lang.about.p3;
+    
+    // Update other sections
     updateSection('skills', lang.skills);
     updateSection('games', lang.games);
     updateSection('blog', lang.blog);
     updateSection('contact', lang.contact);
+    
+    // Update contact section content
+    const contactH3 = document.querySelector('#contact h3');
+    if (contactH3) contactH3.textContent = lang.contact.heading;
+    
+    const contactIntro = document.querySelector('#contact .contact-info p');
+    if (contactIntro) contactIntro.textContent = lang.contact.intro;
+    
+    const resumeTitle = document.querySelector('.resume-download h4');
+    if (resumeTitle) resumeTitle.textContent = lang.contact.resumeTitle;
+    
+    const resumeDesc = document.querySelector('.resume-download p');
+    if (resumeDesc) resumeDesc.textContent = lang.contact.resumeDesc;
+    
+    const resumeBtn = document.querySelector('.resume-download .btn');
+    if (resumeBtn) resumeBtn.textContent = lang.contact.resumeBtn;
+    
+    // Update footer
+    const footerCredit = document.querySelector('footer p:first-child');
+    if (footerCredit) footerCredit.textContent = lang.footer.credit;
+    
+    const footerRights = document.querySelector('footer p:nth-child(2)');
+    if (footerRights) footerRights.textContent = lang.footer.rights;
     
     // Filter blog posts by language
     filterBlogByLanguage();
@@ -506,4 +571,110 @@ document.addEventListener('DOMContentLoaded', () => {
             openAdmin();
         });
     }
+    
+    // Load blog posts on page load
+    loadBlogPosts();
 });
+
+// ======================
+// LOAD BLOG POSTS FOR PUBLIC VIEW
+// ======================
+
+async function loadBlogPosts() {
+    const blogGrid = document.querySelector('.blog-grid');
+    if (!blogGrid) return;
+    
+    try {
+        // Use public GitHub API (no auth needed for public repos)
+        const response = await fetch('https://api.github.com/repos/mherreravsquez/blog-posts/contents/posts', {
+            headers: {
+                'Accept': 'application/vnd.github.v3+json'
+            }
+        });
+        
+        if (!response.ok) {
+            console.log('Blog posts directory not found. Create posts in the admin panel.');
+            return;
+        }
+        
+        const files = await response.json();
+        const markdownFiles = files.filter(file => file.name.endsWith('.md'));
+        
+        if (markdownFiles.length === 0) {
+            blogGrid.innerHTML = '<p style="color: var(--text-dim); padding: 2rem; text-align: center; grid-column: 1/-1;">No blog posts yet. Check back soon!</p>';
+            return;
+        }
+        
+        // Clear existing placeholder posts
+        blogGrid.innerHTML = '';
+        
+        // Fetch and parse each post
+        for (const file of markdownFiles) {
+            const postData = await fetchPostContent(file.download_url);
+            if (postData) {
+                createBlogCard(postData, blogGrid);
+            }
+        }
+        
+        // Apply language filter
+        filterBlogByLanguage();
+        
+    } catch (error) {
+        console.error('Error loading blog posts:', error);
+    }
+}
+
+async function fetchPostContent(url) {
+    try {
+        const response = await fetch(url);
+        const content = await response.text();
+        
+        // Parse frontmatter
+        const parts = content.split('---\n');
+        if (parts.length < 3) return null;
+        
+        const frontmatter = parts[1];
+        const markdown = parts.slice(2).join('---\n').trim();
+        
+        // Extract metadata
+        const titleMatch = frontmatter.match(/title: "(.*?)"/);
+        const dateMatch = frontmatter.match(/date: "(.*?)"/);
+        const langMatch = frontmatter.match(/language: "(.*?)"/);
+        const excerptMatch = frontmatter.match(/excerpt: "(.*?)"/);
+        
+        return {
+            title: titleMatch ? titleMatch[1] : 'Untitled',
+            date: dateMatch ? dateMatch[1] : '',
+            language: langMatch ? langMatch[1] : 'en',
+            excerpt: excerptMatch ? excerptMatch[1] : markdown.substring(0, 150) + '...',
+            content: markdown
+        };
+        
+    } catch (error) {
+        console.error('Error fetching post content:', error);
+        return null;
+    }
+}
+
+function createBlogCard(post, container) {
+    const card = document.createElement('div');
+    card.className = 'blog-card fade-in';
+    card.setAttribute('data-lang', post.language);
+    
+    const formattedDate = new Date(post.date).toLocaleDateString(post.language === 'es' ? 'es-ES' : 'en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+    
+    card.innerHTML = `
+        <div class="blog-image">BLOG POST</div>
+        <div class="blog-content">
+            <div class="blog-date">${formattedDate}</div>
+            <h3>${post.title}</h3>
+            <p class="blog-excerpt">${post.excerpt}</p>
+        </div>
+    `;
+    
+    container.appendChild(card);
+}
