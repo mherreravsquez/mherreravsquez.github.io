@@ -37,7 +37,7 @@ window.addEventListener('scroll', () => {
     
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
-              const sectionHeight = section.clientHeight;
+        const sectionHeight = section.clientHeight;
         if (pageYOffset >= sectionTop - 200) {
             current = section.getAttribute('id');
         }
@@ -45,3 +45,8 @@ window.addEventListener('scroll', () => {
 
     document.querySelectorAll('nav a').forEach(link => {
         link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+});
