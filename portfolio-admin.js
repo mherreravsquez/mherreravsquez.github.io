@@ -863,12 +863,20 @@ async function fetchPostContent(url) {
         const dateMatch = frontmatter.match(/date: "(.*?)"/);
         const langMatch = frontmatter.match(/language: "(.*?)"/);
         const excerptMatch = frontmatter.match(/excerpt: "(.*?)"/);
+        const tagsMatch = frontmatter.match(/tags: \[(.*?)\]/);
+        
+        // Parse tags array
+        let tags = [];
+        if (tagsMatch) {
+            tags = tagsMatch[1].split(',').map(tag => tag.trim().replace(/"/g, ''));
+        }
         
         return {
             title: titleMatch ? titleMatch[1] : 'Untitled',
             date: dateMatch ? dateMatch[1] : '',
             language: langMatch ? langMatch[1] : 'en',
             excerpt: excerptMatch ? excerptMatch[1] : markdown.substring(0, 150) + '...',
+            tags: tags,
             content: markdown
         };
         
@@ -891,7 +899,7 @@ function createBlogCard(post, container) {
     });
     
     card.innerHTML = `
-        <div class="blog-image">BLOG POST</div>
+        <div class="blog-image"></div>
         <div class="blog-content">
             <div class="blog-date">${formattedDate}</div>
             <h3>${post.title}</h3>
@@ -907,3 +915,306 @@ function createBlogCard(post, container) {
     
     container.appendChild(card);
 }
+
+// ======================
+// PROJECT MODAL SYSTEM
+// ======================
+
+// Project data with multimedia and blog posts
+const projectsData = {
+    'car-loop': {
+        title: 'Car-Loop',
+        type: 'VR College Project · Demo',
+        tags: ['Unity 6', 'Meta Quest 3', 'VR', 'Procedural Gen', 'Hand Tracking'],
+        description: 'A VR psychological horror game where players are trapped in an endless driving sequence. Uses procedural generation to create subtle variations in each loop, making players question their perception of reality. Features hand-tracking and gesture-based dialogue interactions.',
+        platform: 'Meta Quest 3 (PC Connected)',
+        tools: 'Unity 6, Meta XR SDK, C#',
+        link: 'https://plants-path-co.itch.io/car-loop',
+        media: [
+            { type: 'image', url: 'https://i.imgur.com/diJAbfY.jpg' },
+            { type: 'image', url: 'https://i.imgur.com/JSl88oB.jpg' }
+        ],
+        blogTag: 'car-loop' // Posts with this tag will show in project modal
+    },
+    'break-the-bubble': {
+        title: 'Break the Bubble',
+        type: 'Game Jam · Global Game Jam 2025',
+        tags: ['Unity 2023', '2D', 'Metroidvania', 'Game Jam'],
+        description: "A Metroidvania developed for GGJ 2025 exploring the theme 'Bubble.' Tells the story of a developer's creative process in building a Metroidvania. Features character transformation for tight spaces and rune-based platform movement mechanics.",
+        platform: 'PC',
+        tools: 'Unity 2023, C#',
+        link: 'https://plants-path-co.itch.io/romper-la-burbuja-ggj-2025',
+        media: [
+            { type: 'image', url: 'https://i.imgur.com/Oac1gLZ.jpg' },
+            { type: 'video', url: 'https://i.imgur.com/l7SI2IB.mp4' }
+        ],
+        blogTag: 'break-the-bubble'
+    },
+    'hunters-awakening': {
+        title: 'Hunters: Awakening',
+        type: 'College Project · Demo',
+        tags: ['Unity 2023', 'Action', 'JRPG', '3D'],
+        description: 'An action JRPG combining fast-paced combat with deep character customization. Features an extensive skill tree system, strategic battles, and a vast explorable world with progression mechanics.',
+        platform: 'PC',
+        tools: 'Unity 2023, C#',
+        link: 'https://plants-path-co.itch.io/hunters-awakening',
+        media: [],
+        blogTag: 'hunters'
+    },
+    'tragones-y-mazmorras': {
+        title: 'Tragones y Mazmorras x Lugares que Hablan',
+        type: 'College Project · Fangame Demo',
+        tags: ["Ren'Py", 'Visual Novel', 'Fangame', 'Spanish'],
+        description: 'A visual novel fangame based on the Dungeon Meshi (Delicious in Dungeon) manga. Blends the original story with Chilean culture through the TV show "Lugares que Hablan", creating a unique crossover featuring the manga\'s characters in cultural storytelling scenarios.',
+        platform: 'PC',
+        tools: "Ren'Py, Python",
+        link: 'https://mherreravsquez.itch.io/tragones-y-mazmorras-x-lugares-que-hablan',
+        media: [
+            { type: 'image', url: 'https://i.imgur.com/lvCnT03.png' },
+            { type: 'image', url: 'https://i.imgur.com/2kuJgAy.png' },
+            { type: 'image', url: 'https://i.imgur.com/43BEx6q.png' }
+        ],
+        blogTag: 'tragones'
+    }
+};
+
+let currentCarouselIndex = 0;
+let currentProjectSlides = [];
+
+// Open project modal
+function openProjectModal(projectId) {
+    const project = projectsData[projectId];
+    if (!project) return;
+    
+    currentProjectSlides = project.media;
+    currentCarouselIndex = 0;
+    
+    // Create modal
+    const modal = document.createElement('div');
+    modal.className = 'project-modal';
+    modal.id = 'projectModal';
+    
+    // Build carousel HTML
+    let carouselHTML = '';
+    if (project.media.length > 0) {
+        carouselHTML = `
+            <div class="project-carousel">
+                <div class="carousel-container">
+                    ${project.media.map((item, index) => `
+                        <div class="carousel-slide ${index === 0 ? 'active' : ''}" data-index="${index}">
+                            ${item.type === 'image' 
+                                ? `<img src="${item.url}" alt="${project.title} screenshot ${index + 1}">`
+                                : `<video src="${item.url}" controls loop><source src="${item.url}" type="video/mp4"></video>`
+                            }
+                        </div>
+                    `).join('')}
+                </div>
+                ${project.media.length > 1 ? `
+                    <button class="carousel-nav carousel-prev" onclick="changeSlide(-1)">‹</button>
+                    <button class="carousel-nav carousel-next" onclick="changeSlide(1)">›</button>
+                    <div class="carousel-dots">
+                        ${project.media.map((_, index) => `
+                            <div class="carousel-dot ${index === 0 ? 'active' : ''}" onclick="goToSlide(${index})"></div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+            </div>
+        `;
+    }
+    
+    modal.innerHTML = `
+        <div class="project-modal-content">
+            <button class="close-project" onclick="closeProjectModal()">✕ Close</button>
+            
+            <div class="project-modal-header">
+                <div class="project-modal-type">${project.type}</div>
+                <h1>${project.title}</h1>
+                <div class="project-modal-tags">
+                    ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+            </div>
+            
+            ${carouselHTML}
+            
+            <div class="project-details">
+                <div class="project-description-full">
+                    <h2>About the Project</h2>
+                    <p>${project.description}</p>
+                </div>
+                
+                <div class="project-info-sidebar">
+                    <div class="project-info-item">
+                        <h3>Platform</h3>
+                        <p>${project.platform}</p>
+                    </div>
+                    <div class="project-info-item">
+                        <h3>Tools Used</h3>
+                        <p>${project.tools}</p>
+                    </div>
+                    <div class="project-info-item">
+                        <h3>Play Now</h3>
+                        <a href="${project.link}" target="_blank">Play on Itch.io →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-blog-section">
+                <h2>Development Blog</h2>
+                <div class="project-blog-grid" id="projectBlogPosts">
+                    <p style="color: var(--text-dim); text-align: center;">Loading blog posts...</p>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    document.body.style.overflow = 'hidden';
+    
+    // Animate in
+    setTimeout(() => modal.classList.add('active'), 10);
+    
+    // Load project-specific blog posts
+    loadProjectBlogPosts(project.blogTag);
+}
+
+// Close project modal
+function closeProjectModal() {
+    const modal = document.getElementById('projectModal');
+    if (modal) {
+        modal.classList.remove('active');
+        setTimeout(() => {
+            modal.remove();
+            document.body.style.overflow = 'auto';
+        }, 300);
+    }
+}
+
+// Carousel navigation
+function changeSlide(direction) {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    
+    if (slides.length === 0) return;
+    
+    slides[currentCarouselIndex].classList.remove('active');
+    dots[currentCarouselIndex].classList.remove('active');
+    
+    currentCarouselIndex += direction;
+    
+    if (currentCarouselIndex >= slides.length) {
+        currentCarouselIndex = 0;
+    } else if (currentCarouselIndex < 0) {
+        currentCarouselIndex = slides.length - 1;
+    }
+    
+    slides[currentCarouselIndex].classList.add('active');
+    dots[currentCarouselIndex].classList.add('active');
+}
+
+function goToSlide(index) {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    
+    slides[currentCarouselIndex].classList.remove('active');
+    dots[currentCarouselIndex].classList.remove('active');
+    
+    currentCarouselIndex = index;
+    
+    slides[currentCarouselIndex].classList.add('active');
+    dots[currentCarouselIndex].classList.add('active');
+}
+
+// Load blog posts for specific project
+async function loadProjectBlogPosts(projectTag) {
+    const container = document.getElementById('projectBlogPosts');
+    if (!container) return;
+    
+    try {
+        const response = await fetch('https://api.github.com/repos/mherreravsquez/blog-posts/contents/posts', {
+            headers: {
+                'Accept': 'application/vnd.github.v3+json'
+            }
+        });
+        
+        if (!response.ok) {
+            container.innerHTML = '<p style="color: var(--text-dim); text-align: center;">No blog posts yet for this project.</p>';
+            return;
+        }
+        
+        const files = await response.json();
+        const markdownFiles = files.filter(file => file.name.endsWith('.md'));
+        
+        // Fetch and filter posts by tag
+        const projectPosts = [];
+        for (const file of markdownFiles) {
+            const postData = await fetchPostContent(file.download_url);
+            if (postData && postData.tags && postData.tags.includes(projectTag)) {
+                projectPosts.push(postData);
+            }
+        }
+        
+        if (projectPosts.length === 0) {
+            container.innerHTML = '<p style="color: var(--text-dim); text-align: center; grid-column: 1/-1;">No development blog posts yet for this project. Check back soon!</p>';
+            return;
+        }
+        
+        // Display filtered posts
+        container.innerHTML = '';
+        projectPosts.forEach(post => {
+            createProjectBlogCard(post, container);
+        });
+        
+    } catch (error) {
+        console.error('Error loading project blog posts:', error);
+        container.innerHTML = '<p style="color: var(--accent); text-align: center;">Error loading blog posts.</p>';
+    }
+}
+
+// Create blog card for project modal
+function createProjectBlogCard(post, container) {
+    const card = document.createElement('div');
+    card.className = 'blog-card fade-in';
+    card.style.cursor = 'pointer';
+    
+    const formattedDate = new Date(post.date).toLocaleDateString(post.language === 'es' ? 'es-ES' : 'en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+    
+    card.innerHTML = `
+        <div class="blog-image"></div>
+        <div class="blog-content">
+            <div class="blog-date">${formattedDate}</div>
+            <h3>${post.title}</h3>
+            <p class="blog-excerpt">${post.excerpt}</p>
+            <a href="#" class="read-more" onclick="event.preventDefault();">Read More →</a>
+        </div>
+    `;
+    
+    card.addEventListener('click', () => {
+        openBlogPost(post);
+    });
+    
+    container.appendChild(card);
+}
+
+// Add click handlers to project cards
+document.addEventListener('DOMContentLoaded', () => {
+    // Wait a bit for DOM to be fully ready
+    setTimeout(() => {
+        const projectCards = document.querySelectorAll('.project-card');
+        const projectIds = ['car-loop', 'break-the-bubble', 'hunters-awakening', 'tragones-y-mazmorras'];
+        
+        projectCards.forEach((card, index) => {
+            if (projectIds[index]) {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', (e) => {
+                    // Don't trigger if clicking a link
+                    if (e.target.tagName === 'A') return;
+                    openProjectModal(projectIds[index]);
+                });
+            }
+        });
+    }, 500);
+});
