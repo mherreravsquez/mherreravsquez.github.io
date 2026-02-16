@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcelo Herrera | Game Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #f5f5f5;
+            --accent: #ff3366;
+            --accent-2: #00ff88;
+            --text: #e0e0e0;
+            --text-dim: #888;
+            --border: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 51, 102, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 255, 136, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+            animation: bgPulse 15s ease-in-out infinite;
+        }
+
+        @keyframes bgPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .language-toggle {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 51, 102, 0.1);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .language-toggle:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 800;
+            line-height: 0.9;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .accent-text {
+            color: var(--accent);
+            display: block;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 2vw, 1.8rem);
+            color: var(--accent-2);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.8s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: 2px solid var(--accent);
+            background: transparent;
+            color: var(--text);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .btn:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border-color: var(--accent-2);
+        }
+
+        .btn-secondary::before {
+            background: var(--accent-2);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+        }
+
+        .section-number {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            color: var(--text-dim);
+            max-width: 600px;
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            aspect-ratio: 1;
+            border: 2px solid var(--accent);
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(255, 51, 102, 0.2), rgba(0, 255, 136, 0.2));
+        }
+
+        .about-image::after {
+            content: 'YOUR PHOTO HERE';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--text-dim);
+        }
+
+        .about-content h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-2);
+        }
+
+        .about-content p {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            padding: 2rem;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .skill-card h4 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--accent-2);
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card li {
+            color: var(--text-dim);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .skill-card li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            gap: 4rem;
+        }
+
+        .project-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 3rem;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:nth-child(even) {
+            direction: rtl;
+        }
+
+        .project-card:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateX(10px);
+        }
+
+        .project-image {
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, rgba(255, 51, 102, 0.2), rgba(0, 255, 136, 0.2));
+            border: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            color: var(--text-dim);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image::before {
+            content: 'PROJECT IMAGE/GIF';
+            font-size: 1.2rem;
+        }
+
+        .project-content h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-type {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .project-description {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            padding: 0.3rem 1rem;
+            background: rgba(255, 51, 102, 0.1);
+            border: 1px solid var(--accent);
+            font-size: 0.8rem;
+            color: var(--accent);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: var(--accent-2);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--text);
+        }
+
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.02);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-2);
+        }
+
+        .blog-image {
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(255, 51, 102, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            color: var(--text-dim);
+        }
+
+        .blog-content {
+            padding: 2rem;
+        }
+
+        .blog-date {
+            color: var(--accent-2);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-card h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-excerpt {
+            color: var(--text-dim);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: var(--accent);
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: var(--text);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-2);
+        }
+
+        .contact-info p {
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text);
+            text-decoration: none;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            border-color: var(--accent);
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-link-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .resume-download {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border: 2px solid var(--accent-2);
+            background: rgba(0, 255, 136, 0.05);
+            text-align: center;
+        }
+
+        .resume-download h4 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--accent-2);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-dim);
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+            }
+
+            .about-grid,
+            .project-card,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card:nth-child(even) {
+                direction: ltr;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            section {
+                padding: 5rem 0;
+            }
+
+            .nav-right {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Admin Panel Styles */
+        .admin-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .admin-panel.active {
+            display: block;
+        }
+
+        .admin-header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-header h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .close-admin {
+            padding: 0.5rem 1.5rem;
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            cursor: pointer;
+            font-family: 'Space Mono', monospace;
+            transition: all 0.3s ease;
+        }
+
+        .close-admin:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .admin-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .github-auth {
+            padding: 3rem;
+            text-align: center;
+            border: 2px solid var(--border);
+            background: rgba(255, 255, 255, 0.02);
+            margin-bottom: 2rem;
+        }
+
+        .github-auth h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-2);
+        }
+
+        .github-auth input {
+            width: 100%;
+            max-width: 500px;
+            padding: 1rem;
+            margin: 1rem 0;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .github-auth button {
+            padding: 1rem 2rem;
+            background: var(--accent-2);
+            border: none;
+            color: var(--primary);
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .github-auth button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .blog-editor {
+            display: none;
+        }
+
+        .blog-editor.active {
+            display: block;
+        }
+
+        .editor-toolbar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .editor-toolbar button {
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-family: 'Space Mono', monospace;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .editor-toolbar button:hover {
+            border-color: var(--accent);
+            background: rgba(255, 51, 102, 0.1);
+        }
+
+        .editor-toolbar button.primary {
+            background: var(--accent);
+            color: var(--primary);
+            border-color: var(--accent);
+        }
+
+        .editor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .editor-input {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            padding: 2rem;
+        }
+
+        .editor-input label {
+            display: block;
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .editor-input input,
+        .editor-input select {
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-family: 'Space Mono', monospace;
+            margin-bottom: 1rem;
+        }
+
+        .editor-textarea {
+            grid-column: 1 / -1;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            padding: 2rem;
+        }
+
+        .editor-textarea textarea {
+            width: 100%;
+            min-height: 400px;
+            padding: 1rem;
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            resize: vertical;
+        }
+
+        .blog-posts-list {
+            margin-top: 3rem;
+        }
+
+        .blog-posts-list h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-2);
+        }
+
+        .post-item {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .post-item:hover {
+            border-color: var(--accent);
+        }
+
+        .post-item-info h4 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-item-info p {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        .post-item-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .post-item-actions button {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .post-item-actions button:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .auth-status {
+            padding: 1rem;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--accent-2);
+            color: var(--accent-2);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">MARCHEL</div>
+            <div class="nav-right">
+                <ul>
+                    <li><a href="#home" data-en="Home" data-es="Inicio">Home</a></li>
+                    <li><a href="#about" data-en="About" data-es="Sobre mí">About</a></li>
+                    <li><a href="#skills" data-en="Skills" data-es="Habilidades">Skills</a></li>
+                    <li><a href="#games" data-en="Games" data-es="Juegos">Games</a></li>
+                    <li><a href="#blog" data-en="Blog" data-es="Blog">Blog</a></li>
+                    <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+                    <li><a href="#admin" data-en="Admin" data-es="Admin" style="color: var(--accent-2);">Admin</a></li>
+                </ul>
+                <button class="language-toggle" onclick="toggleLanguage()">ES</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>
+                    Game Developer<br>
+                    <span class="accent-text">& Creative Coder</span>
+                </h1>
+                <p class="subtitle">Making experimental and fun games with code</p>
+                <p>I craft engaging games and interactive experiences that blend compelling gameplay with stunning visuals. From concept to completion, I bring ideas to life through code and creativity.</p>
+                <div class="cta-buttons">
+                    <a href="#games" class="btn">View My Games</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-number">01.</div>
+                <h2 class="section-title">About Me</h2>
+                <p class="section-description">Game developer passionate about creating memorable interactive experiences</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-image fade-in"></div>
+                <div class="about-content fade-in">
+                    <h3>Hello! I'm Marcelo Herrera</h3>
+                    <p>I'm a Gameplay Programmer specializing in Unity development, currently in my third year studying Digital Game Design at Universidad Andrés Bello. I focus on writing clean, efficient code that brings experimental game concepts to life.</p>
+                    <p>My technical expertise centers on Virtual Reality programming, procedural generation systems, and building custom Unity editor tools. I'm passionate about solving complex technical challenges—from implementing advanced animation systems to architecting scalable gameplay frameworks.</p>
+                    <p>I thrive on pushing technical boundaries, whether that's optimizing VR performance, creating procedural generation algorithms, or developing tools that streamline game development workflows. Code is my primary creative medium.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-number">02.</div>
+                <h2 class="section-title">Skills & Technologies</h2>
+                <p class="section-description">The tools and technologies I use to bring games to life</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card fade-in">
+                    <h4>Game Engines</h4>
+                    <ul>
+                        <li>Unity (Specialist)</li>
+                        <li>Unreal Engine 5.5+</li>
+                    </ul>
+                </div>
+                <div class="skill-card fade-in">
+                    <h4>Programming Languages</h4>
+                    <ul>
+                        <li>C#</li>
+                        <li>Python</li>
+                    </ul>
+                </div>
+                <div class="skill-card fade-in">
+                    <h4>Specializations</h4>
+                    <ul>
+                        <li>Gameplay Programming</li>
+                        <li>Virtual Reality (VR)</li>
+                        <li>Procedural Generation</li>
+                        <li>Custom Unity Tools</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Projects Section -->
+    <section id="games">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-number">03.</div>
+                <h2 class="section-title">Game Projects</h2>
+                <p class="section-description">Professional game projects I've contributed to</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-image"></div>
+                    <div class="project-content">
+                        <div class="project-type">VR College Project · Demo</div>
+                        <h3>Car-Loop</h3>
+                        <p class="project-description">A VR psychological horror game where players are trapped in an endless driving sequence. Uses procedural generation to create subtle variations in each loop, making players question their perception of reality. Features hand-tracking and gesture-based dialogue interactions.</p>
+                        <div class="project-tags">
+                            <span class="tag">Unity 6</span>
+                            <span class="tag">Meta Quest 3</span>
+                            <span class="tag">VR</span>
+                            <span class="tag">Procedural Gen</span>
+                            <span class="tag">Hand Tracking</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://plants-path-co.itch.io/car-loop" class="project-link" target="_blank">Play on Itch.io →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image"></div>
+                    <div class="project-content">
+                        <div class="project-type">Game Jam · Global Game Jam 2025</div>
+                        <h3>Break the Bubble</h3>
+                        <p class="project-description">A Metroidvania developed for GGJ 2025 exploring the theme "Bubble." Tells the story of a developer's creative process in building a Metroidvania. Features character transformation for tight spaces and rune-based platform movement mechanics.</p>
+                        <div class="project-tags">
+                            <span class="tag">Unity 2023</span>
+                            <span class="tag">2D Metroidvania</span>
+                            <span class="tag">48hr Jam</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://plants-path-co.itch.io/romper-la-burbuja-ggj-2025" class="project-link" target="_blank">Play on Itch.io →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image"></div>
+                    <div class="project-content">
+                        <div class="project-type">College Project · Demo</div>
+                        <h3>Hunters: Awakening</h3>
+                        <p class="project-description">An action JRPG combining fast-paced combat with deep character customization. Features an extensive skill tree system, strategic battles, and a vast explorable world with progression mechanics.</p>
+                        <div class="project-tags">
+                            <span class="tag">Unity 2023</span>
+                            <span class="tag">JRPG</span>
+                            <span class="tag">Combat System</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://plants-path-co.itch.io/hunters-awakening" class="project-link" target="_blank">Play on Itch.io →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image"></div>
+                    <div class="project-content">
+                        <div class="project-type">College Project · Fangame Demo</div>
+                        <h3>Tragones y Mazmorras x Lugares que Hablan</h3>
+                        <p class="project-description">A visual novel fangame based on the Dungeon Meshi (Delicious in Dungeon) manga. Blends the original story with Chilean culture through the TV show "Lugares que Hablan", creating a unique crossover featuring the manga's characters in cultural storytelling scenarios.</p>
+                        <div class="project-tags">
+                            <span class="tag">Ren'Py</span>
+                            <span class="tag">Visual Novel</span>
+                            <span class="tag">Fangame</span>
+                            <span class="tag">Spanish</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://mherreravsquez.itch.io/tragones-y-mazmorras-x-lugares-que-hablan" class="project-link" target="_blank">Play on Itch.io →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Projects Section -->
+    <!-- HIDDEN FOR NOW
+    <section id="projects">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-number">04.</div>
+                <h2 class="section-title">Personal Projects</h2>
+                <p class="section-description">Tools, experiments, and side projects beyond traditional games</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-image"></div>
+                    <div class="project-content">
+                        <div class="project-type">Tool Development</div>
+                        <h3>Project Title 1</h3>
+                        <p class="project-description">Description of your tool or non-game project. What problem does it solve? What technologies did you use?</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Tool</span>
+                            <span class="tag">Open Source</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">GitHub →</a>
+                            <a href="#" class="project-link">Documentation →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image"></div>
+                    <div class="project-content">
+                        <div class="project-type">Creative Coding</div>
+                        <h3>Project Title 2</h3>
+                        <p class="project-description">Description of your creative or experimental project. What inspired it? What did you explore?</p>
+                        <div class="project-tags">
+                            <span class="tag">WebGL</span>
+                            <span class="tag">Shaders</span>
+                            <span class="tag">Interactive</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Live →</a>
+                            <a href="#" class="project-link">Source Code →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+    <!-- Blog Section -->
+    <section id="blog">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-number">04.</div>
+                <h2 class="section-title">Development Blog</h2>
+                <p class="section-description">Thoughts, tutorials, and insights from my development journey</p>
+            </div>
+            <div class="blog-grid">
+                <div class="blog-card fade-in">
+                    <div class="blog-image">BLOG IMAGE</div>
+                    <div class="blog-content">
+                        <div class="blog-date">January 15, 2026</div>
+                        <h3>Blog Post Title 1</h3>
+                        <p class="blog-excerpt">A brief excerpt or summary of your blog post. This could be about a development technique, lessons learned, or game design philosophy...</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+
+                <div class="blog-card fade-in">
+                    <div class="blog-image">BLOG IMAGE</div>
+                    <div class="blog-content">
+                        <div class="blog-date">December 8, 2025</div>
+                        <h3>Blog Post Title 2</h3>
+                        <p class="blog-excerpt">A brief excerpt or summary of your blog post. This could be about a development technique, lessons learned, or game design philosophy...</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+
+                <div class="blog-card fade-in">
+                    <div class="blog-image">BLOG IMAGE</div>
+                    <div class="blog-content">
+                        <div class="blog-date">November 22, 2025</div>
+                        <h3>Blog Post Title 3</h3>
+                        <p class="blog-excerpt">A brief excerpt or summary of your blog post. This could be about a development technique, lessons learned, or game design philosophy...</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-number">05.</div>
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-description">Let's create something amazing together</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info fade-in">
+                    <h3>Let's Connect</h3>
+                    <p>I'm always open to discussing new projects, technical challenges, or collaboration opportunities. Whether you're looking for a gameplay programmer or want to chat about VR development and procedural systems, feel free to reach out!</p>
+                    <div class="contact-links">
+                        <a href="/cdn-cgi/l/email-protection#f09dde9895828295829186838185958ab09f85849c9f9f9bde939f9d" class="contact-link">
+                            <span class="contact-link-icon">✉</span>
+                            <span><span class="__cf_email__" data-cfemail="e885c6808d9a9a8d9a899e9b999d8d92a8879d9c84878783c68b8785">[email&#160;protected]</span></span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/mherreravsquez" class="contact-link" target="_blank">
+                            <span class="contact-link-icon">🔗</span>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/mherreravsquez" class="contact-link" target="_blank">
+                            <span class="contact-link-icon">💻</span>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://x.com/mherreravsquez" class="contact-link" target="_blank">
+                            <span class="contact-link-icon">𝕏</span>
+                            <span>Twitter / X</span>
+                        </a>
+                        <a href="https://mherreravsquez.itch.io/" class="contact-link" target="_blank">
+                            <span class="contact-link-icon">🎮</span>
+                            <span>Itch.io</span>
+                        </a>
+                        <a href="https://bsky.app/profile/mherreravsquez.bsky.social" class="contact-link" target="_blank">
+                            <span class="contact-link-icon">🦋</span>
+                            <span>Bluesky</span>
+                        </a>
+                        <a href="https://www.instagram.com/mherreravsquez/" class="contact-link" target="_blank">
+                            <span class="contact-link-icon">📷</span>
+                            <span>Instagram</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <div class="resume-download">
+                        <h4>Download My Resume</h4>
+                        <p style="color: var(--text-dim); margin-bottom: 1.5rem;">Get a detailed overview of my experience, skills, and projects</p>
+                        <a href="#" class="btn">Download PDF Resume</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Panel -->
+    <div id="adminPanel" class="admin-panel">
+        <div class="admin-header">
+            <h2>Blog Admin Panel</h2>
+            <button class="close-admin" onclick="closeAdmin()">Close</button>
+        </div>
+        <div class="admin-content">
+            <!-- GitHub Authentication -->
+            <div id="githubAuth" class="github-auth">
+                <h3>Connect to GitHub</h3>
+                <p style="color: var(--text-dim); margin-bottom: 1.5rem;">
+                    Enter your GitHub Personal Access Token to manage blog posts.<br>
+                    <a href="https://github.com/settings/tokens/new?scopes=repo&description=Portfolio%20Blog%20Editor" target="_blank" style="color: var(--accent-2);">
+                        Create a token here →
+                    </a>
+                </p>
+                <input type="text" id="githubToken" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" />
+                <br>
+                <input type="text" id="githubRepo" placeholder="username/repository-name" value="mherreravsquez/blog-posts" />
+                <br>
+                <button onclick="authenticateGitHub()">Connect GitHub</button>
+            </div>
+
+            <!-- Authenticated Status -->
+            <div id="authStatus" class="auth-status" style="display: none;">
+                ✓ Connected to GitHub as <span id="githubUsername"></span>
+            </div>
+
+            <!-- Blog Editor -->
+            <div id="blogEditor" class="blog-editor">
+                <div class="editor-toolbar">
+                    <button class="primary" onclick="savePost()">💾 Save Post</button>
+                    <button onclick="newPost()">📝 New Post</button>
+                    <button onclick="refreshPosts()">🔄 Refresh</button>
+                </div>
+
+                <div class="editor-grid">
+                    <div class="editor-input">
+                        <label>Post Title</label>
+                        <input type="text" id="postTitle" placeholder="My Awesome Blog Post" />
+                        
+                        <label>Date</label>
+                        <input type="date" id="postDate" />
+                        
+                        <label>Language</label>
+                        <select id="postLanguage">
+                            <option value="en">English</option>
+                            <option value="es">Español</option>
+                        </select>
+                        
+                        <label>Slug (filename)</label>
+                        <input type="text" id="postSlug" placeholder="my-awesome-post" />
+                    </div>
+
+                    <div class="editor-input">
+                        <label>Tags (comma separated)</label>
+                        <input type="text" id="postTags" placeholder="unity, vr, tutorial" />
+                        
+                        <label>Excerpt</label>
+                        <textarea id="postExcerpt" rows="5" placeholder="Brief summary of your post..."></textarea>
+                    </div>
+
+                    <div class="editor-textarea">
+                        <label>Content (Markdown)</label>
+                        <textarea id="postContent" placeholder="# Your Blog Post
+
+Write your content here using Markdown...
+
+## Subheading
+
+**Bold text**, *italic text*, and [links](https://example.com)
+
+```javascript
+// Code blocks
+console.log('Hello!');
+```"></textarea>
+                    </div>
+                </div>
+
+                <!-- Existing Posts List -->
+                <div class="blog-posts-list">
+                    <h3>Your Blog Posts</h3>
+                    <div id="postsList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Designed & Built by Marcelo Herrera</p>
+            <p style="font-size: 0.9rem; color: var(--text-dim);">© 2026 All Rights Reserved</p>
+            <div class="social-links">
+                <a href="https://github.com/mherreravsquez" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/mherreravsquez" target="_blank">LinkedIn</a>
+                <a href="https://x.com/mherreravsquez" target="_blank">Twitter</a>
+                <a href="https://mherreravsquez.itch.io/" target="_blank">Itch.io</a>
+                <a href="https://bsky.app/profile/mherreravsquez.bsky.social" target="_blank">Bluesky</a>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Active nav link highlighting
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                      const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+    
+    <!-- Blog Admin and Language Toggle -->
+    <script src="portfolio-admin.js"></script>
+</body>
+</html>
