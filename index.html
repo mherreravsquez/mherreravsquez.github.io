@@ -1144,7 +1144,7 @@
                     <li><a href="#games" data-en="Games" data-es="Juegos">Games</a></li>
                     <li><a href="#blog" data-en="Blog" data-es="Blog">Blog</a></li>
                     <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
-                    <li><a href="#admin" data-en="Admin" data-es="Admin" style="color: var(--accent-2);">Admin</a></li>
+                    <li style="display: none;"><a href="#admin" data-en="Admin" data-es="Admin" style="color: var(--accent-2);">Admin</a></li>
                 </ul>
                 <button class="language-toggle" onclick="toggleLanguage()">ES</button>
             </div>
@@ -1385,9 +1385,9 @@
                     <h3>Let's Connect</h3>
                     <p>I'm always open to discussing new projects, technical challenges, or collaboration opportunities. Whether you're looking for a gameplay programmer or want to chat about VR development and procedural systems, feel free to reach out!</p>
                     <div class="contact-links">
-                        <a href="mailto:m.herreravsquez@outlook.com" class="contact-link">
+                        <a href="/cdn-cgi/l/email-protection#127f3c7a776060776073646163677768527d67667e7d7d793c717d7f" class="contact-link">
                             <span class="contact-link-icon">✉</span>
-                            <span>m.herreravsquez@outlook.com</span>
+                            <span><span class="__cf_email__" data-cfemail="8be6a5e3eef9f9eef9eafdf8fafeeef1cbe4feffe7e4e4e0a5e8e4e6">[email&#160;protected]</span></span>
                         </a>
                         <a href="https://www.linkedin.com/in/mherreravsquez" class="contact-link" target="_blank">
                             <span class="contact-link-icon">🔗</span>
@@ -1529,7 +1529,7 @@ console.log('Hello!');
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1577,14 +1577,4 @@ console.log('Hello!');
 
             document.querySelectorAll('nav a').forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
-    
-    <!-- Blog Admin and Language Toggle -->
-    <script src="portfolio-admin.js"></script>
-</body>
-</html>
+                if (link.getAt

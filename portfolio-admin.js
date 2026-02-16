@@ -720,11 +720,16 @@ function closeBlogPost() {
 
 // Simple markdown renderer
 function renderMarkdown(markdown) {
+    if (!markdown) return '';
+    
     let html = markdown;
     
     // Code blocks (do this FIRST to protect code from other transformations)
+    const codeBlocks = [];
     html = html.replace(/```(\w+)?\n([\s\S]*?)```/g, (match, lang, code) => {
-        return `___CODE_BLOCK___${btoa(escapeHtml(code.trim()))}___${lang || 'text'}___`;
+        const placeholder = `___CODE_BLOCK_${codeBlocks.length}___`;
+        codeBlocks.push({ lang: lang || 'text', code: escapeHtml(code.trim()) });
+        return placeholder;
     });
     
     // Images (do before links)
@@ -741,8 +746,8 @@ function renderMarkdown(markdown) {
     // Bold (before italic to handle ** properly)
     html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
     
-    // Italic
-    html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+    // Italic (but not ** from bold)
+    html = html.replace(/\*([^*]+?)\*/g, '<em>$1</em>');
     
     // Unordered lists
     const ulRegex = /((?:^[\-\*] .+$\n?)+)/gm;
@@ -762,26 +767,28 @@ function renderMarkdown(markdown) {
         return `<ol>\n${items}\n</ol>\n`;
     });
     
-    // Line breaks - replace single newlines with <br> (but not in lists/headers)
-    html = html.replace(/([^>\n])\n([^<\n])/g, '$1<br>\n$2');
-    
-    // Paragraphs - wrap text that isn't already in tags
+    // Paragraphs - wrap text blocks that aren't already tags
     html = html.split('\n\n').map(block => {
         block = block.trim();
         if (!block) return '';
-        // Don't wrap if already a tag
-        if (block.startsWith('<h') || block.startsWith('<ul') || 
-            block.startsWith('<ol') || block.startsWith('<img') || 
-            block.startsWith('<pre') || block.startsWith('___CODE')) {
+        
+        // Don't wrap if it's already a tag or placeholder
+        if (block.match(/^<[^>]+>/) || block.includes('___CODE_BLOCK')) {
             return block;
         }
+        
+        // Don't wrap single line tags
+        if (block.match(/^<h[123]>/) || block.match(/<\/h[123]>$/)) {
+            return block;
+        }
+        
         return `<p>${block}</p>`;
     }).join('\n\n');
     
     // Restore code blocks
-    html = html.replace(/___CODE_BLOCK___([^_]+)___([^_]+)___/g, (match, encodedCode, lang) => {
-        const code = atob(encodedCode);
-        return `<pre><code class="language-${lang}">${code}</code></pre>`;
+    codeBlocks.forEach((block, index) => {
+        const placeholder = `___CODE_BLOCK_${index}___`;
+        html = html.replace(placeholder, `<pre><code class="language-${block.lang}">${block.code}</code></pre>`);
     });
     
     return html;
