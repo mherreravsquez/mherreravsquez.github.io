@@ -429,10 +429,10 @@ section {
     position: relative;
 }
 
-.project-image::before {
-    content: 'PROJECT IMAGE/GIF';
-    font-size: 1.2rem;
-}
+/*.project-image::before {*/
+/*    content: 'PROJECT IMAGE/GIF';*/
+/*    font-size: 1.2rem;*/
+/*}*/
 
 .project-content h3 {
     font-family: 'Syne', sans-serif;
