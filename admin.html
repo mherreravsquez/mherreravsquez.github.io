@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Admin Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Login Screen -->
+        <div id="loginScreen" class="screen">
+            <div class="login-container">
+                <div class="logo">MARCHEL</div>
+                <h1>Admin Panel</h1>
+                <p class="subtitle">Manage your portfolio content</p>
+                
+                <div class="login-form">
+                    <div class="form-group">
+                        <label>GitHub Personal Access Token</label>
+                        <input type="password" id="githubToken" placeholder="ghp_xxxxxxxxxxxx">
+                        <small>
+                            <a href="https://github.com/settings/tokens/new?scopes=repo&description=Portfolio%20Admin" target="_blank">
+                                Create a token →
+                            </a>
+                        </small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Repository Name</label>
+                        <input type="text" id="githubRepo" placeholder="username/repository-name" value="mherreravsquez/blog-posts">
+                    </div>
+                    
+                    <button onclick="login()" class="btn-primary">Login</button>
+                    
+                    <div id="loginError" class="error-message"></div>
+                </div>
+                
+                <div class="help-text">
+                    <strong>Need help?</strong>
+                    <ul>
+                        <li>Token needs "repo" scope</li>
+                        <li>Repository format: username/repo-name</li>
+                        <li>Your credentials are stored locally</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div id="dashboard" class="screen" style="display: none;">
+            <!-- Header -->
+            <header class="admin-header">
+                <div class="header-left">
+                    <div class="logo">MARCHEL</div>
+                    <span class="header-title">Admin Panel</span>
+                </div>
+                <div class="header-right">
+                    <span class="user-info" id="userInfo"></span>
+                    <button onclick="logout()" class="btn-secondary">Logout</button>
+                    <a href="index.html" class="btn-secondary">View Site</a>
+                </div>
+            </header>
+
+            <!-- Navigation Tabs -->
+            <nav class="admin-nav">
+                <button class="nav-tab active" onclick="showSection('projects')">
+                    🎮 Game Projects
+                </button>
+                <button class="nav-tab" onclick="showSection('blog')">
+                    📝 Blog Posts
+                </button>
+                <button class="nav-tab" onclick="showSection('settings')">
+                    ⚙️ Settings
+                </button>
+            </nav>
+
+            <!-- Main Content Area -->
+            <main class="admin-content">
+                <!-- Projects Section -->
+                <section id="projectsSection" class="content-section">
+                    <div class="section-header">
+                        <h2>Game Projects</h2>
+                        <button onclick="openProjectEditor()" class="btn-primary">+ New Project</button>
+                    </div>
+                    
+                    <div id="projectsList" class="items-list">
+                        <div class="loading">Loading projects...</div>
+                    </div>
+                </section>
+
+                <!-- Blog Section -->
+                <section id="blogSection" class="content-section" style="display: none;">
+                    <div class="section-header">
+                        <h2>Blog Posts</h2>
+                        <button onclick="openBlogEditor()" class="btn-primary">+ New Post</button>
+                    </div>
+                    
+                    <div class="filter-bar">
+                        <select id="blogFilter" onchange="filterBlogPosts()">
+                            <option value="all">All Posts</option>
+                            <option value="general">General Blog</option>
+                            <option value="project">Project-Specific</option>
+                        </select>
+                        <input type="search" id="blogSearch" placeholder="Search posts..." oninput="searchBlogPosts()">
+                    </div>
+                    
+                    <div id="blogList" class="items-list">
+                        <div class="loading">Loading blog posts...</div>
+                    </div>
+                </section>
+
+                <!-- Settings Section -->
+                <section id="settingsSection" class="content-section" style="display: none;">
+                    <div class="section-header">
+                        <h2>Settings</h2>
+                    </div>
+                    
+                    <div class="settings-grid">
+                        <div class="setting-card">
+                            <h3>GitHub Connection</h3>
+                            <p>Repository: <strong id="currentRepo"></strong></p>
+                            <p>Connected as: <strong id="currentUser"></strong></p>
+                            <button onclick="reconnectGitHub()" class="btn-secondary">Reconnect</button>
+                        </div>
+                        
+                        <div class="setting-card">
+                            <h3>Cache</h3>
+                            <p>Clear cached data and reload</p>
+                            <button onclick="clearCache()" class="btn-secondary">Clear Cache</button>
+                        </div>
+                        
+                        <div class="setting-card">
+                            <h3>Data Export</h3>
+                            <p>Export all projects and blog posts</p>
+                            <button onclick="exportData()" class="btn-secondary">Export JSON</button>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- Project Editor Modal -->
+        <div id="projectEditorModal" class="modal">
+            <div class="modal-content large">
+                <div class="modal-header">
+                    <h2 id="projectEditorTitle">New Project</h2>
+                    <button onclick="closeProjectEditor()" class="btn-close">✕</button>
+                </div>
+                
+                <div class="modal-body">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Project Title *</label>
+                            <input type="text" id="projectTitle" placeholder="Car-Loop">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Project ID * (slug)</label>
+                            <input type="text" id="projectId" placeholder="car-loop">
+                            <small>Used in URLs, no spaces</small>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label>Project Type</label>
+                            <input type="text" id="projectType" placeholder="VR College Project · Demo">
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label>Description *</label>
+                            <textarea id="projectDescription" rows="4" placeholder="Brief description of the project..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Platform</label>
+                            <input type="text" id="projectPlatform" placeholder="Meta Quest 3 (PC Connected)">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Tools Used</label>
+                            <input type="text" id="projectTools" placeholder="Unity 6, Meta XR SDK, C#">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Itch.io Link</label>
+                            <input type="url" id="projectLink" placeholder="https://...">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Blog Tag</label>
+                            <input type="text" id="projectBlogTag" placeholder="car-loop">
+                            <small>Posts with this tag show in project modal</small>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label>Tags (comma-separated)</label>
+                            <input type="text" id="projectTags" placeholder="Unity 6, VR, Quest 3">
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label>Media URLs (one per line)</label>
+                            <textarea id="projectMedia" rows="5" placeholder="https://i.imgur.com/image1.jpg&#10;https://i.imgur.com/video1.mp4"></textarea>
+                            <small>Supported: .jpg, .png, .gif, .mp4</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button onclick="closeProjectEditor()" class="btn-secondary">Cancel</button>
+                    <button onclick="saveProject()" class="btn-primary">Save Project</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog Editor Modal -->
+        <div id="blogEditorModal" class="modal">
+            <div class="modal-content large">
+                <div class="modal-header">
+                    <h2 id="blogEditorTitle">New Blog Post</h2>
+                    <button onclick="closeBlogEditor()" class="btn-close">✕</button>
+                </div>
+                
+                <div class="modal-body">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Title *</label>
+                            <input type="text" id="postTitle" placeholder="My Blog Post">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Slug *</label>
+                            <input type="text" id="postSlug" placeholder="my-blog-post">
+                            <small>Auto-generated from title</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="date" id="postDate">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Language</label>
+                            <select id="postLanguage">
+                                <option value="en">English</option>
+                                <option value="es">Español</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label>Tags (comma-separated)</label>
+                            <input type="text" id="postTags" placeholder="unity, vr, tutorial, car-loop">
+                            <small>Include project tag (e.g., car-loop) to show in project modal</small>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label>Excerpt</label>
+                            <textarea id="postExcerpt" rows="2" placeholder="Brief summary..."></textarea>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label>Content (Markdown) *</label>
+                            <textarea id="postContent" rows="15" placeholder="# Your Blog Post&#10;&#10;Write your content here..."></textarea>
+                            <small>Supports Markdown: **bold**, *italic*, # headings, etc.</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button onclick="closeBlogEditor()" class="btn-secondary">Cancel</button>
+                    <button onclick="savePost()" class="btn-primary">Save Post</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
