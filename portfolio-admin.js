@@ -679,6 +679,10 @@ function openBlogPost(post) {
     // Create modal overlay
     const modal = document.createElement('div');
     modal.className = 'blog-post-modal';
+    
+    // Render markdown first
+    const renderedContent = renderMarkdown(post.content);
+    
     modal.innerHTML = `
         <div class="blog-post-content">
             <button class="close-post" onclick="closeBlogPost()">✕ Close</button>
@@ -693,12 +697,16 @@ function openBlogPost(post) {
                         })}</span>
                     </div>
                 </header>
-                <div class="blog-body">
-                    ${renderMarkdown(post.content)}
-                </div>
+                <div class="blog-body"></div>
             </article>
         </div>
     `;
+    
+    // Set markdown content separately to avoid HTML escaping
+    const blogBody = modal.querySelector('.blog-body');
+    if (blogBody) {
+        blogBody.innerHTML = renderedContent;
+    }
     
     document.body.appendChild(modal);
     document.body.style.overflow = 'hidden';
@@ -1202,3 +1210,26 @@ function createProjectBlogCard(post, container) {
 // Project modal handlers now use onclick in HTML links
 // No need for event listeners here anymore
 
+
+// ======================
+// HANDLE #ADMIN HASH IN URL
+// ======================
+
+// Check for #admin hash on page load
+if (window.location.hash === '#admin') {
+    // Wait for DOM to be ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => openAdmin(), 100);
+        });
+    } else {
+        setTimeout(() => openAdmin(), 100);
+    }
+}
+
+// Also listen for hash changes (if user navigates to #admin)
+window.addEventListener('hashchange', () => {
+    if (window.location.hash === '#admin') {
+        openAdmin();
+    }
+});
