@@ -178,7 +178,7 @@ function toggleLanguage() {
 
 function updateLanguage() {
     const lang = translations[currentLanguage];
-    
+
     // Update navigation
     document.querySelectorAll('nav a').forEach(link => {
         const key = link.getAttribute('href').replace('#', '');
@@ -186,59 +186,59 @@ function updateLanguage() {
             link.textContent = lang.nav[key];
         }
     });
-    
+
     // Update hero section
     const heroTitle = document.querySelector('.hero h1');
     if (heroTitle) {
         heroTitle.innerHTML = `${lang.hero.title}<br><span class="accent-text">${lang.hero.subtitle}</span>`;
     }
-    
+
     const heroTagline = document.querySelector('.hero .subtitle');
     if (heroTagline) {
         heroTagline.textContent = lang.hero.tagline;
     }
-    
+
     const heroDesc = document.querySelector('.hero p:not(.subtitle)');
     if (heroDesc) {
         heroDesc.textContent = lang.hero.description;
     }
-    
+
     const ctaButtons = document.querySelectorAll('.cta-buttons .btn');
     if (ctaButtons[0]) ctaButtons[0].textContent = lang.hero.cta1;
     if (ctaButtons[1]) ctaButtons[1].textContent = lang.hero.cta2;
-    
+
     // Update About section
     updateSection('about', lang.about);
     const aboutH3 = document.querySelector('#about h3');
     if (aboutH3) aboutH3.textContent = lang.about.greeting;
-    
+
     const aboutParagraphs = document.querySelectorAll('#about .about-content p');
     if (aboutParagraphs[0]) aboutParagraphs[0].textContent = lang.about.p1;
     if (aboutParagraphs[1]) aboutParagraphs[1].textContent = lang.about.p2;
     if (aboutParagraphs[2]) aboutParagraphs[2].textContent = lang.about.p3;
-    
+
     // Update Skills section
     updateSection('skills', lang.skills);
     const skillCards = document.querySelectorAll('#skills .skill-card h4');
     if (skillCards[0]) skillCards[0].textContent = lang.skills.engines;
     if (skillCards[1]) skillCards[1].textContent = lang.skills.languages;
     if (skillCards[2]) skillCards[2].textContent = lang.skills.specializations;
-    
+
     // Update "Specialist" text
     const specialistText = document.querySelector('#skills .skill-card li');
     if (specialistText && (specialistText.textContent.includes('Specialist') || specialistText.textContent.includes('Especialista'))) {
         specialistText.textContent = `Unity (${lang.skills.specialist})`;
     }
-    
+
     // Update Games/Projects section
     updateSection('games', lang.games);
-    
+
     const projectCards = document.querySelectorAll('#games .project-card');
     projectCards.forEach((card, index) => {
         const projectType = card.querySelector('.project-type');
         const projectDesc = card.querySelector('.project-description');
         const projectLink = card.querySelector('.project-link');
-        
+
         if (index === 0) { // Car-Loop
             if (projectType) projectType.textContent = lang.games.carloop.type;
             if (projectDesc) projectDesc.textContent = lang.games.carloop.desc;
@@ -257,34 +257,34 @@ function updateLanguage() {
             if (projectLink) projectLink.textContent = lang.games.tragones.play + ' →';
         }
     });
-    
+
     // Update other sections
     updateSection('blog', lang.blog);
     updateSection('contact', lang.contact);
-    
+
     // Update contact section content
     const contactH3 = document.querySelector('#contact h3');
     if (contactH3) contactH3.textContent = lang.contact.heading;
-    
+
     const contactIntro = document.querySelector('#contact .contact-info p');
     if (contactIntro) contactIntro.textContent = lang.contact.intro;
-    
+
     const resumeTitle = document.querySelector('.resume-download h4');
     if (resumeTitle) resumeTitle.textContent = lang.contact.resumeTitle;
-    
+
     const resumeDesc = document.querySelector('.resume-download p');
     if (resumeDesc) resumeDesc.textContent = lang.contact.resumeDesc;
-    
+
     const resumeBtn = document.querySelector('.resume-download .btn');
     if (resumeBtn) resumeBtn.textContent = lang.contact.resumeBtn;
-    
+
     // Update footer
     const footerCredit = document.querySelector('footer p:first-child');
     if (footerCredit) footerCredit.textContent = lang.footer.credit;
-    
+
     const footerRights = document.querySelector('footer p:nth-child(2)');
     if (footerRights) footerRights.textContent = lang.footer.rights;
-    
+
     // Filter blog posts by language
     filterBlogByLanguage();
 }
@@ -292,11 +292,11 @@ function updateLanguage() {
 function updateSection(sectionId, content) {
     const section = document.getElementById(sectionId);
     if (!section) return;
-    
+
     const number = section.querySelector('.section-number');
     const title = section.querySelector('.section-title');
     const description = section.querySelector('.section-description');
-    
+
     if (number) number.textContent = content.number;
     if (title) title.textContent = content.title;
     if (description) description.textContent = content.description;
@@ -346,12 +346,12 @@ function closeAdmin() {
 async function authenticateGitHub() {
     githubToken = document.getElementById('githubToken').value.trim();
     githubRepo = document.getElementById('githubRepo').value.trim();
-    
+
     if (!githubToken || !githubRepo) {
         alert('Please enter both GitHub token and repository name');
         return;
     }
-    
+
     try {
         // Test the token by fetching user info
         const response = await fetch('https://api.github.com/user', {
@@ -360,24 +360,24 @@ async function authenticateGitHub() {
                 'Accept': 'application/vnd.github.v3+json'
             }
         });
-        
+
         if (!response.ok) {
             throw new Error('Invalid GitHub token');
         }
-        
+
         const userData = await response.json();
-        
+
         // Save credentials
         localStorage.setItem('github_token', githubToken);
         localStorage.setItem('github_repo', githubRepo);
-        
+
         // Show success
         document.getElementById('githubUsername').textContent = userData.login;
         showEditor();
-        
+
         // Load existing posts
         loadPosts();
-        
+
     } catch (error) {
         alert('Failed to authenticate with GitHub. Please check your token and try again.\n\nError: ' + error.message);
     }
@@ -408,7 +408,7 @@ async function loadPosts() {
                 'Accept': 'application/vnd.github.v3+json'
             }
         });
-        
+
         if (!response.ok) {
             if (response.status === 404) {
                 console.log('Posts directory does not exist yet. It will be created when you save your first post.');
@@ -417,17 +417,17 @@ async function loadPosts() {
             }
             throw new Error('Failed to load posts');
         }
-        
+
         const files = await response.json();
         const markdownFiles = files.filter(file => file.name.endsWith('.md'));
-        
+
         if (markdownFiles.length === 0) {
             document.getElementById('postsList').innerHTML = '<p style="color: var(--text-dim); padding: 2rem; text-align: center;">No posts yet. Create your first post!</p>';
             return;
         }
-        
+
         displayPosts(markdownFiles);
-        
+
     } catch (error) {
         console.error('Error loading posts:', error);
         document.getElementById('postsList').innerHTML = '<p style="color: var(--accent); padding: 2rem; text-align: center;">Error loading posts: ' + error.message + '</p>';
@@ -437,7 +437,7 @@ async function loadPosts() {
 function displayPosts(files) {
     const postsList = document.getElementById('postsList');
     postsList.innerHTML = '';
-    
+
     files.forEach(file => {
         const postItem = document.createElement('div');
         postItem.className = 'post-item';
@@ -464,26 +464,26 @@ async function editPost(filename) {
                 'Accept': 'application/vnd.github.v3+json'
             }
         });
-        
+
         if (!response.ok) {
             throw new Error('Failed to load post content');
         }
-        
+
         const fileData = await response.json();
         const content = atob(fileData.content);
-        
+
         // Parse frontmatter and content
         const parts = content.split('---\n');
         const frontmatter = parts[1];
         const markdown = parts.slice(2).join('---\n').trim();
-        
+
         // Parse frontmatter fields
         const titleMatch = frontmatter.match(/title: "(.*?)"/);
         const dateMatch = frontmatter.match(/date: "(.*?)"/);
         const langMatch = frontmatter.match(/language: "(.*?)"/);
         const tagsMatch = frontmatter.match(/tags: \[(.*?)\]/);
         const excerptMatch = frontmatter.match(/excerpt: "(.*?)"/);
-        
+
         // Fill in the form
         document.getElementById('postTitle').value = titleMatch ? titleMatch[1] : '';
         document.getElementById('postDate').value = dateMatch ? dateMatch[1] : '';
@@ -492,12 +492,12 @@ async function editPost(filename) {
         document.getElementById('postTags').value = tagsMatch ? tagsMatch[1].replace(/"/g, '').split(',').map(t => t.trim()).join(', ') : '';
         document.getElementById('postExcerpt').value = excerptMatch ? excerptMatch[1] : '';
         document.getElementById('postContent').value = markdown;
-        
+
         currentEditingFile = filename;
-        
+
         // Scroll to editor
         document.getElementById('blogEditor').scrollIntoView({ behavior: 'smooth' });
-        
+
     } catch (error) {
         alert('Error loading post: ' + error.message);
     }
@@ -524,12 +524,12 @@ async function savePost() {
     const tags = document.getElementById('postTags').value.trim();
     const excerpt = document.getElementById('postExcerpt').value.trim();
     const content = document.getElementById('postContent').value.trim();
-    
+
     if (!title || !date || !content) {
         alert('Please fill in at least title, date, and content');
         return;
     }
-    
+
     // Auto-generate slug if not provided
     if (!slug) {
         slug = title.toLowerCase()
@@ -537,12 +537,12 @@ async function savePost() {
             .replace(/^-|-$/g, '');
         document.getElementById('postSlug').value = slug;
     }
-    
+
     const filename = `${slug}.md`;
-    
+
     // Format tags for frontmatter
     const tagsArray = tags ? tags.split(',').map(t => `"${t.trim()}"`).join(', ') : '';
-    
+
     // Create frontmatter
     const frontmatter = `---
 title: "${title}"
@@ -553,10 +553,10 @@ excerpt: "${excerpt}"
 ---
 
 `;
-    
+
     const fullContent = frontmatter + content;
     const encodedContent = btoa(unescape(encodeURIComponent(fullContent)));
-    
+
     try {
         // Check if file exists to get SHA
         let sha = null;
@@ -567,13 +567,13 @@ excerpt: "${excerpt}"
                     'Accept': 'application/vnd.github.v3+json'
                 }
             });
-            
+
             if (getResponse.ok) {
                 const fileData = await getResponse.json();
                 sha = fileData.sha;
             }
         }
-        
+
         // Create or update file
         const response = await fetch(`https://api.github.com/repos/${githubRepo}/contents/posts/${filename}`, {
             method: 'PUT',
@@ -588,16 +588,16 @@ excerpt: "${excerpt}"
                 sha: sha
             })
         });
-        
+
         if (!response.ok) {
             const errorData = await response.json();
             throw new Error(errorData.message || 'Failed to save post');
         }
-        
+
         alert('✓ Post saved successfully to GitHub!');
         currentEditingFile = filename;
         loadPosts();
-        
+
     } catch (error) {
         alert('Error saving post: ' + error.message);
     }
@@ -608,7 +608,7 @@ async function deletePost(filename, sha) {
     if (!confirm(`Are you sure you want to delete "${filename}"?`)) {
         return;
     }
-    
+
     try {
         const response = await fetch(`https://api.github.com/repos/${githubRepo}/contents/posts/${filename}`, {
             method: 'DELETE',
@@ -622,14 +622,14 @@ async function deletePost(filename, sha) {
                 sha: sha
             })
         });
-        
+
         if (!response.ok) {
             throw new Error('Failed to delete post');
         }
-        
+
         alert('✓ Post deleted successfully');
         loadPosts();
-        
+
     } catch (error) {
         alert('Error deleting post: ' + error.message);
     }
@@ -646,18 +646,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (savedLang) {
         currentLanguage = savedLang;
     }
-    
+
     // Update language toggle button text
     const toggleBtn = document.querySelector('.language-toggle');
     if (toggleBtn) {
         toggleBtn.textContent = currentLanguage === 'en' ? 'ES' : 'EN';
     }
-    
+
     // Apply saved language preference (if not English)
     if (currentLanguage !== 'en') {
         updateLanguage();
     }
-    
+
     // Setup admin link
     const adminLink = document.querySelector('a[href="#admin"]');
     if (adminLink) {
@@ -666,23 +666,28 @@ document.addEventListener('DOMContentLoaded', () => {
             openAdmin();
         });
     }
-    
+
     // Load blog posts on page load
     loadBlogPosts();
+
+    // Load remote projects data (merges with defaults)
+    loadProjectsData();
 });
 
+// ======================
 // ======================
 // BLOG POST VIEWER
 // ======================
 
 function openBlogPost(post) {
-    // Create modal overlay
     const modal = document.createElement('div');
     modal.className = 'blog-post-modal';
-    
-    // Render markdown first
-    const renderedContent = renderMarkdown(post.content);
-    
+
+    const formattedDate = new Date(post.date).toLocaleDateString(
+        post.language === 'es' ? 'es-ES' : 'en-US',
+        { year: 'numeric', month: 'long', day: 'numeric' }
+    );
+
     modal.innerHTML = `
         <div class="blog-post-content">
             <button class="close-post" onclick="closeBlogPost()">✕ Close</button>
@@ -690,28 +695,23 @@ function openBlogPost(post) {
                 <header class="blog-header">
                     <h1>${post.title}</h1>
                     <div class="blog-meta">
-                        <span class="blog-date">${new Date(post.date).toLocaleDateString(post.language === 'es' ? 'es-ES' : 'en-US', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric'
-                        })}</span>
+                        <span class="blog-date">${formattedDate}</span>
                     </div>
                 </header>
                 <div class="blog-body"></div>
             </article>
         </div>
     `;
-    
-    // Set markdown content separately to avoid HTML escaping
+
+    // Display content as plain text (preserves line breaks)
     const blogBody = modal.querySelector('.blog-body');
-    if (blogBody) {
-        blogBody.innerHTML = renderedContent;
-    }
-    
+    const pre = document.createElement('pre');
+    pre.style.cssText = 'white-space: pre-wrap; word-wrap: break-word; font-family: inherit; font-size: 1rem; line-height: 1.8; color: var(--text);';
+    pre.textContent = post.content;
+    blogBody.appendChild(pre);
+
     document.body.appendChild(modal);
     document.body.style.overflow = 'hidden';
-    
-    // Animate in
     setTimeout(() => modal.classList.add('active'), 10);
 }
 
@@ -726,86 +726,6 @@ function closeBlogPost() {
     }
 }
 
-// Robust markdown renderer
-function renderMarkdown(markdown) {
-    if (!markdown) return '';
-    
-    let html = String(markdown); // Ensure it's a string
-    
-    // Step 1: Protect code blocks
-    const codeBlocks = [];
-    html = html.replace(/```(\w+)?\n?([\s\S]*?)```/g, (match, lang, code) => {
-        const id = `___CODE_${codeBlocks.length}___`;
-        codeBlocks.push({ lang: lang || 'text', code: escapeHtml(code.trim()) });
-        return id;
-    });
-    
-    // Step 2: Images (before links to avoid conflict)
-    html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" />');
-    
-    // Step 3: Links
-    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
-    
-    // Step 4: Headers (process in order: h3, h2, h1 to avoid conflicts)
-    html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
-    html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
-    html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
-    
-    // Step 5: Bold (before italic)
-    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-    
-    // Step 6: Italic (avoid matching asterisks in bold)
-    html = html.replace(/(?<!\*)\*(?!\*)([^*]+?)\*(?!\*)/g, '<em>$1</em>');
-    
-    // Step 7: Unordered lists
-    html = html.replace(/((?:^[\-\*] .+$\n?)+)/gm, (match) => {
-        const items = match.trim().split('\n')
-            .map(line => line.replace(/^[\-\*] (.+)$/, '<li>$1</li>'))
-            .join('\n');
-        return `<ul>\n${items}\n</ul>\n`;
-    });
-    
-    // Step 8: Ordered lists  
-    html = html.replace(/((?:^\d+\. .+$\n?)+)/gm, (match) => {
-        const items = match.trim().split('\n')
-            .map(line => line.replace(/^\d+\. (.+)$/, '<li>$1</li>'))
-            .join('\n');
-        return `<ol>\n${items}\n</ol>\n`;
-    });
-    
-    // Step 9: Paragraphs (only wrap text that isn't already tagged)
-    html = html.split('\n\n').map(block => {
-        block = block.trim();
-        if (!block) return '';
-        
-        // Skip if already has HTML tags or code placeholder
-        if (block.startsWith('<') || block.includes('___CODE_')) {
-            return block;
-        }
-        
-        return `<p>${block}</p>`;
-    }).join('\n\n');
-    
-    // Step 10: Restore code blocks
-    codeBlocks.forEach((block, i) => {
-        const id = `___CODE_${i}___`;
-        html = html.replace(id, `<pre><code class="language-${block.lang}">${block.code}</code></pre>`);
-    });
-    
-    return html;
-}
-
-function escapeHtml(text) {
-    const map = {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#039;'
-    };
-    return text.replace(/[&<>"']/g, m => map[m]);
-}
-
 // ======================
 // LOAD BLOG POSTS FOR PUBLIC VIEW
 // ======================
@@ -813,7 +733,7 @@ function escapeHtml(text) {
 async function loadBlogPosts() {
     const blogGrid = document.querySelector('.blog-grid');
     if (!blogGrid) return;
-    
+
     try {
         // Use public GitHub API (no auth needed for public repos)
         const response = await fetch('https://api.github.com/repos/mherreravsquez/blog-posts/contents/posts', {
@@ -821,23 +741,23 @@ async function loadBlogPosts() {
                 'Accept': 'application/vnd.github.v3+json'
             }
         });
-        
+
         if (!response.ok) {
             console.log('Blog posts directory not found. Create posts in the admin panel.');
             return;
         }
-        
+
         const files = await response.json();
         const markdownFiles = files.filter(file => file.name.endsWith('.md'));
-        
+
         if (markdownFiles.length === 0) {
             blogGrid.innerHTML = '<p style="color: var(--text-dim); padding: 2rem; text-align: center; grid-column: 1/-1;">No blog posts yet. Check back soon!</p>';
             return;
         }
-        
+
         // Clear existing placeholder posts
         blogGrid.innerHTML = '';
-        
+
         // Fetch and parse each post
         for (const file of markdownFiles) {
             const postData = await fetchPostContent(file.download_url);
@@ -845,10 +765,10 @@ async function loadBlogPosts() {
                 createBlogCard(postData, blogGrid);
             }
         }
-        
+
         // Apply language filter
         filterBlogByLanguage();
-        
+
     } catch (error) {
         console.error('Error loading blog posts:', error);
     }
@@ -858,27 +778,27 @@ async function fetchPostContent(url) {
     try {
         const response = await fetch(url);
         const content = await response.text();
-        
+
         // Parse frontmatter
         const parts = content.split('---\n');
         if (parts.length < 3) return null;
-        
+
         const frontmatter = parts[1];
         const markdown = parts.slice(2).join('---\n').trim();
-        
+
         // Extract metadata
         const titleMatch = frontmatter.match(/title: "(.*?)"/);
         const dateMatch = frontmatter.match(/date: "(.*?)"/);
         const langMatch = frontmatter.match(/language: "(.*?)"/);
         const excerptMatch = frontmatter.match(/excerpt: "(.*?)"/);
         const tagsMatch = frontmatter.match(/tags: \[(.*?)\]/);
-        
+
         // Parse tags array
         let tags = [];
         if (tagsMatch) {
             tags = tagsMatch[1].split(',').map(tag => tag.trim().replace(/"/g, ''));
         }
-        
+
         return {
             title: titleMatch ? titleMatch[1] : 'Untitled',
             date: dateMatch ? dateMatch[1] : '',
@@ -887,7 +807,7 @@ async function fetchPostContent(url) {
             tags: tags,
             content: markdown
         };
-        
+
     } catch (error) {
         console.error('Error fetching post content:', error);
         return null;
@@ -899,13 +819,13 @@ function createBlogCard(post, container) {
     card.className = 'blog-card fade-in';
     card.setAttribute('data-lang', post.language);
     card.style.cursor = 'pointer';
-    
+
     const formattedDate = new Date(post.date).toLocaleDateString(post.language === 'es' ? 'es-ES' : 'en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
     });
-    
+
     card.innerHTML = `
         <div class="blog-image"></div>
         <div class="blog-content">
@@ -915,12 +835,12 @@ function createBlogCard(post, container) {
             <a href="#" class="read-more" onclick="event.preventDefault();">Read More →</a>
         </div>
     `;
-    
+
     // Add click handler to open full post
     card.addEventListener('click', () => {
         openBlogPost(post);
     });
-    
+
     container.appendChild(card);
 }
 
@@ -928,8 +848,8 @@ function createBlogCard(post, container) {
 // PROJECT MODAL SYSTEM
 // ======================
 
-// Project data with multimedia and blog posts
-const projectsData = {
+// Project data - loaded dynamically from GitHub, falls back to hardcoded defaults
+let projectsData = {
     'car-loop': {
         title: 'Car-Loop',
         type: 'VR College Project · Demo',
@@ -942,7 +862,7 @@ const projectsData = {
             { type: 'image', url: 'https://i.imgur.com/diJAbfY.jpg' },
             { type: 'image', url: 'https://i.imgur.com/JSl88oB.jpg' }
         ],
-        blogTag: 'car-loop' // Posts with this tag will show in project modal
+        blogTag: 'car-loop'
     },
     'break-the-bubble': {
         title: 'Break the Bubble',
@@ -986,6 +906,109 @@ const projectsData = {
     }
 };
 
+// Dynamically load projects from GitHub and merge/override the defaults
+async function loadProjectsData() {
+    try {
+        const response = await fetch('https://api.github.com/repos/mherreravsquez/blog-posts/contents/projects.json', {
+            headers: { 'Accept': 'application/vnd.github.v3+json' }
+        });
+
+        if (!response.ok) return; // No file yet, keep defaults
+
+        const fileData = await response.json();
+        const content = atob(fileData.content.replace(/\n/g, ''));
+        const projects = JSON.parse(content);
+
+        if (!Array.isArray(projects) || projects.length === 0) return;
+
+        // Rebuild projectsData from GitHub, preserving structure expected by openProjectModal
+        const remoteData = {};
+        projects.forEach(project => {
+            const id = project.id;
+            if (!id) return;
+
+            // Normalise media: admin saves as array of URL strings, modal expects {type, url} objects
+            let media = project.media || [];
+            if (media.length > 0 && typeof media[0] === 'string') {
+                media = media.map(url => ({
+                    type: url.match(/\.(mp4|webm|ogg)$/i) ? 'video' : 'image',
+                    url
+                }));
+            }
+
+            // Normalise tags
+            let tags = project.tags || [];
+            if (typeof tags === 'string') {
+                tags = tags.split(',').map(t => t.trim()).filter(Boolean);
+            }
+
+            remoteData[id] = {
+                title:       project.title       || id,
+                type:        project.type        || '',
+                tags,
+                description: project.description || '',
+                platform:    project.platform    || '',
+                tools:       project.tools       || '',
+                link:        project.link        || '#',
+                media,
+                blogTag:     project.blogTag     || id
+            };
+        });
+
+        // Merge: remote data takes priority, defaults fill any gaps
+        projectsData = Object.assign({}, projectsData, remoteData);
+
+        // Re-render the game cards grid on the portfolio page
+        renderProjectCards();
+
+    } catch (error) {
+        console.warn('Could not load remote projects.json, using defaults:', error);
+    }
+}
+
+// Render project cards into the #gamesGrid from the current projectsData
+function renderProjectCards() {
+    const grid = document.getElementById('gamesGrid');
+    if (!grid) return;
+
+    const entries = Object.entries(projectsData);
+    if (entries.length === 0) return;
+
+    grid.innerHTML = entries.map(([id, project]) => {
+        const thumb = project.media.find(m => m.type === 'image');
+        const bgStyle = thumb
+            ? `background-image: url('${thumb.url}'); background-size: cover; background-position: center;`
+            : '';
+
+        const tagsHTML = project.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+
+        const itchLink = project.link && project.link !== '#'
+            ? `<a href="${project.link}" class="project-link" target="_blank">Play on Itch.io →</a>`
+            : '';
+
+        return `
+            <div class="project-card fade-in" data-project-id="${id}" style="cursor: pointer;">
+                <div class="project-image" style="${bgStyle}"></div>
+                <div class="project-content">
+                    <div class="project-type">${project.type}</div>
+                    <h3>${project.title}</h3>
+                    <p class="project-description">${project.description}</p>
+                    <div class="project-tags">${tagsHTML}</div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" style="color: var(--accent-2);"
+                           onclick="event.preventDefault(); openProjectModal('${id}');">View Details →</a>
+                        ${itchLink}
+                    </div>
+                </div>
+            </div>`;
+    }).join('');
+
+    // Re-apply intersection observer for fade-in animations on new cards
+    document.querySelectorAll('#gamesGrid .fade-in').forEach(el => {
+        if (typeof observer !== 'undefined') observer.observe(el);
+    });
+}
+
 let currentCarouselIndex = 0;
 let currentProjectSlides = [];
 
@@ -993,15 +1016,15 @@ let currentProjectSlides = [];
 function openProjectModal(projectId) {
     const project = projectsData[projectId];
     if (!project) return;
-    
+
     currentProjectSlides = project.media;
     currentCarouselIndex = 0;
-    
+
     // Create modal
     const modal = document.createElement('div');
     modal.className = 'project-modal';
     modal.id = 'projectModal';
-    
+
     // Build carousel HTML
     let carouselHTML = '';
     if (project.media.length > 0) {
@@ -1010,10 +1033,10 @@ function openProjectModal(projectId) {
                 <div class="carousel-container">
                     ${project.media.map((item, index) => `
                         <div class="carousel-slide ${index === 0 ? 'active' : ''}" data-index="${index}">
-                            ${item.type === 'image' 
-                                ? `<img src="${item.url}" alt="${project.title} screenshot ${index + 1}">`
-                                : `<video src="${item.url}" controls loop><source src="${item.url}" type="video/mp4"></video>`
-                            }
+                            ${item.type === 'image'
+            ? `<img src="${item.url}" alt="${project.title} screenshot ${index + 1}">`
+            : `<video src="${item.url}" controls loop><source src="${item.url}" type="video/mp4"></video>`
+        }
                         </div>
                     `).join('')}
                 </div>
@@ -1029,7 +1052,7 @@ function openProjectModal(projectId) {
             </div>
         `;
     }
-    
+
     modal.innerHTML = `
         <div class="project-modal-content">
             <button class="close-project" onclick="closeProjectModal()">✕ Close</button>
@@ -1074,13 +1097,13 @@ function openProjectModal(projectId) {
             </div>
         </div>
     `;
-    
+
     document.body.appendChild(modal);
     document.body.style.overflow = 'hidden';
-    
+
     // Animate in
     setTimeout(() => modal.classList.add('active'), 10);
-    
+
     // Load project-specific blog posts
     loadProjectBlogPosts(project.blogTag);
 }
@@ -1101,20 +1124,20 @@ function closeProjectModal() {
 function changeSlide(direction) {
     const slides = document.querySelectorAll('.carousel-slide');
     const dots = document.querySelectorAll('.carousel-dot');
-    
+
     if (slides.length === 0) return;
-    
+
     slides[currentCarouselIndex].classList.remove('active');
     dots[currentCarouselIndex].classList.remove('active');
-    
+
     currentCarouselIndex += direction;
-    
+
     if (currentCarouselIndex >= slides.length) {
         currentCarouselIndex = 0;
     } else if (currentCarouselIndex < 0) {
         currentCarouselIndex = slides.length - 1;
     }
-    
+
     slides[currentCarouselIndex].classList.add('active');
     dots[currentCarouselIndex].classList.add('active');
 }
@@ -1122,12 +1145,12 @@ function changeSlide(direction) {
 function goToSlide(index) {
     const slides = document.querySelectorAll('.carousel-slide');
     const dots = document.querySelectorAll('.carousel-dot');
-    
+
     slides[currentCarouselIndex].classList.remove('active');
     dots[currentCarouselIndex].classList.remove('active');
-    
+
     currentCarouselIndex = index;
-    
+
     slides[currentCarouselIndex].classList.add('active');
     dots[currentCarouselIndex].classList.add('active');
 }
@@ -1136,22 +1159,22 @@ function goToSlide(index) {
 async function loadProjectBlogPosts(projectTag) {
     const container = document.getElementById('projectBlogPosts');
     if (!container) return;
-    
+
     try {
         const response = await fetch('https://api.github.com/repos/mherreravsquez/blog-posts/contents/posts', {
             headers: {
                 'Accept': 'application/vnd.github.v3+json'
             }
         });
-        
+
         if (!response.ok) {
             container.innerHTML = '<p style="color: var(--text-dim); text-align: center;">No blog posts yet for this project.</p>';
             return;
         }
-        
+
         const files = await response.json();
         const markdownFiles = files.filter(file => file.name.endsWith('.md'));
-        
+
         // Fetch and filter posts by tag
         const projectPosts = [];
         for (const file of markdownFiles) {
@@ -1160,18 +1183,18 @@ async function loadProjectBlogPosts(projectTag) {
                 projectPosts.push(postData);
             }
         }
-        
+
         if (projectPosts.length === 0) {
             container.innerHTML = '<p style="color: var(--text-dim); text-align: center; grid-column: 1/-1;">No development blog posts yet for this project. Check back soon!</p>';
             return;
         }
-        
+
         // Display filtered posts
         container.innerHTML = '';
         projectPosts.forEach(post => {
             createProjectBlogCard(post, container);
         });
-        
+
     } catch (error) {
         console.error('Error loading project blog posts:', error);
         container.innerHTML = '<p style="color: var(--accent); text-align: center;">Error loading blog posts.</p>';
@@ -1183,13 +1206,13 @@ function createProjectBlogCard(post, container) {
     const card = document.createElement('div');
     card.className = 'blog-card fade-in';
     card.style.cursor = 'pointer';
-    
+
     const formattedDate = new Date(post.date).toLocaleDateString(post.language === 'es' ? 'es-ES' : 'en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
     });
-    
+
     card.innerHTML = `
         <div class="blog-image"></div>
         <div class="blog-content">
@@ -1199,11 +1222,11 @@ function createProjectBlogCard(post, container) {
             <a href="#" class="read-more" onclick="event.preventDefault();">Read More →</a>
         </div>
     `;
-    
+
     card.addEventListener('click', () => {
         openBlogPost(post);
     });
-    
+
     container.appendChild(card);
 }
 

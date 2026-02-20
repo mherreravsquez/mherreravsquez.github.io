@@ -82,17 +82,13 @@ function reconnectGitHub() {
     logout();
 }
 
-// Pre-fill saved credentials but do NOT auto-login (security preference)
+// Pre-fill saved credentials but require manual login (security)
 window.addEventListener('DOMContentLoaded', () => {
     const savedToken = localStorage.getItem('github_token');
     const savedRepo = localStorage.getItem('github_repo');
 
-    if (savedToken) {
-        document.getElementById('githubToken').value = savedToken;
-    }
-    if (savedRepo) {
-        document.getElementById('githubRepo').value = savedRepo;
-    }
+    if (savedToken) document.getElementById('githubToken').value = savedToken;
+    if (savedRepo)  document.getElementById('githubRepo').value  = savedRepo;
 });
 
 // ======================
@@ -222,9 +218,6 @@ function openProjectEditor(project = null) {
         document.getElementById('projectBlogTag').value = '';
         document.getElementById('projectTags').value = '';
         document.getElementById('projectMedia').value = '';
-
-        // Set default date
-        document.getElementById('postDate').valueAsDate = new Date();
     }
 
     modal.classList.add('active');
@@ -453,7 +446,7 @@ function displayBlogPosts(posts = null) {
                 <button class="btn-icon" onclick='editPost(${JSON.stringify(post).replace(/'/g, "&apos;")})' title="Edit">
                     ✏️
                 </button>
-                <button class="btn-icon btn-delete" onclick="deletePost('${post.filename}', '${post.sha}')" title="Delete">
+                <button class="btn-icon btn-delete" onclick="deletePost('${post.filename}')" title="Delete">
                     🗑️
                 </button>
             </div>
@@ -602,10 +595,25 @@ ${content}`;
     }
 }
 
-async function deletePost(filename, sha) {
+async function deletePost(filename) {
     if (!confirm('Are you sure you want to delete this blog post?')) return;
 
     try {
+        // Always fetch the latest SHA directly from GitHub to avoid stale-SHA errors
+        const getResponse = await fetch(`https://api.github.com/repos/${githubRepo}/contents/posts/${filename}`, {
+            headers: {
+                'Authorization': `token ${githubToken}`,
+                'Accept': 'application/vnd.github.v3+json'
+            }
+        });
+
+        if (!getResponse.ok) {
+            throw new Error('Could not find the post on GitHub. It may have already been deleted.');
+        }
+
+        const fileData = await getResponse.json();
+        const currentSha = fileData.sha;
+
         const response = await fetch(`https://api.github.com/repos/${githubRepo}/contents/posts/${filename}`, {
             method: 'DELETE',
             headers: {
@@ -615,12 +623,13 @@ async function deletePost(filename, sha) {
             },
             body: JSON.stringify({
                 message: `Delete blog post: ${filename}`,
-                sha: sha
+                sha: currentSha
             })
         });
 
         if (!response.ok) {
-            throw new Error('Failed to delete post');
+            const err = await response.json();
+            throw new Error(err.message || 'Failed to delete post');
         }
 
         loadBlogPosts();
