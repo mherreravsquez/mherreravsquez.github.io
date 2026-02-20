@@ -8,369 +8,369 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <div class="logo">MARCHEL</div>
-            <div class="nav-right">
+<!-- Navigation -->
+<nav>
+    <div class="container">
+        <div class="logo">MARCHEL</div>
+        <div class="nav-right">
+            <ul>
+                <li><a href="#home" data-en="Home" data-es="Inicio">Home</a></li>
+                <li><a href="#about" data-en="About" data-es="Sobre mí">About</a></li>
+                <li><a href="#skills" data-en="Skills" data-es="Habilidades">Skills</a></li>
+                <li><a href="#games" data-en="Games" data-es="Juegos">Games</a></li>
+                <li><a href="#blog" data-en="Blog" data-es="Blog">Blog</a></li>
+                <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+                <li style="display: none;"><a href="#admin" data-en="Admin" data-es="Admin" style="color: var(--accent-2);">Admin</a></li>
+            </ul>
+            <button class="language-toggle" onclick="toggleLanguage()">ES</button>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>
+                Game Developer<br>
+                <span class="accent-text">& Creative Coder</span>
+            </h1>
+            <p class="subtitle">Making experimental and fun games with code</p>
+            <p>I craft engaging games and interactive experiences that blend compelling gameplay with stunning visuals. From concept to completion, I bring ideas to life through code and creativity.</p>
+            <div class="cta-buttons">
+                <a href="#games" class="btn">View My Games</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+    <div class="container">
+        <div class="section-header fade-in">
+            <div class="section-number">01.</div>
+            <h2 class="section-title">About Me</h2>
+            <p class="section-description">Game developer passionate about creating memorable interactive experiences</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-image fade-in"></div>
+            <div class="about-content fade-in">
+                <h3>Hello! I'm Marcelo Herrera</h3>
+                <p>I'm a Gameplay Programmer specializing in Unity development, currently in my third year studying Digital Game Design at Universidad Andrés Bello. I focus on writing clean, efficient code that brings experimental game concepts to life.</p>
+                <p>My technical expertise centers on Virtual Reality programming, procedural generation systems, and building custom Unity editor tools. I'm passionate about solving complex technical challenges—from implementing advanced animation systems to architecting scalable gameplay frameworks.</p>
+                <p>I thrive on pushing technical boundaries, whether that's optimizing VR performance, creating procedural generation algorithms, or developing tools that streamline game development workflows. Code is my primary creative medium.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills">
+    <div class="container">
+        <div class="section-header fade-in">
+            <div class="section-number">02.</div>
+            <h2 class="section-title">Skills & Technologies</h2>
+            <p class="section-description">The tools and technologies I use to bring games to life</p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card fade-in">
+                <h4>Game Engines</h4>
                 <ul>
-                    <li><a href="#home" data-en="Home" data-es="Inicio">Home</a></li>
-                    <li><a href="#about" data-en="About" data-es="Sobre mí">About</a></li>
-                    <li><a href="#skills" data-en="Skills" data-es="Habilidades">Skills</a></li>
-                    <li><a href="#games" data-en="Games" data-es="Juegos">Games</a></li>
-                    <li><a href="#blog" data-en="Blog" data-es="Blog">Blog</a></li>
-                    <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
-                    <li style="display: none;"><a href="#admin" data-en="Admin" data-es="Admin" style="color: var(--accent-2);">Admin</a></li>
+                    <li>Unity (Specialist)</li>
+                    <li>Unreal Engine 5.5+</li>
                 </ul>
-                <button class="language-toggle" onclick="toggleLanguage()">ES</button>
+            </div>
+            <div class="skill-card fade-in">
+                <h4>Programming Languages</h4>
+                <ul>
+                    <li>C#</li>
+                    <li>Python</li>
+                </ul>
+            </div>
+            <div class="skill-card fade-in">
+                <h4>Specializations</h4>
+                <ul>
+                    <li>Gameplay Programming</li>
+                    <li>Virtual Reality (VR)</li>
+                    <li>Procedural Generation</li>
+                    <li>Custom Unity Tools</li>
+                </ul>
             </div>
         </div>
-    </nav>
+    </div>
+</section>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>
-                    Game Developer<br>
-                    <span class="accent-text">& Creative Coder</span>
-                </h1>
-                <p class="subtitle">Making experimental and fun games with code</p>
-                <p>I craft engaging games and interactive experiences that blend compelling gameplay with stunning visuals. From concept to completion, I bring ideas to life through code and creativity.</p>
-                <div class="cta-buttons">
-                    <a href="#games" class="btn">View My Games</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                </div>
-            </div>
+<!-- Game Projects Section -->
+<section id="games">
+    <div class="container">
+        <div class="section-header fade-in">
+            <div class="section-number">03.</div>
+            <h2 class="section-title">Game Projects</h2>
+            <p class="section-description">Professional game projects I've contributed to</p>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="section-header fade-in">
-                <div class="section-number">01.</div>
-                <h2 class="section-title">About Me</h2>
-                <p class="section-description">Game developer passionate about creating memorable interactive experiences</p>
-            </div>
-            <div class="about-grid">
-                <div class="about-image fade-in"></div>
-                <div class="about-content fade-in">
-                    <h3>Hello! I'm Marcelo Herrera</h3>
-                    <p>I'm a Gameplay Programmer specializing in Unity development, currently in my third year studying Digital Game Design at Universidad Andrés Bello. I focus on writing clean, efficient code that brings experimental game concepts to life.</p>
-                    <p>My technical expertise centers on Virtual Reality programming, procedural generation systems, and building custom Unity editor tools. I'm passionate about solving complex technical challenges—from implementing advanced animation systems to architecting scalable gameplay frameworks.</p>
-                    <p>I thrive on pushing technical boundaries, whether that's optimizing VR performance, creating procedural generation algorithms, or developing tools that streamline game development workflows. Code is my primary creative medium.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="container">
-            <div class="section-header fade-in">
-                <div class="section-number">02.</div>
-                <h2 class="section-title">Skills & Technologies</h2>
-                <p class="section-description">The tools and technologies I use to bring games to life</p>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-card fade-in">
-                    <h4>Game Engines</h4>
-                    <ul>
-                        <li>Unity (Specialist)</li>
-                        <li>Unreal Engine 5.5+</li>
-                    </ul>
-                </div>
-                <div class="skill-card fade-in">
-                    <h4>Programming Languages</h4>
-                    <ul>
-                        <li>C#</li>
-                        <li>Python</li>
-                    </ul>
-                </div>
-                <div class="skill-card fade-in">
-                    <h4>Specializations</h4>
-                    <ul>
-                        <li>Gameplay Programming</li>
-                        <li>Virtual Reality (VR)</li>
-                        <li>Procedural Generation</li>
-                        <li>Custom Unity Tools</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Game Projects Section -->
-    <section id="games">
-        <div class="container">
-            <div class="section-header fade-in">
-                <div class="section-number">03.</div>
-                <h2 class="section-title">Game Projects</h2>
-                <p class="section-description">Professional game projects I've contributed to</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card fade-in" data-project-id="car-loop" style="cursor: pointer;">
-                    <div class="project-image" style="background-image: url('https://i.imgur.com/diJAbfY.jpg'); background-size: cover; background-position: center;"></div>
-                    <div class="project-content">
-                        <div class="project-type">VR College Project · Demo</div>
-                        <h3>Car-Loop</h3>
-                        <p class="project-description">A VR psychological horror game where players are trapped in an endless driving sequence. Uses procedural generation to create subtle variations in each loop, making players question their perception of reality. Features hand-tracking and gesture-based dialogue interactions.</p>
-                        <div class="project-tags">
-                            <span class="tag">Unity 6</span>
-                            <span class="tag">Meta Quest 3</span>
-                            <span class="tag">VR</span>
-                            <span class="tag">Procedural Gen</span>
-                            <span class="tag">Hand Tracking</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link" style="color: var(--accent-2);" onclick="event.preventDefault(); openProjectModal('car-loop');">View Details →</a>
-                            <a href="https://plants-path-co.itch.io/car-loop" class="project-link" target="_blank">Play on Itch.io →</a>
-                        </div>
+        <div class="projects-grid">
+            <div class="project-card fade-in" data-project-id="car-loop" style="cursor: pointer;">
+                <div class="project-image" style="background-image: url('https://i.imgur.com/diJAbfY.jpg'); background-size: cover; background-position: center;"></div>
+                <div class="project-content">
+                    <div class="project-type">VR College Project · Demo</div>
+                    <h3>Car-Loop</h3>
+                    <p class="project-description">A VR psychological horror game where players are trapped in an endless driving sequence. Uses procedural generation to create subtle variations in each loop, making players question their perception of reality. Features hand-tracking and gesture-based dialogue interactions.</p>
+                    <div class="project-tags">
+                        <span class="tag">Unity 6</span>
+                        <span class="tag">Meta Quest 3</span>
+                        <span class="tag">VR</span>
+                        <span class="tag">Procedural Gen</span>
+                        <span class="tag">Hand Tracking</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" style="color: var(--accent-2);" onclick="event.preventDefault(); openProjectModal('car-loop');">View Details →</a>
+                        <a href="https://plants-path-co.itch.io/car-loop" class="project-link" target="_blank">Play on Itch.io →</a>
                     </div>
                 </div>
+            </div>
 
-                <div class="project-card fade-in" data-project-id="break-the-bubble" style="cursor: pointer;">
-                    <div class="project-image" style="background-image: url('https://i.imgur.com/Oac1gLZ.jpg'); background-size: cover; background-position: center;"></div>
-                    <div class="project-content">
-                        <div class="project-type">Game Jam · Global Game Jam 2025</div>
-                        <h3>Break the Bubble</h3>
-                        <p class="project-description">A Metroidvania developed for GGJ 2025 exploring the theme "Bubble." Tells the story of a developer's creative process in building a Metroidvania. Features character transformation for tight spaces and rune-based platform movement mechanics.</p>
-                        <div class="project-tags">
-                            <span class="tag">Unity 2023</span>
-                            <span class="tag">2D Metroidvania</span>
-                            <span class="tag">48hr Jam</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link" style="color: var(--accent-2);" onclick="event.preventDefault(); openProjectModal('break-the-bubble');">View Details →</a>
-                            <a href="https://plants-path-co.itch.io/romper-la-burbuja-ggj-2025" class="project-link" target="_blank">Play on Itch.io →</a>
-                        </div>
+            <div class="project-card fade-in" data-project-id="break-the-bubble" style="cursor: pointer;">
+                <div class="project-image" style="background-image: url('https://i.imgur.com/Oac1gLZ.jpg'); background-size: cover; background-position: center;"></div>
+                <div class="project-content">
+                    <div class="project-type">Game Jam · Global Game Jam 2025</div>
+                    <h3>Break the Bubble</h3>
+                    <p class="project-description">A Metroidvania developed for GGJ 2025 exploring the theme "Bubble." Tells the story of a developer's creative process in building a Metroidvania. Features character transformation for tight spaces and rune-based platform movement mechanics.</p>
+                    <div class="project-tags">
+                        <span class="tag">Unity 2023</span>
+                        <span class="tag">2D Metroidvania</span>
+                        <span class="tag">48hr Jam</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" style="color: var(--accent-2);" onclick="event.preventDefault(); openProjectModal('break-the-bubble');">View Details →</a>
+                        <a href="https://plants-path-co.itch.io/romper-la-burbuja-ggj-2025" class="project-link" target="_blank">Play on Itch.io →</a>
                     </div>
                 </div>
+            </div>
 
-                <div class="project-card fade-in" data-project-id="hunters-awakening" style="cursor: pointer;">
-                    <div class="project-image"></div>
-                    <div class="project-content">
-                        <div class="project-type">College Project · Demo</div>
-                        <h3>Hunters: Awakening</h3>
-                        <p class="project-description">An action JRPG combining fast-paced combat with deep character customization. Features an extensive skill tree system, strategic battles, and a vast explorable world with progression mechanics.</p>
-                        <div class="project-tags">
-                            <span class="tag">Unity 2023</span>
-                            <span class="tag">JRPG</span>
-                            <span class="tag">Combat System</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link" style="color: var(--accent-2);" onclick="event.preventDefault(); openProjectModal('hunters-awakening');">View Details →</a>
-                            <a href="https://plants-path-co.itch.io/hunters-awakening" class="project-link" target="_blank">Play on Itch.io →</a>
-                        </div>
+            <div class="project-card fade-in" data-project-id="hunters-awakening" style="cursor: pointer;">
+                <div class="project-image"></div>
+                <div class="project-content">
+                    <div class="project-type">College Project · Demo</div>
+                    <h3>Hunters: Awakening</h3>
+                    <p class="project-description">An action JRPG combining fast-paced combat with deep character customization. Features an extensive skill tree system, strategic battles, and a vast explorable world with progression mechanics.</p>
+                    <div class="project-tags">
+                        <span class="tag">Unity 2023</span>
+                        <span class="tag">JRPG</span>
+                        <span class="tag">Combat System</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" style="color: var(--accent-2);" onclick="event.preventDefault(); openProjectModal('hunters-awakening');">View Details →</a>
+                        <a href="https://plants-path-co.itch.io/hunters-awakening" class="project-link" target="_blank">Play on Itch.io →</a>
                     </div>
                 </div>
+            </div>
 
-                <div class="project-card fade-in" data-project-id="tragones-y-mazmorras" style="cursor: pointer;">
-                    <div class="project-image" style="background-image: url('https://i.imgur.com/lvCnT03.png'); background-size: cover; background-position: center;"></div>
-                    <div class="project-content">
-                        <div class="project-type">College Project · Fangame Demo</div>
-                        <h3>Tragones y Mazmorras x Lugares que Hablan</h3>
-                        <p class="project-description">A visual novel fangame based on the Dungeon Meshi (Delicious in Dungeon) manga. Blends the original story with Chilean culture through the TV show "Lugares que Hablan", creating a unique crossover featuring the manga's characters in cultural storytelling scenarios.</p>
-                        <div class="project-tags">
-                            <span class="tag">Ren'Py</span>
-                            <span class="tag">Visual Novel</span>
-                            <span class="tag">Fangame</span>
-                            <span class="tag">Spanish</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link" style="color: var(--accent-2);" onclick="event.preventDefault(); openProjectModal('tragones-y-mazmorras');">View Details →</a>
-                            <a href="https://mherreravsquez.itch.io/tragones-y-mazmorras-x-lugares-que-hablan" class="project-link" target="_blank">Play on Itch.io →</a>
-                        </div>
+            <div class="project-card fade-in" data-project-id="tragones-y-mazmorras" style="cursor: pointer;">
+                <div class="project-image" style="background-image: url('https://i.imgur.com/lvCnT03.png'); background-size: cover; background-position: center;"></div>
+                <div class="project-content">
+                    <div class="project-type">College Project · Fangame Demo</div>
+                    <h3>Tragones y Mazmorras x Lugares que Hablan</h3>
+                    <p class="project-description">A visual novel fangame based on the Dungeon Meshi (Delicious in Dungeon) manga. Blends the original story with Chilean culture through the TV show "Lugares que Hablan", creating a unique crossover featuring the manga's characters in cultural storytelling scenarios.</p>
+                    <div class="project-tags">
+                        <span class="tag">Ren'Py</span>
+                        <span class="tag">Visual Novel</span>
+                        <span class="tag">Fangame</span>
+                        <span class="tag">Spanish</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" style="color: var(--accent-2);" onclick="event.preventDefault(); openProjectModal('tragones-y-mazmorras');">View Details →</a>
+                        <a href="https://mherreravsquez.itch.io/tragones-y-mazmorras-x-lugares-que-hablan" class="project-link" target="_blank">Play on Itch.io →</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Personal Projects Section -->
-    <!-- HIDDEN FOR NOW
-    <section id="projects">
-        <div class="container">
-            <div class="section-header fade-in">
-                <div class="section-number">04.</div>
-                <h2 class="section-title">Personal Projects</h2>
-                <p class="section-description">Tools, experiments, and side projects beyond traditional games</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card fade-in">
-                    <div class="project-image"></div>
-                    <div class="project-content">
-                        <div class="project-type">Tool Development</div>
-                        <h3>Project Title 1</h3>
-                        <p class="project-description">Description of your tool or non-game project. What problem does it solve? What technologies did you use?</p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Tool</span>
-                            <span class="tag">Open Source</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">GitHub →</a>
-                            <a href="#" class="project-link">Documentation →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card fade-in">
-                    <div class="project-image"></div>
-                    <div class="project-content">
-                        <div class="project-type">Creative Coding</div>
-                        <h3>Project Title 2</h3>
-                        <p class="project-description">Description of your creative or experimental project. What inspired it? What did you explore?</p>
-                        <div class="project-tags">
-                            <span class="tag">WebGL</span>
-                            <span class="tag">Shaders</span>
-                            <span class="tag">Interactive</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">View Live →</a>
-                            <a href="#" class="project-link">Source Code →</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- Personal Projects Section -->
+<!-- HIDDEN FOR NOW
+<section id="projects">
+    <div class="container">
+        <div class="section-header fade-in">
+            <div class="section-number">04.</div>
+            <h2 class="section-title">Personal Projects</h2>
+            <p class="section-description">Tools, experiments, and side projects beyond traditional games</p>
         </div>
-    </section>
-    -->
-
-    <!-- Blog Section -->
-    <section id="blog">
-        <div class="container">
-            <div class="section-header fade-in">
-                <div class="section-number">04.</div>
-                <h2 class="section-title">Development Blog</h2>
-                <p class="section-description">Thoughts, tutorials, and insights from my development journey</p>
-            </div>
-            <div class="blog-grid">
-                <p style="color: var(--text-dim); padding: 2rem; text-align: center; grid-column: 1/-1;">Loading blog posts...</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <div class="section-header fade-in">
-                <div class="section-number">05.</div>
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-description">Let's create something amazing together</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info fade-in">
-                    <h3>Let's Connect</h3>
-                    <p>I'm always open to discussing new projects, technical challenges, or collaboration opportunities. Whether you're looking for a gameplay programmer or want to chat about VR development and procedural systems, feel free to reach out!</p>
-                    <div class="contact-links">
-                        <a href="/cdn-cgi/l/email-protection#127f3c7a776060776073646163677768527d67667e7d7d793c717d7f" class="contact-link">
-                            <span class="contact-link-icon">✉</span>
-                            <span>m.herreravsquez@outlook.com</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/mherreravsquez" class="contact-link" target="_blank">
-                            <span class="contact-link-icon">🔗</span>
-                            <span>LinkedIn</span>
-                        </a>
-                        <a href="https://github.com/mherreravsquez" class="contact-link" target="_blank">
-                            <span class="contact-link-icon">💻</span>
-                            <span>GitHub</span>
-                        </a>
-                        <a href="https://x.com/mherreravsquez" class="contact-link" target="_blank">
-                            <span class="contact-link-icon">𝕏</span>
-                            <span>Twitter / X</span>
-                        </a>
-                        <a href="https://mherreravsquez.itch.io/" class="contact-link" target="_blank">
-                            <span class="contact-link-icon">🎮</span>
-                            <span>Itch.io</span>
-                        </a>
-                        <a href="https://bsky.app/profile/mherreravsquez.bsky.social" class="contact-link" target="_blank">
-                            <span class="contact-link-icon">🦋</span>
-                            <span>Bluesky</span>
-                        </a>
-                        <a href="https://www.instagram.com/mherreravsquez/" class="contact-link" target="_blank">
-                            <span class="contact-link-icon">📷</span>
-                            <span>Instagram</span>
-                        </a>
+        <div class="projects-grid">
+            <div class="project-card fade-in">
+                <div class="project-image"></div>
+                <div class="project-content">
+                    <div class="project-type">Tool Development</div>
+                    <h3>Project Title 1</h3>
+                    <p class="project-description">Description of your tool or non-game project. What problem does it solve? What technologies did you use?</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Tool</span>
+                        <span class="tag">Open Source</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">GitHub →</a>
+                        <a href="#" class="project-link">Documentation →</a>
                     </div>
                 </div>
-                <div class="fade-in">
-                    <div class="resume-download">
-                        <h4>Download My Resume</h4>
-                        <p style="color: var(--text-dim); margin-bottom: 1.5rem;">Get a detailed overview of my experience, skills, and projects</p>
-                        <a href="#" class="btn">Download PDF Resume</a>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-image"></div>
+                <div class="project-content">
+                    <div class="project-type">Creative Coding</div>
+                    <h3>Project Title 2</h3>
+                    <p class="project-description">Description of your creative or experimental project. What inspired it? What did you explore?</p>
+                    <div class="project-tags">
+                        <span class="tag">WebGL</span>
+                        <span class="tag">Shaders</span>
+                        <span class="tag">Interactive</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Live →</a>
+                        <a href="#" class="project-link">Source Code →</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+-->
 
-    <!-- Admin Panel -->
-    <div id="adminPanel" class="admin-panel">
-        <div class="admin-header">
-            <h2>Blog Admin Panel</h2>
-            <button class="close-admin" onclick="closeAdmin()">Close</button>
+<!-- Blog Section -->
+<section id="blog">
+    <div class="container">
+        <div class="section-header fade-in">
+            <div class="section-number">04.</div>
+            <h2 class="section-title">Development Blog</h2>
+            <p class="section-description">Thoughts, tutorials, and insights from my development journey</p>
         </div>
-        <div class="admin-content">
-            <!-- GitHub Authentication -->
-            <div id="githubAuth" class="github-auth">
-                <h3>Connect to GitHub</h3>
-                <p style="color: var(--text-dim); margin-bottom: 1.5rem;">
-                    Enter your GitHub Personal Access Token to manage blog posts.<br>
-                    <a href="https://github.com/settings/tokens/new?scopes=repo&description=Portfolio%20Blog%20Editor" target="_blank" style="color: var(--accent-2);">
-                        Create a token here →
+        <div class="blog-grid">
+            <p style="color: var(--text-dim); padding: 2rem; text-align: center; grid-column: 1/-1;">Loading blog posts...</p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+    <div class="container">
+        <div class="section-header fade-in">
+            <div class="section-number">05.</div>
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-description">Let's create something amazing together</p>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info fade-in">
+                <h3>Let's Connect</h3>
+                <p>I'm always open to discussing new projects, technical challenges, or collaboration opportunities. Whether you're looking for a gameplay programmer or want to chat about VR development and procedural systems, feel free to reach out!</p>
+                <div class="contact-links">
+                    <a href="/cdn-cgi/l/email-protection#127f3c7a776060776073646163677768527d67667e7d7d793c717d7f" class="contact-link">
+                        <span class="contact-link-icon">✉</span>
+                        <span><span class="__cf_email__" data-cfemail="8de0a3e5e8ffffe8ffecfbfefcf8e8f7cde2f8f9e1e2e2e6a3eee2e0">[email&#160;protected]</span></span>
                     </a>
-                </p>
-                <input type="text" id="githubToken" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" />
-                <br>
-                <input type="text" id="githubRepo" placeholder="username/repository-name" value="mherreravsquez/blog-posts" />
-                <br>
-                <button onclick="authenticateGitHub()">Connect GitHub</button>
+                    <a href="https://www.linkedin.com/in/mherreravsquez" class="contact-link" target="_blank">
+                        <span class="contact-link-icon">🔗</span>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/mherreravsquez" class="contact-link" target="_blank">
+                        <span class="contact-link-icon">💻</span>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://x.com/mherreravsquez" class="contact-link" target="_blank">
+                        <span class="contact-link-icon">𝕏</span>
+                        <span>Twitter / X</span>
+                    </a>
+                    <a href="https://mherreravsquez.itch.io/" class="contact-link" target="_blank">
+                        <span class="contact-link-icon">🎮</span>
+                        <span>Itch.io</span>
+                    </a>
+                    <a href="https://bsky.app/profile/mherreravsquez.bsky.social" class="contact-link" target="_blank">
+                        <span class="contact-link-icon">🦋</span>
+                        <span>Bluesky</span>
+                    </a>
+                    <a href="https://www.instagram.com/mherreravsquez/" class="contact-link" target="_blank">
+                        <span class="contact-link-icon">📷</span>
+                        <span>Instagram</span>
+                    </a>
+                </div>
+            </div>
+            <div class="fade-in">
+                <div class="resume-download">
+                    <h4>Download My Resume</h4>
+                    <p style="color: var(--text-dim); margin-bottom: 1.5rem;">Get a detailed overview of my experience, skills, and projects</p>
+                    <a href="#" class="btn">Download PDF Resume</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Admin Panel -->
+<div id="adminPanel" class="admin-panel">
+    <div class="admin-header">
+        <h2>Blog Admin Panel</h2>
+        <button class="close-admin" onclick="closeAdmin()">Close</button>
+    </div>
+    <div class="admin-content">
+        <!-- GitHub Authentication -->
+        <div id="githubAuth" class="github-auth">
+            <h3>Connect to GitHub</h3>
+            <p style="color: var(--text-dim); margin-bottom: 1.5rem;">
+                Enter your GitHub Personal Access Token to manage blog posts.<br>
+                <a href="https://github.com/settings/tokens/new?scopes=repo&description=Portfolio%20Blog%20Editor" target="_blank" style="color: var(--accent-2);">
+                    Create a token here →
+                </a>
+            </p>
+            <input type="text" id="githubToken" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" />
+            <br>
+            <input type="text" id="githubRepo" placeholder="username/repository-name" value="mherreravsquez/blog-posts" />
+            <br>
+            <button onclick="authenticateGitHub()">Connect GitHub</button>
+        </div>
+
+        <!-- Authenticated Status -->
+        <div id="authStatus" class="auth-status" style="display: none;">
+            ✓ Connected to GitHub as <span id="githubUsername"></span>
+        </div>
+
+        <!-- Blog Editor -->
+        <div id="blogEditor" class="blog-editor">
+            <div class="editor-toolbar">
+                <button class="primary" onclick="savePost()">💾 Save Post</button>
+                <button onclick="newPost()">📝 New Post</button>
+                <button onclick="refreshPosts()">🔄 Refresh</button>
             </div>
 
-            <!-- Authenticated Status -->
-            <div id="authStatus" class="auth-status" style="display: none;">
-                ✓ Connected to GitHub as <span id="githubUsername"></span>
-            </div>
+            <div class="editor-grid">
+                <div class="editor-input">
+                    <label>Post Title</label>
+                    <input type="text" id="postTitle" placeholder="My Awesome Blog Post" />
 
-            <!-- Blog Editor -->
-            <div id="blogEditor" class="blog-editor">
-                <div class="editor-toolbar">
-                    <button class="primary" onclick="savePost()">💾 Save Post</button>
-                    <button onclick="newPost()">📝 New Post</button>
-                    <button onclick="refreshPosts()">🔄 Refresh</button>
+                    <label>Date</label>
+                    <input type="date" id="postDate" />
+
+                    <label>Language</label>
+                    <select id="postLanguage">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                    </select>
+
+                    <label>Slug (filename)</label>
+                    <input type="text" id="postSlug" placeholder="my-awesome-post" />
                 </div>
 
-                <div class="editor-grid">
-                    <div class="editor-input">
-                        <label>Post Title</label>
-                        <input type="text" id="postTitle" placeholder="My Awesome Blog Post" />
-                        
-                        <label>Date</label>
-                        <input type="date" id="postDate" />
-                        
-                        <label>Language</label>
-                        <select id="postLanguage">
-                            <option value="en">English</option>
-                            <option value="es">Español</option>
-                        </select>
-                        
-                        <label>Slug (filename)</label>
-                        <input type="text" id="postSlug" placeholder="my-awesome-post" />
-                    </div>
+                <div class="editor-input">
+                    <label>Tags (comma separated)</label>
+                    <input type="text" id="postTags" placeholder="unity, vr, tutorial" />
 
-                    <div class="editor-input">
-                        <label>Tags (comma separated)</label>
-                        <input type="text" id="postTags" placeholder="unity, vr, tutorial" />
-                        
-                        <label>Excerpt</label>
-                        <textarea id="postExcerpt" rows="5" placeholder="Brief summary of your post..."></textarea>
-                    </div>
+                    <label>Excerpt</label>
+                    <textarea id="postExcerpt" rows="5" placeholder="Brief summary of your post..."></textarea>
+                </div>
 
-                    <div class="editor-textarea">
-                        <label>Content (Markdown)</label>
-                        <textarea id="postContent" placeholder="# Your Blog Post
+                <div class="editor-textarea">
+                    <label>Content (Markdown)</label>
+                    <textarea id="postContent" placeholder="# Your Blog Post
 
 Write your content here using Markdown...
 
@@ -382,39 +382,40 @@ Write your content here using Markdown...
 // Code blocks
 console.log('Hello!');
 ```"></textarea>
-                    </div>
                 </div>
+            </div>
 
-                <!-- Existing Posts List -->
-                <div class="blog-posts-list">
-                    <h3>Your Blog Posts</h3>
-                    <div id="postsList"></div>
-                </div>
+            <!-- Existing Posts List -->
+            <div class="blog-posts-list">
+                <h3>Your Blog Posts</h3>
+                <div id="postsList"></div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>Designed & Built by Marcelo Herrera</p>
-            <p style="font-size: 0.9rem; color: var(--text-dim);">© 2026 All Rights Reserved</p>
-            <div class="social-links">
-                <a href="https://github.com/mherreravsquez" target="_blank">GitHub</a>
-                <a href="https://www.linkedin.com/in/mherreravsquez" target="_blank">LinkedIn</a>
-                <a href="https://x.com/mherreravsquez" target="_blank">Twitter</a>
-                <a href="https://mherreravsquez.itch.io/" target="_blank">Itch.io</a>
-                <a href="https://bsky.app/profile/mherreravsquez.bsky.social" target="_blank">Bluesky</a>
-            </div>
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <p>Designed & Built by Marcelo Herrera</p>
+        <p style="font-size: 0.9rem; color: var(--text-dim);">© 2026 All Rights Reserved</p>
+        <div class="social-links">
+            <a href="https://github.com/mherreravsquez" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/mherreravsquez" target="_blank">LinkedIn</a>
+            <a href="https://x.com/mherreravsquez" target="_blank">Twitter</a>
+            <a href="https://mherreravsquez.itch.io/" target="_blank">Itch.io</a>
+            <a href="https://bsky.app/profile/mherreravsquez.bsky.social" target="_blank">Bluesky</a>
         </div>
-    </footer>
+    </div>
+</footer>
 
 
-    
-    <!-- Main JavaScript -->
-    <script src="main.js"></script>
-    
-    <!-- Blog Admin and Language Toggle -->
-    <script src="portfolio-admin.js"></script>
+
+<!-- marked.js for Markdown rendering in blog post modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<!-- Main JavaScript -->
+<script src="main.js"></script>
+<!-- Portfolio Admin (language toggle, blog, project modals) -->
+<script src="portfolio-admin.js"></script>
 </body>
 </html>
