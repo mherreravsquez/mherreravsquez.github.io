@@ -50,7 +50,7 @@
 
     "about.tag":          "04 — About",
     "about.title":        "About\nMe",
-    "about.p1":           "I'm <strong>Marcelo Herrera Vásquez</strong>, also known as Marchel, a<span class='acc'>game designer and developer</span> based in Santiago, Chile. I make games that prioritize feel, clarity, and systems that surprise.",
+    "about.p1":           "I'm <strong>Marcelo Herrera Vásquez</strong>, also known as Marchel, a <span class='acc'>game designer and developer</span> based in Santiago, Chile. I make games that prioritize feel, clarity, and systems that surprise.",
     "about.p2":           "My main tool is <span class='cyn'>Unity 6</span>,though I've experience with other engines, like Unreal Engine. I care deeply about the gap between design intention and player experience.",
     "about.p3":           "Outside of commercial projects I run <strong>Plants Path Collective</strong>, a small studio focused on experimental and atmospheric games. I also write about game design and development on this devlog.",
     "about.skills":       "Technical Skills",
@@ -148,7 +148,7 @@
 
     "about.tag":          "04 — Sobre mí",
     "about.title":        "Sobre\nMí",
-    "about.p1":           "Soy <strong>Marcelo Herrera Vásquez</strong>, también conocido como Marchel, <span class='acc'> un desarrollador y diseñador de videojuegos</span> con base en Santiago, Chile. Hago juegos que priorizan la sensación, la claridad y los sistemas que sorprenden.",
+    "about.p1":           "Soy <strong>Marcelo Herrera Vásquez</strong>, también conocido como Marchel, un <span class='acc'>desarrollador y diseñador de videojuegos</span> con base en Santiago, Chile. Hago juegos que priorizan la sensación, la claridad y los sistemas que sorprenden.",
     "about.p2":           "Mi herramienta principal es <span class='cyn'>Unity 6</span>, aunque tengo experiencia con otros motores, como Unreal Engine. Me importa mucho la brecha entre la intención de diseño y la experiencia del jugador.",
     "about.p3":           "Fuera de proyectos comerciales dirijo <strong>Plants Path Collective</strong>, un pequeño estudio enfocado en juegos experimentales y atmosféricos.",
     "about.skills":       "Habilidades Técnicas",
