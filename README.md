@@ -20,16 +20,6 @@ work, and tools.
 
 ------------------------------------------------------------------------
 
-# Preview
-
-> Add a screenshot of your portfolio homepage here.
-
-Example:
-
-![Portfolio Preview](assets/preview.png)
-
-------------------------------------------------------------------------
-
 # Features
 
 -   Modern developer portfolio layout
