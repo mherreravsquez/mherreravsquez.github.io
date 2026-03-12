@@ -63,8 +63,6 @@ easy to maintain.
 
 # Repository Structure
 
-Example structure:
-
     /
     ├── index.html
     ├── css/
@@ -73,7 +71,14 @@ Example structure:
     │   └── main.js
     ├── assets/
     │   └── resume-marceloherrera.pdf
-    ├── projects/
+    ├── data/
+    │   ├── projects.json
+    │   └── translations.json
+    ├── admin.html
+    ├── blog.html
+    ├── index.html
+    ├── post.html
+    ├── project.html
     └── README.md
 
 ### Key folders
@@ -85,10 +90,10 @@ Contains all styling for the site UI and layout.
 Handles animations and interactive behavior.
 
 **assets/**\
-Images, icons, and other static media.
+Static media.
 
-**projects/**\
-Content related to portfolio projects.
+**data/**\
+Content related to portfolio projects and devlogs
 
 ------------------------------------------------------------------------
 
@@ -103,7 +108,15 @@ Planned improvements:
 -   Replace placeholders with real projects
 -   Add screenshots and media
 -   Link projects to GitHub repositories
--   Add detailed project pages
+
+## Add new functions to Admin Panel
+
+Currently an Admin can write and deploy devlogs trought the Admin panel.
+
+Planned improvents:
+
+-   Add the function to create and edit game projects of the portfolio
+-   Improve the blog creator / editor, to show english and spanish text boxes, so Admin can edit the blog in the 2 languages at the same moment
 
 ------------------------------------------------------------------------
 
