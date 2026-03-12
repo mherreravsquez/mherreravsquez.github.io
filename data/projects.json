@@ -36,7 +36,7 @@
     {
       "id": "bubble-ggj2025",
       "featured": false,
-      "size": "medium",
+      "size": "third",
       "status": "released",
       "year": 2025,
       "engine": "Unity 2023",
@@ -73,7 +73,7 @@
     {
       "id": "hunters-awakening",
       "featured": false,
-      "size": "third",
+      "size": "medium",
       "status": "released",
       "year": 2024,
       "engine": "Unity 2023",
@@ -100,11 +100,40 @@
       "devlogs": []
     },
     {
+      "id": "tragones",
+      "featured": false,
+      "size": "half",
+      "status": "released",
+      "year": 2024,
+      "engine": "RenPy",
+      "genre": "Visual Novel",
+      "studio": null,
+      "tags": ["RenPy", "Visual Novel"],
+      "title": {
+        "en": "Dungeon Meshi x Lugares que Hablan",
+        "es": "Tragones y Mazmorras x Lugares que Hablan"
+      },
+      "shortDesc": {
+        "en": "",
+        "es": "."
+      },
+      "fullDesc": {
+        "en": "## Overview\n\n[Insert text here]\n\n## Gameplay\n\n[Insert text here]\n\n## Key Features\n\n- [Insert text here]\n- [Insert text here]h\n\n## Development Notes\n\n[Insert text here]",
+        "es": "## Descripción\n\n[Insert text here]\n\n## Jugabilidad\n\n[Insert text here]\n\n## Características Principales\n\n- [Insert text here]\n- [Insert text here]h\n\n## Notas de Desarrollo\n\n[Insert text here]"
+      },
+      "thumbnail": "https://i.imgur.com/lvCnT03.png",
+      "thumbClass": "thumb-pattern-4",
+      "screenshots": [],
+      "videos": [],
+      "links": [],
+      "devlogs": []
+    },
+    {
       "id": "",
       "featured": false,
       "size": "half", "_comment": "featured, medium, half, third",
       "status": "released",
-      "year": 2000,
+      "year": null,
       "engine": "",
       "genre": "",
       "studio": null,
