@@ -144,14 +144,31 @@ async function initProjectGrid() {
     });
   }
 
+  function tagClass(tag) {
+    const t = tag.toLowerCase();
+    if (['c#', 'python', 'lua', 'gdscript', 'javascript'].some(l => t.includes(l))) return 'lang';
+    if (['vr', 'meta quest', 'xr', 'ar'].some(v => t.includes(v)))                  return 'vr';
+    if (['jam', 'ggj', 'global game jam'].some(j => t.includes(j)))                  return 'jam';
+    if (['jrpg', 'horror', 'platformer', 'metroidvania', 'visual novel', 'renpy'].some(g => t.includes(g))) return 'genre';
+    if (['procedural', 'narrative', 'experimental', 'story rich'].some(d => t.includes(d))) return 'design';
+    return '';
+  }
+  
+  // Converts Imgur .gifv to .gif so it works as a background-image
+  function fixImgurUrl(url) {
+    if (!url) return url;
+    return url.replace(/\.gifv$/, '.gif');
+  }
+
   function renderCard(p, lang) {
     const title     = p.title[lang] || p.title.en;
     const shortDesc = p.shortDesc[lang] || p.shortDesc.en;
     const statusKey = `status.${p.status}`;
     const statusTxt = window.I18n ? I18n.t(statusKey) : p.status;
 
-    const thumbStyle = p.thumbnail && !p.thumbnail.includes('placeholder')
-      ? `style="background-image:url('${p.thumbnail}')"` : '';
+    const fixedThumb = fixImgurUrl(p.thumbnail);
+    const thumbStyle = fixedThumb && !fixedThumb.includes('placeholder')
+        ? `style="background-image:url('${fixedThumb}')"` : '';
     const thumbClass = p.thumbClass || 'thumb-pattern-1';
 
     return `
@@ -167,7 +184,7 @@ async function initProjectGrid() {
         <span class="ptag engine">${p.engine}</span>
         ${p.studio === 'ppc' ? '<span class="ptag studio">PPC</span>' : ''}
         <span class="ptag ${p.status === 'wip' ? 'wip' : 'done'}">${statusTxt}</span>
-        ${p.genre ? `<span class="ptag">${p.genre}</span>` : ''}
+        ${p.tags.map(t => `<span class="ptag ${tagClass(t)}">${t}</span>`).join('')}
       </div>
       <div class="proj-title">${title}</div>
       <div class="proj-desc">${shortDesc}</div>

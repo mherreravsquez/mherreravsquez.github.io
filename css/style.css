@@ -591,7 +591,7 @@ section { padding: 96px 40px; }
 
 .proj-thumb {
   position: absolute; inset: 0;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   transition: transform .55s ease;
 }
@@ -644,6 +644,13 @@ section { padding: 96px 40px; }
 .ptag.studio { border-color: rgba(119, 224, 20, 0.3); color: var(--accent); }
 .ptag.wip    { border-color: rgba(240, 164, 64, 0.3); color: var(--warn); }
 .ptag.done   { border-color: rgba(23,232,196,.2); color: var(--pink2); }
+
+/* Generic tag categories */
+.ptag.lang   { border-color: rgba(100,180,255,.3); color: #64b4ff; }  /* C#, Python, etc. */
+.ptag.vr     { border-color: rgba(180,100,255,.3); color: #b464ff; }  /* VR, Meta Quest */
+.ptag.jam    { border-color: rgba(255,200,50,.3);  color: #ffc832; }  /* Game Jams */
+.ptag.genre  { border-color: rgba(255,100,100,.3); color: #ff7070; }  /* JRPG, Horror, etc. */
+.ptag.design { border-color: rgba(100,255,200,.3); color: #64ffc8; }  /* Procedural, Narrative */
 
 .proj-title {
   font-family: var(--head);
