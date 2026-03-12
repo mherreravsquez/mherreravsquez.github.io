@@ -574,8 +574,8 @@ section { padding: 96px 40px; }
 .proj-card[data-size="third"]    { grid-column: span 4; }
 
 .proj-inner {
-  position: absolute;
-  overflow: auto;
+  position: relative;
+  overflow: hidden;
   border: 1px solid var(--line2);
   aspect-ratio: 16/9;
   display: flex; flex-direction: column; justify-content: flex-end;
