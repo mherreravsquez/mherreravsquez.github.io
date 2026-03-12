@@ -122,7 +122,7 @@ async function initProjectGrid() {
     const lang = window.I18n ? I18n.lang : 'en';
     let list = allProjects;
 
-    if (filter === 'godot')  list = allProjects.filter(p => p.engine.toLowerCase().includes('godot'));
+    if (filter === 'unreal')  list = allProjects.filter(p => p.engine.toLowerCase().includes('unreal'));
     if (filter === 'unity')  list = allProjects.filter(p => p.engine.toLowerCase().includes('unity'));
     if (filter === 'jam')    list = allProjects.filter(p => p.tags.some(t => t.toLowerCase().includes('jam')));
     if (filter === 'studio') list = allProjects.filter(p => p.studio === 'ppc');

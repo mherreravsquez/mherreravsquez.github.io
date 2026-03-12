@@ -1,67 +1,71 @@
 {
   "projects": [
     {
-      "id": "void-signal",
+      "id": "car-loop",
       "featured": true,
       "size": "featured",
       "status": "released",
-      "year": 2024,
-      "engine": "Godot 4",
-      "genre": "Top-Down Shooter",
-      "studio": "ppc",
-      "tags": ["GDScript", "Procedural Generation", "Solo Dev"],
+      "year": 2025,
+      "engine": "Unity 6",
+      "genre": "Psychological Horror",
+      "studio": "PPCo",
+      "tags": ["Meta Quest 3", "VR", "C#", "Unity"],
       "title": {
-        "en": "Void Signal",
-        "es": "Señal Vacía"
+        "en": "Car-Loop",
+        "es": "Car-loop"
       },
       "shortDesc": {
-        "en": "Procedurally-generated top-down shooter with rogue-lite elements.",
-        "es": "Shooter desde arriba generado proceduralmente con elementos rogue-lite."
+        "en": "Psychological horror VR game with driving elements and procedural generation.",
+        "es": "Juego de terror psicológico en VR con elementos de conducción y generación procedural."
       },
       "fullDesc": {
-        "en": "## Overview\n\nVoid Signal is a top-down shooter built in Godot 4 that blends classic twin-stick shooting with procedural generation. Every run generates a new layout of interconnected rooms, enemy placements, and item distributions.\n\n## Core Gameplay\n\nPlayers navigate corrupted network nodes, defeating procedurally spawned enemies to collect data fragments. The run ends when the player either reaches the core and destroys it, or loses all health.\n\n### Key Features\n\n- Procedurally generated room layouts using BSP trees\n- 20+ enemy types with individual behavior trees\n- Run-based progression with persistent unlocks\n- Dynamic difficulty scaling\n- Full controller support\n\n## Technical Highlights\n\nThe procedural generation system uses a custom BSP tree algorithm to guarantee connected rooms with no dead ends. Enemy AI uses lightweight behavior trees implemented natively in GDScript, keeping the game running at 120fps even with 80+ entities on screen.\n\n## Development Notes\n\nThis was my first major release under Plants Path Collective. The full development cycle took 8 months, including two months of playtesting with a group of 15 external testers.",
-        "es": "## Descripción\n\nSeñal Vacía es un shooter desde arriba construido en Godot 4 que combina disparos clásicos con generación procedural. Cada partida genera un nuevo diseño de salas interconectadas, enemigos y objetos.\n\n## Jugabilidad\n\nLos jugadores navegan por nodos de red corruptos, derrotando enemigos generados proceduralmente para recopilar fragmentos de datos.\n\n### Características Principales\n\n- Generación procedural de salas con árboles BSP\n- Más de 20 tipos de enemigos con árboles de comportamiento\n- Progresión basada en partidas con desbloqueos persistentes\n- Escalado de dificultad dinámico\n- Soporte completo para mando\n\n## Notas de Desarrollo\n\nEste fue mi primer lanzamiento importante bajo Plants Path Collective. El ciclo de desarrollo completo tomó 8 meses."
+        "en": "## Overview\n\nCar-Loop is a psychological horror VR game developed in Unity 6. The player must take on the role of the driver on a trip with their partner, but every 5 minutes an accident will occur and everything will start over again.\n\n## Core Gameplay\n\nThe player will take the wheel of a car using the Meta Quest 3's hand-tracking system, allowing them to turn the steering wheel in a natural and immersive way. During the journey, they will have to hold a conversation with their partner and will be able to respond using gestures, choosing between different dialogue options without having to use words.\n\n### Key Features\n\n- Procedurally generated road, using premade modules\n- Gestural Dialogue System\n\n## Development Notes\n\nThis was my first project developed for virtual reality, which meant facing various technical and design challenges.\n\nOne of the main ones was programming a driving system that was intuitive and comfortable for the player, considering the particularities of VR interaction. Added to this was the need to detect hand gestures with precision using <i>hand-tracking</i>, and correctly integrate them with the <b>custom dialogue system</b> I had previously developed.\n\nThis system, although it might now be considered somewhat dated, at the time represented a robust and tailored solution for the project's needs. Built on <b>Scriptable Objects</b>, it allowed various events to be triggered through gestural interaction: from dialogue with the partner to the <i>spawning</i> of objects in the scene or the activation of specific animations.\n\nFinally, the user interface design posed an additional challenge that led me to completely rethink the concept of a conventional UI. To do this, I thoroughly researched key references in the medium, such as <b><i>Half-Life: Alyx</i></b> and <b><i>Minecraft VR</i></b>, analyzing how they approached visual communication and interaction without breaking the player's immersion.",
+        "es": "## Descripción\n\nCar-Loop es un juego VR de terror psicologico desarrollado en Unity 6. El jugador deberá tomar el papel del conductor en un viaje con su pareja, pero cada 5 minutos un accidente ocurrirá y todo volverá a comenzar.\n\n## Jugabilidad\n\nEl jugador tomará el volante de un automóvil utilizando el sistema de seguimiento de manos (hand-tracking) del Meta Quest 3, lo que le permitirá girar el volante de forma natural e inmersiva. Durante el trayecto, deberá mantener una conversación con su pareja y podrá responder mediante gestos, eligiendo así entre diferentes opciones de diálogo sin necesidad de usar palabras.\n\n### Características Principales\n\n- Generación procedural de caminos, haciendo uso de modulos prefabricados\n- Sistema de Diálogo Gestual\n\n## Development Notes\n\nEste fue mi primer proyecto desarrollado para realidad virtual, lo que implicó enfrentarme a diversos desafíos técnicos y de diseño.\n\nUno de los principales fue programar un sistema de conducción que resultara intuitivo y cómodo para el jugador, teniendo en cuenta las particularidades de la interacción en VR. A esto se sumó la necesidad de detectar gestos manuales con precisión mediante <i>hand-tracking</i>, e integrarlos correctamente con el <b>sistema de diálogo personalizado</b> que había desarrollado previamente.\n\nDicho sistema, aunque hoy pueda considerarse algo desfasado, en su momento representó una solución robusta y adaptada a las necesidades del proyecto. Construido sobre <b>Scriptable Objects</b>, permitía activar diversos eventos a partir de la interacción gestual: desde el diálogo con la pareja hasta el <i>spawn</i> de objetos en escena o la activación de animaciones específicas.\n\nPor último, el diseño de la interfaz de usuario supuso un reto adicional que me llevó a replantear por completo el concepto de UI convencional. Para ello, investigué a fondo referencias clave del medio, como <b><i>Half-Life: Alyx</i></b> o <b><i>Minecraft VR</i></b>, analizando cómo abordaban la comunicación visual y la interacción sin romper la inmersión del jugador."
       },
-      "thumbnail": "https://i.imgur.com/placeholder1.jpg",
+      "thumbnail": "https://i.imgur.com/diJAbfY.png",
       "thumbClass": "thumb-pattern-1",
-      "screenshots": [],
-      "videos": [
-        { "platform": "youtube", "url": "https://youtu.be/placeholder", "label": "Launch Trailer" }
+      "screenshots": [
+        { "url": "https://i.imgur.com/JSl88oB.png"}
       ],
+      "videos": [],
       "links": [
-        { "label": "Play on itch.io", "url": "https://plantspathcollective.itch.io/void-signal", "icon": "🎮" },
-        { "label": "Source Code", "url": "https://github.com/mherreravasquez/void-signal", "icon": "⌨" }
+        { "label": "Play on itch.io", "url": "https://plants-path-co.itch.io/car-loop", "icon": "🎮" }
       ],
-      "devlogs": ["first-devlog", "ai-enemy-behavior"]
+      "devlogs": []
     },
     {
-      "id": "hollow-echo",
+      "id": "bubble-ggj2025",
       "featured": false,
       "size": "medium",
       "status": "released",
-      "year": 2023,
-      "engine": "Unity",
-      "genre": "Narrative Adventure",
+      "year": 2025,
+      "engine": "Unity 2023",
+      "genre": "Metroidvania",
       "studio": null,
-      "tags": ["C#", "Dialogue Systems", "Solo Dev"],
+      "tags": ["C#", "Global Game Jam 2025", "Experimental narrative"],
       "title": {
-        "en": "Hollow Echo",
-        "es": "Eco Vacío"
+        "en": "Break the Bubble",
+        "es": "Rompe la Burbuja"
       },
       "shortDesc": {
-        "en": "A short narrative game about memory, loss, and fragmented identity.",
-        "es": "Un juego narrativo corto sobre memoria, pérdida e identidad fragmentada."
+        "en": "A short play about a developer and how he breaks the genre bubble to create something new.",
+        "es": "Una juego corto sobre un desarrollador y cómo rompe las burbujas de los géneros para crear algo nuevo."
       },
       "fullDesc": {
-        "en": "## Overview\n\nHollow Echo is a short narrative experience about a person piecing together their past through fragmented memories. Built in Unity over 3 months.\n\n## Gameplay\n\nPlayers explore a liminal space, collecting memory fragments that reveal an underlying story. Each interaction updates the world state in subtle ways.\n\n### Key Features\n\n- Custom dialogue system with branching logic\n- Environmental storytelling\n- ~45 minutes of content\n- Original soundtrack\n\n## Development\n\nThis project was my first serious attempt at narrative game design. I focused heavily on atmosphere and pacing over mechanics.",
-        "es": "## Descripción\n\nEco Vacío es una experiencia narrativa corta sobre una persona que reconstruye su pasado a través de memorias fragmentadas. Construido en Unity en 3 meses.\n\n## Características\n\n- Sistema de diálogo personalizado con lógica ramificada\n- Narrativa ambiental\n- ~45 minutos de contenido\n- Banda sonora original"
+        "en": "## Overview\n\nBreak the Bubble is a 2D evolutionary platformer developed for the Global Game Jam 2025 under the theme \"Bubble.\" The game follows an aspiring video game developer in a universe where game genres never mix, who embarks on an experimental project to decide what genre his next game should be.\n\n## Gameplay\n\nThe game begins as a simple platformer. As the player progresses, the developer protagonist decides to integrate elements from new genres into the same level. Each time a new genre is added—first shooter mechanics, then puzzle elements—the level resets, forcing the player to master the new, combined ruleset. This process is a playful representation of the creative struggle and the perceived need to keep ideas within their own \"bubbles.\"\n The story mirrors the gameplay. As the experiment continues, the protagonist realizes that genres don't have to be confined. This revelation transforms the game in its final stage into a full metroidvania. Players take control of a wizard on a simple quest to reach the supermarket, which is now complicated by barriers. To succeed, they must explore an expanded map, solve ingenious puzzles, face challenging enemies, and collect keys, ultimately combining all acquired skills to complete the adventure.\n This project was created in just 48 hours by the Plants Path Collective, a team of six developers, artists, and designers.\n\n### Key Features\n\n- Evolutionary Gameplay: Experience a single game that transforms from a pure platformer into a shooter, then a puzzle game, culminating in a metroidvania.\n- Meta-Narrative: The game's structure reflects its story, exploring creative limits and genre blending.",
+        "es": "## Descripción\n\n<i>Romper la Burbuja</i> es un juego de plataformas evolutivo en 2D desarrollado para la Global Game Jam 2025 bajo el tema \"Burbuja\". El juego sigue a un aspirante a desarrollador de videojuegos en un universo donde los géneros nunca se mezclan, quien emprende un proyecto experimental para decidir qué género debería tener su próximo juego.\n\n## Gameplay\n\n El juego comienza como un simple plataformas. A medida que el jugador avanza, el protagonista desarrollador decide integrar elementos de nuevos géneros en el mismo nivel. Cada vez que se añade un nuevo género —primero mecánicas de shooter, luego elementos de puzle— el nivel se reinicia, obligando al jugador a dominar el nuevo conjunto de reglas combinadas. Este proceso es una representación lúdica de la lucha creativa y la necesidad percibida de mantener las ideas dentro de sus propias \"burbujas\".\n\nLa historia refleja la jugabilidad. A medida que el experimento continúa, el protagonista comprende que los géneros no tienen por qué estar confinados. Esta revelación transforma el juego en su etapa final en un auténtico metroidvania. Los jugadores toman el control de un mago en una simple misión para llegar al supermercado, que ahora se complica con barreras. Para tener éxito, deben explorar un mapa ampliado, resolver ingeniosos puzles, enfrentarse a enemigos desafiantes y recolectar llaves, combinando finalmente todas las habilidades adquiridas para completar la aventura.\n\nEste proyecto fue creado en solo 48 horas por el <b>Plants Path Collective</b>, un equipo de seis desarrolladores, artistas y diseñadores.\n\n## Características\n\n- <b>Jugabilidad Evolutiva:</b> Experimenta un solo juego que se transforma de un plataformas puro a un shooter, luego a un juego de puzles, culminando en un metroidvania.\n- <b>Metanarrativa:</b> La estructura del juego refleja su historia, explorando los límites creativos y la fusión de géneros."
       },
-      "thumbnail": "https://i.imgur.com/placeholder2.jpg",
+      "thumbnail": "https://i.imgur.com/Oac1gLZ.png",
       "thumbClass": "thumb-pattern-2",
-      "screenshots": [],
-      "videos": [],
+      "screenshots": [
+        { "url": "https://i.imgur.com/0nRsSsi.png"}
+      ],
+      "videos": [
+        { "url": "https://i.imgur.com/l7SI2IB.mp4", "label": "gameplay"}
+      ],
       "links": [
-        { "label": "Play on itch.io", "url": "https://mherreravasquez.itch.io/hollow-echo", "icon": "🎮" }
+        { "label": "Play on itch.io", "url": "https://plants-path-co.itch.io/romper-la-burbuja-ggj-2025", "icon": "🎮" },
+        { "label": "Jam Page", "url": "https://globalgamejam.org/games/2025/romper-la-burbuja-6", "icon": "🏆" }      
       ],
       "devlogs": []
     },
@@ -120,10 +124,7 @@
       "thumbClass": "thumb-pattern-4",
       "screenshots": [],
       "videos": [],
-      "links": [
-        { "label": "Play on itch.io", "url": "https://mherreravasquez.itch.io/remnant-drift", "icon": "🎮" },
-        { "label": "Jam Page", "url": "https://itch.io/jam/gmtk-2023", "icon": "🏆" }
-      ],
+      "links": [],
       "devlogs": []
     }
   ]
