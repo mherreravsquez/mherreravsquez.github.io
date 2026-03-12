@@ -239,7 +239,7 @@ function initContactForm() {
     })
     .then(r => {
       if (r.ok) {
-        form.innerHTML = `<p style="font-family:var(--mono);color:var(--cyan);font-size:13px;letter-spacing:.1em;">
+        form.innerHTML = `<p style="font-family:var(--mono);color:var(--pink);font-size:13px;letter-spacing:.1em;">
           ✓ MESSAGE SENT. I'LL GET BACK TO YOU SOON.
         </p>`;
       } else {
