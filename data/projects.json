@@ -58,7 +58,8 @@
       "thumbnail": "https://i.imgur.com/Oac1gLZ.png",
       "thumbClass": "thumb-pattern-2",
       "screenshots": [
-        { "url": "https://i.imgur.com/0nRsSsi.png"}
+        { "url": "https://i.imgur.com/0nRsSsi.png"},
+        { "url": "https://i.imgur.com/l7SI2IB.gifv", "label": "Gameplay video"}
       ],
       "videos": [
         { "url": "https://i.imgur.com/l7SI2IB.gifv", "label": "Gameplay video"}
