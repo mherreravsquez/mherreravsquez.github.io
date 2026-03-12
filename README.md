@@ -72,8 +72,7 @@ Example structure:
     ├── js/
     │   └── main.js
     ├── assets/
-    │   ├── images
-    │   └── icons
+    │   └── resume-marceloherrera.pdf
     ├── projects/
     └── README.md
 
@@ -93,71 +92,6 @@ Content related to portfolio projects.
 
 ------------------------------------------------------------------------
 
-# Updating Portfolio Content
-
-## Editing Personal Information
-
-To update personal information such as:
-
--   Name
--   Bio
--   Social links
--   Skills
--   Tools
-
-Edit the corresponding sections inside:
-
-    index.html
-
-------------------------------------------------------------------------
-
-# Adding a New Project
-
-To manually add a project:
-
-1.  Locate the **Projects section** in the HTML.
-2.  Copy an existing project card.
-3.  Replace the placeholder content:
-
-```{=html}
-<!-- -->
-```
-    Project title
-    Project description
-    Technologies used
-    Project link
-    Project image
-
-4.  Add the project image to:
-
-```{=html}
-<!-- -->
-```
-    assets/images
-
-5.  Commit and push changes.
-
-The project will appear on the live website after deployment.
-
-------------------------------------------------------------------------
-
-# Customizing the Design
-
-The visual style can be modified in the CSS files.
-
-Common customizations include:
-
--   Accent colors
--   Typography
--   Layout spacing
--   Panel styles
--   Animations
-
-Many colors are controlled using CSS variables, making theme adjustments
-easier.
-
-------------------------------------------------------------------------
-
 # Future Improvements
 
 ## Replace Placeholder Projects
@@ -170,42 +104,6 @@ Planned improvements:
 -   Add screenshots and media
 -   Link projects to GitHub repositories
 -   Add detailed project pages
-
-------------------------------------------------------------------------
-
-## Admin Panel
-
-A future implementation will introduce a **simple admin panel** to
-manage portfolio projects.
-
-The admin panel will allow:
-
--   Adding new projects
--   Editing existing projects
--   Managing project descriptions
--   Uploading project images
-
-This panel would update a structured data file (such as JSON) that the
-frontend reads to render projects dynamically.
-
-Benefits:
-
--   No manual HTML editing
--   Faster updates
--   Easier long-term maintenance
-
-------------------------------------------------------------------------
-
-# Planned Roadmap
-
-Possible future features:
-
--   Project filtering and tags
--   Markdown-based blog system
--   Search functionality
--   Analytics
--   Dark/light themes
--   Automated project generation from GitHub repositories
 
 ------------------------------------------------------------------------
 
