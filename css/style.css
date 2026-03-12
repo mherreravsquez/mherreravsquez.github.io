@@ -590,10 +590,17 @@ section { padding: 96px 40px; }
 .proj-inner:hover .proj-corner { transform: translate(0,0); }
 
 .proj-thumb {
-  position: absolute; inset: 0;
+  position: absolute;
+  inset: 0;
+
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+
   transition: transform .55s ease;
+
+  width: 100%;
+  height: 100%;
 }
 
 /* Generated thumb patterns (no Imgur needed) */
