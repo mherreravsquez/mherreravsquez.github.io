@@ -90,7 +90,7 @@ Contains all styling for the site UI and layout.
 Handles animations and interactive behavior.
 
 **assets/**\
-Static media.
+Static media, like resume.
 
 **data/**\
 Content related to portfolio projects and devlogs
@@ -106,8 +106,8 @@ Current projects use placeholder content.
 Planned improvements:
 
 -   Replace placeholders with real projects
--   Add screenshots and media
--   Link projects to GitHub repositories
+-   Add screenshots and media, currently screenshots doesn´t show correctly
+-   Apply colors to tags of the projects
 
 ## Add new functions to Admin Panel
 
