@@ -8,7 +8,7 @@
       "year": 2025,
       "engine": "Unity 6",
       "genre": "Psychological Horror",
-      "studio": "PPCo",
+      "studio": "ppc",
       "tags": ["Studio", "Meta Quest 3", "VR", "C#", "Unity"],
       "title": {
         "en": "Car-Loop",
@@ -41,7 +41,7 @@
       "year": 2025,
       "engine": "Unity 2023",
       "genre": "Metroidvania",
-      "studio": null,
+      "studio": "ppc",
       "tags": ["C#", "Global Game Jam 2025", "Experimental narrative"],
       "title": {
         "en": "Break the Bubble",
@@ -71,9 +71,38 @@
       "devlogs": []
     },
     {
+      "id": "hunters-awakening",
+      "featured": false,
+      "size": "third",
+      "status": "released",
+      "year": 2024,
+      "engine": "Unity 2023",
+      "genre": "JRPG", 
+      "studio": "ppc",
+      "tags": ["C#", "JRPG", "Story Rich"],
+      "title": {
+        "en": "Hunters: Awakening",
+        "es": "Hunters: Awakening"
+      },
+      "shortDesc": {
+        "en": "",
+        "es": "."
+      },
+      "fullDesc": {
+        "en": "## Overview\n\n[Insert text here]\n\n## Gameplay\n\n[Insert text here]\n\n## Key Features\n\n- [Insert text here]\n- [Insert text here]h\n\n## Development Notes\n\n[Insert text here]",
+        "es": "## Descripción\n\n[Insert text here]\n\n## Jugabilidad\n\n[Insert text here]\n\n## Características Principales\n\n- [Insert text here]\n- [Insert text here]h\n\n## Notas de Desarrollo\n\n[Insert text here]"
+      },
+      "thumbnail": "https://i.imgur.com/placeholder4.jpg",
+      "thumbClass": "thumb-pattern-4",
+      "screenshots": [],
+      "videos": [],
+      "links": [],
+      "devlogs": []
+    },
+    {
       "id": "",
       "featured": false,
-      "size": "half", "_comment": "half, medium, featured",
+      "size": "half", "_comment": "featured, medium, half, third",
       "status": "released",
       "year": 2000,
       "engine": "",
