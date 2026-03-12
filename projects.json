@@ -1,0 +1,130 @@
+{
+  "projects": [
+    {
+      "id": "void-signal",
+      "featured": true,
+      "size": "featured",
+      "status": "released",
+      "year": 2024,
+      "engine": "Godot 4",
+      "genre": "Top-Down Shooter",
+      "studio": "ppc",
+      "tags": ["GDScript", "Procedural Generation", "Solo Dev"],
+      "title": {
+        "en": "Void Signal",
+        "es": "Señal Vacía"
+      },
+      "shortDesc": {
+        "en": "Procedurally-generated top-down shooter with rogue-lite elements.",
+        "es": "Shooter desde arriba generado proceduralmente con elementos rogue-lite."
+      },
+      "fullDesc": {
+        "en": "## Overview\n\nVoid Signal is a top-down shooter built in Godot 4 that blends classic twin-stick shooting with procedural generation. Every run generates a new layout of interconnected rooms, enemy placements, and item distributions.\n\n## Core Gameplay\n\nPlayers navigate corrupted network nodes, defeating procedurally spawned enemies to collect data fragments. The run ends when the player either reaches the core and destroys it, or loses all health.\n\n### Key Features\n\n- Procedurally generated room layouts using BSP trees\n- 20+ enemy types with individual behavior trees\n- Run-based progression with persistent unlocks\n- Dynamic difficulty scaling\n- Full controller support\n\n## Technical Highlights\n\nThe procedural generation system uses a custom BSP tree algorithm to guarantee connected rooms with no dead ends. Enemy AI uses lightweight behavior trees implemented natively in GDScript, keeping the game running at 120fps even with 80+ entities on screen.\n\n## Development Notes\n\nThis was my first major release under Plants Path Collective. The full development cycle took 8 months, including two months of playtesting with a group of 15 external testers.",
+        "es": "## Descripción\n\nSeñal Vacía es un shooter desde arriba construido en Godot 4 que combina disparos clásicos con generación procedural. Cada partida genera un nuevo diseño de salas interconectadas, enemigos y objetos.\n\n## Jugabilidad\n\nLos jugadores navegan por nodos de red corruptos, derrotando enemigos generados proceduralmente para recopilar fragmentos de datos.\n\n### Características Principales\n\n- Generación procedural de salas con árboles BSP\n- Más de 20 tipos de enemigos con árboles de comportamiento\n- Progresión basada en partidas con desbloqueos persistentes\n- Escalado de dificultad dinámico\n- Soporte completo para mando\n\n## Notas de Desarrollo\n\nEste fue mi primer lanzamiento importante bajo Plants Path Collective. El ciclo de desarrollo completo tomó 8 meses."
+      },
+      "thumbnail": "https://i.imgur.com/placeholder1.jpg",
+      "thumbClass": "thumb-pattern-1",
+      "screenshots": [],
+      "videos": [
+        { "platform": "youtube", "url": "https://youtu.be/placeholder", "label": "Launch Trailer" }
+      ],
+      "links": [
+        { "label": "Play on itch.io", "url": "https://plantspathcollective.itch.io/void-signal", "icon": "🎮" },
+        { "label": "Source Code", "url": "https://github.com/mherreravasquez/void-signal", "icon": "⌨" }
+      ],
+      "devlogs": ["first-devlog", "ai-enemy-behavior"]
+    },
+    {
+      "id": "hollow-echo",
+      "featured": false,
+      "size": "medium",
+      "status": "released",
+      "year": 2023,
+      "engine": "Unity",
+      "genre": "Narrative Adventure",
+      "studio": null,
+      "tags": ["C#", "Dialogue Systems", "Solo Dev"],
+      "title": {
+        "en": "Hollow Echo",
+        "es": "Eco Vacío"
+      },
+      "shortDesc": {
+        "en": "A short narrative game about memory, loss, and fragmented identity.",
+        "es": "Un juego narrativo corto sobre memoria, pérdida e identidad fragmentada."
+      },
+      "fullDesc": {
+        "en": "## Overview\n\nHollow Echo is a short narrative experience about a person piecing together their past through fragmented memories. Built in Unity over 3 months.\n\n## Gameplay\n\nPlayers explore a liminal space, collecting memory fragments that reveal an underlying story. Each interaction updates the world state in subtle ways.\n\n### Key Features\n\n- Custom dialogue system with branching logic\n- Environmental storytelling\n- ~45 minutes of content\n- Original soundtrack\n\n## Development\n\nThis project was my first serious attempt at narrative game design. I focused heavily on atmosphere and pacing over mechanics.",
+        "es": "## Descripción\n\nEco Vacío es una experiencia narrativa corta sobre una persona que reconstruye su pasado a través de memorias fragmentadas. Construido en Unity en 3 meses.\n\n## Características\n\n- Sistema de diálogo personalizado con lógica ramificada\n- Narrativa ambiental\n- ~45 minutos de contenido\n- Banda sonora original"
+      },
+      "thumbnail": "https://i.imgur.com/placeholder2.jpg",
+      "thumbClass": "thumb-pattern-2",
+      "screenshots": [],
+      "videos": [],
+      "links": [
+        { "label": "Play on itch.io", "url": "https://mherreravasquez.itch.io/hollow-echo", "icon": "🎮" }
+      ],
+      "devlogs": []
+    },
+    {
+      "id": "grid-protocol",
+      "featured": false,
+      "size": "half",
+      "status": "wip",
+      "year": 2025,
+      "engine": "Godot 4",
+      "genre": "Puzzle / Strategy",
+      "studio": "ppc",
+      "tags": ["GDScript", "Grid-Based", "Multiplayer"],
+      "title": {
+        "en": "Grid Protocol",
+        "es": "Protocolo de Red"
+      },
+      "shortDesc": {
+        "en": "Turn-based grid puzzle with asynchronous multiplayer. In development.",
+        "es": "Puzle de cuadrícula por turnos con multijugador asíncrono. En desarrollo."
+      },
+      "fullDesc": {
+        "en": "## Overview\n\nGrid Protocol is an asynchronous multiplayer puzzle game where players compete to control nodes on a shared grid. Currently in active development as Plants Path Collective's next title.\n\n## Core Mechanics\n\n- Turn-based grid manipulation\n- Asynchronous challenge system\n- Leaderboards per weekly puzzle\n\n## Status\n\nCurrently in early prototype phase. Target release: Q4 2025.",
+        "es": "## Descripción\n\nProtocolo de Red es un juego de puzle multijugador asíncrono donde los jugadores compiten por controlar nodos en una cuadrícula compartida.\n\n## Estado\n\nActualmente en fase de prototipo temprano. Lanzamiento objetivo: Q4 2025."
+      },
+      "thumbnail": "https://i.imgur.com/placeholder3.jpg",
+      "thumbClass": "thumb-pattern-3",
+      "screenshots": [],
+      "videos": [],
+      "links": [],
+      "devlogs": []
+    },
+    {
+      "id": "remnant-drift",
+      "featured": false,
+      "size": "half",
+      "status": "released",
+      "year": 2023,
+      "engine": "Godot 3",
+      "genre": "Platformer",
+      "studio": null,
+      "tags": ["GDScript", "Jam Game", "48h"],
+      "title": {
+        "en": "Remnant Drift",
+        "es": "Deriva Remanente"
+      },
+      "shortDesc": {
+        "en": "48-hour game jam entry. A momentum-based platformer in a decaying city.",
+        "es": "Entrega para game jam de 48 horas. Un plataformero basado en momentum."
+      },
+      "fullDesc": {
+        "en": "## Overview\n\nRemnant Drift was built in 48 hours for the GMTK Game Jam 2023. It's a momentum-based platformer where you play as a courier navigating a collapsing city.\n\n## Highlights\n\n- Built entirely in 48 hours\n- Momentum physics system from scratch\n- Rated Top 5% in Innovation category",
+        "es": "## Descripción\n\nDeriva Remanente fue construido en 48 horas para el GMTK Game Jam 2023. Es un plataformero basado en momentum.\n\n## Destacados\n\n- Construido en 48 horas\n- Sistema de física de momentum desde cero\n- Calificado en el Top 5% en la categoría Innovación"
+      },
+      "thumbnail": "https://i.imgur.com/placeholder4.jpg",
+      "thumbClass": "thumb-pattern-4",
+      "screenshots": [],
+      "videos": [],
+      "links": [
+        { "label": "Play on itch.io", "url": "https://mherreravasquez.itch.io/remnant-drift", "icon": "🎮" },
+        { "label": "Jam Page", "url": "https://itch.io/jam/gmtk-2023", "icon": "🏆" }
+      ],
+      "devlogs": []
+    }
+  ]
+}

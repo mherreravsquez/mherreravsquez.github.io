@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Game development devlog — Marcelo Herrera Vásquez">
+  <title>Devlog — Marcelo Herrera Vásquez</title>
+
+  <script>window.BLOG_BASE = 'https://raw.githubusercontent.com/YOUR_GITHUB_USER/blog-posts/main';</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,700&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<div class="page">
+
+<!-- NAV -->
+<nav id="nav" class="scrolled">
+  <a href="index.html" class="nav-logo">MH<span class="acc">V</span></a>
+  <div class="nav-center">
+    <a href="index.html#projects" class="nav-link" data-i18n="nav.projects">Projects</a>
+    <a href="index.html#studio"   class="nav-link" data-i18n="nav.studio">Studio</a>
+    <a href="blog.html"           class="nav-link active">Devlog</a>
+    <a href="index.html#about"    class="nav-link" data-i18n="nav.about">About</a>
+    <a href="index.html#contact"  class="nav-link" data-i18n="nav.contact">Contact</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+    </div>
+    <a href="assets/cv-marceloherrera.pdf" target="_blank" class="nav-cv">CV</a>
+  </div>
+</nav>
+
+<!-- BLOG HERO -->
+<div class="blog-hero" style="background:var(--bg2);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div style="padding-top:20px;">
+      <a href="index.html" style="font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);display:inline-flex;align-items:center;gap:8px;margin-bottom:28px;transition:color .2s;" class="footer-social">← Portfolio</a>
+    </div>
+    <div style="display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap;">
+      <div>
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;" data-i18n="devlog.tag">03 — Devlog</div>
+        <h1 style="font-family:var(--head);font-weight:900;font-size:clamp(52px,9vw,96px);text-transform:uppercase;line-height:.88;letter-spacing:.01em;" data-i18n="devlog.title">Dev<br><span style="color:var(--accent);">Log</span></h1>
+      </div>
+      <div style="margin-bottom:8px;font-family:var(--mono);font-size:11px;color:var(--dim);max-width:400px;line-height:1.7;">
+        Development notes, postmortems, and design breakdowns. Updated irregularly.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BLOG LAYOUT -->
+<div class="blog-layout">
+
+  <!-- Posts list -->
+  <div id="blog-posts-list">
+    <!-- Populated by blogLoader.js -->
+    <div class="blog-loading">
+      <span class="loading-spinner"></span>&nbsp;&nbsp;Loading posts...
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <aside>
+    <div class="blog-sidebar-panel">
+      <div class="sidebar-label" data-i18n="devlog.sidebar.tags">Tags</div>
+      <div class="tag-cloud" id="blog-tag-cloud">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+    <div class="blog-sidebar-panel" style="margin-top:12px;">
+      <div class="sidebar-label">Type</div>
+      <div class="tag-cloud">
+        <span class="tag-chip" style="color:var(--accent);border-color:rgba(224,92,20,.3);">release</span>
+        <span class="tag-chip" style="color:var(--cyan);border-color:rgba(23,232,196,.3);">update</span>
+        <span class="tag-chip" style="color:var(--warn);border-color:rgba(240,192,64,.3);">design</span>
+      </div>
+    </div>
+    <div class="blog-sidebar-panel" style="margin-top:12px;">
+      <div class="sidebar-label">Projects</div>
+      <div style="display:flex;flex-direction:column;gap:6px;" id="blog-proj-links">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">MH<span>V</span></div>
+  <div class="footer-copy">© 2025 Marcelo Herrera Vásquez</div>
+  <div class="footer-right">
+    <a href="index.html" class="footer-social">Portfolio</a>
+    <a href="blog.html"  class="footer-social">Devlog</a>
+  </div>
+</footer>
+
+</div><!-- .page -->
+
+<script src="js/i18n.js"></script>
+<script src="js/blogLoader.js"></script>
+<script>
+  document.addEventListener('mousemove', e => {
+    const c = document.getElementById('cursor'), r = document.getElementById('cursor-ring');
+    if (c) { c.style.left = e.clientX + 'px'; c.style.top = e.clientY + 'px'; }
+    if (r) { r.style.left = e.clientX + 'px'; r.style.top  = e.clientY + 'px'; }
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => { if (window.I18n) I18n.setLang(btn.dataset.lang); });
+  });
+  document.addEventListener('DOMContentLoaded', async () => {
+    if (window.I18n) await I18n.init();
+    const listEl = document.getElementById('blog-posts-list');
+    if (listEl) BlogLoader.renderBlogList(listEl);
+
+    // Populate project links sidebar from manifest
+    try {
+      const res = await fetch(`${window.BLOG_BASE}/index.json`);
+      const manifest = await res.json();
+      const projSet = new Set();
+      (manifest.posts || []).forEach(p => { if (p.project) projSet.add(p.project); });
+      const el = document.getElementById('blog-proj-links');
+      if (el) el.innerHTML = [...projSet].map(p =>
+        `<a href="project.html?project=${p}" class="tag-chip">${p}</a>`
+      ).join('');
+    } catch(_) {}
+  });
+  document.addEventListener('langchange', async () => {
+    const listEl = document.getElementById('blog-posts-list');
+    if (listEl) BlogLoader.renderBlogList(listEl);
+  });
+</script>
+</body>
+</html>
