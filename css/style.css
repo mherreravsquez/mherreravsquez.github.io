@@ -10,7 +10,7 @@
   --surf2:     #161f2c;
 
   --line: #192d17;
-  --line2:     #223046;
+  --line2: #2a4622;
 
   /* PRIMARY ACCENT → NEON GREEN */
   --accent: #7afd2e;
@@ -26,7 +26,7 @@
 
   --white:     #eef2ff;
   --dim:       #7c8ba3;
-  --dimmer:    #3a465b;
+  --dimmer: #3c5b3a;
 
   --head:      'Barlow Condensed', sans-serif;
   --body:      'Rajdhani', sans-serif;
@@ -37,7 +37,7 @@
    RESET & BASE
 ════════════════════════════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 22px; }
+html { scroll-behavior: smooth; font-size: 16px; }
 
 body {
   background: var(--bg);
@@ -590,27 +590,20 @@ section { padding: 96px 40px; }
 .proj-inner:hover .proj-corner { transform: translate(0,0); }
 
 .proj-thumb {
-  position: absolute;
-  inset: 0;
-
+  position: absolute; inset: 0;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-
   transition: transform .55s ease;
-
-  width: 100%;
-  height: 100%;
 }
 
 /* Generated thumb patterns (no Imgur needed) */
-.thumb-pattern-1 { background: linear-gradient(135deg,#05101e 0%,#0c1f30 45%,#081520 100%); }
+.thumb-pattern-1 { background-image: linear-gradient(135deg,#05101e 0%,#0c1f30 45%,#081520 100%); }
 .thumb-pattern-1::after { content:''; position:absolute; inset:0; background: repeating-linear-gradient(45deg,transparent,transparent 22px,rgba(23,232,196,.04) 22px,rgba(23,232,196,.04) 23px); }
-.thumb-pattern-2 { background: linear-gradient(135deg,#140608 0%,#250e12 45%,#140608 100%); }
+.thumb-pattern-2 { background-image: linear-gradient(135deg,#140608 0%,#250e12 45%,#140608 100%); }
 .thumb-pattern-2::after { content:''; position:absolute; inset:0; background: repeating-linear-gradient(90deg,transparent,transparent 28px,rgba(224,92,20,.05) 28px,rgba(224,92,20,.05) 29px); }
-.thumb-pattern-3 { background: linear-gradient(135deg,#08101e 0%,#101a2e 45%,#080e1c 100%); }
+.thumb-pattern-3 { background-image: linear-gradient(135deg,#08101e 0%,#101a2e 45%,#080e1c 100%); }
 .thumb-pattern-3::after { content:''; position:absolute; inset:0; background: repeating-linear-gradient(-45deg,transparent,transparent 18px,rgba(255,122,56,.04) 18px,rgba(255,122,56,.04) 19px); }
-.thumb-pattern-4 { background: linear-gradient(135deg,#060e0c 0%,#0c1c16 45%,#060e0c 100%); }
+.thumb-pattern-4 { background-image: linear-gradient(135deg,#060e0c 0%,#0c1c16 45%,#060e0c 100%); }
 .thumb-pattern-4::after { content:''; position:absolute; inset:0; background: repeating-linear-gradient(0deg,transparent,transparent 32px,rgba(23,232,196,.03) 32px,rgba(23,232,196,.03) 33px); }
 
 .proj-fade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(4,6,10,.96) 0%, rgba(4,6,10,.3) 55%, transparent 100%); }
@@ -958,8 +951,8 @@ section { padding: 96px 40px; }
 .contact-glow {
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse at bottom left, rgba(224, 20, 221, 0.06), transparent 55%),
-    radial-gradient(ellipse at top right, rgba(93, 232, 23, 0.04), transparent 55%);
+          radial-gradient(ellipse at bottom left, rgba(224, 20, 221, 0.06), transparent 55%),
+          radial-gradient(ellipse at top right, rgba(93, 232, 23, 0.04), transparent 55%);
   pointer-events: none;
 }
 .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; position: relative; z-index: 1; }

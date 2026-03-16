@@ -9,7 +9,7 @@
       "engine": "Unity 6",
       "genre": "Psychological Horror",
       "studio": "ppc",
-      "tags": ["Studio", "Meta Quest 3", "VR", "C#", "Unity"],
+      "tags": ["Meta Quest 3", "VR", "C#"],
       "title": {
         "en": "Car-Loop",
         "es": "Car-loop"
@@ -132,7 +132,7 @@
       "id": "",
       "featured": false,
       "size": "half", "_comment": "featured, medium, half, third",
-      "status": "released",
+      "status": "",
       "year": null,
       "engine": "",
       "genre": "",

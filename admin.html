@@ -46,95 +46,76 @@
 
 <div class="page">
 
-<!-- NAV -->
-<nav id="nav" class="scrolled">
-  <a href="index.html" class="nav-logo">MH<span class="acc">V</span></a>
-  <div class="nav-center">
-    <a href="index.html" class="nav-link">← Portfolio</a>
-    <a href="blog.html"  class="nav-link">Devlog</a>
-  </div>
-  <div class="nav-right">
-    <span style="font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(224,92,20,.3);padding:5px 12px;">ADMIN</span>
-  </div>
-</nav>
+  <!-- NAV -->
+  <nav id="nav" class="scrolled">
+    <a href="index.html" class="nav-logo">MH<span class="acc">V</span></a>
+    <div class="nav-center">
+      <a href="index.html" class="nav-link">← Portfolio</a>
+      <a href="blog.html"  class="nav-link">Devlog</a>
+    </div>
+    <div class="nav-right">
+      <span style="font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(224,92,20,.3);padding:5px 12px;">ADMIN</span>
+    </div>
+  </nav>
 
-<!-- ADMIN PANEL -->
-<div class="admin-page">
-  <div style="max-width:900px;margin:0 auto;padding:0 40px 80px;">
+  <!-- ADMIN PANEL -->
+  <div class="admin-page">
+    <div style="max-width:900px;margin:0 auto;padding:0 40px 80px;">
 
-    <h1 class="admin-title">Admin<br><span class="acc">Panel</span></h1>
-    <div class="admin-sub">Devlog Publisher & Project Manager</div>
+      <h1 class="admin-title">Admin<br><span class="acc">Panel</span></h1>
+      <div class="admin-sub">Devlog Publisher & Project Manager</div>
 
-    <!-- Tab Buttons -->
-    <div style="display:flex;gap:0;margin-bottom:32px;border:1px solid var(--line2);overflow:hidden;width:fit-content;">
-      <button class="admin-tab active" id="tab-devlog" onclick="switchTab('devlog')"
-              style="font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+      <!-- Tab Buttons -->
+      <div style="display:flex;gap:0;margin-bottom:32px;border:1px solid var(--line2);overflow:hidden;width:fit-content;">
+        <button class="admin-tab active" id="tab-devlog" onclick="switchTab('devlog')"
+                style="font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;
            padding:10px 24px;background:var(--accent);color:var(--bg);border:none;cursor:none;">
-        Devlog
-      </button>
-      <button class="admin-tab" id="tab-projects" onclick="switchTab('projects')"
-              style="font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+          Devlog
+        </button>
+        <button class="admin-tab" id="tab-projects" onclick="switchTab('projects')"
+                style="font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;
            padding:10px 24px;background:transparent;color:var(--dim);border:none;cursor:none;transition:all .2s;">
-        Projects
-      </button>
-    </div>
-    
-    <!-- Warning -->
-    <div class="admin-warn" style="margin-bottom:28px;">
-      <strong>⚠ SECURITY NOTE:</strong> This page uses your GitHub Personal Access Token in-memory only — it is never stored in localStorage, cookies, or anywhere persistent. Close the tab to clear it. Use a token with <code>contents:write</code> scope on the <code>blog-posts</code> repository only.
-    </div>
-
-    <!-- STEP 1: Config -->
-    <div class="admin-auth" style="margin-bottom:20px;">
-      <div class="admin-auth-title">Step 1 — Repository Configuration</div>
-      <div class="admin-form-row">
-        <div class="form-group">
-          <label class="form-label">GitHub Username</label>
-          <input type="text" id="cfg-owner" class="form-input" placeholder="your-github-username" value="">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Blog Posts Repo Name</label>
-          <input type="text" id="cfg-repo" class="form-input" placeholder="blog-posts" value="blog-posts">
-        </div>
+          Projects
+        </button>
       </div>
-      <div class="form-group">
-        <label class="form-label">Branch</label>
-        <input type="text" id="cfg-branch" class="form-input" placeholder="main" value="main" style="max-width:200px;">
-      </div>
-    </div>
 
-    <!-- STEP 2: Token -->
-    <div class="admin-auth" style="margin-bottom:20px;">
-      <div class="admin-auth-title">Step 2 — GitHub Personal Access Token</div>
-      <div class="admin-auth-note">Generate at: GitHub → Settings → Developer settings → Personal access tokens → Fine-grained. Grant <strong>Contents: Read and write</strong> on the blog-posts repo.</div>
-      <div class="token-input-row">
-        <input type="password" id="github-token" class="form-input" placeholder="github_pat_...">
-        <button class="btn-primary" onclick="connectGitHub()">Connect</button>
+      <!-- Warning -->
+      <div class="admin-warn" style="margin-bottom:28px;">
+        <strong>⚠ SECURITY NOTE:</strong> This page uses your GitHub Personal Access Token in-memory only — it is never stored in localStorage, cookies, or anywhere persistent. Close the tab to clear it. Use a token with <code>contents:write</code> scope on the <code>blog-posts</code> repository only.
       </div>
-      <div id="connect-status" class="admin-status"></div>
-    </div>
 
-    <!-- Wrap from the Step 3: Write post comment down to the closing </div> of post-form -->
-    <div id="panel-devlog">
-      <!-- STEP 3: Write post -->
-      <div class="admin-form" id="post-form">
-        <div class="admin-section-title">New Post</div>
-  
+      <!-- STEP 1: Config -->
+      <div class="admin-auth" style="margin-bottom:20px;">
+        <div class="admin-auth-title">Step 1 — Repository Configuration</div>
         <div class="admin-form-row">
           <div class="form-group">
-            <label class="form-label">Post Title *</label>
-            <input type="text" id="f-title" class="form-input" placeholder="AI Enemy Behavior — Deep Dive"
-                   oninput="autoSlug(this.value)">
+            <label class="form-label">GitHub Username</label>
+            <input type="text" id="cfg-owner" class="form-input" placeholder="your-github-username" value="">
           </div>
           <div class="form-group">
-            <label class="form-label">Slug (auto-generated) *</label>
-            <input type="text" id="f-slug" class="form-input" placeholder="ai-enemy-behavior">
-            <div class="form-help">URL-safe: lowercase, hyphens only</div>
+            <label class="form-label">Blog Posts Repo Name</label>
+            <input type="text" id="cfg-repo" class="form-input" placeholder="blog-posts" value="blog-posts">
           </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Branch</label>
+          <input type="text" id="cfg-branch" class="form-input" placeholder="main" value="main" style="max-width:200px;">
         </div>
       </div>
 
-      <!-- ══════ PROJECTS PANEL ══════ -->
+      <!-- STEP 2: Token -->
+      <div class="admin-auth" style="margin-bottom:20px;">
+        <div class="admin-auth-title">Step 2 — GitHub Personal Access Token</div>
+        <div class="admin-auth-note">Generate at: GitHub → Settings → Developer settings → Personal access tokens → Fine-grained. Grant <strong>Contents: Read and write</strong> on the blog-posts repo.</div>
+        <div class="token-input-row">
+          <input type="password" id="github-token" class="form-input" placeholder="github_pat_...">
+          <button class="btn-primary" onclick="connectGitHub()">Connect</button>
+        </div>
+        <div id="connect-status" class="admin-status"></div>
+      </div>
+
+      <!-- Wrap from the Step 3: Write post comment down to the closing </div> of post-form -->
+      <!-- ══════ PROJECTS PANEL (sibling of panel-devlog) ══════ -->
       <div id="panel-projects" style="display:none;">
 
         <div class="admin-auth" style="margin-bottom:20px;">
@@ -289,78 +270,100 @@
           <div id="pj-save-status" class="admin-status"></div>
         </div>
 
-      </div><!-- end panel-projects -->
-      
-      <div class="admin-form-row">
-        <div class="form-group">
-          <label class="form-label">Post Type *</label>
-          <select id="f-type" class="form-input">
-            <option value="update">Update</option>
-            <option value="release">Release</option>
-            <option value="design">Design</option>
-          </select>
-        </div>
-      </div>
+      </div><!-- /pj-form -->
 
-      <div class="admin-form-row">
-        <div class="form-group">
-          <label class="form-label">Date (YYYY-MM-DD)</label>
-          <input type="date" id="f-date" class="form-input">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Linked Project (optional)</label>
-          <input type="text" id="f-project" class="form-input" placeholder="void-signal">
-          <div class="form-help">Must match a project id in projects.json</div>
-        </div>
-      </div>
+    </div><!-- /panel-projects -->
 
-      <div class="form-group">
-        <label class="form-label">Tags (comma separated)</label>
-        <input type="text" id="f-tags" class="form-input" placeholder="AI, Godot, gameplay, tutorial">
-      </div>
+    <!-- ══════ DEVLOG PANEL ══════ -->
+    <div id="panel-devlog">
+      <div class="admin-form" id="post-form">
+        <div class="admin-section-title">New Post</div>
 
-      <div class="form-group">
-        <label class="form-label">Excerpt (for listing cards, ~120 chars)</label>
-        <input type="text" id="f-excerpt" class="form-input" placeholder="Short description shown in devlog listings...">
-      </div>
-      
-      <div class="form-group">
-        <label class="form-label">Content (Markdown) *</label>
-        <textarea id="f-body" class="form-textarea" rows="16"
-                  style="font-family:var(--mono);font-size:12px;"
-                  oninput="updatePreview(); updateCharCount()"
-                  placeholder="## Overview&#10;&#10;Write your post here using Markdown...&#10;&#10;## Section&#10;&#10;Content..."></textarea>
-        <div class="char-count" id="char-count">0 chars</div>
-      </div>
-
-      <!-- Preview toggle -->
-      <div>
-        <button class="btn-dim" onclick="togglePreview()">Toggle Preview</button>
-      </div>
-      <div class="admin-preview" id="md-preview" style="display:none;">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
-          <div>
-            <div class="admin-preview-title">▸ ENGLISH PREVIEW</div>
-            <div class="admin-preview-content preview-rendered" id="md-preview-en"></div>
+        <div class="admin-form-row">
+          <div class="form-group">
+            <label class="form-label">Post Title *</label>
+            <input type="text" id="f-title" class="form-input" placeholder="AI Enemy Behavior — Deep Dive"
+                   oninput="autoSlug(this.value)">
           </div>
-          <div>
-            <div class="admin-preview-title" style="color:var(--warn);">▸ ESPAÑOL PREVIEW</div>
-            <div class="admin-preview-content preview-rendered" id="md-preview-es"></div>
+          <div class="form-group">
+            <label class="form-label">Slug (auto-generated) *</label>
+            <input type="text" id="f-slug" class="form-input" placeholder="ai-enemy-behavior">
+            <div class="form-help">URL-safe: lowercase, hyphens only</div>
           </div>
         </div>
-      </div>
 
-      <!-- Publish -->
-      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding-top:8px;border-top:1px solid var(--line2);">
-        <button class="btn-primary" onclick="publishPost()" id="publish-btn">Publish Post</button>
-        <button class="btn-dim"     onclick="clearForm()">Clear Form</button>
-        <span style="font-family:var(--mono);font-size:10px;color:var(--dim);">
+        <div class="admin-form-row">
+          <div class="form-group">
+            <label class="form-label">Post Type *</label>
+            <select id="f-type" class="form-input">
+              <option value="update">Update</option>
+              <option value="release">Release</option>
+              <option value="design">Design</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="admin-form-row">
+          <div class="form-group">
+            <label class="form-label">Date (YYYY-MM-DD)</label>
+            <input type="date" id="f-date" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Linked Project (optional)</label>
+            <input type="text" id="f-project" class="form-input" placeholder="void-signal">
+            <div class="form-help">Must match a project id in projects.json</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Tags (comma separated)</label>
+          <input type="text" id="f-tags" class="form-input" placeholder="AI, Godot, gameplay, tutorial">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Excerpt (for listing cards, ~120 chars)</label>
+          <input type="text" id="f-excerpt" class="form-input" placeholder="Short description shown in devlog listings...">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Content (Markdown) *</label>
+          <textarea id="f-body" class="form-textarea" rows="16"
+                    style="font-family:var(--mono);font-size:12px;"
+                    oninput="updatePreview(); updateCharCount()"
+                    placeholder="## Overview&#10;&#10;Write your post here using Markdown...&#10;&#10;## Section&#10;&#10;Content..."></textarea>
+          <div class="char-count" id="char-count">0 chars</div>
+        </div>
+
+        <!-- Preview toggle -->
+        <div>
+          <button class="btn-dim" onclick="togglePreview()">Toggle Preview</button>
+        </div>
+        <div class="admin-preview" id="md-preview" style="display:none;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+            <div>
+              <div class="admin-preview-title">▸ ENGLISH PREVIEW</div>
+              <div class="admin-preview-content preview-rendered" id="md-preview-en"></div>
+            </div>
+            <div>
+              <div class="admin-preview-title" style="color:var(--warn);">▸ ESPAÑOL PREVIEW</div>
+              <div class="admin-preview-content preview-rendered" id="md-preview-es"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Publish -->
+        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding-top:8px;border-top:1px solid var(--line2);">
+          <button class="btn-primary" onclick="publishPost()" id="publish-btn">Publish Post</button>
+          <button class="btn-dim"     onclick="clearForm()">Clear Form</button>
+          <span style="font-family:var(--mono);font-size:10px;color:var(--dim);">
           Will commit to: <span id="commit-path-preview" style="color:var(--pink);">en/YYYY-MM-DD-slug.md</span>
         </span>
-      </div>
+        </div>
 
-      <div id="publish-status" class="admin-status"></div>
-    </div>
+        <div id="publish-status" class="admin-status"></div>
+
+      </div><!-- /post-form -->
+    </div><!-- /panel-devlog -->
 
   </div>
 </div>
@@ -369,325 +372,325 @@
 
 <script src="js/i18n.js"></script>
 <script>
-/* ════════════════════════════════════════════
-   ADMIN LOGIC
-════════════════════════════════════════════ */
+  /* ════════════════════════════════════════════
+     ADMIN LOGIC
+  ════════════════════════════════════════════ */
 
-let _token = null;
+  let _token = null;
 
-// Set today's date as default
-document.addEventListener('DOMContentLoaded', () => {
-  const today = new Date().toISOString().split('T')[0];
-  document.getElementById('f-date').value = today;
-});
+  // Set today's date as default
+  document.addEventListener('DOMContentLoaded', () => {
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('f-date').value = today;
+  });
 
-// Auto-generate slug from title
-function autoSlug(title) {
-  const slug = title.toLowerCase()
-    .replace(/[àáäâ]/g, 'a').replace(/[èéëê]/g, 'e')
-    .replace(/[ìíïî]/g, 'i').replace(/[òóöô]/g, 'o')
-    .replace(/[ùúüû]/g, 'u').replace(/[ñ]/g, 'n')
-    .replace(/[^a-z0-9\s-]/g, '')
-    .trim().replace(/\s+/g, '-')
-    .replace(/-+/g, '-').slice(0, 60);
-  document.getElementById('f-slug').value = slug;
-  updateCommitPath();
-}
-
-function updateCommitPath() {
-  const lang = document.getElementById('f-lang')?.value || 'en';
-  const date = document.getElementById('f-date')?.value || 'YYYY-MM-DD';
-  const slug = document.getElementById('f-slug')?.value || 'slug';
-  const el   = document.getElementById('commit-path-preview');
-  if (el) el.textContent = `${lang}/${date}-${slug}.md`;
-}
-
-document.getElementById('f-lang')?.addEventListener('change', updateCommitPath);
-document.getElementById('f-date')?.addEventListener('change', updateCommitPath);
-document.getElementById('f-slug')?.addEventListener('input', updateCommitPath);
-
-function updatePreview() {
-  const en = document.getElementById('f-body-en')?.value || '';
-  const es = document.getElementById('f-body-es')?.value || '';
-  const pEn = document.getElementById('md-preview-en');
-  const pEs = document.getElementById('md-preview-es');
-  if (pEn) pEn.innerHTML = marked.parse(en);
-  if (pEs) pEs.innerHTML = marked.parse(es);
-}
-
-function updateCharCount() {
-  const lenEn = document.getElementById('f-body-en')?.value.length || 0;
-  const lenEs = document.getElementById('f-body-es')?.value.length || 0;
-  const elEn = document.getElementById('char-count-en');
-  const elEs = document.getElementById('char-count-es');
-  if (elEn) elEn.textContent = lenEn + ' chars';
-  if (elEs) elEs.textContent = lenEs + ' chars';
-}
-
-function togglePreview() {
-  const el = document.getElementById('md-preview');
-  el?.classList.toggle('visible');
-  updatePreview();
-}
-
-// Connect to GitHub
-async function connectGitHub() {
-  const token = document.getElementById('github-token')?.value.trim();
-  const owner = document.getElementById('cfg-owner')?.value.trim();
-  const repo  = document.getElementById('cfg-repo')?.value.trim() || 'blog-posts';
-  const status = document.getElementById('connect-status');
-
-  if (!token) { showStatus(status, 'Enter a GitHub token.', 'error'); return; }
-  if (!owner)  { showStatus(status, 'Enter your GitHub username.', 'error'); return; }
-
-  showStatus(status, 'Verifying...', '');
-
-  try {
-    const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
-      headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github+json' }
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    _token = token;
-    showStatus(status, `✓ Connected to ${data.full_name}`, 'success');
-    document.getElementById('post-form')?.classList.add('visible');
-  } catch (e) {
-    showStatus(status, `✗ Failed: ${e.message}. Check token and repo name.`, 'error');
-  }
-}
-
-// Build frontmatter
-function buildFrontmatter(fields) {
-  const lines = ['---'];
-  if (fields.title)   lines.push(`title: "${fields.title.replace(/"/g, '\\"')}"`);
-  if (fields.slug)    lines.push(`slug: "${fields.slug}"`);
-  if (fields.date)    lines.push(`date: "${fields.date}"`);
-  if (fields.type)    lines.push(`type: "${fields.type}"`);
-  if (fields.lang)    lines.push(`lang: "${fields.lang}"`);
-  if (fields.project) lines.push(`project: "${fields.project}"`);
-  if (fields.tags)    lines.push(`tags: [${fields.tags.map(t=>`"${t.trim()}"`).join(', ')}]`);
-  if (fields.excerpt) lines.push(`excerpt: "${fields.excerpt.replace(/"/g, '\\"')}"`);
-  lines.push('---', '');
-  return lines.join('\n');
-}
-
-// Publish post
-async function publishPost() {
-  if (!_token) { alert('Connect with a GitHub token first.'); return; }
-
-  const owner  = document.getElementById('cfg-owner').value.trim();
-  const repo   = document.getElementById('cfg-repo').value.trim() || 'blog-posts';
-  const branch = document.getElementById('cfg-branch').value.trim() || 'main';
-
-  const title   = document.getElementById('f-title').value.trim();
-  const slug    = document.getElementById('f-slug').value.trim();
-  const type    = document.getElementById('f-type').value;
-  const lang    = document.getElementById('f-lang').value;
-  const date    = document.getElementById('f-date').value;
-  const project = document.getElementById('f-project').value.trim();
-  const tagsRaw = document.getElementById('f-tags').value;
-  const excerpt = document.getElementById('f-excerpt').value.trim();
-
-  const bodyEn  = document.getElementById('f-body-en').value.trim();
-  const bodyEs  = document.getElementById('f-body-es').value.trim();
-  
-  const status  = document.getElementById('publish-status');
-
-  if (!title || !slug || (!bodyEn && !bodyEs)) {
-    showStatus(status, '✗ Title, slug, and at least one language body are required.', 'error'); return;
-  }
-  const tags = tagsRaw ? tagsRaw.split(',').map(t => t.trim()).filter(Boolean) : [];
-
-  // Build both language files
-  const filesToPublish = [];
-  if (bodyEn) {
-    const fm = buildFrontmatter({ title, slug, date, type, lang: 'en', project, tags, excerpt });
-    filesToPublish.push({ lang: 'en', path: `en/${date}-${slug}.md`, content: fm + bodyEn });
-  }
-  if (bodyEs) {
-    const fm = buildFrontmatter({ title, slug, date, type, lang: 'es', project, tags, excerpt });
-    filesToPublish.push({ lang: 'es', path: `es/${date}-${slug}.md`, content: fm + bodyEs });
+  // Auto-generate slug from title
+  function autoSlug(title) {
+    const slug = title.toLowerCase()
+            .replace(/[àáäâ]/g, 'a').replace(/[èéëê]/g, 'e')
+            .replace(/[ìíïî]/g, 'i').replace(/[òóöô]/g, 'o')
+            .replace(/[ùúüû]/g, 'u').replace(/[ñ]/g, 'n')
+            .replace(/[^a-z0-9\s-]/g, '')
+            .trim().replace(/\s+/g, '-')
+            .replace(/-+/g, '-').slice(0, 60);
+    document.getElementById('f-slug').value = slug;
+    updateCommitPath();
   }
 
-  const btn = document.getElementById('publish-btn');
-  btn.disabled = true;
-  btn.textContent = 'Publishing...';
-  showStatus(status, 'Committing post...', '');
+  function updateCommitPath() {
+    const lang = document.getElementById('f-lang')?.value || 'en';
+    const date = document.getElementById('f-date')?.value || 'YYYY-MM-DD';
+    const slug = document.getElementById('f-slug')?.value || 'slug';
+    const el   = document.getElementById('commit-path-preview');
+    if (el) el.textContent = `${lang}/${date}-${slug}.md`;
+  }
 
-  const API = `https://api.github.com/repos/${owner}/${repo}/contents`;
-  const headers = {
-    Authorization: `token ${_token}`,
-    Accept: 'application/vnd.github+json',
-    'Content-Type': 'application/json'
-  };
+  document.getElementById('f-lang')?.addEventListener('change', updateCommitPath);
+  document.getElementById('f-date')?.addEventListener('change', updateCommitPath);
+  document.getElementById('f-slug')?.addEventListener('input', updateCommitPath);
 
-  try {
-    // 1. Check if file exists (to get SHA for update)
-    let sha = undefined;
-    const checkRes = await fetch(`${API}/${path}?ref=${branch}`, { headers });
-    if (checkRes.ok) {
-      const existing = await checkRes.json();
-      sha = existing.sha;
+  function updatePreview() {
+    const en = document.getElementById('f-body-en')?.value || '';
+    const es = document.getElementById('f-body-es')?.value || '';
+    const pEn = document.getElementById('md-preview-en');
+    const pEs = document.getElementById('md-preview-es');
+    if (pEn) pEn.innerHTML = marked.parse(en);
+    if (pEs) pEs.innerHTML = marked.parse(es);
+  }
+
+  function updateCharCount() {
+    const lenEn = document.getElementById('f-body-en')?.value.length || 0;
+    const lenEs = document.getElementById('f-body-es')?.value.length || 0;
+    const elEn = document.getElementById('char-count-en');
+    const elEs = document.getElementById('char-count-es');
+    if (elEn) elEn.textContent = lenEn + ' chars';
+    if (elEs) elEs.textContent = lenEs + ' chars';
+  }
+
+  function togglePreview() {
+    const el = document.getElementById('md-preview');
+    el?.classList.toggle('visible');
+    updatePreview();
+  }
+
+  // Connect to GitHub
+  async function connectGitHub() {
+    const token = document.getElementById('github-token')?.value.trim();
+    const owner = document.getElementById('cfg-owner')?.value.trim();
+    const repo  = document.getElementById('cfg-repo')?.value.trim() || 'blog-posts';
+    const status = document.getElementById('connect-status');
+
+    if (!token) { showStatus(status, 'Enter a GitHub token.', 'error'); return; }
+    if (!owner)  { showStatus(status, 'Enter your GitHub username.', 'error'); return; }
+
+    showStatus(status, 'Verifying...', '');
+
+    try {
+      const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
+        headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github+json' }
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      _token = token;
+      showStatus(status, `✓ Connected to ${data.full_name}`, 'success');
+      document.getElementById('post-form')?.classList.add('visible');
+    } catch (e) {
+      showStatus(status, `✗ Failed: ${e.message}. Check token and repo name.`, 'error');
+    }
+  }
+
+  // Build frontmatter
+  function buildFrontmatter(fields) {
+    const lines = ['---'];
+    if (fields.title)   lines.push(`title: "${fields.title.replace(/"/g, '\\"')}"`);
+    if (fields.slug)    lines.push(`slug: "${fields.slug}"`);
+    if (fields.date)    lines.push(`date: "${fields.date}"`);
+    if (fields.type)    lines.push(`type: "${fields.type}"`);
+    if (fields.lang)    lines.push(`lang: "${fields.lang}"`);
+    if (fields.project) lines.push(`project: "${fields.project}"`);
+    if (fields.tags)    lines.push(`tags: [${fields.tags.map(t=>`"${t.trim()}"`).join(', ')}]`);
+    if (fields.excerpt) lines.push(`excerpt: "${fields.excerpt.replace(/"/g, '\\"')}"`);
+    lines.push('---', '');
+    return lines.join('\n');
+  }
+
+  // Publish post
+  async function publishPost() {
+    if (!_token) { alert('Connect with a GitHub token first.'); return; }
+
+    const owner  = document.getElementById('cfg-owner').value.trim();
+    const repo   = document.getElementById('cfg-repo').value.trim() || 'blog-posts';
+    const branch = document.getElementById('cfg-branch').value.trim() || 'main';
+
+    const title   = document.getElementById('f-title').value.trim();
+    const slug    = document.getElementById('f-slug').value.trim();
+    const type    = document.getElementById('f-type').value;
+    const lang    = document.getElementById('f-lang').value;
+    const date    = document.getElementById('f-date').value;
+    const project = document.getElementById('f-project').value.trim();
+    const tagsRaw = document.getElementById('f-tags').value;
+    const excerpt = document.getElementById('f-excerpt').value.trim();
+
+    const bodyEn  = document.getElementById('f-body-en').value.trim();
+    const bodyEs  = document.getElementById('f-body-es').value.trim();
+
+    const status  = document.getElementById('publish-status');
+
+    if (!title || !slug || (!bodyEn && !bodyEs)) {
+      showStatus(status, '✗ Title, slug, and at least one language body are required.', 'error'); return;
+    }
+    const tags = tagsRaw ? tagsRaw.split(',').map(t => t.trim()).filter(Boolean) : [];
+
+    // Build both language files
+    const filesToPublish = [];
+    if (bodyEn) {
+      const fm = buildFrontmatter({ title, slug, date, type, lang: 'en', project, tags, excerpt });
+      filesToPublish.push({ lang: 'en', path: `en/${date}-${slug}.md`, content: fm + bodyEn });
+    }
+    if (bodyEs) {
+      const fm = buildFrontmatter({ title, slug, date, type, lang: 'es', project, tags, excerpt });
+      filesToPublish.push({ lang: 'es', path: `es/${date}-${slug}.md`, content: fm + bodyEs });
     }
 
-    // 2. Encode content as base64
-    const encoded = btoa(unescape(encodeURIComponent(full)));
+    const btn = document.getElementById('publish-btn');
+    btn.disabled = true;
+    btn.textContent = 'Publishing...';
+    showStatus(status, 'Committing post...', '');
 
-    // 3. Commit the post file in both languages
-    for (const file of filesToPublish) {
+    const API = `https://api.github.com/repos/${owner}/${repo}/contents`;
+    const headers = {
+      Authorization: `token ${_token}`,
+      Accept: 'application/vnd.github+json',
+      'Content-Type': 'application/json'
+    };
+
+    try {
+      // 1. Check if file exists (to get SHA for update)
       let sha = undefined;
-      const checkRes = await fetch(`${API}/${file.path}?ref=${branch}`, { headers });
-      if (checkRes.ok) { sha = (await checkRes.json()).sha; }
+      const checkRes = await fetch(`${API}/${path}?ref=${branch}`, { headers });
+      if (checkRes.ok) {
+        const existing = await checkRes.json();
+        sha = existing.sha;
+      }
 
-      const encoded = btoa(unescape(encodeURIComponent(file.content)));
-      const commitBody = {
-        message: `devlog: ${sha ? 'update' : 'add'} "${title}" (${file.lang})`,
-        content: encoded, branch,
+      // 2. Encode content as base64
+      const encoded = btoa(unescape(encodeURIComponent(full)));
+
+      // 3. Commit the post file in both languages
+      for (const file of filesToPublish) {
+        let sha = undefined;
+        const checkRes = await fetch(`${API}/${file.path}?ref=${branch}`, { headers });
+        if (checkRes.ok) { sha = (await checkRes.json()).sha; }
+
+        const encoded = btoa(unescape(encodeURIComponent(file.content)));
+        const commitBody = {
+          message: `devlog: ${sha ? 'update' : 'add'} "${title}" (${file.lang})`,
+          content: encoded, branch,
+          committer: { name: 'MHV Admin', email: 'admin@portfolio.local' }
+        };
+        if (sha) commitBody.sha = sha;
+
+        const commitRes = await fetch(`${API}/${file.path}`, {
+          method: 'PUT', headers, body: JSON.stringify(commitBody)
+        });
+        if (!commitRes.ok) {
+          const err = await commitRes.json();
+          throw new Error(err.message || `HTTP ${commitRes.status}`);
+        }
+      }
+
+      showStatus(status, 'Updating index.json...', '');
+
+      // 4. Fetch current index.json
+      let manifest = { posts: [] };
+      let indexSha = undefined;
+      const idxRes = await fetch(`${API}/index.json?ref=${branch}`, { headers });
+      if (idxRes.ok) {
+        const idxData = await idxRes.json();
+        indexSha = idxData.sha;
+        try {
+          manifest = JSON.parse(atob(idxData.content.replace(/\n/g, '')));
+        } catch(_) {}
+      }
+
+      // 5. Upsert post entry in manifest
+      const postEntry = {
+        slug, date, type, lang,
+        title: { [lang]: title },
+        excerpt: excerpt ? { [lang]: excerpt } : undefined,
+        project: project || undefined,
+        tags
+      };
+      // Remove undefined fields
+      Object.keys(postEntry).forEach(k => postEntry[k] === undefined && delete postEntry[k]);
+
+      const idx = manifest.posts.findIndex(p => p.slug === slug && p.lang === lang);
+      if (idx > -1) manifest.posts[idx] = postEntry;
+      else          manifest.posts.unshift(postEntry);
+
+      // Sort by date desc
+      manifest.posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      // 6. Commit updated index.json
+      const idxEncoded = btoa(unescape(encodeURIComponent(JSON.stringify(manifest, null, 2))));
+      const idxBody = {
+        message: `manifest: update index.json (add "${slug}")`,
+        content: idxEncoded,
+        branch,
         committer: { name: 'MHV Admin', email: 'admin@portfolio.local' }
       };
-      if (sha) commitBody.sha = sha;
+      if (indexSha) idxBody.sha = indexSha;
 
-      const commitRes = await fetch(`${API}/${file.path}`, {
-        method: 'PUT', headers, body: JSON.stringify(commitBody)
+      const idxCommit = await fetch(`${API}/index.json`, {
+        method: 'PUT', headers, body: JSON.stringify(idxBody)
       });
-      if (!commitRes.ok) {
-        const err = await commitRes.json();
-        throw new Error(err.message || `HTTP ${commitRes.status}`);
+      if (!idxCommit.ok) {
+        const err = await idxCommit.json();
+        throw new Error(`index.json update failed: ${err.message}`);
       }
+
+      showStatus(status, `✓ Published! "${title}" → ${path}`, 'success');
+      btn.textContent = '✓ Published';
+      setTimeout(() => { btn.disabled = false; btn.textContent = 'Publish Post'; }, 3000);
+
+    } catch (e) {
+      showStatus(status, `✗ Error: ${e.message}`, 'error');
+      btn.disabled = false;
+      btn.textContent = 'Publish Post';
     }
+  }
 
-    showStatus(status, 'Updating index.json...', '');
-
-    // 4. Fetch current index.json
-    let manifest = { posts: [] };
-    let indexSha = undefined;
-    const idxRes = await fetch(`${API}/index.json?ref=${branch}`, { headers });
-    if (idxRes.ok) {
-      const idxData = await idxRes.json();
-      indexSha = idxData.sha;
-      try {
-        manifest = JSON.parse(atob(idxData.content.replace(/\n/g, '')));
-      } catch(_) {}
-    }
-
-    // 5. Upsert post entry in manifest
-    const postEntry = {
-      slug, date, type, lang,
-      title: { [lang]: title },
-      excerpt: excerpt ? { [lang]: excerpt } : undefined,
-      project: project || undefined,
-      tags
-    };
-    // Remove undefined fields
-    Object.keys(postEntry).forEach(k => postEntry[k] === undefined && delete postEntry[k]);
-
-    const idx = manifest.posts.findIndex(p => p.slug === slug && p.lang === lang);
-    if (idx > -1) manifest.posts[idx] = postEntry;
-    else          manifest.posts.unshift(postEntry);
-
-    // Sort by date desc
-    manifest.posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    // 6. Commit updated index.json
-    const idxEncoded = btoa(unescape(encodeURIComponent(JSON.stringify(manifest, null, 2))));
-    const idxBody = {
-      message: `manifest: update index.json (add "${slug}")`,
-      content: idxEncoded,
-      branch,
-      committer: { name: 'MHV Admin', email: 'admin@portfolio.local' }
-    };
-    if (indexSha) idxBody.sha = indexSha;
-
-    const idxCommit = await fetch(`${API}/index.json`, {
-      method: 'PUT', headers, body: JSON.stringify(idxBody)
+  function clearForm() {
+    ['f-title','f-slug','f-project','f-tags','f-excerpt','f-body-en','f-body-es'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = '';
     });
-    if (!idxCommit.ok) {
-      const err = await idxCommit.json();
-      throw new Error(`index.json update failed: ${err.message}`);
+    document.getElementById('f-type').value = 'update';
+    document.getElementById('f-lang').value = 'en';
+    document.getElementById('f-date').value = new Date().toISOString().split('T')[0];
+    document.getElementById('md-preview')?.classList.remove('visible');
+    document.getElementById('publish-status')?.classList.remove('visible');
+    updateCommitPath();
+    updateCharCount();
+  }
+
+  function showStatus(el, msg, type) {
+    if (!el) return;
+    el.textContent = msg;
+    el.className = 'admin-status visible' + (type ? ` ${type}` : '');
+  }
+
+  // Cursor
+  document.addEventListener('mousemove', e => {
+    const c = document.getElementById('cursor'), r = document.getElementById('cursor-ring');
+    if (c) { c.style.left = e.clientX + 'px'; c.style.top = e.clientY + 'px'; }
+    if (r) { r.style.left = e.clientX + 'px'; r.style.top  = e.clientY + 'px'; }
+  });
+
+  // ════ TAB SWITCHING ════
+  function switchTab(tab) {
+    document.getElementById('panel-devlog').style.display   = tab === 'devlog'   ? '' : 'none';
+    document.getElementById('panel-projects').style.display = tab === 'projects' ? '' : 'none';
+    document.querySelectorAll('.admin-tab').forEach(t => {
+      const isActive = t.id === `tab-${tab}`;
+      t.style.background = isActive ? 'var(--accent)' : 'transparent';
+      t.style.color      = isActive ? 'var(--bg)'     : 'var(--dim)';
+    });
+  }
+
+  // ════ PROJECT MANAGER ════
+  let _projects = [];
+  let _projectsFileSha = null;
+  let _editingIndex = -1;
+
+  async function loadProjects() {
+    if (!_token) { alert('Connect with a GitHub token first (Step 2 above).'); return; }
+    const owner  = document.getElementById('cfg-owner').value.trim();
+    const repo   = document.getElementById('pj-repo').value.trim();
+    const branch = document.getElementById('pj-branch').value.trim() || 'main';
+    const status = document.getElementById('pj-load-status');
+    showStatus(status, 'Loading projects.json...', '');
+
+    try {
+      const res = await fetch(
+              `https://api.github.com/repos/${owner}/${repo}/contents/data/projects.json?ref=${branch}`,
+              { headers: { Authorization: `token ${_token}`, Accept: 'application/vnd.github+json' } }
+      );
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      _projectsFileSha = data.sha;
+      _projects = JSON.parse(atob(data.content.replace(/\n/g, ''))).projects;
+      renderProjectList();
+      document.getElementById('pj-list-panel').style.display = '';
+      showStatus(status, `✓ Loaded ${_projects.length} projects.`, 'success');
+    } catch (e) {
+      showStatus(status, `✗ ${e.message}`, 'error');
     }
-
-    showStatus(status, `✓ Published! "${title}" → ${path}`, 'success');
-    btn.textContent = '✓ Published';
-    setTimeout(() => { btn.disabled = false; btn.textContent = 'Publish Post'; }, 3000);
-
-  } catch (e) {
-    showStatus(status, `✗ Error: ${e.message}`, 'error');
-    btn.disabled = false;
-    btn.textContent = 'Publish Post';
   }
-}
 
-function clearForm() {
-  ['f-title','f-slug','f-project','f-tags','f-excerpt','f-body-en','f-body-es'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.value = '';
-  });
-  document.getElementById('f-type').value = 'update';
-  document.getElementById('f-lang').value = 'en';
-  document.getElementById('f-date').value = new Date().toISOString().split('T')[0];
-  document.getElementById('md-preview')?.classList.remove('visible');
-  document.getElementById('publish-status')?.classList.remove('visible');
-  updateCommitPath();
-  updateCharCount();
-}
-
-function showStatus(el, msg, type) {
-  if (!el) return;
-  el.textContent = msg;
-  el.className = 'admin-status visible' + (type ? ` ${type}` : '');
-}
-
-// Cursor
-document.addEventListener('mousemove', e => {
-  const c = document.getElementById('cursor'), r = document.getElementById('cursor-ring');
-  if (c) { c.style.left = e.clientX + 'px'; c.style.top = e.clientY + 'px'; }
-  if (r) { r.style.left = e.clientX + 'px'; r.style.top  = e.clientY + 'px'; }
-});
-
-// ════ TAB SWITCHING ════
-function switchTab(tab) {
-  document.getElementById('panel-devlog').style.display   = tab === 'devlog'   ? '' : 'none';
-  document.getElementById('panel-projects').style.display = tab === 'projects' ? '' : 'none';
-  document.querySelectorAll('.admin-tab').forEach(t => {
-    const isActive = t.id === `tab-${tab}`;
-    t.style.background = isActive ? 'var(--accent)' : 'transparent';
-    t.style.color      = isActive ? 'var(--bg)'     : 'var(--dim)';
-  });
-}
-
-// ════ PROJECT MANAGER ════
-let _projects = [];
-let _projectsFileSha = null;
-let _editingIndex = -1;
-
-async function loadProjects() {
-  if (!_token) { alert('Connect with a GitHub token first (Step 2 above).'); return; }
-  const owner  = document.getElementById('cfg-owner').value.trim();
-  const repo   = document.getElementById('pj-repo').value.trim();
-  const branch = document.getElementById('pj-branch').value.trim() || 'main';
-  const status = document.getElementById('pj-load-status');
-  showStatus(status, 'Loading projects.json...', '');
-
-  try {
-    const res = await fetch(
-            `https://api.github.com/repos/${owner}/${repo}/contents/data/projects.json?ref=${branch}`,
-            { headers: { Authorization: `token ${_token}`, Accept: 'application/vnd.github+json' } }
-    );
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    _projectsFileSha = data.sha;
-    _projects = JSON.parse(atob(data.content.replace(/\n/g, ''))).projects;
-    renderProjectList();
-    document.getElementById('pj-list-panel').style.display = '';
-    showStatus(status, `✓ Loaded ${_projects.length} projects.`, 'success');
-  } catch (e) {
-    showStatus(status, `✗ ${e.message}`, 'error');
-  }
-}
-
-function renderProjectList() {
-  const list = document.getElementById('pj-list');
-  list.innerHTML = _projects.map((p, i) => `
+  function renderProjectList() {
+    const list = document.getElementById('pj-list');
+    list.innerHTML = _projects.map((p, i) => `
     <div style="display:flex;align-items:center;justify-content:space-between;
                 padding:10px 14px;border:1px solid var(--line2);background:var(--bg3);">
       <div>
@@ -696,130 +699,130 @@ function renderProjectList() {
       </div>
       <button class="btn-dim" style="padding:5px 14px;font-size:9px;" onclick="editProject(${i})">Edit</button>
     </div>`).join('');
-}
-
-function editProject(index) {
-  _editingIndex = index;
-  const p = _projects[index];
-  document.getElementById('pj-form-title').textContent = `Edit — ${p.title.en}`;
-  document.getElementById('pj-id').value          = p.id || '';
-  document.getElementById('pj-size').value        = p.size || 'half';
-  document.getElementById('pj-title-en').value    = p.title?.en || '';
-  document.getElementById('pj-title-es').value    = p.title?.es || '';
-  document.getElementById('pj-desc-en').value     = p.shortDesc?.en || '';
-  document.getElementById('pj-desc-es').value     = p.shortDesc?.es || '';
-  document.getElementById('pj-engine').value      = p.engine || '';
-  document.getElementById('pj-genre').value       = p.genre || '';
-  document.getElementById('pj-year').value        = p.year || '';
-  document.getElementById('pj-status').value      = p.status || 'released';
-  document.getElementById('pj-studio').value      = p.studio || '';
-  document.getElementById('pj-featured').value    = p.featured ? 'true' : 'false';
-  document.getElementById('pj-tags').value        = (p.tags || []).join(', ');
-  document.getElementById('pj-thumb').value       = p.thumbnail || '';
-  document.getElementById('pj-thumbclass').value  = p.thumbClass || 'thumb-pattern-1';
-  document.getElementById('pj-screenshots').value = (p.screenshots || []).map(s => s.url).join('\n');
-  document.getElementById('pj-links').value       = (p.links || []).map(l => `${l.label} | ${l.url} | ${l.icon || ''}`).join('\n');
-  document.getElementById('pj-form').style.display = 'flex';
-  document.getElementById('pj-form').scrollIntoView({ behavior: 'smooth' });
-}
-
-function newProject() {
-  _editingIndex = -1;
-  document.getElementById('pj-form-title').textContent = 'New Project';
-  ['pj-id','pj-title-en','pj-title-es','pj-desc-en','pj-desc-es',
-    'pj-engine','pj-genre','pj-year','pj-tags','pj-thumb','pj-screenshots','pj-links']
-          .forEach(id => { document.getElementById(id).value = ''; });
-  document.getElementById('pj-size').value    = 'half';
-  document.getElementById('pj-status').value  = 'released';
-  document.getElementById('pj-studio').value  = '';
-  document.getElementById('pj-featured').value = 'false';
-  document.getElementById('pj-thumbclass').value = 'thumb-pattern-1';
-  document.getElementById('pj-form').style.display = 'flex';
-}
-
-function cancelProjectEdit() {
-  document.getElementById('pj-form').style.display = 'none';
-}
-
-async function saveProject() {
-  if (!_token) { alert('Connect with a GitHub token first.'); return; }
-  const owner  = document.getElementById('cfg-owner').value.trim();
-  const repo   = document.getElementById('pj-repo').value.trim();
-  const branch = document.getElementById('pj-branch').value.trim() || 'main';
-  const status = document.getElementById('pj-save-status');
-
-  const id = document.getElementById('pj-id').value.trim();
-  if (!id) { showStatus(status, '✗ ID is required.', 'error'); return; }
-
-  // Parse screenshots (one URL per line)
-  const screenshotsRaw = document.getElementById('pj-screenshots').value.trim();
-  const screenshots = screenshotsRaw
-          ? screenshotsRaw.split('\n').map(u => u.trim()).filter(Boolean).map(url => ({ url }))
-          : [];
-
-  // Parse links (Label | URL | icon)
-  const linksRaw = document.getElementById('pj-links').value.trim();
-  const links = linksRaw
-          ? linksRaw.split('\n').map(l => {
-            const [label, url, icon] = l.split('|').map(s => s.trim());
-            return label && url ? { label, url, icon: icon || '' } : null;
-          }).filter(Boolean)
-          : [];
-
-  const updated = {
-    id,
-    featured: document.getElementById('pj-featured').value === 'true',
-    size: document.getElementById('pj-size').value,
-    status: document.getElementById('pj-status').value,
-    year: parseInt(document.getElementById('pj-year').value) || null,
-    engine: document.getElementById('pj-engine').value.trim(),
-    genre: document.getElementById('pj-genre').value.trim(),
-    studio: document.getElementById('pj-studio').value || null,
-    tags: document.getElementById('pj-tags').value.split(',').map(t => t.trim()).filter(Boolean),
-    title: { en: document.getElementById('pj-title-en').value.trim(), es: document.getElementById('pj-title-es').value.trim() },
-    shortDesc: { en: document.getElementById('pj-desc-en').value.trim(), es: document.getElementById('pj-desc-es').value.trim() },
-    thumbnail: document.getElementById('pj-thumb').value.trim() || `https://i.imgur.com/placeholder4.jpg`,
-    thumbClass: document.getElementById('pj-thumbclass').value,
-    // Preserve existing fullDesc if editing, otherwise use placeholder
-    fullDesc: _editingIndex > -1 ? (_projects[_editingIndex].fullDesc || {}) : { en: '## Overview\n\n[Insert text here]', es: '## Descripción\n\n[Insertar texto aquí]' },
-    screenshots,
-    videos: [],
-    links,
-    devlogs: []
-  };
-
-  // Update or insert
-  if (_editingIndex > -1) {
-    _projects[_editingIndex] = updated;
-  } else {
-    _projects.unshift(updated);
   }
 
-  showStatus(status, 'Saving to GitHub...', '');
-  try {
-    const content = btoa(unescape(encodeURIComponent(JSON.stringify({ projects: _projects }, null, 2))));
-    const body = {
-      message: `projects: ${_editingIndex > -1 ? 'update' : 'add'} "${id}"`,
-      content, branch,
-      committer: { name: 'MHV Admin', email: 'admin@portfolio.local' }
-    };
-    if (_projectsFileSha) body.sha = _projectsFileSha;
+  function editProject(index) {
+    _editingIndex = index;
+    const p = _projects[index];
+    document.getElementById('pj-form-title').textContent = `Edit — ${p.title.en}`;
+    document.getElementById('pj-id').value          = p.id || '';
+    document.getElementById('pj-size').value        = p.size || 'half';
+    document.getElementById('pj-title-en').value    = p.title?.en || '';
+    document.getElementById('pj-title-es').value    = p.title?.es || '';
+    document.getElementById('pj-desc-en').value     = p.shortDesc?.en || '';
+    document.getElementById('pj-desc-es').value     = p.shortDesc?.es || '';
+    document.getElementById('pj-engine').value      = p.engine || '';
+    document.getElementById('pj-genre').value       = p.genre || '';
+    document.getElementById('pj-year').value        = p.year || '';
+    document.getElementById('pj-status').value      = p.status || 'released';
+    document.getElementById('pj-studio').value      = p.studio || '';
+    document.getElementById('pj-featured').value    = p.featured ? 'true' : 'false';
+    document.getElementById('pj-tags').value        = (p.tags || []).join(', ');
+    document.getElementById('pj-thumb').value       = p.thumbnail || '';
+    document.getElementById('pj-thumbclass').value  = p.thumbClass || 'thumb-pattern-1';
+    document.getElementById('pj-screenshots').value = (p.screenshots || []).map(s => s.url).join('\n');
+    document.getElementById('pj-links').value       = (p.links || []).map(l => `${l.label} | ${l.url} | ${l.icon || ''}`).join('\n');
+    document.getElementById('pj-form').style.display = 'flex';
+    document.getElementById('pj-form').scrollIntoView({ behavior: 'smooth' });
+  }
 
-    const res = await fetch(
-            `https://api.github.com/repos/${owner}/${repo}/contents/data/projects.json`,
-            { method: 'PUT', headers: { Authorization: `token ${_token}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' }, body: JSON.stringify(body) }
-    );
-    if (!res.ok) { const e = await res.json(); throw new Error(e.message); }
-    const result = await res.json();
-    _projectsFileSha = result.content.sha;
+  function newProject() {
+    _editingIndex = -1;
+    document.getElementById('pj-form-title').textContent = 'New Project';
+    ['pj-id','pj-title-en','pj-title-es','pj-desc-en','pj-desc-es',
+      'pj-engine','pj-genre','pj-year','pj-tags','pj-thumb','pj-screenshots','pj-links']
+            .forEach(id => { document.getElementById(id).value = ''; });
+    document.getElementById('pj-size').value    = 'half';
+    document.getElementById('pj-status').value  = 'released';
+    document.getElementById('pj-studio').value  = '';
+    document.getElementById('pj-featured').value = 'false';
+    document.getElementById('pj-thumbclass').value = 'thumb-pattern-1';
+    document.getElementById('pj-form').style.display = 'flex';
+  }
 
-    showStatus(status, `✓ Saved! "${id}" committed to ${repo}.`, 'success');
-    renderProjectList();
+  function cancelProjectEdit() {
     document.getElementById('pj-form').style.display = 'none';
-  } catch (e) {
-    showStatus(status, `✗ ${e.message}`, 'error');
   }
-}
+
+  async function saveProject() {
+    if (!_token) { alert('Connect with a GitHub token first.'); return; }
+    const owner  = document.getElementById('cfg-owner').value.trim();
+    const repo   = document.getElementById('pj-repo').value.trim();
+    const branch = document.getElementById('pj-branch').value.trim() || 'main';
+    const status = document.getElementById('pj-save-status');
+
+    const id = document.getElementById('pj-id').value.trim();
+    if (!id) { showStatus(status, '✗ ID is required.', 'error'); return; }
+
+    // Parse screenshots (one URL per line)
+    const screenshotsRaw = document.getElementById('pj-screenshots').value.trim();
+    const screenshots = screenshotsRaw
+            ? screenshotsRaw.split('\n').map(u => u.trim()).filter(Boolean).map(url => ({ url }))
+            : [];
+
+    // Parse links (Label | URL | icon)
+    const linksRaw = document.getElementById('pj-links').value.trim();
+    const links = linksRaw
+            ? linksRaw.split('\n').map(l => {
+              const [label, url, icon] = l.split('|').map(s => s.trim());
+              return label && url ? { label, url, icon: icon || '' } : null;
+            }).filter(Boolean)
+            : [];
+
+    const updated = {
+      id,
+      featured: document.getElementById('pj-featured').value === 'true',
+      size: document.getElementById('pj-size').value,
+      status: document.getElementById('pj-status').value,
+      year: parseInt(document.getElementById('pj-year').value) || null,
+      engine: document.getElementById('pj-engine').value.trim(),
+      genre: document.getElementById('pj-genre').value.trim(),
+      studio: document.getElementById('pj-studio').value || null,
+      tags: document.getElementById('pj-tags').value.split(',').map(t => t.trim()).filter(Boolean),
+      title: { en: document.getElementById('pj-title-en').value.trim(), es: document.getElementById('pj-title-es').value.trim() },
+      shortDesc: { en: document.getElementById('pj-desc-en').value.trim(), es: document.getElementById('pj-desc-es').value.trim() },
+      thumbnail: document.getElementById('pj-thumb').value.trim() || `https://i.imgur.com/placeholder4.jpg`,
+      thumbClass: document.getElementById('pj-thumbclass').value,
+      // Preserve existing fullDesc if editing, otherwise use placeholder
+      fullDesc: _editingIndex > -1 ? (_projects[_editingIndex].fullDesc || {}) : { en: '## Overview\n\n[Insert text here]', es: '## Descripción\n\n[Insertar texto aquí]' },
+      screenshots,
+      videos: [],
+      links,
+      devlogs: []
+    };
+
+    // Update or insert
+    if (_editingIndex > -1) {
+      _projects[_editingIndex] = updated;
+    } else {
+      _projects.unshift(updated);
+    }
+
+    showStatus(status, 'Saving to GitHub...', '');
+    try {
+      const content = btoa(unescape(encodeURIComponent(JSON.stringify({ projects: _projects }, null, 2))));
+      const body = {
+        message: `projects: ${_editingIndex > -1 ? 'update' : 'add'} "${id}"`,
+        content, branch,
+        committer: { name: 'MHV Admin', email: 'admin@portfolio.local' }
+      };
+      if (_projectsFileSha) body.sha = _projectsFileSha;
+
+      const res = await fetch(
+              `https://api.github.com/repos/${owner}/${repo}/contents/data/projects.json`,
+              { method: 'PUT', headers: { Authorization: `token ${_token}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' }, body: JSON.stringify(body) }
+      );
+      if (!res.ok) { const e = await res.json(); throw new Error(e.message); }
+      const result = await res.json();
+      _projectsFileSha = result.content.sha;
+
+      showStatus(status, `✓ Saved! "${id}" committed to ${repo}.`, 'success');
+      renderProjectList();
+      document.getElementById('pj-form').style.display = 'none';
+    } catch (e) {
+      showStatus(status, `✗ ${e.message}`, 'error');
+    }
+  }
 
 </script>
 </body>
