@@ -9,27 +9,37 @@
       "engine": "Unity 6",
       "genre": "Psychological Horror",
       "studio": "ppc",
-      "tags": ["Meta Quest 3", "VR", "C#"],
+      "tags": [
+        "Meta Quest 3",
+        "VR",
+        "C#"
+      ],
       "title": {
         "en": "Car-Loop",
         "es": "Car-loop"
       },
       "shortDesc": {
         "en": "Psychological horror VR game with driving elements and procedural generation.",
-        "es": "Juego de terror psicológico en VR con elementos de conducción y generación procedural."
+        "es": "Juego de terror psicolÃ³gico en VR con elementos de conducciÃ³n y generaciÃ³n procedural."
       },
       "fullDesc": {
         "en": "## Overview\n\n<i>Car-Loop</i> is a psychological horror VR game developed in Unity 6. The player must take on the role of the driver on a trip with their partner, but every 5 minutes an accident will occur and everything will start over again.\n\n## Gameplay\n\nThe player will take the wheel of a car using the Meta Quest 3's hand-tracking system, allowing them to turn the steering wheel in a natural and immersive way. During the journey, they will have to hold a conversation with their partner and will be able to respond using gestures, choosing between different dialogue options without having to use words.\n\n### Key Features\n\n- <b>Procedurally generated road</b>, using premade modules\n\n\n- <b>Gestural Dialogue System</b>\n\n\n\n## Development Notes\n\nThis was my first project developed for virtual reality, which meant facing various technical and design challenges.\n\nOne of the main ones was programming a driving system that was intuitive and comfortable for the player, considering the particularities of VR interaction. Added to this was the need to detect hand gestures with precision using <i>hand-tracking</i>, and correctly integrate them with the <b>custom dialogue system</b> I had previously developed.\n\nThis system, although it might now be considered somewhat dated, at the time represented a robust and tailored solution for the project's needs. Built on <b>Scriptable Objects</b>, it allowed various events to be triggered through gestural interaction: from dialogue with the partner to the <i>spawning</i> of objects in the scene or the activation of specific animations.\n\nFinally, the user interface design posed an additional challenge that led me to completely rethink the concept of a conventional UI. To do this, I thoroughly researched key references in the medium, such as <b><i>Half-Life: Alyx</i></b> and <b><i>Minecraft VR</i></b>, analyzing how they approached visual communication and interaction without breaking the player's immersion.",
-        "es": "## Descripción\n\n<i>Car-Loop</i> es un juego VR de terror psicológico desarrollado en Unity 6. El jugador deberá tomar el papel del conductor en un viaje con su pareja, pero cada 5 minutos un accidente ocurrirá y todo volverá a comenzar.\n\n## Jugabilidad\n\nEl jugador tomará el volante de un automóvil utilizando el sistema de seguimiento de manos (<i>hand-tracking</i>) del Meta Quest 3, lo que le permitirá girar el volante de forma natural e inmersiva. Durante el trayecto, deberá mantener una conversación con su pareja y podrá responder mediante gestos, eligiendo así entre diferentes opciones de diálogo sin necesidad de usar palabras.\n\n### Características Principales\n\n- <b>Generación procedural de caminos</b>, haciendo uso de módulos prefabricados\n- <b>Sistema de Diálogo Gestual</b>\n\n## Notas de Desarrollo\n\nEste fue mi primer proyecto desarrollado para realidad virtual, lo que implicó enfrentarme a diversos desafíos técnicos y de diseño.\n\nUno de los principales fue programar un sistema de conducción que resultara intuitivo y cómodo para el jugador, teniendo en cuenta las particularidades de la interacción en VR. A esto se sumó la necesidad de detectar gestos manuales con precisión mediante <i>hand-tracking</i>, e integrarlos correctamente con el <b>sistema de diálogo personalizado</b> que había desarrollado previamente.\n\nDicho sistema, aunque hoy pueda considerarse algo desfasado, en su momento representó una solución robusta y adaptada a las necesidades del proyecto. Construido sobre <b>Scriptable Objects</b>, permitía activar diversos eventos a partir de la interacción gestual: desde el diálogo con la pareja hasta el <i>spawn</i> de objetos en escena o la activación de animaciones específicas.\n\nPor último, el diseño de la interfaz de usuario supuso un reto adicional que me llevó a replantear por completo el concepto de UI convencional. Para ello, investigué a fondo referencias clave del medio, como <b><i>Half-Life: Alyx</i></b> o <b><i>Minecraft VR</i></b>, analizando cómo abordaban la comunicación visual y la interacción sin romper la inmersión del jugador."
+        "es": "## DescripciÃ³n\n\n<i>Car-Loop</i> es un juego VR de terror psicolÃ³gico desarrollado en Unity 6. El jugador deberÃ¡ tomar el papel del conductor en un viaje con su pareja, pero cada 5 minutos un accidente ocurrirÃ¡ y todo volverÃ¡ a comenzar.\n\n## Jugabilidad\n\nEl jugador tomarÃ¡ el volante de un automÃ³vil utilizando el sistema de seguimiento de manos (<i>hand-tracking</i>) del Meta Quest 3, lo que le permitirÃ¡ girar el volante de forma natural e inmersiva. Durante el trayecto, deberÃ¡ mantener una conversaciÃ³n con su pareja y podrÃ¡ responder mediante gestos, eligiendo asÃ­ entre diferentes opciones de diÃ¡logo sin necesidad de usar palabras.\n\n### CaracterÃ­sticas Principales\n\n- <b>GeneraciÃ³n procedural de caminos</b>, haciendo uso de mÃ³dulos prefabricados\n- <b>Sistema de DiÃ¡logo Gestual</b>\n\n## Notas de Desarrollo\n\nEste fue mi primer proyecto desarrollado para realidad virtual, lo que implicÃ³ enfrentarme a diversos desafÃ­os tÃ©cnicos y de diseÃ±o.\n\nUno de los principales fue programar un sistema de conducciÃ³n que resultara intuitivo y cÃ³modo para el jugador, teniendo en cuenta las particularidades de la interacciÃ³n en VR. A esto se sumÃ³ la necesidad de detectar gestos manuales con precisiÃ³n mediante <i>hand-tracking</i>, e integrarlos correctamente con el <b>sistema de diÃ¡logo personalizado</b> que habÃ­a desarrollado previamente.\n\nDicho sistema, aunque hoy pueda considerarse algo desfasado, en su momento representÃ³ una soluciÃ³n robusta y adaptada a las necesidades del proyecto. Construido sobre <b>Scriptable Objects</b>, permitÃ­a activar diversos eventos a partir de la interacciÃ³n gestual: desde el diÃ¡logo con la pareja hasta el <i>spawn</i> de objetos en escena o la activaciÃ³n de animaciones especÃ­ficas.\n\nPor Ãºltimo, el diseÃ±o de la interfaz de usuario supuso un reto adicional que me llevÃ³ a replantear por completo el concepto de UI convencional. Para ello, investiguÃ© a fondo referencias clave del medio, como <b><i>Half-Life: Alyx</i></b> o <b><i>Minecraft VR</i></b>, analizando cÃ³mo abordaban la comunicaciÃ³n visual y la interacciÃ³n sin romper la inmersiÃ³n del jugador."
       },
       "thumbnail": "https://i.imgur.com/diJAbfY.png",
       "thumbClass": "thumb-pattern-1",
       "screenshots": [
-        { "url": "https://i.imgur.com/JSl88oB.png"}
+        {
+          "url": "https://i.imgur.com/JSl88oB.png"
+        }
       ],
       "videos": [],
       "links": [
-        { "label": "Play on itch.io", "url": "https://plants-path-co.itch.io/car-loop", "icon": "🎮" }
+        {
+          "label": "Play on itch.io",
+          "url": "https://plants-path-co.itch.io/car-loop",
+          "icon": "ð®"
+        }
       ],
       "devlogs": []
     },
@@ -42,58 +52,82 @@
       "engine": "Unity 2023",
       "genre": "Metroidvania",
       "studio": "ppc",
-      "tags": ["C#", "Global Game Jam 2025", "Experimental narrative"],
+      "tags": [
+        "C#",
+        "Global Game Jam 2025",
+        "Experimental narrative"
+      ],
       "title": {
         "en": "Break the Bubble",
         "es": "Rompe la Burbuja"
       },
       "shortDesc": {
         "en": "A short play about a developer and how he breaks the genre bubble to create something new.",
-        "es": "Una juego corto sobre un desarrollador y cómo rompe las burbujas de los géneros para crear algo nuevo."
+        "es": "Una juego corto sobre un desarrollador y cÃ³mo rompe las burbujas de los gÃ©neros para crear algo nuevo."
       },
       "fullDesc": {
-        "en": "## Overview\n\n<i>Break the Bubble</i> is a 2D evolutionary platformer developed for the Global Game Jam 2025 under the theme \"Bubble.\" The game follows an aspiring video game developer in a universe where game genres never mix, who embarks on an experimental project to decide what genre his next game should be.\n\n## Gameplay\n\nThe game begins as a simple platformer. As the player progresses, the developer protagonist decides to integrate elements from new genres into the same level. Each time a new genre is added—first shooter mechanics, then puzzle elements—the level resets, forcing the player to master the new, combined ruleset. This process is a playful representation of the creative struggle and the perceived need to keep ideas within their own \"bubbles.\"\n\nThe story mirrors the gameplay. As the experiment continues, the protagonist realizes that genres don't have to be confined. This revelation transforms the game in its final stage into a full metroidvania. Players take control of a wizard on a simple quest to reach the supermarket, which is now complicated by barriers. To succeed, they must explore an expanded map, solve ingenious puzzles, face challenging enemies, and collect keys, ultimately combining all acquired skills to complete the adventure.\n\nThis project was created in just 48 hours by the <b>Plants Path Collective</b>, a team of six developers, artists, and designers.\n\n### Key Features\n\n- <b>Evolutionary Gameplay:</b> Experience a single game that transforms from a pure platformer into a shooter, then a puzzle game, culminating in a metroidvania.\n- <b>Meta-Narrative:</b> The game's structure reflects its story, exploring creative limits and genre blending.",
-        "es": "## Descripción\n\n<i>Romper la Burbuja</i> es un juego de plataformas evolutivo en 2D desarrollado para la Global Game Jam 2025 bajo el tema \"Burbuja\". El juego sigue a un aspirante a desarrollador de videojuegos en un universo donde los géneros nunca se mezclan, quien emprende un proyecto experimental para decidir qué género debería tener su próximo juego.\n\n## Jugabilidad\n\n El juego comienza como un simple plataformas. A medida que el jugador avanza, el protagonista desarrollador decide integrar elementos de nuevos géneros en el mismo nivel. Cada vez que se añade un nuevo género —primero mecánicas de shooter, luego elementos de puzle— el nivel se reinicia, obligando al jugador a dominar el nuevo conjunto de reglas combinadas. Este proceso es una representación lúdica de la lucha creativa y la necesidad percibida de mantener las ideas dentro de sus propias \"burbujas\".\n\nLa historia refleja la jugabilidad. A medida que el experimento continúa, el protagonista comprende que los géneros no tienen por qué estar confinados. Esta revelación transforma el juego en su etapa final en un auténtico metroidvania. Los jugadores toman el control de un mago en una simple misión para llegar al supermercado, que ahora se complica con barreras. Para tener éxito, deben explorar un mapa ampliado, resolver ingeniosos puzles, enfrentarse a enemigos desafiantes y recolectar llaves, combinando finalmente todas las habilidades adquiridas para completar la aventura.\n\nEste proyecto fue creado en solo 48 horas por el <b>Plants Path Collective</b>, un equipo de seis desarrolladores, artistas y diseñadores.\n\n## Características Principales\n\n- <b>Jugabilidad Evolutiva:</b> Experimenta un solo juego que se transforma de un plataformas puro a un shooter, luego a un juego de puzles, culminando en un metroidvania.\n- <b>Metanarrativa:</b> La estructura del juego refleja su historia, explorando los límites creativos y la fusión de géneros."
+        "en": "## Overview\n\n<i>Break the Bubble</i> is a 2D evolutionary platformer developed for the Global Game Jam 2025 under the theme \"Bubble.\" The game follows an aspiring video game developer in a universe where game genres never mix, who embarks on an experimental project to decide what genre his next game should be.\n\n## Gameplay\n\nThe game begins as a simple platformer. As the player progresses, the developer protagonist decides to integrate elements from new genres into the same level. Each time a new genre is addedâfirst shooter mechanics, then puzzle elementsâthe level resets, forcing the player to master the new, combined ruleset. This process is a playful representation of the creative struggle and the perceived need to keep ideas within their own \"bubbles.\"\n\nThe story mirrors the gameplay. As the experiment continues, the protagonist realizes that genres don't have to be confined. This revelation transforms the game in its final stage into a full metroidvania. Players take control of a wizard on a simple quest to reach the supermarket, which is now complicated by barriers. To succeed, they must explore an expanded map, solve ingenious puzzles, face challenging enemies, and collect keys, ultimately combining all acquired skills to complete the adventure.\n\nThis project was created in just 48 hours by the <b>Plants Path Collective</b>, a team of six developers, artists, and designers.\n\n### Key Features\n\n- <b>Evolutionary Gameplay:</b> Experience a single game that transforms from a pure platformer into a shooter, then a puzzle game, culminating in a metroidvania.\n- <b>Meta-Narrative:</b> The game's structure reflects its story, exploring creative limits and genre blending.",
+        "es": "## DescripciÃ³n\n\n<i>Romper la Burbuja</i> es un juego de plataformas evolutivo en 2D desarrollado para la Global Game Jam 2025 bajo el tema \"Burbuja\". El juego sigue a un aspirante a desarrollador de videojuegos en un universo donde los gÃ©neros nunca se mezclan, quien emprende un proyecto experimental para decidir quÃ© gÃ©nero deberÃ­a tener su prÃ³ximo juego.\n\n## Jugabilidad\n\n El juego comienza como un simple plataformas. A medida que el jugador avanza, el protagonista desarrollador decide integrar elementos de nuevos gÃ©neros en el mismo nivel. Cada vez que se aÃ±ade un nuevo gÃ©nero âprimero mecÃ¡nicas de shooter, luego elementos de puzleâ el nivel se reinicia, obligando al jugador a dominar el nuevo conjunto de reglas combinadas. Este proceso es una representaciÃ³n lÃºdica de la lucha creativa y la necesidad percibida de mantener las ideas dentro de sus propias \"burbujas\".\n\nLa historia refleja la jugabilidad. A medida que el experimento continÃºa, el protagonista comprende que los gÃ©neros no tienen por quÃ© estar confinados. Esta revelaciÃ³n transforma el juego en su etapa final en un autÃ©ntico metroidvania. Los jugadores toman el control de un mago en una simple misiÃ³n para llegar al supermercado, que ahora se complica con barreras. Para tener Ã©xito, deben explorar un mapa ampliado, resolver ingeniosos puzles, enfrentarse a enemigos desafiantes y recolectar llaves, combinando finalmente todas las habilidades adquiridas para completar la aventura.\n\nEste proyecto fue creado en solo 48 horas por el <b>Plants Path Collective</b>, un equipo de seis desarrolladores, artistas y diseÃ±adores.\n\n## CaracterÃ­sticas Principales\n\n- <b>Jugabilidad Evolutiva:</b> Experimenta un solo juego que se transforma de un plataformas puro a un shooter, luego a un juego de puzles, culminando en un metroidvania.\n- <b>Metanarrativa:</b> La estructura del juego refleja su historia, explorando los lÃ­mites creativos y la fusiÃ³n de gÃ©neros."
       },
       "thumbnail": "https://i.imgur.com/Oac1gLZ.png",
       "thumbClass": "thumb-pattern-2",
       "screenshots": [
-        { "url": "https://i.imgur.com/0nRsSsi.png"},
-        { "url": "https://i.imgur.com/l7SI2IB.gifv", "label": "Gameplay video"}
+        {
+          "url": "https://i.imgur.com/0nRsSsi.png"
+        },
+        {
+          "url": "https://i.imgur.com/l7SI2IB.gifv",
+          "label": "Gameplay video"
+        }
       ],
       "videos": [
-        { "url": "https://i.imgur.com/l7SI2IB.gifv", "label": "Gameplay video"}
+        {
+          "url": "https://i.imgur.com/l7SI2IB.gifv",
+          "label": "Gameplay video"
+        }
       ],
       "links": [
-        { "label": "Play on itch.io", "url": "https://plants-path-co.itch.io/romper-la-burbuja-ggj-2025", "icon": "🎮" },
-        { "label": "Jam Page", "url": "https://globalgamejam.org/games/2025/romper-la-burbuja-6", "icon": "🏆" }      
+        {
+          "label": "Play on itch.io",
+          "url": "https://plants-path-co.itch.io/romper-la-burbuja-ggj-2025",
+          "icon": "ð®"
+        },
+        {
+          "label": "Jam Page",
+          "url": "https://globalgamejam.org/games/2025/romper-la-burbuja-6",
+          "icon": "ð"
+        }
       ],
       "devlogs": []
     },
     {
       "id": "hunters-awakening",
       "featured": false,
-      "size": "medium",
+      "size": "featured",
       "status": "released",
       "year": 2024,
       "engine": "Unity 2023",
-      "genre": "JRPG", 
+      "genre": "JRPG",
       "studio": "ppc",
-      "tags": ["C#", "JRPG", "Story Rich"],
+      "tags": [
+        "C#",
+        "JRPG",
+        "Story Rich"
+      ],
       "title": {
         "en": "Hunters: Awakening",
         "es": "Hunters: Awakening"
       },
       "shortDesc": {
-        "en": "",
+        "en": "JRPG in the Hunters universe",
         "es": "."
-      },
-      "fullDesc": {
-        "en": "## Overview\n\n[Insert text here]\n\n## Gameplay\n\n[Insert text here]\n\n## Key Features\n\n- [Insert text here]\n- [Insert text here]h\n\n## Development Notes\n\n[Insert text here]",
-        "es": "## Descripción\n\n[Insert text here]\n\n## Jugabilidad\n\n[Insert text here]\n\n## Características Principales\n\n- [Insert text here]\n- [Insert text here]h\n\n## Notas de Desarrollo\n\n[Insert text here]"
       },
       "thumbnail": "https://i.imgur.com/placeholder4.jpg",
       "thumbClass": "thumb-pattern-4",
+      "fullDesc": {
+        "en": "## Overview\n\n[Insert text here]\n\n## Gameplay\n\n[Insert text here]\n\n## Key Features\n\n- [Insert text here]\n- [Insert text here]h\n\n## Development Notes\n\n[Insert text here]",
+        "es": "## DescripciÃ³n\n\n[Insert text here]\n\n## Jugabilidad\n\n[Insert text here]\n\n## CaracterÃ­sticas Principales\n\n- [Insert text here]\n- [Insert text here]h\n\n## Notas de Desarrollo\n\n[Insert text here]"
+      },
       "screenshots": [],
       "videos": [],
       "links": [],
@@ -108,7 +142,10 @@
       "engine": "RenPy",
       "genre": "Visual Novel",
       "studio": null,
-      "tags": ["RenPy", "Visual Novel"],
+      "tags": [
+        "RenPy",
+        "Visual Novel"
+      ],
       "title": {
         "en": "Dungeon Meshi x Lugares que Hablan",
         "es": "Tragones y Mazmorras x Lugares que Hablan"
@@ -119,7 +156,7 @@
       },
       "fullDesc": {
         "en": "## Overview\n\n[Insert text here]\n\n## Gameplay\n\n[Insert text here]\n\n## Key Features\n\n- [Insert text here]\n- [Insert text here]h\n\n## Development Notes\n\n[Insert text here]",
-        "es": "## Descripción\n\n[Insert text here]\n\n## Jugabilidad\n\n[Insert text here]\n\n## Características Principales\n\n- [Insert text here]\n- [Insert text here]h\n\n## Notas de Desarrollo\n\n[Insert text here]"
+        "es": "## DescripciÃ³n\n\n[Insert text here]\n\n## Jugabilidad\n\n[Insert text here]\n\n## CaracterÃ­sticas Principales\n\n- [Insert text here]\n- [Insert text here]h\n\n## Notas de Desarrollo\n\n[Insert text here]"
       },
       "thumbnail": "https://i.imgur.com/lvCnT03.png",
       "thumbClass": "thumb-pattern-4",
@@ -131,13 +168,16 @@
     {
       "id": "",
       "featured": false,
-      "size": "half", "_comment": "featured, medium, half, third",
+      "size": "half",
+      "_comment": "featured, medium, half, third",
       "status": "",
       "year": null,
       "engine": "",
       "genre": "",
       "studio": null,
-      "tags": [""],
+      "tags": [
+        ""
+      ],
       "title": {
         "en": "",
         "es": ""
@@ -148,7 +188,7 @@
       },
       "fullDesc": {
         "en": "## Overview\n\n[Insert text here]\n\n## Gameplay\n\n[Insert text here]\n\n## Key Features\n\n- [Insert text here]\n- [Insert text here]h\n\n## Development Notes\n\n[Insert text here]",
-        "es": "## Descripción\n\n[Insert text here]\n\n## Jugabilidad\n\n[Insert text here]\n\n## Características Principales\n\n- [Insert text here]\n- [Insert text here]h\n\n## Notas de Desarrollo\n\n[Insert text here]"
+        "es": "## DescripciÃ³n\n\n[Insert text here]\n\n## Jugabilidad\n\n[Insert text here]\n\n## CaracterÃ­sticas Principales\n\n- [Insert text here]\n- [Insert text here]h\n\n## Notas de Desarrollo\n\n[Insert text here]"
       },
       "thumbnail": "https://i.imgur.com/placeholder4.jpg",
       "thumbClass": "thumb-pattern-4",
