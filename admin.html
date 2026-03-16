@@ -115,181 +115,182 @@
       </div>
 
       <!-- Wrap from the Step 3: Write post comment down to the closing </div> of post-form -->
-      <div id="panel-devlog">
-        <!-- STEP 3: Write post -->
-        <div class="admin-form" id="post-form">
-          <div class="admin-section-title">New Post</div>
+      <!-- ══════ PROJECTS PANEL (sibling of panel-devlog) ══════ -->
+      <div id="panel-projects" style="display:none;">
+
+        <div class="admin-auth" style="margin-bottom:20px;">
+          <div class="admin-auth-title">Portfolio Repo Config</div>
+          <div class="admin-auth-note">This targets your main portfolio repo (not blog-posts). Enter the repo name below.</div>
+          <div class="admin-form-row">
+            <div class="form-group">
+              <label class="form-label">Portfolio Repo Name</label>
+              <input type="text" id="pj-repo" class="form-input" placeholder="mherreravsquez.github.io" value="mherreravsquez.github.io">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Branch</label>
+              <input type="text" id="pj-branch" class="form-input" placeholder="main" value="main" style="max-width:200px;">
+            </div>
+          </div>
+          <button class="btn-primary" onclick="loadProjects()">Load Projects</button>
+          <div id="pj-load-status" class="admin-status"></div>
+        </div>
+
+        <!-- Project list -->
+        <div class="admin-auth" style="margin-bottom:20px;display:none;" id="pj-list-panel">
+          <div class="admin-auth-title">Existing Projects</div>
+          <div id="pj-list" style="display:flex;flex-direction:column;gap:8px;margin-top:8px;"></div>
+          <button class="btn-dim" style="margin-top:12px;" onclick="newProject()">+ New Project</button>
+        </div>
+
+        <!-- Project editor form -->
+        <div class="admin-form" id="pj-form" style="display:none;flex-direction:column;gap:20px;">
+          <div class="admin-section-title" id="pj-form-title">Edit Project</div>
 
           <div class="admin-form-row">
             <div class="form-group">
-              <label class="form-label">Post Title *</label>
-              <input type="text" id="f-title" class="form-input" placeholder="AI Enemy Behavior — Deep Dive"
-                     oninput="autoSlug(this.value)">
+              <label class="form-label">ID (slug) *</label>
+              <input type="text" id="pj-id" class="form-input" placeholder="car-loop">
+              <div class="form-help">Lowercase, hyphens only. Used in URL.</div>
             </div>
             <div class="form-group">
-              <label class="form-label">Slug (auto-generated) *</label>
-              <input type="text" id="f-slug" class="form-input" placeholder="ai-enemy-behavior">
-              <div class="form-help">URL-safe: lowercase, hyphens only</div>
+              <label class="form-label">Size *</label>
+              <select id="pj-size" class="form-input">
+                <option value="featured">Featured (7 cols)</option>
+                <option value="medium">Medium (5 cols)</option>
+                <option value="half">Half (6 cols)</option>
+                <option value="third">Third (4 cols)</option>
+              </select>
             </div>
           </div>
+
+          <div class="admin-form-row">
+            <div class="form-group">
+              <label class="form-label">Title — English *</label>
+              <input type="text" id="pj-title-en" class="form-input" placeholder="Car-Loop">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Título — Español *</label>
+              <input type="text" id="pj-title-es" class="form-input" placeholder="Car-Loop">
+            </div>
+          </div>
+
+          <div class="admin-form-row">
+            <div class="form-group">
+              <label class="form-label">Short Desc — English</label>
+              <input type="text" id="pj-desc-en" class="form-input" placeholder="Short description...">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Desc. corta — Español</label>
+              <input type="text" id="pj-desc-es" class="form-input" placeholder="Descripción corta...">
+            </div>
+          </div>
+
+          <div class="admin-form-row">
+            <div class="form-group">
+              <label class="form-label">Engine</label>
+              <input type="text" id="pj-engine" class="form-input" placeholder="Unity 6">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Genre</label>
+              <input type="text" id="pj-genre" class="form-input" placeholder="Psychological Horror">
+            </div>
+          </div>
+
+          <div class="admin-form-row">
+            <div class="form-group">
+              <label class="form-label">Year</label>
+              <input type="number" id="pj-year" class="form-input" placeholder="2025">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Status</label>
+              <select id="pj-status" class="form-input">
+                <option value="released">Released</option>
+                <option value="wip">WIP</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="admin-form-row">
+            <div class="form-group">
+              <label class="form-label">Studio</label>
+              <select id="pj-studio" class="form-input">
+                <option value="">— None —</option>
+                <option value="ppc">Plants Path Collective (ppc)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Featured?</label>
+              <select id="pj-featured" class="form-input">
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Tags (comma separated)</label>
+            <input type="text" id="pj-tags" class="form-input" placeholder="C#, Unity, VR">
+          </div>
+
+          <div class="admin-form-row">
+            <div class="form-group">
+              <label class="form-label">Thumbnail URL</label>
+              <input type="text" id="pj-thumb" class="form-input" placeholder="https://i.imgur.com/...">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Thumb Pattern (fallback)</label>
+              <select id="pj-thumbclass" class="form-input">
+                <option value="thumb-pattern-1">Pattern 1 (Teal)</option>
+                <option value="thumb-pattern-2">Pattern 2 (Pink)</option>
+                <option value="thumb-pattern-3">Pattern 3 (Orange)</option>
+                <option value="thumb-pattern-4">Pattern 4 (Green)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Screenshots (one URL per line)</label>
+            <textarea id="pj-screenshots" class="form-textarea" rows="4"
+                      style="font-family:var(--mono);font-size:12px;"
+                      placeholder="https://i.imgur.com/abc.png&#10;https://i.imgur.com/def.png"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Links (format: Label | URL | emoji — one per line)</label>
+            <textarea id="pj-links" class="form-textarea" rows="3"
+                      style="font-family:var(--mono);font-size:12px;"
+                      placeholder="Play on itch.io | https://plants-path-co.itch.io/car-loop | 🎮&#10;Jam Page | https://... | 🏆"></textarea>
+            <div class="form-help">One link per line. Format: Label | URL | icon</div>
+          </div>
+
+          <div style="display:flex;gap:12px;flex-wrap:wrap;padding-top:8px;border-top:1px solid var(--line2);">
+            <button class="btn-primary" onclick="saveProject()">Save Project</button>
+            <button class="btn-dim"     onclick="cancelProjectEdit()">Cancel</button>
+          </div>
+          <div id="pj-save-status" class="admin-status"></div>
         </div>
 
-        <!-- ══════ PROJECTS PANEL ══════ -->
-        <div id="panel-projects" style="display:none;">
+      </div><!-- /pj-form -->
 
-          <div class="admin-auth" style="margin-bottom:20px;">
-            <div class="admin-auth-title">Portfolio Repo Config</div>
-            <div class="admin-auth-note">This targets your main portfolio repo (not blog-posts). Enter the repo name below.</div>
-            <div class="admin-form-row">
-              <div class="form-group">
-                <label class="form-label">Portfolio Repo Name</label>
-                <input type="text" id="pj-repo" class="form-input" placeholder="mherreravsquez.github.io" value="mherreravsquez.github.io">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Branch</label>
-                <input type="text" id="pj-branch" class="form-input" placeholder="main" value="main" style="max-width:200px;">
-              </div>
-            </div>
-            <button class="btn-primary" onclick="loadProjects()">Load Projects</button>
-            <div id="pj-load-status" class="admin-status"></div>
+    </div><!-- /panel-projects -->
+
+    <!-- ══════ DEVLOG PANEL ══════ -->
+    <div id="panel-devlog">
+      <div class="admin-form" id="post-form">
+        <div class="admin-section-title">New Post</div>
+
+        <div class="admin-form-row">
+          <div class="form-group">
+            <label class="form-label">Post Title *</label>
+            <input type="text" id="f-title" class="form-input" placeholder="AI Enemy Behavior — Deep Dive"
+                   oninput="autoSlug(this.value)">
           </div>
-
-          <!-- Project list -->
-          <div class="admin-auth" style="margin-bottom:20px;display:none;" id="pj-list-panel">
-            <div class="admin-auth-title">Existing Projects</div>
-            <div id="pj-list" style="display:flex;flex-direction:column;gap:8px;margin-top:8px;"></div>
-            <button class="btn-dim" style="margin-top:12px;" onclick="newProject()">+ New Project</button>
+          <div class="form-group">
+            <label class="form-label">Slug (auto-generated) *</label>
+            <input type="text" id="f-slug" class="form-input" placeholder="ai-enemy-behavior">
+            <div class="form-help">URL-safe: lowercase, hyphens only</div>
           </div>
-
-          <!-- Project editor form -->
-          <div class="admin-form" id="pj-form" style="display:none;flex-direction:column;gap:20px;">
-            <div class="admin-section-title" id="pj-form-title">Edit Project</div>
-
-            <div class="admin-form-row">
-              <div class="form-group">
-                <label class="form-label">ID (slug) *</label>
-                <input type="text" id="pj-id" class="form-input" placeholder="car-loop">
-                <div class="form-help">Lowercase, hyphens only. Used in URL.</div>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Size *</label>
-                <select id="pj-size" class="form-input">
-                  <option value="featured">Featured (7 cols)</option>
-                  <option value="medium">Medium (5 cols)</option>
-                  <option value="half">Half (6 cols)</option>
-                  <option value="third">Third (4 cols)</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="admin-form-row">
-              <div class="form-group">
-                <label class="form-label">Title — English *</label>
-                <input type="text" id="pj-title-en" class="form-input" placeholder="Car-Loop">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Título — Español *</label>
-                <input type="text" id="pj-title-es" class="form-input" placeholder="Car-Loop">
-              </div>
-            </div>
-
-            <div class="admin-form-row">
-              <div class="form-group">
-                <label class="form-label">Short Desc — English</label>
-                <input type="text" id="pj-desc-en" class="form-input" placeholder="Short description...">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Desc. corta — Español</label>
-                <input type="text" id="pj-desc-es" class="form-input" placeholder="Descripción corta...">
-              </div>
-            </div>
-
-            <div class="admin-form-row">
-              <div class="form-group">
-                <label class="form-label">Engine</label>
-                <input type="text" id="pj-engine" class="form-input" placeholder="Unity 6">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Genre</label>
-                <input type="text" id="pj-genre" class="form-input" placeholder="Psychological Horror">
-              </div>
-            </div>
-
-            <div class="admin-form-row">
-              <div class="form-group">
-                <label class="form-label">Year</label>
-                <input type="number" id="pj-year" class="form-input" placeholder="2025">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Status</label>
-                <select id="pj-status" class="form-input">
-                  <option value="released">Released</option>
-                  <option value="wip">WIP</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="admin-form-row">
-              <div class="form-group">
-                <label class="form-label">Studio</label>
-                <select id="pj-studio" class="form-input">
-                  <option value="">— None —</option>
-                  <option value="ppc">Plants Path Collective (ppc)</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Featured?</label>
-                <select id="pj-featured" class="form-input">
-                  <option value="false">No</option>
-                  <option value="true">Yes</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Tags (comma separated)</label>
-              <input type="text" id="pj-tags" class="form-input" placeholder="C#, Unity, VR">
-            </div>
-
-            <div class="admin-form-row">
-              <div class="form-group">
-                <label class="form-label">Thumbnail URL</label>
-                <input type="text" id="pj-thumb" class="form-input" placeholder="https://i.imgur.com/...">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Thumb Pattern (fallback)</label>
-                <select id="pj-thumbclass" class="form-input">
-                  <option value="thumb-pattern-1">Pattern 1 (Teal)</option>
-                  <option value="thumb-pattern-2">Pattern 2 (Pink)</option>
-                  <option value="thumb-pattern-3">Pattern 3 (Orange)</option>
-                  <option value="thumb-pattern-4">Pattern 4 (Green)</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Screenshots (one URL per line)</label>
-              <textarea id="pj-screenshots" class="form-textarea" rows="4"
-                        style="font-family:var(--mono);font-size:12px;"
-                        placeholder="https://i.imgur.com/abc.png&#10;https://i.imgur.com/def.png"></textarea>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Links (format: Label | URL | emoji — one per line)</label>
-              <textarea id="pj-links" class="form-textarea" rows="3"
-                        style="font-family:var(--mono);font-size:12px;"
-                        placeholder="Play on itch.io | https://plants-path-co.itch.io/car-loop | 🎮&#10;Jam Page | https://... | 🏆"></textarea>
-              <div class="form-help">One link per line. Format: Label | URL | icon</div>
-            </div>
-
-            <div style="display:flex;gap:12px;flex-wrap:wrap;padding-top:8px;border-top:1px solid var(--line2);">
-              <button class="btn-primary" onclick="saveProject()">Save Project</button>
-              <button class="btn-dim"     onclick="cancelProjectEdit()">Cancel</button>
-            </div>
-            <div id="pj-save-status" class="admin-status"></div>
-          </div>
-
-        </div><!-- end panel-projects -->
+        </div>
 
         <div class="admin-form-row">
           <div class="form-group">
@@ -360,10 +361,12 @@
         </div>
 
         <div id="publish-status" class="admin-status"></div>
-      </div>
 
-    </div>
+      </div><!-- /post-form -->
+    </div><!-- /panel-devlog -->
+
   </div>
+</div>
 
 </div><!-- .page -->
 
@@ -566,7 +569,7 @@
         const idxData = await idxRes.json();
         indexSha = idxData.sha;
         try {
-          manifest = JSON.parse(decodeURIComponent(escape(atob(idxData.content.replace(/\n/g, '')))));
+          manifest = JSON.parse(atob(idxData.content.replace(/\n/g, '')));
         } catch(_) {}
       }
 
@@ -676,7 +679,7 @@
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
       _projectsFileSha = data.sha;
-      _projects = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g, ''))))).projects;
+      _projects = JSON.parse(atob(data.content.replace(/\n/g, ''))).projects;
       renderProjectList();
       document.getElementById('pj-list-panel').style.display = '';
       showStatus(status, `✓ Loaded ${_projects.length} projects.`, 'success');
