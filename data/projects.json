@@ -147,8 +147,8 @@
         "es": "Una expocisión interactiva de la música en la decada de los 90"
       },
       "fullDesc": {
-        "en": "## Overview\n\n[Insert text here]\n\n## Gameplay\n\n[Insert text here]\n\n## Key Features\n\n- [Insert text here]\n- [Insert text here]h\n\n## Development Notes\n\n[Insert text here]",
-        "es": "## Descripción\n\n[Insert text here]\n\n## Jugabilidad\n\n[Insert text here]\n\n## Características Principales\n\n- [Insert text here]\n- [Insert text here]h\n\n## Notas de Desarrollo\n\n[Insert text here]"
+        "en": "## Overview\n\nBoombastic is an interactive exhibition project that uses handtracking technology to allow users to move virtual cassettes toward a virtual boombox. When a cassette is placed in the boombox, a signal is sent to REAPER (a digital audio workstation) to create beats using samples of representative songs from the 1990s.\n\nAdditionally, MadMapper is implemented to perform projection mapping on the boombox model, displaying various visual reactions and animations in real time.\n\n## Key Features\n\n- Using Kinect as the primary input \n- Using OSC to tell Reaper which samples the user is using",
+        "es": "## Descripción\n\nBoombastic es un proyecto de exposición interactiva que utiliza tecnología de seguimiento de manos para permitir a los usuarios mover casetes virtuales hacia un boombox virtual. Cuando se coloca un casete en el radiocasete, se envía una señal a REAPER (una estación de trabajo de audio digital) para crear ritmos utilizando muestras de canciones emblemáticas de la década de los noventa.\n\nAdemás, se utiliza MadMapper para realizar un mapping de proyección sobre el modelo de una boombox, mostrando diversas reacciones visuales y animaciones en tiempo real.\n\n## Características Principales\n\n- Uso de kinect como input principal\n- Uso de OSC para comunicar a Reaper que samples utiliza el usuario"
       },
       "thumbnail": "https://i.imgur.com/placeholder4.jpg",
       "thumbClass": "thumb-pattern-3",
