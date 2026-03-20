@@ -143,7 +143,7 @@
         "es": "Boombastic"
       },
       "shortDesc": {
-        "en": "",
+        "en": "An interactive exhibition on music in the 1990s",
         "es": "Una expocisión interactiva de la música en la decada de los 90"
       },
       "fullDesc": {
@@ -154,7 +154,9 @@
       "thumbClass": "thumb-pattern-3",
       "screenshots": [],
       "videos": [],
-      "links": [],
+      "links": [
+        { "label": "GitHub Repository", "url": "https://github.com/mherreravsquez/boombastic-experience", "icon": ":octocat:" }
+      ],
       "devlogs": []
     }
   ]
