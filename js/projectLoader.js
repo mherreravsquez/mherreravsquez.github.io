@@ -4,6 +4,11 @@
  * finds the matching project and populates project.html
  */
 
+function fixImgurUrl(url) {
+  if (!url) return url;
+  return url.replace(/\.gifv$/, '.gif');
+}
+
 // Lightweight markdown → HTML (handles headings, bold, lists, code, paragraphs)
 function simpleMarkdown(md) {
   if (!md) return '';
@@ -149,26 +154,33 @@ async function loadProject() {
   const galleryEl = document.getElementById('proj-gallery');
   const galSection = document.getElementById('proj-gallery-section');
   if (galleryEl && project.screenshots?.length) {
-    galleryEl.innerHTML = project.screenshots.map(url => `
+    galleryEl.innerHTML = project.screenshots.map(s => {
+      const url = fixImgurUrl(s.url || s); // handles both {url:...} and plain strings
+      return `
       <div class="gallery-img">
         <img src="${url}" alt="${title} screenshot" loading="lazy"
              onclick="openLightbox('${url}')">
-      </div>`).join('');
-  } else if (galSection) {
-    galSection.style.display = 'none';
+      </div>`;
+    }).join('');
   }
 
   // ── Videos ──
   const videosEl = document.getElementById('proj-videos');
   const vidSection = document.getElementById('proj-video-section');
+
   if (videosEl && project.videos?.length) {
     videosEl.innerHTML = project.videos.map(v => {
       if (v.platform === 'youtube') {
         const id = v.url.match(/(?:youtu\.be\/|v=)([^&?]+)/)?.[1];
         if (id) return `<div style="aspect-ratio:16/9;margin-bottom:12px;">
-          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${id}"
-            frameborder="0" allowfullscreen style="border:1px solid var(--line2);"></iframe>
-        </div>`;
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${id}"
+          frameborder="0" allowfullscreen style="border:1px solid var(--line2);"></iframe>
+      </div>`;
+      }
+      if (v.url.match(/imgur\.com.*\.(gif|gifv)$/i)) {
+        const gifUrl = fixImgurUrl(v.url);
+        return `<img src="${gifUrl}" alt="${v.label || 'Gameplay'}"
+        style="width:100%;border:1px solid var(--line2);margin-bottom:12px;">`;
       }
       return `<a href="${v.url}" target="_blank" class="proj-ext-link">${v.label || v.platform} ↗</a>`;
     }).join('');
