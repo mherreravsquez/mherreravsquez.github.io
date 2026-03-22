@@ -170,7 +170,7 @@ body.cursor-hover #cursor-ring {
 
   display: flex;
   align-items: center;
-
+  z-index: 100;
   padding: 0 40px;
 
   background: rgba(5,7,12,.9);
@@ -566,12 +566,13 @@ section { padding: 96px 40px; }
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 10px;
+  grid-auto-flow: dense
 }
 .proj-card { cursor: none; display: block; }
-.proj-card[data-size="featured"] { grid-column: span 7; }
-.proj-card[data-size="medium"]   { grid-column: span 5; }
-.proj-card[data-size="half"]     { grid-column: span 6; }
-.proj-card[data-size="third"]    { grid-column: span 4; }
+.proj-card[data-size="featured"] { grid-column: span 8; }
+.proj-card[data-size="medium"]   { grid-column: span 6; }
+.proj-card[data-size="half"]     { grid-column: span 4; }
+.proj-card[data-size="third"]     { grid-column: span 2; }
 
 .proj-inner {
   position: relative;
