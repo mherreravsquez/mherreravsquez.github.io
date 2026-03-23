@@ -11,7 +11,7 @@
       "tags": ["Meta Quest 3", "VR", "C#"],
       "title": {
         "en": "Car-Loop",
-        "es": "Car-loop"
+        "es": "Car-Loop"
       },
       "shortDesc": {
         "en": "Psychological horror VR game with driving elements and procedural generation.",
@@ -56,11 +56,10 @@
       "thumbnail": "https://i.imgur.com/Oac1gLZ.png",
       "thumbClass": "thumb-pattern-2",
       "screenshots": [
-        { "url": "https://i.imgur.com/0nRsSsi.png"},
-        { "url": "https://i.imgur.com/l7SI2IB.gifv", "label": "Gameplay video"}
+        { "url": "https://i.imgur.com/0nRsSsi.png"}
       ],
       "videos": [
-        { "url": "https://i.imgur.com/l7SI2IB.gifv", "label": "Gameplay video"}
+        { "url": "https://i.imgur.com/l7SI2IB.mp4", "label": "Gameplay video"}
       ],
       "links": [
         { "label": "Play on itch.io", "url": "https://plants-path-co.itch.io/romper-la-burbuja-ggj-2025", "icon": "🎮" },
@@ -93,7 +92,9 @@
       "thumbnail": "https://i.imgur.com/placeholder4.jpg",
       "thumbClass": "thumb-pattern-3",
       "screenshots": [],
-      "videos": [],
+      "videos": [
+        { "url": "https://i.imgur.com/omz9qFD.mp4", "label": "Gameplay video"}
+      ],
       "links": [
         { "label": "GitHub Repository", "url": "https://github.com/mherreravsquez/boombastic-experience", "icon": "\uD83D\uDCBE" }
       ],
@@ -115,7 +116,7 @@
       },
       "shortDesc": {
         "en": "",
-        "es": "."
+        "es": ""
       },
       "fullDesc": {
         "en": "## Overview\n\n[Insert text here]\n\n## Gameplay\n\n[Insert text here]\n\n## Key Features\n\n- [Insert text here]\n- [Insert text here]h\n\n## Development Notes\n\n[Insert text here]",
