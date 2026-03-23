@@ -569,21 +569,27 @@ section { padding: 96px 40px; }
   grid-auto-flow: dense
 }
 .proj-card { cursor: none; display: block; }
-.proj-card[data-size="featured"] { grid-column: span 8; }
-.proj-card[data-size="medium"]   { grid-column: span 6; }
-.proj-card[data-size="half"]     { grid-column: span 4; }
-.proj-card[data-size="third"]     { grid-column: span 2; }
+
+/* ── Column spans per ratio (fallback / filtered view) ── */
+.proj-card[data-ratio="16:9"] { grid-column: span 8; }
+.proj-card[data-ratio="4:3"]  { grid-column: span 6; }
+.proj-card[data-ratio="1:1"]  { grid-column: span 4; }
+.proj-card[data-ratio="9:16"] { grid-column: span 4; }
+
+/* ── Aspect ratios per type ── */
+.proj-card[data-ratio="16:9"] .proj-inner { aspect-ratio: 16/9; }
+.proj-card[data-ratio="4:3"]  .proj-inner { aspect-ratio: 4/3; }
+.proj-card[data-ratio="1:1"]  .proj-inner { aspect-ratio: 1/1; }
+.proj-card[data-ratio="9:16"] .proj-inner { aspect-ratio: 9/16; }
 
 .proj-inner {
   position: relative;
   overflow: hidden;
   border: 1px solid var(--line2);
-  aspect-ratio: 16/9;
   display: flex; flex-direction: column; justify-content: flex-end;
   transition: border-color .3s;
   background: var(--surf);
 }
-.proj-card[data-size="featured"] .proj-inner { aspect-ratio: 16/9; }
 
 .proj-inner:hover { border-color: var(--accent); }
 .proj-inner:hover .proj-thumb { transform: scale(1.05); }
@@ -593,8 +599,10 @@ section { padding: 96px 40px; }
 .proj-thumb {
   position: absolute; inset: 0;
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   transition: transform .55s ease;
+  width: 100%;
+  height: 100%;
 }
 
 /* Generated thumb patterns (no Imgur needed) */
@@ -661,7 +669,7 @@ section { padding: 96px 40px; }
   letter-spacing: .03em;
   line-height: 1;
 }
-.proj-card[data-size="featured"] .proj-title { font-size: clamp(22px, 3vw, 36px); }
+.proj-card[data-featured="true"] .proj-title { font-size: clamp(22px, 3vw, 36px); }
 
 .proj-desc {
   font-family: var(--mono);
@@ -681,6 +689,22 @@ section { padding: 96px 40px; }
   z-index: 3;
 }
 .proj-inner:hover .proj-arrow { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+
+/* ── Tetris / magazine layout (all-projects view only) ── */
+.proj-grid--tetris {
+  grid-template-rows: 240px 240px 280px;
+}
+.proj-grid--tetris .proj-card { align-self: stretch; }
+.proj-grid--tetris .proj-card .proj-inner {
+  aspect-ratio: unset !important;
+  height: 100%;
+  min-height: unset;
+}
+.proj-grid--tetris .proj-card[data-project="car-loop"]          { grid-column: 1 / 9;  grid-row: 1 / 3; }
+.proj-grid--tetris .proj-card[data-project="bubble-ggj2025"]    { grid-column: 9 / 13; grid-row: 1; }
+.proj-grid--tetris .proj-card[data-project="hunters-awakening"] { grid-column: 9 / 13; grid-row: 2; }
+.proj-grid--tetris .proj-card[data-project="boombastic"]        { grid-column: 1 / 6;  grid-row: 3; }
+.proj-grid--tetris .proj-card[data-project="tragones"]          { grid-column: 6 / 13; grid-row: 3; }
 
 /* ════════════════════════════════════════════════════════════
    STUDIO — PLANTS PATH COLLECTIVE
@@ -1221,10 +1245,11 @@ footer {
   .nav-center { display: none; }
   .hero-geo { display: none; }
   .proj-grid { grid-template-columns: 1fr 1fr; }
-  .proj-card[data-size="featured"],
-  .proj-card[data-size="medium"],
-  .proj-card[data-size="half"],
-  .proj-card[data-size="third"] { grid-column: span 2; }
+  .proj-card[data-ratio] { grid-column: span 2; }
+  /* Reset tetris on mobile — all cards flow naturally */
+  .proj-grid--tetris { grid-template-rows: auto; }
+  .proj-grid--tetris .proj-card { grid-column: span 2 !important; grid-row: auto !important; }
+  .proj-grid--tetris .proj-card .proj-inner { aspect-ratio: 16/9 !important; height: auto; }
   .studio-grid { grid-template-columns: 1fr; }
   .studio-left { border-right: none; border-bottom: 1px solid var(--line2); padding: 36px 28px; }
   .studio-right { padding: 36px 28px; }
@@ -1244,7 +1269,7 @@ footer {
   .hero-name { font-size: 60px; }
   .hero-stats { display: none; }
   .proj-grid { grid-template-columns: 1fr; }
-  .proj-card[data-size] { grid-column: span 1; }
+  .proj-card[data-ratio] { grid-column: span 1; }
   .proj-body-layout { padding: 32px 16px; }
   .post-layout { padding: 60px 16px; }
   .admin-form-row { grid-template-columns: 1fr; }

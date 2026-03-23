@@ -132,6 +132,22 @@ async function initProjectGrid() {
 
     grid.innerHTML = list.map(p => renderCard(p, lang)).join('');
 
+    // Tetris layout only when showing all projects
+    grid.classList.toggle('proj-grid--tetris', filter === 'all');
+
+    // Orphan handler: stretch the last card to fill its row (filtered views only)
+    if (filter !== 'all') {
+      const spanMap = { '16:9': 8, '4:3': 6, '1:1': 4, '9:16': 4 };
+      let col = 0;
+      list.forEach(p => { col = (col + (spanMap[p.ratio] || 6)) % 12; });
+      if (col !== 0) {
+        const cards = grid.querySelectorAll('.proj-card');
+        const lastCard = cards[cards.length - 1];
+        const lastSpan = spanMap[list[list.length - 1].ratio] || 6;
+        lastCard.style.gridColumn = `span ${lastSpan + (12 - col)}`;
+      }
+    }
+
     // Stagger animation
     grid.querySelectorAll('.proj-card').forEach((card, i) => {
       card.style.opacity = '0';
@@ -153,7 +169,7 @@ async function initProjectGrid() {
     if (['procedural', 'narrative', 'experimental', 'story rich'].some(d => t.includes(d))) return 'design';
     return '';
   }
-  
+
   // Converts Imgur .gifv to .gif so it works as a background-image
   function fixImgurUrl(url) {
     if (!url) return url;
@@ -172,7 +188,7 @@ async function initProjectGrid() {
     const thumbClass = p.thumbClass || 'thumb-pattern-1';
 
     return `
-<a class="proj-card" data-size="${p.size}" href="project.html?project=${p.id}">
+<a class="proj-card" data-size="${p.size}" data-project="${p.id}" href="project.html?project=${p.id}">
   <div class="proj-inner">
     <div class="proj-thumb ${thumbClass}" ${thumbStyle}></div>
     <div class="proj-fade"></div>
@@ -218,20 +234,20 @@ function initStudioProjects() {
   if (!container) return;
 
   fetch('data/projects.json')
-    .then(r => r.json())
-    .then(data => {
-      const lang = window.I18n ? I18n.lang : 'en';
-      const studioProjects = data.projects.filter(p => p.studio === 'ppc').slice(0, 3);
-      container.innerHTML = studioProjects.map(p => {
-        const title = p.title[lang] || p.title.en;
-        return `<a href="project.html?project=${p.id}" class="studio-proj-mini">
+      .then(r => r.json())
+      .then(data => {
+        const lang = window.I18n ? I18n.lang : 'en';
+        const studioProjects = data.projects.filter(p => p.studio === 'ppc').slice(0, 3);
+        container.innerHTML = studioProjects.map(p => {
+          const title = p.title[lang] || p.title.en;
+          return `<a href="project.html?project=${p.id}" class="studio-proj-mini">
           <div class="spm-thumb ${p.thumbClass || 'thumb-pattern-1'}"></div>
           <span class="spm-title">${title}</span>
           <span class="spm-engine">${p.engine}</span>
         </a>`;
-      }).join('');
-    })
-    .catch(() => {});
+        }).join('');
+      })
+      .catch(() => {});
 }
 
 /* ════════════════ CONTACT FORM ════════════════ */
@@ -254,23 +270,23 @@ function initContactForm() {
       body,
       headers: { 'Accept': 'application/json' }
     })
-    .then(r => {
-      if (r.ok) {
-        form.innerHTML = `<p style="font-family:var(--mono);color:var(--pink);font-size:13px;letter-spacing:.1em;">
+        .then(r => {
+          if (r.ok) {
+            form.innerHTML = `<p style="font-family:var(--mono);color:var(--pink);font-size:13px;letter-spacing:.1em;">
           ✓ MESSAGE SENT. I'LL GET BACK TO YOU SOON.
         </p>`;
-      } else {
-        throw new Error('Form error');
-      }
-    })
-    .catch(() => {
-      btn.textContent = window.I18n ? I18n.t('contact.form.send') : 'Send';
-      btn.disabled = false;
-      const err = document.createElement('p');
-      err.style.cssText = 'font-family:var(--mono);color:var(--accent);font-size:11px;margin-top:10px;';
-      err.textContent = 'Could not send — try emailing directly.';
-      form.appendChild(err);
-    });
+          } else {
+            throw new Error('Form error');
+          }
+        })
+        .catch(() => {
+          btn.textContent = window.I18n ? I18n.t('contact.form.send') : 'Send';
+          btn.disabled = false;
+          const err = document.createElement('p');
+          err.style.cssText = 'font-family:var(--mono);color:var(--accent);font-size:11px;margin-top:10px;';
+          err.textContent = 'Could not send — try emailing directly.';
+          form.appendChild(err);
+        });
   });
 }
 

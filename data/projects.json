@@ -2,8 +2,7 @@
   "projects": [
     {
       "id": "car-loop",
-      "featured": true,
-      "size": "featured",
+      "ratio": "4:3",      
       "status": "released",
       "year": 2025,
       "engine": "Unity 6",
@@ -35,8 +34,7 @@
     },
     {
       "id": "bubble-ggj2025",
-      "featured": false,
-      "size": "half",
+      "ratio": "4:3",
       "status": "released",
       "year": 2025,
       "engine": "Unity 2023",
@@ -73,7 +71,7 @@
     {
       "id": "boombastic",
       "featured": false,
-      "size": "half", 
+      "ratio": "1:1", 
       "status": "released",
       "year": 2025,
       "engine": "Unity 6",
@@ -104,7 +102,7 @@
     {
       "id": "hunters-awakening",
       "featured": false,
-      "size": "medium",
+      "ratio": "4:3",
       "status": "released",
       "year": 2024,
       "engine": "Unity 2023",
@@ -132,8 +130,7 @@
     },
     {
       "id": "tragones",
-      "featured": false,
-      "size": "half", "_comment": "featured, medium, half",
+      "ratio": "4:3", "_comment": "16:9, 9:16, 4:3, 1:1",
       "status": "released",
       "year": 2024,
       "engine": "RenPy",
