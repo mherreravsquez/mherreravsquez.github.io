@@ -652,7 +652,7 @@ section { padding: 96px 40px; }
   text-transform: uppercase;
   padding: 2px 7px;
   border: 1px solid var(--pink);
-  color: var(--surf);
+  color: var(--accent);
 }
 .ptag.engine { border-color: rgba(23,232,196,.3); color: var(--pink); }
 .ptag.studio { border-color: rgba(119, 224, 20, 0.3); color: var(--accent); }
