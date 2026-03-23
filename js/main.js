@@ -188,7 +188,7 @@ async function initProjectGrid() {
     const thumbClass = p.thumbClass || 'thumb-pattern-1';
 
     return `
-<a class="proj-card" data-size="${p.size}" data-project="${p.id}" href="project.html?project=${p.id}">
+<a class="proj-card" data-ratio="${p.ratio}" data-featured="${p.featured}" data-project="${p.id}" href="project.html?project=${p.id}">
   <div class="proj-inner">
     <div class="proj-thumb ${thumbClass}" ${thumbStyle}></div>
     <div class="proj-fade"></div>

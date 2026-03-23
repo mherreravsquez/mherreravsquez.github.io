@@ -692,19 +692,26 @@ section { padding: 96px 40px; }
 
 /* ── Tetris / magazine layout (all-projects view only) ── */
 .proj-grid--tetris {
-  grid-template-rows: 240px 240px 280px;
+  align-items: start; /* rows size to content, not stretch */
 }
-.proj-grid--tetris .proj-card { align-self: stretch; }
+
+/* All tetris cards: let aspect-ratio drive height naturally */
 .proj-grid--tetris .proj-card .proj-inner {
-  aspect-ratio: unset !important;
-  height: 100%;
-  min-height: unset;
+  height: auto;
 }
-.proj-grid--tetris .proj-card[data-project="car-loop"]          { grid-column: 1 / 9;  grid-row: 1 / 3; }
+
+/* Column + row placements */
+.proj-grid--tetris .proj-card[data-project="car-loop"]          { grid-column: 1 / 9;  grid-row: 1 / 3; align-self: stretch; }
 .proj-grid--tetris .proj-card[data-project="bubble-ggj2025"]    { grid-column: 9 / 13; grid-row: 1; }
 .proj-grid--tetris .proj-card[data-project="hunters-awakening"] { grid-column: 9 / 13; grid-row: 2; }
 .proj-grid--tetris .proj-card[data-project="boombastic"]        { grid-column: 1 / 6;  grid-row: 3; }
 .proj-grid--tetris .proj-card[data-project="tragones"]          { grid-column: 6 / 13; grid-row: 3; }
+
+/* Car-loop spans 2 rows so it fills their combined height instead of using aspect-ratio */
+.proj-grid--tetris .proj-card[data-project="car-loop"] .proj-inner {
+  aspect-ratio: unset;
+  height: 100%;
+}
 
 /* ════════════════════════════════════════════════════════════
    STUDIO — PLANTS PATH COLLECTIVE
@@ -1247,9 +1254,10 @@ footer {
   .proj-grid { grid-template-columns: 1fr 1fr; }
   .proj-card[data-ratio] { grid-column: span 2; }
   /* Reset tetris on mobile — all cards flow naturally */
-  .proj-grid--tetris { grid-template-rows: auto; }
-  .proj-grid--tetris .proj-card { grid-column: span 2 !important; grid-row: auto !important; }
-  .proj-grid--tetris .proj-card .proj-inner { aspect-ratio: 16/9 !important; height: auto; }
+  .proj-grid--tetris { align-items: stretch; }
+  .proj-grid--tetris .proj-card { grid-column: span 2 !important; grid-row: auto !important; align-self: auto; }
+  .proj-grid--tetris .proj-card .proj-inner,
+  .proj-grid--tetris .proj-card[data-project="car-loop"] .proj-inner { aspect-ratio: 16/9; height: auto; }
   .studio-grid { grid-template-columns: 1fr; }
   .studio-left { border-right: none; border-bottom: 1px solid var(--line2); padding: 36px 28px; }
   .studio-right { padding: 36px 28px; }
