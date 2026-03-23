@@ -651,8 +651,8 @@ section { padding: 96px 40px; }
   letter-spacing: .13em;
   text-transform: uppercase;
   padding: 2px 7px;
-  border: 1px solid rgb(140, 19, 92);
-  color: rgb(68, 112, 53);
+  border: 1px solid var(--pink);
+  color: var(--surf);
 }
 .ptag.engine { border-color: rgba(23,232,196,.3); color: var(--pink); }
 .ptag.studio { border-color: rgba(119, 224, 20, 0.3); color: var(--accent); }
