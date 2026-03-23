@@ -202,36 +202,30 @@ body.cursor-hover #cursor-ring {
   flex: 1;
   display: flex;
   justify-content: center;
-  gap: 0;
+  align-items: center;
+  gap: 30px;
 }
 .nav-link {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: .18em;
   text-transform: uppercase;
-
+  align-items: center;
   color: var(--dim);
-
   padding: 8px 18px;
-
   border: 1px solid transparent;
-
   transition: all .2s ease;
-
   position: relative;
 }
 
 .nav-link:hover {
   color: var(--accent);
-
   border-color: rgba(255, 0, 242, 0.3);
-
   background: rgba(0,255,156,.05);
 }
 
 .nav-link.active {
   color: var(--accent);
-
   border-color: rgba(26, 255, 0, 0.45);
 }
 
@@ -243,6 +237,7 @@ body.cursor-hover #cursor-ring {
   font-size: 10px;
   letter-spacing: .1em;
   text-transform: uppercase;
+  align-items: center;
   padding: 5px 12px;
   background: transparent;
   color: var(--dim);
@@ -258,6 +253,7 @@ body.cursor-hover #cursor-ring {
   font-size: 10px;
   letter-spacing: .12em;
   text-transform: uppercase;
+  align-items: center;
   padding: 6px 16px;
   border: 1px solid var(--accent);
   color: var(--accent);
@@ -290,31 +286,6 @@ body.cursor-hover #cursor-ring {
   width: 45vw; height: 55vh;
   background: radial-gradient(ellipse, rgba(232, 23, 197, 0.04) 0%, transparent 65%);
   pointer-events: none;
-}
-
-/* Decorative geometric corner */
-.hero-geo {
-  position: absolute;
-  top: 90px; right: 80px;
-  width: 200px; height: 200px;
-  border: 1px solid var(--line2);
-  clip-path: polygon(0 0, 100% 0, 100% 68%, 68% 100%, 0 100%);
-  pointer-events: none;
-}
-.hero-geo::before {
-  content: '';
-  position: absolute; inset: 14px;
-  border: 1px solid rgba(173, 20, 224, 0.2);
-  clip-path: polygon(0 0, 100% 0, 100% 68%, 68% 100%, 0 100%);
-}
-.hero-geo::after {
-  content: '';
-  position: absolute;
-  bottom: 0; right: 0;
-  width: 36px; height: 36px;
-  background: var(--accent);
-  clip-path: polygon(100% 0, 100% 100%, 0 100%);
-  opacity: .5;
 }
 
 /* Ticker tape */

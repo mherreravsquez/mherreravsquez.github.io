@@ -93,30 +93,12 @@ Handles animations and interactive behavior.
 Static media, like resume.
 
 **data/**\
-Content related to portfolio projects and devlogs
+Content related to portfolio projects and devlogs, the devlogs are stored on other public repository (https://github.com/mherreravsquez/blog-posts/)
 
-------------------------------------------------------------------------
-
-# Future Improvements
-
-## Replace Placeholder Projects
-
-Current projects use placeholder content.
-
-Planned improvements:
-
--   Replace placeholders with real projects
--   Add screenshots and media, currently screenshots doesn´t show correctly
--   Apply colors to tags of the projects
-
-## Add new functions to Admin Panel
-
-Currently an Admin can write and deploy devlogs trought the Admin panel.
-
-Planned improvents:
-
--   Add the function to create and edit game projects of the portfolio
--   Improve the blog creator / editor, to show english and spanish text boxes, so Admin can edit the blog in the 2 languages at the same moment
+    /
+    ├── index.json
+    ├── en/
+    └── es/
 
 ------------------------------------------------------------------------
 
