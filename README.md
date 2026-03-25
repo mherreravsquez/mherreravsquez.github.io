@@ -1,128 +1,151 @@
 # Personal Portfolio Website
 
-![GitHub
-Pages](https://img.shields.io/badge/deployment-GitHub%20Pages-black)
+![GitHub Pages](https://img.shields.io/badge/deployment-GitHub%20Pages-black)
 ![Status](https://img.shields.io/badge/status-active-success)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
-This repository contains the source code for my personal portfolio
-website, built as a lightweight static site and deployed using GitHub
-Pages.
+This repository contains the source code for my personal portfolio website, built as a lightweight static site and deployed using GitHub Pages.
 
-**Live website:**\
+**Live website:**
 https://mherreravsquez.github.io/
 
-**Repository:**\
+**Repository:**
 https://github.com/mherreravsquez/mherreravsquez.github.io
 
-The site serves as a central hub to showcase my projects, development
-work, and tools.
+The site serves as a central hub to showcase my projects, development work, and tools.
 
-------------------------------------------------------------------------
+---
 
-# Features
+## Features
 
--   Modern developer portfolio layout
--   Lightweight static architecture
--   Fast GitHub Pages deployment
--   Simple project card system
--   Easily customizable styles
--   Minimal dependencies
+- Modern developer portfolio layout with cyberpunk/neon aesthetic
+- Lightweight static architecture — no backend required
+- Fast GitHub Pages deployment
+- **Hero section with 40/60 split layout** — text on the left, media carousel on the right
+- **Imgur-powered hero carousel** — supports GIFs, JPEGs, and PNGs with auto-advance and manual navigation
+- Simple project card system with tetris-style grid
+- i18n support (English / Spanish)
+- Custom cursor with hover states
+- Scroll-triggered fade-in animations
+- Devlog system powered by a separate blog-posts repository
+- Easily customizable styles via CSS custom properties
+- Minimal dependencies
 
-------------------------------------------------------------------------
+---
 
-# Tech Stack
+## Tech Stack
 
-The portfolio is built using simple web technologies to keep it fast and
-maintainable.
+- HTML
+- CSS
+- JavaScript (vanilla)
+- GitHub Pages
 
--   HTML
--   CSS
--   JavaScript
--   GitHub Pages
+---
 
-No backend server is required.
+## How the Portfolio Works
 
-------------------------------------------------------------------------
-
-# How the Portfolio Works
-
-This project is a **static website**. All content is stored directly in
-the repository.
+This project is a **static website**. All content is stored directly in the repository.
 
 When you push changes to the repository:
 
-1.  GitHub detects the update
-2.  GitHub Pages rebuilds the site
-3.  The updated site becomes live automatically
+1. GitHub detects the update
+2. GitHub Pages rebuilds the site
+3. The updated site becomes live automatically
 
-This allows the portfolio to remain extremely simple while still being
-easy to maintain.
+---
 
-------------------------------------------------------------------------
+## Repository Structure
 
-# Repository Structure
-
-    /
-    ├── index.html
-    ├── css/
-    │   └── styles.css
-    ├── js/
-    │   └── main.js
-    ├── assets/
-    │   └── resume-marceloherrera.pdf
-    ├── data/
-    │   ├── projects.json
-    │   └── translations.json
-    ├── admin.html
-    ├── blog.html
-    ├── index.html
-    ├── post.html
-    ├── project.html
-    └── README.md
+```
+/
+├── index.html
+├── css/
+│   └── style.css
+├── js/
+│   ├── main.js
+│   └── i18n.js
+├── assets/
+│   └── resume-marceloherrera.pdf
+├── data/
+│   ├── projects.json
+│   └── translations.json
+├── admin.html
+├── blog.html
+├── post.html
+├── project.html
+└── README.md
+```
 
 ### Key folders
 
-**css/**\
-Contains all styling for the site UI and layout.
+**css/**
+Contains all styling for the site UI and layout, including the hero split layout and carousel component.
 
-**js/**\
-Handles animations and interactive behavior.
+**js/**
+Handles animations, interactive behavior, project grid rendering, i18n, and the hero carousel.
 
-**assets/**\
-Static media, like resume.
+**assets/**
+Static media, like the resume PDF.
 
-**data/**\
-Content related to portfolio projects and devlogs, the devlogs are stored on other public repository (https://github.com/mherreravsquez/blog-posts/)
+**data/**
+Content for portfolio projects and devlogs. Devlog posts are stored in a separate public repository:
+https://github.com/mherreravsquez/blog-posts/
 
-    /
-    ├── index.json
-    ├── en/
-    └── es/
+```
+/
+├── index.json
+├── en/
+└── es/
+```
 
-------------------------------------------------------------------------
+---
 
-# Deployment
+## Hero Section
+
+The hero is structured as a **40 / 60 horizontal split**:
+
+- **Left (40%)** — name, role, CTAs, and stats
+- **Right (60%)** — fullscreen media carousel
+
+### Configuring the Carousel
+
+Open `js/main.js` and find the `slides` array inside `initHeroCarousel()`:
+
+```js
+const slides = [
+  { src: 'https://i.imgur.com/YOUR_ID.gif', label: 'Project Name' },
+  { src: 'https://i.imgur.com/YOUR_ID.jpg', label: 'Project Name' },
+  { src: 'https://i.imgur.com/YOUR_ID.png', label: 'Project Name' },
+];
+```
+
+- Supports `.gif`, `.jpg`, and `.png` URLs from Imgur (or any public image host)
+- For Imgur `.gifv` links, the code automatically converts them to `.gif`
+- Add or remove slide objects freely — dots and the counter update automatically
+- `label` is the caption shown at the bottom of the carousel
+- `AUTO_DELAY` (default `4500`ms) controls how long each slide stays visible
+
+---
+
+## Deployment
 
 The portfolio is deployed using **GitHub Pages**.
 
-Deployment URL:
+```
+https://mherreravsquez.github.io/
+```
 
-    https://mherreravsquez.github.io/
+Every push to the `main` branch automatically updates the live site.
 
-Every push to the main branch automatically updates the site.
+---
 
-------------------------------------------------------------------------
+## Contributing
 
-# Contributing
+This repository mainly serves as a personal portfolio, but suggestions and ideas are always welcome.
 
-This repository mainly serves as a personal portfolio, but suggestions
-and ideas are always welcome.
+---
 
-------------------------------------------------------------------------
-
-# License
+## License
 
 This project is licensed under the MIT License.
-
 You are free to use this project as inspiration for your own portfolio.
