@@ -93,7 +93,7 @@
       "thumbClass": "thumb-pattern-3",
       "screenshots": [],
       "videos": [
-        { "url": "https://i.imgur.com/omz9qFD.mp4", "label": "Gameplay video"}
+        { "url": "https://i.imgur.com/omz9qFD.gif", "label": "Gameplay video"}
       ],
       "links": [
         { "label": "GitHub Repository", "url": "https://github.com/mherreravsquez/boombastic-experience", "icon": "\uD83D\uDCBE" }

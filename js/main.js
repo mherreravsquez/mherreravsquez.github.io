@@ -312,6 +312,117 @@ function initSkillBars() {
   });
 }
 
+/* ════════════════ HERO CAROUSEL ════════════════ */
+function initHeroCarousel() {
+  const carousel = document.getElementById('hero-carousel');
+  if (!carousel) return;
+
+  // ── Edit this array to add / remove your own Imgur images or GIFs ──
+  const slides = [
+    {
+      src:   'https://i.imgur.com/l7SI2IB.gif',   
+      label: 'Break the Bubble'
+    },
+    {
+      src:   'https://i.imgur.com/JSl88oB.png',   
+      label: 'Car-Loop'
+    },
+    {
+      src:   'https://i.imgur.com/omz9qFD.gif',   
+      label: 'Boombastic'
+    }
+  ];
+
+  const AUTO_DELAY = 4500; // ms between auto-advances
+
+  const track   = document.getElementById('hc-track');
+  const dotsEl  = document.getElementById('hc-dots');
+  const prevBtn = document.getElementById('hc-prev');
+  const nextBtn = document.getElementById('hc-next');
+  const label   = document.getElementById('hc-label');
+
+  if (!track || !dotsEl) return;
+
+  let current = 0;
+  let timer   = null;
+
+  // Build slides
+  slides.forEach((s, i) => {
+    const div = document.createElement('div');
+    div.className = 'hc-slide' + (i === 0 ? ' active' : '');
+    const img = document.createElement('img');
+    const isMp4 = s.src.toLowerCase().includes('.mp4');
+    img.src     = s.src;
+    img.alt     = s.label || '';
+    img.loading = i === 0 ? 'eager' : 'lazy';
+    div.appendChild(img);
+    track.appendChild(div);
+  });
+
+  // Build dots
+  slides.forEach((_, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'hc-dot' + (i === 0 ? ' active' : '');
+    btn.setAttribute('aria-label', `Slide ${i + 1}`);
+    btn.style.setProperty('--hc-duration', AUTO_DELAY + 'ms');
+    btn.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(btn);
+  });
+
+  // Counter badge
+  const counter = document.createElement('span');
+  counter.className = 'hc-counter';
+  carousel.querySelector('.hc-ui').appendChild(counter);
+
+  function goTo(idx) {
+    const slideEls = track.querySelectorAll('.hc-slide');
+    const dotEls   = dotsEl.querySelectorAll('.hc-dot');
+
+    slideEls[current].classList.remove('active');
+    dotEls[current].classList.remove('active');
+
+    current = (idx + slides.length) % slides.length;
+
+    slideEls[current].classList.add('active');
+    dotEls[current].classList.add('active');
+
+    if (label) {
+      label.style.opacity = '0';
+      setTimeout(() => {
+        label.textContent = slides[current].label || '';
+        label.style.opacity = '1';
+      }, 200);
+    }
+
+    counter.textContent = `${String(current + 1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`;
+
+    // Restart progress animation on active dot
+    dotEls[current].style.setProperty('--hc-duration', '0ms');
+    void dotEls[current].offsetWidth; // force reflow
+    dotEls[current].style.setProperty('--hc-duration', AUTO_DELAY + 'ms');
+
+    resetTimer();
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(current + 1), AUTO_DELAY);
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));
+
+  // Pause on hover
+  carousel.addEventListener('mouseenter', () => clearInterval(timer));
+  carousel.addEventListener('mouseleave', resetTimer);
+
+  // Init
+  if (label) label.textContent = slides[0].label || '';
+  counter.textContent = `01 / ${String(slides.length).padStart(2,'0')}`;
+
+  resetTimer();
+}
+
 /* ════════════════ BOOT ════════════════ */
 document.addEventListener('DOMContentLoaded', async () => {
   // Init i18n first so translations are ready
@@ -321,6 +432,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   initNav();
   initTicker();
   initFadeIn();
+  initHeroCarousel();
   initProjectGrid();
   initStudioProjects();
   initContactForm();
