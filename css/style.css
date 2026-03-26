@@ -269,16 +269,19 @@ body.cursor-hover #cursor-ring {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   position: relative;
   overflow: hidden;
+  padding: 80px 0 48px;
 }
 
 /* ── 40 / 60 flex row ── */
 .hero-body {
-  flex: 1;
   display: flex;
-  align-items: stretch;
-  min-height: 100vh;
+  align-items: center;        /* vertically center both columns */
+  gap: 32px;
+  padding: 0 40px;
+  width: 100%;
 }
 
 /* LEFT 40% — text */
@@ -288,7 +291,6 @@ body.cursor-hover #cursor-ring {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 104px 48px 56px 40px;
   position: relative;
   z-index: 2;
 }
@@ -411,10 +413,20 @@ body.cursor-hover #cursor-ring {
    HERO CAROUSEL — RIGHT 60%
 ════════════════════════════════════════════════════════════ */
 .hero-carousel {
-  flex: 1;                   /* takes remaining 60% */
+  flex: 1;
+  height: clamp(800px, 48vh, 300px);  
   position: relative;
   overflow: hidden;
   z-index: 1;
+  border: 1px solid var(--line2);      
+  clip-path: polygon(
+    0 0,
+    calc(100% - 14px) 0,
+    100% 14px,
+    100% 100%,
+    14px 100%,
+    0 calc(100% - 14px)
+  );
 }
 
 /* Slides track */
@@ -435,33 +447,25 @@ body.cursor-hover #cursor-ring {
 .hc-slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;         
+  background: var(--bg3);      
   display: block;
-  filter: saturate(.85) brightness(.75);
-  transition: transform 6s ease;
+  filter: saturate(.9) brightness(.85);
+
 }
 .hc-slide.active img { transform: scale(1.04); }
 
-/* Left-edge blend — subtle feather where text column meets carousel */
+/* Left-edge blend — not needed in panel layout, keep as thin vignette */
 .hc-blend-left {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-          to right,
-          rgba(5,7,12,.85) 0%,
-          rgba(5,7,12,.3)  10%,
-          transparent      30%
-  );
-  pointer-events: none;
-  z-index: 2;
+  display: none;
 }
 
-/* Top-edge blend for ticker area */
+/* Top-edge blend */
 .hc-blend-top {
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 90px;
-  background: linear-gradient(to bottom, var(--bg) 0%, transparent 100%);
+  height: 48px;
+  background: linear-gradient(to bottom, rgba(5,7,12,.6) 0%, transparent 100%);
   pointer-events: none;
   z-index: 2;
 }
@@ -471,8 +475,8 @@ body.cursor-hover #cursor-ring {
   content: '';
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  height: 40%;
-  background: linear-gradient(to top, rgba(5,7,12,.65) 0%, transparent 100%);
+  height: 35%;
+  background: linear-gradient(to top, rgba(5,7,12,.7) 0%, transparent 100%);
   pointer-events: none;
   z-index: 2;
 }
@@ -500,7 +504,7 @@ body.cursor-hover #cursor-ring {
   position: absolute;
   bottom: 52px; left: 16px;
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 13px;
   letter-spacing: .2em;
   text-transform: uppercase;
   color: rgba(237,240,247,.5);
@@ -512,7 +516,6 @@ body.cursor-hover #cursor-ring {
   text-overflow: ellipsis;
 }
 
-/* Navigation bar at bottom */
 .hc-ui {
   position: absolute;
   bottom: 16px;
@@ -548,7 +551,7 @@ body.cursor-hover #cursor-ring {
   background: var(--accent);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform var(--hc-duration, 4s) linear;
+  transition: transform var(4s) linear;
 }
 .hc-dot.active {
   width: 32px;
@@ -872,12 +875,7 @@ section { padding: 96px 40px; }
 .proj-grid--tetris .proj-card[data-project="hunters-awakening"] { grid-column: 9 / 13; grid-row: 2; }
 .proj-grid--tetris .proj-card[data-project="boombastic"]        { grid-column: 1 / 6;  grid-row: 3; }
 .proj-grid--tetris .proj-card[data-project="tragones"]          { grid-column: 6 / 13; grid-row: 3; }
-
-/* Car-loop spans 2 rows so it fills their combined height instead of using aspect-ratio */
-.proj-grid--tetris .proj-card[data-project="car-loop"] .proj-inner {
-  aspect-ratio: unset;
-  height: 100%;
-}
+.proj-grid--tetris .proj-card[data-project="hunters-vega"]      { grid-column: 1 / 9;  grid-row: 4; }
 
 /* ════════════════════════════════════════════════════════════
    STUDIO — PLANTS PATH COLLECTIVE
@@ -1425,18 +1423,18 @@ footer {
   section { padding: 72px 20px; }
   #nav { padding: 0 20px; }
   .nav-center { display: none; }
-  /* Stack hero vertically on mobile */
-  .hero-body { flex-direction: column; min-height: 100vh; }
+
+  .hero-body { flex-direction: column; gap: 0; padding: 0 20px; }
   .hero-left {
     width: 100%;
-    padding: 104px 20px 40px;
+    padding: 24px 0 40px;
     justify-content: flex-end;
   }
   .hero-carousel { display: none; }
   .hero-stats { display: none; }
   .proj-grid { grid-template-columns: 1fr 1fr; }
   .proj-card[data-ratio] { grid-column: span 2; }
-  /* Reset tetris on mobile — all cards flow naturally */
+  
   .proj-grid--tetris { align-items: stretch; }
   .proj-grid--tetris .proj-card { grid-column: span 2 !important; grid-row: auto !important; align-self: auto; }
   .proj-grid--tetris .proj-card .proj-inner,

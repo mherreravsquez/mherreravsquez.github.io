@@ -156,6 +156,34 @@
       "videos": [],
       "links": [],
       "devlogs": []
+    },
+    {
+      "id": "hunters-vega",
+      "ratio": "16:9", "_comment": "16:9, 9:16, 4:3, 1:1",
+      "status": "pre-production",
+      "year": 2027,
+      "engine": "Unity 6",
+      "genre": "JRPG",
+      "studio": null,
+      "tags": ["C#", "JRPG", "Roguelike"],
+      "title": {
+        "en": "Hunters: Vega",
+        "es": "Hunters: Vega"
+      },
+      "shortDesc": {
+        "en": "",
+        "es": ""
+      },
+      "fullDesc": {
+        "en": "## Overview\n\n[Insert text here]\n\n## Gameplay\n\n[Insert text here]\n\n## Key Features\n\n- [Insert text here]\n- [Insert text here]h\n\n## Development Notes\n\n[Insert text here]",
+        "es": "## Descripción\n\n[Insert text here]\n\n## Jugabilidad\n\n[Insert text here]\n\n## Características Principales\n\n- [Insert text here]\n- [Insert text here]h\n\n## Notas de Desarrollo\n\n[Insert text here]"
+      },
+      "thumbnail": "",
+      "thumbClass": "thumb-pattern-2",
+      "screenshots": [],
+      "videos": [],
+      "links": [],
+      "devlogs": []
     }
   ]
 }
