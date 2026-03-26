@@ -216,7 +216,7 @@ async function loadProject() {
 }
 
 async function loadRelatedDevlogs(slugs, container, lang) {
-  const BLOG_BASE = window.BLOG_BASE || 'https://raw.githubusercontent.com/YOUR_GITHUB_USER/blog-posts/main';
+  const BLOG_BASE = window.BLOG_BASE || 'https://mherreravsquez.github.io/blog-posts';
   try {
     const res      = await fetch(`${BLOG_BASE}/index.json`);
     const manifest = await res.json();
