@@ -12,9 +12,6 @@ https://mherreravsquez.github.io/
 **Repository:**
 https://github.com/mherreravsquez/mherreravsquez.github.io
 
-**Blog Posts**
-https://github.com/mherreravsquez/blog-posts
-
 The site serves as a central hub to showcase my projects, development work, and tools.
 
 ---
@@ -65,10 +62,8 @@ When you push changes to the repository:
 ├── css/
 │   └── style.css
 ├── js/
-│   ├── blogLoader.js
-│   ├── i18n.js
 │   ├── main.js
-│   └── projectLoader.js
+│   └── i18n.js
 ├── assets/
 │   └── resume-marceloherrera.pdf
 ├── data/
@@ -102,6 +97,33 @@ https://github.com/mherreravsquez/blog-posts/
 ├── en/
 └── es/
 ```
+
+---
+
+## Hero Section
+
+The hero is structured as a **40 / 60 horizontal split**:
+
+- **Left (40%)** — name, role, CTAs, and stats
+- **Right (60%)** — fullscreen media carousel
+
+### Configuring the Carousel
+
+Open `js/main.js` and find the `slides` array inside `initHeroCarousel()`:
+
+```js
+const slides = [
+  { src: 'https://i.imgur.com/YOUR_ID.gif', label: 'Project Name' },
+  { src: 'https://i.imgur.com/YOUR_ID.jpg', label: 'Project Name' },
+  { src: 'https://i.imgur.com/YOUR_ID.png', label: 'Project Name' },
+];
+```
+
+- Supports `.gif`, `.jpg`, and `.png` URLs from Imgur (or any public image host)
+- For Imgur `.gifv` links, the code automatically converts them to `.gif`
+- Add or remove slide objects freely — dots and the counter update automatically
+- `label` is the caption shown at the bottom of the carousel
+- `AUTO_DELAY` (default `4500`ms) controls how long each slide stays visible
 
 ---
 
