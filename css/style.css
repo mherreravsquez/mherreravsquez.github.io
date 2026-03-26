@@ -22,12 +22,12 @@
   --pink2:     #e61c94;
   --pink3:     #9c0c63;
 
-  --warn: #f6b716;
+  --warn:      #f6b716;
 
   --white:     #eef2ff;
-  --dim: #c8c4c4;
-  --desc: #EDF0F7B3;
-  --dimmer: #7afd2e;
+  --dim:       #c8c4c4;
+  --desc:      #EDF0F7B3;
+  --dimmer:    #7afd2e;
 
   --head:      'Barlow Condensed', sans-serif;
   --body:      'Rajdhani', sans-serif;
@@ -409,9 +409,7 @@ body.cursor-hover #cursor-ring {
 .scroll-txt { font-family: var(--mono); font-size: 8px; letter-spacing: .2em; text-transform: uppercase; color: var(--dimmer); writing-mode: vertical-rl; }
 @keyframes pulse { 0%,100% { opacity: .35; } 50% { opacity: 1; } }
 
-/* ════════════════════════════════════════════════════════════
-   HERO CAROUSEL — RIGHT 60%
-════════════════════════════════════════════════════════════ */
+/* RIGHT 60% — carrousel */
 .hero-carousel {
   flex: 1;
   height: clamp(800px, 48vh, 300px);  

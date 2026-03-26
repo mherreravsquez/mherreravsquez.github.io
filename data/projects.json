@@ -160,7 +160,7 @@
     {
       "id": "hunters-vega",
       "ratio": "16:9", "_comment": "16:9, 9:16, 4:3, 1:1",
-      "status": "pre-production",
+      "status": "preprod",
       "year": 2027,
       "engine": "Unity 6",
       "genre": "JRPG",

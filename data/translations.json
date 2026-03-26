@@ -66,12 +66,13 @@
     "contact.form.note":  "Or reach me directly at the links above.",
 
     "status.released":    "Released",
+    "status.preprod":     "Pre-Production",
     "status.wip":         "In Development",
     "status.prototype":   "Prototype",
     "status.cancelled":   "Cancelled",
 
-    "post.back":          "← Back to Devlog",
-    "proj.back":          "← All Projects",
+    "post.back":          "Back to Devlog",
+    "proj.back":          "All Projects",
     "proj.links":         "External Links",
     "proj.devlogs":       "Related Devlogs",
     "proj.screenshots":   "Screenshots",
@@ -164,12 +165,13 @@
     "contact.form.note":  "O contactame por los links en la sección de contacto.",
 
     "status.released":    "Publicado",
+    "status.preprod":     "Preproducción",
     "status.wip":         "En Desarrollo",
     "status.prototype":   "Prototipo",
     "status.cancelled":   "Cancelado",
 
-    "post.back":          "← Volver al Devlog",
-    "proj.back":          "← Todos los Proyectos",
+    "post.back":          "Volver al Devlog",
+    "proj.back":          "Todos los Proyectos",
     "proj.links":         "Enlace Externos",
     "proj.devlogs":       "Devlogs Relacionados",
     "proj.screenshots":   "Capturas de Pantalla",
