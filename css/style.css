@@ -623,6 +623,13 @@ section { padding: 96px 40px; }
 .sec-title .out { -webkit-text-stroke: 1px rgba(237,240,247,.4); color: transparent; }
 .sec-rule { flex: 1; height: 1px; background: linear-gradient(90deg, var(--line2), transparent); }
 
+.separator {
+  height: 5px; /* Defines the thickness of the line */
+  background-color: rgba(0, 0, 0, 0); /* Sets the color of the line */
+  width: 100%; /* Makes the line span the full width of its container */
+}
+
+
 /* ════════════════════════════════════════════════════════════
    BUTTONS
 ════════════════════════════════════════════════════════════ */
@@ -674,7 +681,10 @@ section { padding: 96px 40px; }
   display: inline-block;
   transition: all .2s;
 }
-.btn-dim:hover { color: var(--white); border-color: var(--line2); background: rgba(255,255,255,.03); }
+.btn-dim:hover {
+  color: var(--bg); 
+  border-color: var(--accent); 
+  background: var(--accent); }
 
 .btn-ui {
 
