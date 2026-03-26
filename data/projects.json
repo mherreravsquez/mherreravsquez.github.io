@@ -22,7 +22,7 @@
         "es": "## Descripción\n\n<i>Car-Loop</i> es un juego VR de terror psicológico desarrollado en Unity 6. El jugador deberá tomar el papel del conductor en un viaje con su pareja, pero cada 5 minutos un accidente ocurrirá y todo volverá a comenzar.\n\n## Jugabilidad\n\nEl jugador tomará el volante de un automóvil utilizando el sistema de seguimiento de manos (<i>hand-tracking</i>) del Meta Quest 3, lo que le permitirá girar el volante de forma natural e inmersiva. Durante el trayecto, deberá mantener una conversación con su pareja y podrá responder mediante gestos, eligiendo así entre diferentes opciones de diálogo sin necesidad de usar palabras.\n\n### Características Principales\n\n- <b>Generación procedural de caminos</b>, haciendo uso de módulos prefabricados\n- <b>Sistema de Diálogo Gestual</b>\n\n## Notas de Desarrollo\n\nEste fue mi primer proyecto desarrollado para realidad virtual, lo que implicó enfrentarme a diversos desafíos técnicos y de diseño.\n\nUno de los principales fue programar un sistema de conducción que resultara intuitivo y cómodo para el jugador, teniendo en cuenta las particularidades de la interacción en VR. A esto se sumó la necesidad de detectar gestos manuales con precisión mediante <i>hand-tracking</i>, e integrarlos correctamente con el <b>sistema de diálogo personalizado</b> que había desarrollado previamente.\n\nDicho sistema, aunque hoy pueda considerarse algo desfasado, en su momento representó una solución robusta y adaptada a las necesidades del proyecto. Construido sobre <b>Scriptable Objects</b>, permitía activar diversos eventos a partir de la interacción gestual: desde el diálogo con la pareja hasta el <i>spawn</i> de objetos en escena o la activación de animaciones específicas.\n\nPor último, el diseño de la interfaz de usuario supuso un reto adicional que me llevó a replantear por completo el concepto de UI convencional. Para ello, investigué a fondo referencias clave del medio, como <b><i>Half-Life: Alyx</i></b> o <b><i>Minecraft VR</i></b>, analizando cómo abordaban la comunicación visual y la interacción sin romper la inmersión del jugador."
       },
       "thumbnail": "https://i.imgur.com/diJAbfY.png",
-      "thumbClass": "thumb-pattern-1",
+      "thumbClass": null,
       "screenshots": [
         { "url": "https://i.imgur.com/JSl88oB.png"}
       ],
@@ -54,7 +54,7 @@
         "es": "## Descripción\n\n<i>Romper la Burbuja</i> es un juego de plataformas evolutivo en 2D desarrollado para la Global Game Jam 2025 bajo el tema \"Burbuja\". El juego sigue a un aspirante a desarrollador de videojuegos en un universo donde los géneros nunca se mezclan, quien emprende un proyecto experimental para decidir qué género debería tener su próximo juego.\n\n## Jugabilidad\n\n El juego comienza como un simple plataformas. A medida que el jugador avanza, el protagonista desarrollador decide integrar elementos de nuevos géneros en el mismo nivel. Cada vez que se añade un nuevo género —primero mecánicas de shooter, luego elementos de puzle— el nivel se reinicia, obligando al jugador a dominar el nuevo conjunto de reglas combinadas. Este proceso es una representación lúdica de la lucha creativa y la necesidad percibida de mantener las ideas dentro de sus propias \"burbujas\".\n\nLa historia refleja la jugabilidad. A medida que el experimento continúa, el protagonista comprende que los géneros no tienen por qué estar confinados. Esta revelación transforma el juego en su etapa final en un auténtico metroidvania. Los jugadores toman el control de un mago en una simple misión para llegar al supermercado, que ahora se complica con barreras. Para tener éxito, deben explorar un mapa ampliado, resolver ingeniosos puzles, enfrentarse a enemigos desafiantes y recolectar llaves, combinando finalmente todas las habilidades adquiridas para completar la aventura.\n\nEste proyecto fue creado en solo 48 horas por el <b>Plants Path Collective</b>, un equipo de seis desarrolladores, artistas y diseñadores.\n\n## Características Principales\n\n- <b>Jugabilidad Evolutiva:</b> Experimenta un solo juego que se transforma de un plataformas puro a un shooter, luego a un juego de puzles, culminando en un metroidvania.\n- <b>Metanarrativa:</b> La estructura del juego refleja su historia, explorando los límites creativos y la fusión de géneros."
       },
       "thumbnail": "https://i.imgur.com/Oac1gLZ.png",
-      "thumbClass": "thumb-pattern-2",
+      "thumbClass": null,
       "screenshots": [
         { "url": "https://i.imgur.com/0nRsSsi.png"}
       ],
@@ -151,7 +151,7 @@
         "es": "## Descripción\n\n[Insert text here]\n\n## Jugabilidad\n\n[Insert text here]\n\n## Características Principales\n\n- [Insert text here]\n- [Insert text here]h\n\n## Notas de Desarrollo\n\n[Insert text here]"
       },
       "thumbnail": "https://i.imgur.com/lvCnT03.png",
-      "thumbClass": "thumb-pattern-4",
+      "thumbClass": null,
       "screenshots": [],
       "videos": [],
       "links": [],
