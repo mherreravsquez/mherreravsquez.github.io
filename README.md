@@ -12,8 +12,8 @@ https://mherreravsquez.github.io/
 **Repository:**
 https://github.com/mherreravsquez/mherreravsquez.github.io
 
-**Blog Posts**
-https://github.com/mherreravsquez/blog-posts
+**Blog Posts: **
+https://mherreravsquez.github.io/blog-posts
 
 The site serves as a central hub to showcase my projects, development work, and tools.
 
