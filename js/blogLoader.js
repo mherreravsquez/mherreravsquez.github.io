@@ -17,7 +17,7 @@
  *   window.BLOG_BASE = 'https://raw.githubusercontent.com/YOUR_USER/blog-posts/main';
  */
 
-const BLOG_BASE = window.BLOG_BASE || 'https://raw.githubusercontent.com/YOUR_GITHUB_USER/blog-posts/main';
+const BLOG_BASE = window.BLOG_BASE || 'https://raw.githubusercontent.com/mherreravsquez/blog-posts/main';
 
 /* ── Frontmatter parser ── */
 function parseFrontmatter(raw) {
