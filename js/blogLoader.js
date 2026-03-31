@@ -69,22 +69,22 @@ async function fetchPost(slug, lang) {
 /* ── Minimal markdown fallback (used if marked.js not loaded) ── */
 function fallbackMarkdown(md) {
   return md
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
-    .replace(/^## (.+)$/gm,  '<h2>$1</h2>')
-    .replace(/^# (.+)$/gm,   '<h1>$1</h1>')
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g,     '<em>$1</em>')
-    .replace(/`([^`]+)`/g,     '<code>$1</code>')
-    .replace(/^> (.+)$/gm,     '<blockquote>$1</blockquote>')
-    .replace(/^\- (.+)$/gm,    '<li>$1</li>')
-    .replace(/^---$/gm,        '<hr>')
-    .replace(/((<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>')
-    .split(/\n{2,}/).map(c => {
-      c = c.trim(); if (!c) return '';
-      if (/^<(h[1-6]|ul|blockquote|hr)/.test(c)) return c;
-      return `<p>${c.replace(/\n/g, '<br>')}</p>`;
-    }).join('\n');
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+      .replace(/^## (.+)$/gm,  '<h2>$1</h2>')
+      .replace(/^# (.+)$/gm,   '<h1>$1</h1>')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g,     '<em>$1</em>')
+      .replace(/`([^`]+)`/g,     '<code>$1</code>')
+      .replace(/^> (.+)$/gm,     '<blockquote>$1</blockquote>')
+      .replace(/^\- (.+)$/gm,    '<li>$1</li>')
+      .replace(/^---$/gm,        '<hr>')
+      .replace(/((<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>')
+      .split(/\n{2,}/).map(c => {
+        c = c.trim(); if (!c) return '';
+        if (/^<(h[1-6]|ul|blockquote|hr)/.test(c)) return c;
+        return `<p>${c.replace(/\n/g, '<br>')}</p>`;
+      }).join('\n');
 }
 
 /* ════════════════════════════════════════════════════════════
@@ -109,6 +109,9 @@ async function renderBlogList(containerEl) {
   }
 
   let posts = manifest.posts || [];
+
+  // Only show posts that match the current language (posts with no lang show in both)
+  posts = posts.filter(p => !p.lang || p.lang === lang);
 
   // Sort by date descending
   posts = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -139,13 +142,13 @@ async function renderBlogList(containerEl) {
 </a>`;
   }).join('');
 
-  // Populate tag sidebar
+  // Populate tag sidebar — only from visible (language-filtered) posts
   const tagSet = new Set();
   posts.forEach(p => (p.tags || []).forEach(t => tagSet.add(t)));
   const tagCloud = document.getElementById('blog-tag-cloud');
   if (tagCloud) {
     tagCloud.innerHTML = [...tagSet].map(tag =>
-      `<span class="tag-chip" onclick="filterByTag('${tag}', this)">${tag}</span>`
+        `<span class="tag-chip" onclick="filterByTag('${tag}', this)">${tag}</span>`
     ).join('');
   }
 }
@@ -244,8 +247,9 @@ async function renderDevlogPreview(containerEl, limit = 4) {
   }
 
   const posts = (manifest.posts || [])
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .slice(0, limit);
+      .filter(p => !p.lang || p.lang === lang)   // only posts matching current language
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, limit);
 
   if (!posts.length) {
     containerEl.innerHTML = `<p style="font-family:var(--mono);color:var(--dim);font-size:11px;">No posts yet.</p>`;
@@ -284,7 +288,7 @@ async function renderDevlogPreview(containerEl, limit = 4) {
     const tagSet = new Set();
     (manifest.posts || []).forEach(p => (p.tags || []).forEach(t => tagSet.add(t)));
     indexTagCloud.innerHTML = [...tagSet].slice(0, 12).map(tag =>
-      `<span class="tag-chip">${tag}</span>`
+        `<span class="tag-chip">${tag}</span>`
     ).join('');
   }
 
@@ -294,9 +298,9 @@ async function renderDevlogPreview(containerEl, limit = 4) {
     const projSet = new Set();
     (manifest.posts || []).forEach(p => { if (p.project) projSet.add(p.project); });
     projFilter.innerHTML = [...projSet].map(proj =>
-      `<a href="project.html?project=${proj}" class="tag-chip">${proj}</a>`
+        `<a href="project.html?project=${proj}" class="tag-chip">${proj}</a>`
     ).join('');
   }
 }
 
-window.BlogLoader = { renderBlogList, renderSinglePost, renderDevlogPreview, fetchPost };
+window.BlogLoader = { renderBlogList, renderSinglePost, renderDevlogPreview, fetchPost, fetchManifest };

@@ -11,7 +11,7 @@
   <script>
     window.BLOG_BASE = 'https://mherreravsquez.github.io/blog-posts';
   </script>
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,700&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
@@ -26,130 +26,138 @@
 
 <div class="page">
 
-<!-- NAV -->
-<nav id="nav">
-  <a href="index.html" class="nav-logo">MH<span class="acc">V</span></a>
-  <div class="nav-center">
-    <a href="index.html#projects" class="nav-link" data-i18n="nav.projects">Projects</a>
-    <a href="index.html#studio"   class="nav-link" data-i18n="nav.studio">Studio</a>
-    <a href="index.html#devlog"   class="nav-link" data-i18n="nav.devlog">Devlog</a>
-    <a href="index.html#about"    class="nav-link" data-i18n="nav.about">About</a>
-    <a href="index.html#contact"  class="nav-link" data-i18n="nav.contact">Contact</a>
-  </div>
-  <div class="nav-right">
-    <div class="lang-toggle">
-      <button class="lang-btn active" data-lang="en">EN</button>
-      <button class="lang-btn" data-lang="es">ES</button>
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">MH<span class="acc">V</span></a>
+    <div class="nav-center">
+      <a href="index.html#projects" class="nav-link" data-i18n="nav.projects">Projects</a>
+      <a href="index.html#studio"   class="nav-link" data-i18n="nav.studio">Studio</a>
+      <a href="index.html#devlog"   class="nav-link" data-i18n="nav.devlog">Devlog</a>
+      <a href="index.html#about"    class="nav-link" data-i18n="nav.about">About</a>
+      <a href="index.html#contact"  class="nav-link" data-i18n="nav.contact">Contact</a>
     </div>
-    <a href="assets/cv-marceloherrera.pdf" target="_blank" class="nav-cv" data-i18n="nav.cv">CV</a>
-  </div>
-</nav>
-
-<!-- PROJECT HERO -->
-<div id="proj-hero" class="proj-page-hero">
-  <!-- Background image / pattern populated by JS -->
-  <div id="proj-hero-thumb" class="proj-page-thumb"></div>
-  <div class="proj-page-fade"></div>
-  <div class="proj-page-fade2"></div>
-
-  <!-- Decorative corner -->
-  <div style="position:absolute;top:80px;right:60px;width:120px;height:120px;border:1px solid rgba(255,255,255,.08);clip-path:polygon(0 0,100% 0,100% 70%,70% 100%,0 100%);pointer-events:none;"></div>
-
-  <div class="proj-page-content">
-    <a href="index.html#projects" class="proj-page-back" data-i18n="proj.back">← All Projects</a>
-    <div class="proj-page-tags" id="proj-page-tags">
-      <!-- Populated by JS -->
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+      </div>
+      <a href="assets/cv-marceloherrera.pdf" target="_blank" class="nav-cv" data-i18n="nav.cv">CV</a>
     </div>
-    <h1 class="proj-page-title" id="proj-title">Loading...</h1>
-    <div class="proj-page-meta">
-      <div class="proj-meta-item">
-        <span class="proj-meta-label">Engine</span>
-        <span class="proj-meta-val" id="proj-engine">—</span>
-      </div>
-      <div class="proj-meta-item">
-        <span class="proj-meta-label">Genre</span>
-        <span class="proj-meta-val" id="proj-genre">—</span>
-      </div>
-      <div class="proj-meta-item">
-        <span class="proj-meta-label">Year</span>
-        <span class="proj-meta-val" id="proj-year">—</span>
-      </div>
-      <div class="proj-meta-item">
-        <span class="proj-meta-label">Status</span>
-        <span class="proj-meta-val" id="proj-status">—</span>
-      </div>
-    </div>
-  </div>
-</div>
+  </nav>
 
-<!-- PROJECT BODY -->
-<div id="proj-body" class="proj-body-layout">
+  <!-- PROJECT HERO -->
+  <div id="proj-hero" class="proj-page-hero">
+    <!-- Background image / pattern populated by JS -->
+    <div id="proj-hero-thumb" class="proj-page-thumb"></div>
+    <div class="proj-page-fade"></div>
+    <div class="proj-page-fade2"></div>
 
-  <!-- Main content -->
-  <div>
-    <!-- Description -->
-    <div id="proj-description" class="proj-description">
-      <div style="font-family:var(--mono);font-size:11px;color:var(--dim);display:flex;align-items:center;gap:12px;">
-        <span class="loading-spinner"></span> Loading project...
-      </div>
-    </div>
+    <!-- Decorative corner -->
+    <div style="position:absolute;top:80px;right:60px;width:120px;height:120px;border:1px solid rgba(255,255,255,.08);clip-path:polygon(0 0,100% 0,100% 70%,70% 100%,0 100%);pointer-events:none;"></div>
 
-    <!-- Screenshots -->
-    <div id="proj-gallery-section" class="proj-gallery" style="margin-top:40px;">
-      <div class="gallery-title" data-i18n="proj.screenshots">Screenshots</div>
-      <div class="gallery-grid" id="proj-gallery">
+    <div class="proj-page-content">
+      <a href="index.html#projects" class="proj-page-back" data-i18n="proj.back">← All Projects</a>
+      <div class="proj-page-tags" id="proj-page-tags">
         <!-- Populated by JS -->
       </div>
-    </div>
-
-    <!-- Videos -->
-    <div id="proj-video-section" style="margin-top:40px;">
-      <div class="gallery-title" data-i18n="proj.videos">Videos</div>
-      <div id="proj-videos">
-        <!-- Populated by JS -->
+      <h1 class="proj-page-title" id="proj-title">Loading...</h1>
+      <div class="proj-page-meta">
+        <div class="proj-meta-item">
+          <span class="proj-meta-label">Engine</span>
+          <span class="proj-meta-val" id="proj-engine">—</span>
+        </div>
+        <div class="proj-meta-item">
+          <span class="proj-meta-label">Genre</span>
+          <span class="proj-meta-val" id="proj-genre">—</span>
+        </div>
+        <div class="proj-meta-item">
+          <span class="proj-meta-label">Year</span>
+          <span class="proj-meta-val" id="proj-year">—</span>
+        </div>
+        <div class="proj-meta-item">
+          <span class="proj-meta-label">Status</span>
+          <span class="proj-meta-val" id="proj-status">—</span>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Sidebar -->
-  <aside class="proj-sidebar">
+  <!-- PROJECT BODY -->
+  <div id="proj-body" class="proj-body-layout">
 
-    <!-- External Links -->
-    <div id="proj-links-section" class="proj-side-panel">
-      <div class="proj-side-title" data-i18n="proj.links">External Links</div>
-      <div class="proj-links-list" id="proj-links-list">
-        <!-- Populated by JS -->
+    <!-- Main content -->
+    <div>
+      <!-- Description -->
+      <div id="proj-description" class="proj-description">
+        <div style="font-family:var(--mono);font-size:11px;color:var(--dim);display:flex;align-items:center;gap:12px;">
+          <span class="loading-spinner"></span> Loading project...
+        </div>
+      </div>
+
+      <!-- Screenshots -->
+      <div id="proj-gallery-section" class="proj-gallery" style="margin-top:40px;">
+        <div class="gallery-title" data-i18n="proj.screenshots">Screenshots</div>
+        <div class="gallery-grid" id="proj-gallery">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Videos -->
+      <div id="proj-video-section" style="margin-top:40px;">
+        <div class="gallery-title" data-i18n="proj.videos">Videos</div>
+        <div id="proj-videos">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Related Devlogs — card list in main content -->
+      <div id="proj-devlogs-main" style="margin-top:48px; display:none;">
+        <div class="gallery-title" data-i18n="proj.devlogs">Related Devlogs</div>
+        <div class="dlog-list" id="proj-devlogs-cards">
+          <!-- Populated by projectLoader.js -->
+        </div>
       </div>
     </div>
 
-    <!-- Related Devlogs -->
-    <div id="proj-devlogs-section" class="proj-side-panel">
-      <div class="proj-side-title" data-i18n="proj.devlogs">Related Devlogs</div>
-      <div class="proj-related-list" id="proj-devlogs-list">
-        <!-- Populated by JS -->
+    <!-- Sidebar -->
+    <aside class="proj-sidebar">
+
+      <!-- External Links -->
+      <div id="proj-links-section" class="proj-side-panel">
+        <div class="proj-side-title" data-i18n="proj.links">External Links</div>
+        <div class="proj-links-list" id="proj-links-list">
+          <!-- Populated by JS -->
+        </div>
       </div>
-    </div>
 
-    <!-- Other Projects -->
-    <div class="proj-side-panel">
-      <div class="proj-side-title">Other Projects</div>
-      <div class="proj-related-list" id="proj-other-list">
-        <!-- Populated by JS -->
+      <!-- Related Devlogs -->
+      <div id="proj-devlogs-section" class="proj-side-panel">
+        <div class="proj-side-title" data-i18n="proj.devlogs">Related Devlogs</div>
+        <div class="proj-related-list" id="proj-devlogs-list">
+          <!-- Populated by JS -->
+        </div>
       </div>
-    </div>
 
-  </aside>
-</div>
+      <!-- Other Projects -->
+      <div class="proj-side-panel">
+        <div class="proj-side-title">Other Projects</div>
+        <div class="proj-related-list" id="proj-other-list">
+          <!-- Populated by JS -->
+        </div>
+      </div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo">MH<span>V</span> &mdash; MARCELO HERRERA VÁSQUEZ</div>
-  <div class="footer-copy">© 2025 Marcelo Herrera Vásquez · Plants Path Collective</div>
-  <div class="footer-right">
-    <a href="index.html" class="footer-social">Portfolio</a>
-    <a href="blog.html"  class="footer-social">Devlog</a>
+    </aside>
   </div>
-</footer>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">MH<span>V</span> &mdash; MARCELO HERRERA VÁSQUEZ</div>
+    <div class="footer-copy">© 2025 Marcelo Herrera Vásquez · Plants Path Collective</div>
+    <div class="footer-right">
+      <a href="index.html" class="footer-social">Portfolio</a>
+      <a href="blog.html"  class="footer-social">Devlog</a>
+    </div>
+  </footer>
 
 </div><!-- .page -->
 

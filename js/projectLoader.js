@@ -13,25 +13,25 @@ function fixImgurUrl(url) {
 function simpleMarkdown(md) {
   if (!md) return '';
   let html = md
-    // Escape HTML entities first
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    // Headings
-    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
-    .replace(/^## (.+)$/gm,  '<h2>$1</h2>')
-    .replace(/^# (.+)$/gm,   '<h1>$1</h1>')
-    // Bold / italic
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g,     '<em>$1</em>')
-    // Inline code
-    .replace(/`([^`]+)`/g, '<code>$1</code>')
-    // Blockquote
-    .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
-    // Unordered lists
-    .replace(/^\- (.+)$/gm, '<li>$1</li>')
-    // Ordered lists — wrap loose <li> in <ul>
-    .replace(/(<li>.*<\/li>)(\n<li>)/g, '$1$2')
-    // HR
-    .replace(/^---$/gm, '<hr>');
+      // Escape HTML entities first
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      // Headings
+      .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+      .replace(/^## (.+)$/gm,  '<h2>$1</h2>')
+      .replace(/^# (.+)$/gm,   '<h1>$1</h1>')
+      // Bold / italic
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g,     '<em>$1</em>')
+      // Inline code
+      .replace(/`([^`]+)`/g, '<code>$1</code>')
+      // Blockquote
+      .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
+      // Unordered lists
+      .replace(/^\- (.+)$/gm, '<li>$1</li>')
+      // Ordered lists — wrap loose <li> in <ul>
+      .replace(/(<li>.*<\/li>)(\n<li>)/g, '$1$2')
+      // HR
+      .replace(/^---$/gm, '<hr>');
 
   // Wrap <li> runs in <ul>
   html = html.replace(/((<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>');
@@ -49,7 +49,7 @@ function simpleMarkdown(md) {
 
 function setMeta(name, content) {
   let el = document.querySelector(`meta[name="${name}"]`) ||
-           document.querySelector(`meta[property="${name}"]`);
+      document.querySelector(`meta[property="${name}"]`);
   if (!el) {
     el = document.createElement('meta');
     el.setAttribute(name.startsWith('og:') ? 'property' : 'name', name);
@@ -135,7 +135,7 @@ async function loadProject() {
       ...(project.tags || [])
     ].filter(Boolean);
     tagsEl.innerHTML = tags.map(t =>
-      `<span class="ptag ${t === project.engine ? 'engine' : ''} ${t === 'Plants Path Collective' ? 'studio' : ''}">${t}</span>`
+        `<span class="ptag ${t === project.engine ? 'engine' : ''} ${t === 'Plants Path Collective' ? 'studio' : ''}">${t}</span>`
     ).join('');
   }
 
@@ -193,7 +193,7 @@ async function loadProject() {
   const linkSection = document.getElementById('proj-links-section');
   if (linksEl && project.links?.length) {
     linksEl.innerHTML = project.links.map(l =>
-      `<a href="${l.url}" target="_blank" rel="noopener" class="proj-ext-link">
+        `<a href="${l.url}" target="_blank" rel="noopener" class="proj-ext-link">
         <span>${l.icon ? l.icon + '  ' : ''}${l.label}</span>
         <span>↗</span>
       </a>`
@@ -203,32 +203,70 @@ async function loadProject() {
   }
 
   // ── Related devlogs ──
-  const devlogsEl = document.getElementById('proj-devlogs-list');
   const devlogSection = document.getElementById('proj-devlogs-section');
-  if (devlogsEl && project.devlogs?.length) {
-    loadRelatedDevlogs(project.devlogs, devlogsEl, lang);
-  } else if (devlogSection) {
-    devlogSection.style.display = 'none';
-  }
+  const mainSection   = document.getElementById('proj-devlogs-main');
+  // Always attempt — matches by project.id automatically, devlogs array is an optional override
+  loadRelatedDevlogs(project.id, project.devlogs || [], lang);
+  // Hide sidebar; main content section visibility is handled inside loadRelatedDevlogs
 
   // ── Other projects ──
   renderRelatedProjects(allProjects, project, lang);
 }
 
-async function loadRelatedDevlogs(slugs, container, lang) {
-  const BLOG_BASE = window.BLOG_BASE || 'https://mherreravsquez.github.io/blog-posts';
+async function loadRelatedDevlogs(projectId, devlogSlugs, lang) {
+  const mainSection = document.getElementById('proj-devlogs-main');
+  const cardsEl     = document.getElementById('proj-devlogs-cards');
+  const sidebarSection = document.getElementById('proj-devlogs-section');
+
+  // Sidebar panel not used — devlogs live in main content
+  if (sidebarSection) sidebarSection.style.display = 'none';
+  if (!mainSection || !cardsEl) return;
+
+  let manifest;
   try {
-    const res      = await fetch(`${BLOG_BASE}/index.json`);
-    const manifest = await res.json();
-    const related  = manifest.posts.filter(p => slugs.includes(p.slug)).slice(0, 4);
-    if (!related.length) { container.closest('[id]').style.display = 'none'; return; }
-    container.innerHTML = related.map(p => {
-      const t = p.title?.[lang] || p.title?.en || p.slug;
-      return `<a href="post.html?post=${p.slug}" class="proj-related-item">${t}</a>`;
-    }).join('');
+    // Reuse BlogLoader's fetchManifest so the base URL is always consistent
+    manifest = await window.BlogLoader.fetchManifest();
   } catch (e) {
-    container.closest('[id]')?.style?.setProperty('display', 'none');
+    mainSection.style.display = 'none';
+    return;
   }
+
+  // Match posts by either:
+  //   1. p.project === projectId  (primary — automatic, no need to list slugs manually)
+  //   2. devlogSlugs includes p.slug  (explicit override list in projects.json)
+  // Then filter by language: posts with no lang field are shown in both languages
+  const related = (manifest.posts || [])
+      .filter(p =>
+          (p.project === projectId || (devlogSlugs && devlogSlugs.includes(p.slug))) &&
+          (!p.lang || p.lang === lang)
+      )
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 6);
+
+  if (!related.length) {
+    mainSection.style.display = 'none';
+    return;
+  }
+
+  cardsEl.innerHTML = related.map(post => {
+    const title   = post.title?.[lang] || post.title?.en || post.slug;
+    const excerpt = post.excerpt?.[lang] || post.excerpt?.en || post.excerpt || '';
+    const type    = post.type || 'update';
+    return `
+<a href="post.html?post=${post.slug}" class="dlog-card t-${type}">
+  <div class="dlog-bar"></div>
+  <div class="dlog-body">
+    <div class="dlog-meta">
+      <span class="dlog-date">${post.date || ''}</span>
+      <span class="dlog-type ${type}">${type}</span>
+    </div>
+    <div class="dlog-title">${title}</div>
+    ${excerpt ? `<div class="dlog-excerpt">${excerpt}</div>` : ''}
+  </div>
+</a>`;
+  }).join('');
+
+  mainSection.style.display = 'block';
 }
 
 function renderRelatedProjects(projects, current, lang) {
@@ -236,7 +274,7 @@ function renderRelatedProjects(projects, current, lang) {
   if (!el) return;
   const others = projects.filter(p => p.id !== current.id).slice(0, 3);
   el.innerHTML = others.map(p =>
-    `<a href="project.html?project=${p.id}" class="proj-related-item">
+      `<a href="project.html?project=${p.id}" class="proj-related-item">
       ${p.title[lang] || p.title.en}
       <span style="font-size:9px;color:var(--dim);margin-left:6px;">${p.engine}</span>
     </a>`

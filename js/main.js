@@ -320,15 +320,15 @@ function initHeroCarousel() {
   // ── Edit this array to add / remove your own Imgur images or GIFs ──
   const slides = [
     {
-      src:   'https://i.imgur.com/l7SI2IB.gif',   
+      src:   'https://i.imgur.com/l7SI2IB.gif',
       label: 'Break the Bubble'
     },
     {
-      src:   'https://i.imgur.com/JSl88oB.png',   
+      src:   'https://i.imgur.com/JSl88oB.png',
       label: 'Car-Loop'
     },
     {
-      src:   'https://i.imgur.com/omz9qFD.gif',   
+      src:   'https://i.imgur.com/omz9qFD.gif',
       label: 'Boombastic'
     }
   ];
@@ -438,10 +438,24 @@ document.addEventListener('DOMContentLoaded', async () => {
   initContactForm();
   initSkillBars();
 
+  // Devlog preview — initial load
+  const devlogContainer = document.getElementById('devlog-posts');
+  if (devlogContainer && window.BlogLoader) {
+    BlogLoader.renderDevlogPreview(devlogContainer);
+  }
+
   // Language toggle buttons
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       if (window.I18n) I18n.setLang(btn.dataset.lang);
     });
   });
+});
+
+// Re-render devlog preview on language change
+document.addEventListener('langchange', () => {
+  const devlogContainer = document.getElementById('devlog-posts');
+  if (devlogContainer && window.BlogLoader) {
+    BlogLoader.renderDevlogPreview(devlogContainer);
+  }
 });
