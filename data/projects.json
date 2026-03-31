@@ -82,8 +82,8 @@
         "es": "Boombastic"
       },
       "shortDesc": {
-        "en": "An interactive exhibition on music in the 1990s",
-        "es": "Una expocisión interactiva de la música en la decada de los 90"
+        "en": "An interactive exhibition on music in the 1990s.",
+        "es": "Una expocisión interactiva de la música en la decada de los 90."
       },
       "fullDesc": {
         "en": "## Overview\n\nBoombastic is an interactive exhibition project that uses handtracking technology to allow users to move virtual cassettes toward a virtual boombox. When a cassette is placed in the boombox, a signal is sent to REAPER (a digital audio workstation) to create beats using samples of representative songs from the 1990s.\n\nAdditionally, MadMapper is implemented to perform projection mapping on the boombox model, displaying various visual reactions and animations in real time.\n\n## Key Features\n\n- Using Kinect as the primary input \n- Using OSC to tell Reaper which samples the user is using",
@@ -114,8 +114,8 @@
         "es": "Tragones y Mazmorras x Lugares que Hablan"
       },
       "shortDesc": {
-        "en": "A visual novel with an unexpected crossover",
-        "es": "Una novela visual con un crossover inesperado"
+        "en": "A visual novel with an unexpected crossover.",
+        "es": "Una novela visual con un crossover inesperado."
       },
       "fullDesc": {
         "en": "## Overview\n\n Tragones y Mazmorras x Lugares que Hablan is a fanmade visual novel developed in Ren’Py that blends the world of Dungeon Meshi (also known as Delicious in Dungeon) with the Chilean TV show Lugares que Hablan. \n\nThe story reimagines the events of the manga’s first volume, incorporating the unexpected presence of its iconic host, Pancho Saavedra, whose personality and humor reshape the narrative’s tone. Through this crossover, classic cooking scenes from the original work are recreated with a distinctive Chilean flair, combining fantasy culinary adventures with the warmth and comedic style characteristic of the television program.",
@@ -149,7 +149,7 @@
       },
       "shortDesc": {
         "en": "When myths awaken, someone must hunt them.",
-        "es": "Cuando los mitos despiertan, alguien debe cazarlos"
+        "es": "Cuando los mitos despiertan, alguien debe cazarlos."
       },
       "fullDesc": {
         "en": "## Overview\n\nHunters: Awakening is a 2D JRPG inspired by Chilean mythology, blending supernatural storytelling, exploration, and strategic combat in a world where the ordinary and the hidden collide.\n\nThe player takes on the role of Javiera, a Chilean teenager who travels to the remote Chirrica Island to visit her family. What begins as a peaceful stay quickly turns into an unsettling experience: relentless rain, sightings of unknown creatures, and a series of unexplained murders begin to disrupt the island’s apparent normality.\n\nEverything changes one night when Javiera is attacked by small goblin-like creatures—descendants of the Trauco—and is rescued by a mysterious individual: Brook, a hunter belonging to the organization known as Hunters.\n\n ## Storyline\n\nThe Hunters organization is responsible for preserving the balance between dimensions, confronting entities that threaten to break into the human world. These creatures, invisible to most, can only be perceived by hunters or individuals with special abilities.\n\nAfter her encounter with Brook, Javiera discovers that she possesses a unique sensitivity to these entities. Forced by circumstance, she must join the Hunters to protect her reality and uncover the origin of the phenomena affecting the island.\n\nAs the story unfolds, what initially seemed like an isolated case begins to reveal a much greater threat.\n\nHunters: Awakening is the first installment of the Hunters IP, conceived as an expandable universe that will enable the development of multiple games with different protagonists, stories, and genres, all connected by the conflict between dimensions and the role of the hunters.",
@@ -178,8 +178,8 @@
         "es": "Hunters: Vega"
       },
       "shortDesc": {
-        "en": "",
-        "es": ""
+        "en": "Reality fractures. Loss is the cause. The hunt is the answer.",
+        "es": "La realidad se quiebra. La pérdida es la causa. La caza, la respuesta."
       },
       "fullDesc": {
         "en": "## Overview\n\nHunters: Vega (WIP, working title) is a 3D JRPG with roguelike elements in which players take control of a squad of hunters dispatched by the Hunters Association to investigate an unprecedented anomaly: a temporal fracture within Santiago’s Vega Central market during the 1950s. Set in a world where time collapses in on itself, players must explore, fight, and adapt to an ever-shifting environment where multiple eras converge and reality gradually deteriorates. Currently in pre-production, the project is being developed by Antonia Benz and Marcelo Herrera, members of the indie collective Plants Path Collective, with an estimated release as a capstone project in January 2027.\n\n## Storyline\n\nThe Association dispatches a group of hunters to a fractured universe, where reality itself has begun to collapse. Their destination: the Vega Central market in Santiago, Chile, during the 1950s.\n\nUpon arrival, they discover that the timeline is folding in on itself. The Vega is physically breaking apart, revealing fragments of different eras within its structure: forgotten pasts, altered presents, and uncertain futures coexist in a single space.\n\nTrapped in a one-week time loop, the hunters must investigate the source of this anomaly while reality continues to deteriorate.\n\nBehind the collapse, a truth emerges: a person, unable to accept the loss of a loved one, has begun tearing apart the fabric of time in a desperate attempt to bring them back. This act causes multiple timelines to collide and branch, pushing the Vega to the brink of destruction.\n\nYet, just before total collapse, time resets.\n\nAgain and again.\n\nSomething—or someone—is holding this moment in place.\n\nAn entity, perhaps a god, whose presence seems intrinsically tied to the Vega:\n\n> *“After God, there is the Vega.”*",
