@@ -89,44 +89,15 @@
         "en": "## Overview\n\nBoombastic is an interactive exhibition project that uses handtracking technology to allow users to move virtual cassettes toward a virtual boombox. When a cassette is placed in the boombox, a signal is sent to REAPER (a digital audio workstation) to create beats using samples of representative songs from the 1990s.\n\nAdditionally, MadMapper is implemented to perform projection mapping on the boombox model, displaying various visual reactions and animations in real time.\n\n## Key Features\n\n- Using Kinect as the primary input \n- Using OSC to tell Reaper which samples the user is using",
         "es": "## Descripción\n\nBoombastic es un proyecto de exposición interactiva que utiliza tecnología de seguimiento de manos para permitir a los usuarios mover casetes virtuales hacia un boombox virtual. Cuando se coloca un casete en el radiocasete, se envía una señal a REAPER (una estación de trabajo de audio digital) para crear ritmos utilizando muestras de canciones emblemáticas de la década de los noventa.\n\nAdemás, se utiliza MadMapper para realizar un mapping de proyección sobre el modelo de una boombox, mostrando diversas reacciones visuales y animaciones en tiempo real.\n\n## Características Principales\n\n- Uso de kinect como input principal\n- Uso de OSC para comunicar a Reaper que samples utiliza el usuario"
       },
-      "thumbnail": "https://i.imgur.com/placeholder4.jpg",
-      "thumbClass": "thumb-pattern-3",
+      "thumbnail": "https://i.imgur.com/omz9qFD.gif",
+      "thumbClass": null,
       "screenshots": [],
       "videos": [
-        { "url": "https://i.imgur.com/omz9qFD.gif", "label": "Gameplay video"}
+        { "url":  "https://www.youtube.com/watch?v=LXsVhdD0ylk", "label": "Gameplay video"}
       ],
       "links": [
         { "label": "GitHub Repository", "url": "https://github.com/mherreravsquez/boombastic-experience", "icon": "\uD83D\uDCBE" }
       ],
-      "devlogs": []
-    },
-    {
-      "id": "hunters-awakening",
-      "featured": false,
-      "ratio": "4:3",
-      "status": "released",
-      "year": 2024,
-      "engine": "Unity 2023",
-      "genre": "JRPG", 
-      "studio": "ppc",
-      "tags": ["C#", "JRPG", "Story Rich"],
-      "title": {
-        "en": "Hunters: Awakening",
-        "es": "Hunters: Awakening"
-      },
-      "shortDesc": {
-        "en": "",
-        "es": ""
-      },
-      "fullDesc": {
-        "en": "## Overview\n\n[Insert text here]\n\n## Gameplay\n\n[Insert text here]\n\n## Key Features\n\n- [Insert text here]\n- [Insert text here]h\n\n## Development Notes\n\n[Insert text here]",
-        "es": "## Descripción\n\n[Insert text here]\n\n## Jugabilidad\n\n[Insert text here]\n\n## Características Principales\n\n- [Insert text here]\n- [Insert text here]h\n\n## Notas de Desarrollo\n\n[Insert text here]"
-      },
-      "thumbnail": "https://i.imgur.com/placeholder4.jpg",
-      "thumbClass": "thumb-pattern-4",
-      "screenshots": [],
-      "videos": [],
-      "links": [],
       "devlogs": []
     },
     {
@@ -143,18 +114,54 @@
         "es": "Tragones y Mazmorras x Lugares que Hablan"
       },
       "shortDesc": {
-        "en": "",
-        "es": "."
+        "en": "A visual novel with an unexpected crossover",
+        "es": "Una novela visual con un crossover inesperado"
       },
       "fullDesc": {
-        "en": "## Overview\n\n[Insert text here]\n\n## Gameplay\n\n[Insert text here]\n\n## Key Features\n\n- [Insert text here]\n- [Insert text here]h\n\n## Development Notes\n\n[Insert text here]",
-        "es": "## Descripción\n\n[Insert text here]\n\n## Jugabilidad\n\n[Insert text here]\n\n## Características Principales\n\n- [Insert text here]\n- [Insert text here]h\n\n## Notas de Desarrollo\n\n[Insert text here]"
+        "en": "## Overview\n\n Tragones y Mazmorras x Lugares que Hablan is a fanmade visual novel developed in Ren’Py that blends the world of Dungeon Meshi (also known as Delicious in Dungeon) with the Chilean TV show Lugares que Hablan. \n\nThe story reimagines the events of the manga’s first volume, incorporating the unexpected presence of its iconic host, Pancho Saavedra, whose personality and humor reshape the narrative’s tone. Through this crossover, classic cooking scenes from the original work are recreated with a distinctive Chilean flair, combining fantasy culinary adventures with the warmth and comedic style characteristic of the television program.",
+        "es": "## Descripción\n\n «Tragones y Mazmorras x Lugares que Hablan» es una novela visual fanmade desarrollada en Ren’Py que fusiona el mundo de «Dungeon Meshi» (también conocido como «Delicious in Dungeon») con el programa de televisión chileno «Lugares que Hablan». \n\nLa historia reimagina los acontecimientos del primer volumen del manga, incorporando la presencia inesperada de su icónico presentador, Pancho Saavedra, cuya personalidad y humor dan un nuevo giro al tono de la narrativa. A través de este crossover, las clásicas escenas de cocina de la obra original se recrean con un toque chileno distintivo, combinando aventuras culinarias fantásticas con la calidez y el estilo cómico característicos del programa de televisión."
       },
       "thumbnail": "https://i.imgur.com/lvCnT03.png",
       "thumbClass": null,
+      "screenshots": [
+        { "url": "https://i.imgur.com/2kuJgAy.png"},
+        { "url": "https://i.imgur.com/43BEx6q.png"}
+      ],
+      "videos": [],
+      "links": [
+        { "label": "Play on itch.io", "url": "https://mherreravsquez.itch.io/tragones-y-mazmorras-x-lugares-que-hablan", "icon": "🎮" }
+      ],
+      "devlogs": []
+    },
+    {
+      "id": "hunters-awakening",
+      "featured": false,
+      "ratio": "9:16",
+      "status": "released",
+      "year": 2024,
+      "engine": "Unity 2023",
+      "genre": "JRPG",
+      "studio": "ppc",
+      "tags": ["C#", "JRPG", "Story Rich"],
+      "title": {
+        "en": "Hunters: Awakening",
+        "es": "Hunters: Awakening"
+      },
+      "shortDesc": {
+        "en": "When myths awaken, someone must hunt them.",
+        "es": "Cuando los mitos despiertan, alguien debe cazarlos"
+      },
+      "fullDesc": {
+        "en": "## Overview\n\nHunters: Awakening is a 2D JRPG inspired by Chilean mythology, blending supernatural storytelling, exploration, and strategic combat in a world where the ordinary and the hidden collide.\n\nThe player takes on the role of Javiera, a Chilean teenager who travels to the remote Chirrica Island to visit her family. What begins as a peaceful stay quickly turns into an unsettling experience: relentless rain, sightings of unknown creatures, and a series of unexplained murders begin to disrupt the island’s apparent normality.\n\nEverything changes one night when Javiera is attacked by small goblin-like creatures—descendants of the Trauco—and is rescued by a mysterious individual: Brook, a hunter belonging to the organization known as Hunters.\n\n ## Storyline\n\nThe Hunters organization is responsible for preserving the balance between dimensions, confronting entities that threaten to break into the human world. These creatures, invisible to most, can only be perceived by hunters or individuals with special abilities.\n\nAfter her encounter with Brook, Javiera discovers that she possesses a unique sensitivity to these entities. Forced by circumstance, she must join the Hunters to protect her reality and uncover the origin of the phenomena affecting the island.\n\nAs the story unfolds, what initially seemed like an isolated case begins to reveal a much greater threat.\n\nHunters: Awakening is the first installment of the Hunters IP, conceived as an expandable universe that will enable the development of multiple games with different protagonists, stories, and genres, all connected by the conflict between dimensions and the role of the hunters.",
+        "es": "## Overview\n\nHunters: Awakening es un JRPG 2D inspirado en la mitología chilena, que combina narrativa sobrenatural, exploración y combate estratégico en un mundo donde lo cotidiano y lo oculto colisionan.\n\nEl jugador encarna a Javiera, una adolescente chilena que viaja a la remota Isla de Chirrica para visitar a su familia. Lo que comienza como una estancia tranquila rápidamente se transforma en una experiencia inquietante: lluvias interminables, apariciones de criaturas desconocidas y una serie de asesinatos sin explicación comienzan a alterar la aparente normalidad del lugar.\n\nTodo cambia una noche, cuando Javiera es atacada por pequeñas criaturas similares a duendes —descendientes del Trauco— y es rescatada por un misterioso individuo: Brook, un cazador perteneciente a la organización Hunters.\n\n ## Storyline\n\nLa organización Hunters se encarga de preservar el equilibrio entre dimensiones, enfrentando entidades que amenazan con irrumpir en el mundo humano. Estas criaturas, invisibles para la mayoría, solo pueden ser percibidas por cazadores o individuos con habilidades especiales.\n\nTras su encuentro con Brook, Javiera descubre que posee una sensibilidad única hacia estas entidades. Forzada por las circunstancias, deberá unirse a los Hunters para proteger su realidad y desentrañar el origen de los fenómenos que azotan la isla.\n\nA medida que la historia avanza, lo que parecía un caso aislado comienza a revelar una amenaza mucho mayor. Hunters: Awakening es la primera entrega de la IP Hunters, concebida como un universo expandible que permitirá el desarrollo de múltiples videojuegos con distintos protagonistas, historias y géneros, todos conectados por el conflicto entre dimensiones y el rol de los cazadores."
+      },
+      "thumbnail": "https://i.imgur.com/eEe17Rg.png",
+      "thumbClass": null,
       "screenshots": [],
       "videos": [],
-      "links": [],
+      "links": [
+        { "label": "Play on itch.io", "url": "https://plants-path-co.itch.io/hunters-awakening", "icon": "🎮" }
+      ],
       "devlogs": []
     },
     {
@@ -175,8 +182,8 @@
         "es": ""
       },
       "fullDesc": {
-        "en": "## Overview\n\n[Insert text here]\n\n## Gameplay\n\n[Insert text here]\n\n## Key Features\n\n- [Insert text here]\n- [Insert text here]h\n\n## Development Notes\n\n[Insert text here]",
-        "es": "## Descripción\n\n[Insert text here]\n\n## Jugabilidad\n\n[Insert text here]\n\n## Características Principales\n\n- [Insert text here]\n- [Insert text here]h\n\n## Notas de Desarrollo\n\n[Insert text here]"
+        "en": "## Overview\n\nHunters: Vega (WIP, working title) is a 3D JRPG with roguelike elements in which players take control of a squad of hunters dispatched by the Hunters Association to investigate an unprecedented anomaly: a temporal fracture within Santiago’s Vega Central market during the 1950s. Set in a world where time collapses in on itself, players must explore, fight, and adapt to an ever-shifting environment where multiple eras converge and reality gradually deteriorates. Currently in pre-production, the project is being developed by Antonia Benz and Marcelo Herrera, members of the indie collective Plants Path Collective, with an estimated release as a capstone project in January 2027.\n\n## Storyline\n\nThe Association dispatches a group of hunters to a fractured universe, where reality itself has begun to collapse. Their destination: the Vega Central market in Santiago, Chile, during the 1950s.\n\nUpon arrival, they discover that the timeline is folding in on itself. The Vega is physically breaking apart, revealing fragments of different eras within its structure: forgotten pasts, altered presents, and uncertain futures coexist in a single space.\n\nTrapped in a one-week time loop, the hunters must investigate the source of this anomaly while reality continues to deteriorate.\n\nBehind the collapse, a truth emerges: a person, unable to accept the loss of a loved one, has begun tearing apart the fabric of time in a desperate attempt to bring them back. This act causes multiple timelines to collide and branch, pushing the Vega to the brink of destruction.\n\nYet, just before total collapse, time resets.\n\nAgain and again.\n\nSomething—or someone—is holding this moment in place.\n\nAn entity, perhaps a god, whose presence seems intrinsically tied to the Vega:\n\n> *“After God, there is the Vega.”*",
+        "es": "## Descripción\n\nHunters: Vega (WIP, título provisorio) es un JRPG 3D con elementos roguelike que sitúa al jugador en la piel de un escuadrón de cazadores enviados por la asociación Hunters a investigar una anomalía sin precedentes: una fractura temporal en la Vega Central de Santiago de Chile durante la década de 1950. En este escenario donde el tiempo colapsa sobre sí mismo, los jugadores deberán explorar, combatir y adaptarse a un entorno en constante transformación, donde distintas épocas convergen y la realidad se descompone progresivamente. Actualmente en etapa de preproducción, el proyecto está siendo desarrollado por Antonia Benz y Marcelo Herrera, miembros del colectivo indie Plants Path Collective, con una fecha estimada de entrega en enero de 2027 como proyecto de título.\n\n## Storyline\n\nLa Asociación envía a un grupo de cazadores a un universo fracturado, donde la realidad ha comenzado a desmoronarse. Su destino: la :contentReference[oaicite:0]{index=0}, en el :contentReference[oaicite:1]{index=1} de los años 50.\n\nAl llegar, descubren que la línea temporal está colapsando sobre sí misma. La Vega se quiebra físicamente, revelando fragmentos de distintas épocas que coexisten en su interior: pasados olvidados, presentes alterados y futuros inciertos se entrelazan en un mismo espacio.\n\nAtrapados en un bucle temporal de una semana, los cazadores deberán investigar el origen de esta anomalía mientras la realidad continúa deteriorándose.\n\nDetrás del colapso, una verdad emerge: una persona, incapaz de aceptar la pérdida de un ser querido, ha comenzado a desgarrar la estructura misma del tiempo en un intento desesperado por recuperarlo. Este acto provoca la colisión y ramificación de múltiples líneas temporales, llevando a la Vega al borde de su destrucción.\n\nSin embargo, justo antes del colapso total, el tiempo se reinicia.\n\nUna y otra vez.\n\nAlgo —o alguien— está reteniendo este momento.\n\nUna entidad, quizás un dios, cuya presencia parece estar intrínsecamente ligada a la Vega:\n\n> *“Después de Dios, está la Vega.”*"
       },
       "thumbnail": "",
       "thumbClass": "thumb-pattern-2",

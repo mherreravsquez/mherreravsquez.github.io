@@ -183,14 +183,22 @@ async function initProjectGrid() {
     const statusTxt = window.I18n ? I18n.t(statusKey) : p.status;
 
     const fixedThumb = fixImgurUrl(p.thumbnail);
-    const thumbStyle = fixedThumb && !fixedThumb.includes('placeholder')
-        ? `style="background-image:url('${fixedThumb}')"` : '';
     const thumbClass = p.thumbClass || 'thumb-pattern-1';
+
+    // MP4 thumbnails can't use background-image — inject a <video> element instead
+    let thumbStyle   = '';
+    let thumbInner   = '';
+    if (isMp4Thumb) {
+      thumbInner = `<video src="${fixedThumb}" autoplay muted loop playsinline
+        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;"></video>`;
+    } else if (fixedThumb && !fixedThumb.includes('placeholder')) {
+      thumbStyle = `style="background-image:url('${fixedThumb}')"`;
+    }
 
     return `
 <a class="proj-card" data-ratio="${p.ratio}" data-featured="${p.featured}" data-project="${p.id}" href="project.html?project=${p.id}">
   <div class="proj-inner">
-    <div class="proj-thumb ${thumbClass}" ${thumbStyle}></div>
+    <div class="proj-thumb ${thumbClass}" ${thumbStyle}>${thumbInner}</div>
     <div class="proj-fade"></div>
     <div class="proj-hover-overlay"></div>
     <div class="proj-hover-line"></div>
@@ -350,12 +358,25 @@ function initHeroCarousel() {
   slides.forEach((s, i) => {
     const div = document.createElement('div');
     div.className = 'hc-slide' + (i === 0 ? ' active' : '');
-    const img = document.createElement('img');
-    const isMp4 = s.src.toLowerCase().includes('.mp4');
-    img.src     = s.src;
-    img.alt     = s.label || '';
-    img.loading = i === 0 ? 'eager' : 'lazy';
-    div.appendChild(img);
+
+    const isMp4 = /\.mp4(\?|$)/i.test(s.src);
+    if (isMp4) {
+      const vid       = document.createElement('video');
+      vid.src         = s.src;
+      vid.muted       = true;
+      vid.loop        = true;
+      vid.playsInline = true;
+      vid.setAttribute('playsinline', '');
+      if (i === 0) vid.autoplay = true;
+      div.appendChild(vid);
+    } else {
+      const img   = document.createElement('img');
+      img.src     = s.src;
+      img.alt     = s.label || '';
+      img.loading = i === 0 ? 'eager' : 'lazy';
+      div.appendChild(img);
+    }
+
     track.appendChild(div);
   });
 
@@ -378,6 +399,10 @@ function initHeroCarousel() {
     const slideEls = track.querySelectorAll('.hc-slide');
     const dotEls   = dotsEl.querySelectorAll('.hc-dot');
 
+    // Pause any video leaving
+    const leavingVid = slideEls[current].querySelector('video');
+    if (leavingVid) leavingVid.pause();
+
     slideEls[current].classList.remove('active');
     dotEls[current].classList.remove('active');
 
@@ -385,6 +410,10 @@ function initHeroCarousel() {
 
     slideEls[current].classList.add('active');
     dotEls[current].classList.add('active');
+
+    // Play any video entering
+    const enteringVid = slideEls[current].querySelector('video');
+    if (enteringVid) enteringVid.play().catch(() => {});
 
     if (label) {
       label.style.opacity = '0';

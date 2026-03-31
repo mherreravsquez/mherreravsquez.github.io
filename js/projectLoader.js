@@ -155,7 +155,16 @@ async function loadProject() {
   const galSection = document.getElementById('proj-gallery-section');
   if (galleryEl && project.screenshots?.length) {
     galleryEl.innerHTML = project.screenshots.map(s => {
-      const url = fixImgurUrl(s.url || s); // handles both {url:...} and plain strings
+      const url    = fixImgurUrl(s.url || s);
+      const isMp4  = /\.mp4(\?|$)/i.test(url);
+      if (isMp4) {
+        return `
+      <div class="gallery-img">
+        <video src="${url}" autoplay muted loop playsinline
+          style="width:100%;height:100%;object-fit:cover;cursor:pointer;"
+          onclick="openLightbox('${url}', true)"></video>
+      </div>`;
+      }
       return `
       <div class="gallery-img">
         <img src="${url}" alt="${title} screenshot" loading="lazy"
@@ -176,6 +185,11 @@ async function loadProject() {
         <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${id}"
           frameborder="0" allowfullscreen style="border:1px solid var(--line2);"></iframe>
       </div>`;
+      }
+      // MP4 — Imgur or any direct .mp4 link
+      if (/\.mp4(\?|$)/i.test(v.url)) {
+        return `<video src="${v.url}" autoplay muted loop playsinline controls
+          style="width:100%;border:1px solid var(--line2);margin-bottom:12px;display:block;"></video>`;
       }
       if (v.url.match(/imgur\.com.*\.(gif|gifv)$/i)) {
         const gifUrl = fixImgurUrl(v.url);
@@ -281,12 +295,33 @@ function renderRelatedProjects(projects, current, lang) {
   ).join('');
 }
 
-// Simple lightbox
-function openLightbox(src) {
+// Simple lightbox — supports images and MP4 videos
+function openLightbox(src, isVideo = false) {
   const lb = document.createElement('div');
   lb.style.cssText = 'position:fixed;inset:0;background:rgba(4,6,10,.96);z-index:99990;display:flex;align-items:center;justify-content:center;cursor:none;';
-  lb.innerHTML = `<img src="${src}" style="max-width:92vw;max-height:90vh;border:1px solid var(--line2);">`;
-  lb.addEventListener('click', () => lb.remove());
+
+  let media;
+  if (isVideo || /\.mp4(\?|$)/i.test(src)) {
+    media = document.createElement('video');
+    media.src         = src;
+    media.autoplay    = true;
+    media.muted       = true;
+    media.loop        = true;
+    media.playsInline = true;
+    media.controls    = true;
+    media.setAttribute('playsinline', '');
+    media.style.cssText = 'max-width:92vw;max-height:90vh;border:1px solid var(--line2);';
+  } else {
+    media = document.createElement('img');
+    media.src = src;
+    media.style.cssText = 'max-width:92vw;max-height:90vh;border:1px solid var(--line2);';
+  }
+
+  lb.appendChild(media);
+  lb.addEventListener('click', () => {
+    if (media.tagName === 'VIDEO') media.pause();
+    lb.remove();
+  });
   document.body.appendChild(lb);
 }
 window.openLightbox = openLightbox;
