@@ -183,6 +183,7 @@ async function initProjectGrid() {
     const statusTxt = window.I18n ? I18n.t(statusKey) : p.status;
 
     const fixedThumb = fixImgurUrl(p.thumbnail);
+    const isMp4Thumb = fixedThumb && /\.mp4(\?|$)/i.test(fixedThumb);
     const thumbClass = p.thumbClass || 'thumb-pattern-1';
 
     // MP4 thumbnails can't use background-image — inject a <video> element instead
