@@ -24,7 +24,6 @@
     "projects.filter.studio": "Studio",
 
     "studio.tag":         "01 — Studio",
-    "studio.title":       "Plants Path\nCollective",
     "studio.sub":         "Independent Game Studio",
     "studio.desc":        "Plants Path Collective is an independent game studio focused on handcrafted experiences that blend systemic design with atmospheric storytelling. We build games that feel like places worth returning to.",
     "studio.pill.active": "Active",
@@ -40,7 +39,6 @@
     "studio.cta":         "All Studio Projects",
 
     "devlog.tag":         "03 — Devlog",
-    "devlog.title":       "Dev\nLog",
     "devlog.sidebar.tags":"Tags",
     "devlog.sidebar.projects":"Projects",
     "devlog.loading":     "Fetching posts...",
@@ -49,15 +47,20 @@
     "devlog.viewall":     "View All Posts →",
 
     "about.tag":          "04 — About",
-    "about.title":        "About\nMe",
+    "about.title":        "About",
+    "about.title.2":        "\nMe",
     "about.p1":           "I'm <strong>Marcelo Herrera Vásquez</strong>, also known as Marchel, a <span class='acc'>game designer and developer</span> based in Santiago, Chile. I make games that prioritize feel, clarity, and systems that surprise.",
     "about.p2":           "My main tool is <span class='cyn'>Unity 6</span>, though I've experience with other engines, like Unreal Engine. I care deeply about the gap between design intention and player experience.",
     "about.p3":           "Outside of commercial projects I run <strong>Plants Path Collective</strong>, a small studio focused on experimental and atmospheric games. I also write about game design and development on this devlog.",
     "about.skills":       "Technical Skills",
+    "about.skills.gameengines": "Game Engines",
+    "about.skills.programming": "Programming",
+    "about.skills.design": "Design Skills",
     "about.timeline":     "Timeline",
 
     "contact.tag":        "05 — Contact",
     "contact.title":      "Let's\nTalk",
+    "contact.title.2":      "\nTalk",
     "contact.tagline":    "Open to collaborations, contract work, and interesting game jams. Always happy to talk about game design.",
     "contact.form.name":  "Name",
     "contact.form.email": "Email",
@@ -123,7 +126,8 @@
     "projects.filter.studio": "Estudio",
 
     "studio.tag":         "01 — Estudio",
-    "studio.title":       "Plants Path\nCollective",
+    "studio.title":       "Plants Path",
+    "studio.title.2":       "\nCollective",
     "studio.sub":         "Estudio Independiente de Videojuegos",
     "studio.desc":        "Plants Path Collective es un estudio independiente enfocado en experiencias artesanales que mezclan diseño sistémico con narrativa atmosférica. Hacemos juegos que se sienten como lugares a los que vale la pena volver.",
     "studio.pill.active": "Activo",
@@ -139,7 +143,6 @@
     "studio.cta":         "Todos los Proyectos del Estudio",
 
     "devlog.tag":         "03 — Devlog",
-    "devlog.title":       "Dev\nLog",
     "devlog.sidebar.tags":"Etiquetas",
     "devlog.sidebar.projects":"Proyectos",
     "devlog.loading":     "Cargando entradas...",
@@ -148,11 +151,15 @@
     "devlog.viewall":     "Ver Todas las Entradas →",
 
     "about.tag":          "04 — Sobre mí",
-    "about.title":        "Sobre\nMí",
+    "about.title":        "Sobre",
+    "about.title.2":      "\nMí",
     "about.p1":           "Soy <strong>Marcelo Herrera Vásquez</strong>, también conocido como Marchel, un <span class='acc'>desarrollador y diseñador de videojuegos</span> con base en Santiago, Chile. Hago juegos que priorizan la sensación, la claridad y los sistemas que sorprenden.",
     "about.p2":           "Mi herramienta principal es <span class='cyn'>Unity 6</span>, aunque tengo experiencia con otros motores, como Unreal Engine. Me importa mucho la brecha entre la intención de diseño y la experiencia del jugador.",
     "about.p3":           "Fuera de proyectos comerciales dirijo <strong>Plants Path Collective</strong>, un pequeño estudio enfocado en juegos experimentales y atmosféricos.",
     "about.skills":       "Habilidades Técnicas",
+    "about.skills.gameengines": "Game Engines",
+    "about.skills.programming": "Programación",
+    "about.skills.design": "Diseño",
     "about.timeline":     "Cronología",
 
     "contact.tag":        "05 — Contacto",

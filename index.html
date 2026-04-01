@@ -121,11 +121,6 @@
       </div>
 
     </div><!-- .hero-body -->
-
-    <div class="scroll-hint">
-      <div class="scroll-line"></div>
-      <div class="scroll-txt">Scroll</div>
-    </div>
   </section>
 
   <!-- ═══════════════════ PROJECTS ═══════════════════ -->
@@ -160,7 +155,7 @@
     <div class="wrap">
       <div class="sec-head fade-in">
         <span class="sec-tag" data-i18n="studio.tag">01 — Studio</span>
-        <h2 class="sec-title"><span class="acc">Plants</span> Path<br><span class="out">Collective</span></h2>
+        <h2 class="sec-title"><span class="sec-title-acc">Plants</span> Path<br><span class="sec-title-out">Collective</span></h2>
         <div class="sec-rule"></div>
       </div>
 
@@ -227,7 +222,8 @@
     <div class="wrap">
       <div class="sec-head fade-in">
         <span class="sec-tag" data-i18n="devlog.tag">03 — Devlog</span>
-        <h2 class="sec-title">Dev<br><span class="acc">Log</span></h2>
+        <h2 class="sec-title">Dev<br>
+          <span class="sec-title-acc">Log</span></span></h2>
         <div class="sec-rule"></div>
       </div>
 
@@ -264,7 +260,8 @@
     <div class="wrap">
       <div class="sec-head fade-in">
         <span class="sec-tag" data-i18n="about.tag">04 — About</span>
-        <h2 class="sec-title">About<br><span class="acc">Me</span></h2>
+        <h2 class="sec-title" data-i18n="about.title">About<br></h2>
+          <span class="sec-title-acc" data-i18n="about.title.2">Me</span></h2>
         <div class="sec-rule"></div>
       </div>
 
@@ -290,7 +287,7 @@
             <div class="skills-grid">
               <!-- ── GAME ENGINES ── -->
               <div class="skill-cat">
-                <p class="skill-cat-label">Game Engines</p>
+                <p class="skill-cat-title" data-i18n="about.skills.gameengines">Game Engines</p>
                 <div class="skill-chips">
 
                   <!-- Unity — white/light gray -->
@@ -327,13 +324,14 @@
 
               <!-- ── PROGRAMMING LANGUAGES ── -->
               <div class="skill-cat">
-                <p class="skill-cat-label">Programming Languages</p>
+                <p class="skill-cat-title" data-i18n="about.skills.programming">Programming</p>
                 <div class="skill-chips">
-                  <!-- C# — Microsoft purple -->
-                  <div class="skill-chip" style="--chip-color: #a561e8;">
-                      <span class="chip-icon"
-                            style="-webkit-mask-image: url('https://cdn.jsdelivr.net/npm/simple-icons@13/icons/csharp.svg');
-                                       mask-image: url('https://cdn.jsdelivr.net/npm/simple-icons@13/icons/csharp.svg');">
+                  <!-- C# custom sharp symbol -->
+                  <div class="skill-chip" style="--chip-color: #9B4F96;">
+                      <span class="chip-icon-svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
                       </span>
                     <span class="chip-name">C#</span>
                   </div>
@@ -350,10 +348,10 @@
 
               <!-- ── DESIGN SKILLS ── -->
               <div class="skill-cat">
-                <p class="skill-cat-label">Design Skills</p>
+                <p class="skill-cat-title" data-i18n="about.skills.design">Design Skills</p>
                 <div class="skill-chips">
                   <!-- Game Design — orange -->
-                  <div class="skill-chip" style="--chip-color: #FF8C42;">
+                  <div class="skill-chip">
                       <span class="chip-icon-svg">
                         <svg viewBox="0 0 24 24" width="15" height="15" fill="none"
                              stroke="#FF8C42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -363,7 +361,7 @@
                     <span class="chip-name">Game Design</span>
                   </div>
                   <!-- Level Design — green -->
-                  <div class="skill-chip" style="--chip-color: #4ADE80;">
+                  <div class="skill-chip">
                     <span class="chip-icon-svg">
                       <svg viewBox="0 0 24 24" width="15" height="15" fill="none"
                            stroke="#4ADE80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -376,7 +374,7 @@
                     <span class="chip-name">Level Design</span>
                   </div>
                   <!-- Procedural Generation — violet -->
-                  <div class="skill-chip" style="--chip-color: #A78BFA;">
+                  <div class="skill-chip">
                       <span class="chip-icon-svg">
                         <svg viewBox="0 0 24 24" width="15" height="15" fill="none"
                              stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -479,7 +477,7 @@
     <div class="wrap">
       <div class="sec-head fade-in">
         <span class="sec-tag" data-i18n="contact.tag">05 — Contact</span>
-        <h2 class="sec-title">Let's<br><span class="acc">Talk</span></h2>
+        <h2 class="sec-title" data-i18n="contact.title">Let's<br><span class="acc">Talk</span></h2>
         <div class="sec-rule"></div>
       </div>
 
