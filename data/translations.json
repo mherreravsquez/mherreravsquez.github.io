@@ -74,7 +74,7 @@
     "status.cancelled":   "Cancelled",
 
     "post.back":          "Back to Devlog",
-    "proj.back":          "← All Projects",
+    "proj.back":          "All Projects",
     "proj.links":         "External Links",
     "proj.devlogs":       "Related Devlogs",
     "proj.screenshots":   "Screenshots",
@@ -176,7 +176,7 @@
     "status.cancelled":   "Cancelado",
 
     "post.back":          "Volver al Devlog",
-    "proj.back":          "← Todos los Proyectos",
+    "proj.back":          "Todos los Proyectos",
     "proj.links":         "Enlace Externos",
     "proj.devlogs":       "Devlogs Relacionados",
     "proj.screenshots":   "Capturas de Pantalla",

@@ -194,8 +194,8 @@ async function loadProject() {
       }
       if (v.url.match(/imgur\.com.*\.(gif|gifv)$/i)) {
         const gifUrl = fixImgurUrl(v.url);
-        return `<img src="${gifUrl}" alt="${v.label || 'Gameplay'}"
-        style="width:100%;border:1px solid var(--line2);margin-bottom:12px;">`;
+        return `<video src="${v.url}" autoplay muted loop playsinline controls
+          style="width:100%;border:1px solid var(--line2);margin-bottom:12px;display:block;"></video>`;
       }
       return `<a href="${v.url}" target="_blank" class="proj-ext-link">${v.label || v.platform} ↗</a>`;
     }).join('');
