@@ -162,9 +162,9 @@ async function initProjectGrid() {
 
   function tagClass(tag) {
     const t = tag.toLowerCase();
-    if (['c#', 'python', 'lua', 'gdscript', 'javascript'].some(l => t.includes(l))) return 'lang';
-    if (['vr', 'meta quest', 'xr', 'ar'].some(v => t.includes(v)))                  return 'vr';
-    if (['jam', 'ggj', 'global game jam'].some(j => t.includes(j)))                  return 'jam';
+    if (['c#', "c++", 'python', 'lua', 'gdscript', 'javascript', "java"].some(l => t.includes(l))) return 'lang';
+    if (['vr', 'meta quest', 'xr', 'ar'].some(v => t.includes(v))) return 'vr';
+    if (['jam', 'ggj', 'global game jam'].some(j => t.includes(j))) return 'jam';
     if (['jrpg', 'horror', 'platformer', 'metroidvania', 'visual novel', 'renpy'].some(g => t.includes(g))) return 'genre';
     if (['procedural', 'narrative', 'experimental', 'story rich'].some(d => t.includes(d))) return 'design';
     return '';
@@ -337,7 +337,7 @@ function initHeroCarousel() {
       label: 'Car-Loop'
     },
     {
-      src:   'https://i.imgur.com/omz9qFD.gif',
+      src:   'https://i.imgur.com/omz9qFD.mp4',
       label: 'Boombastic'
     }
   ];

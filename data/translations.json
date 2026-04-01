@@ -35,6 +35,7 @@
     "studio.stat.games":  "Games Released",
     "studio.stat.jams":   "Jam Entries",
     "studio.stat.year":   "Founded",
+    "studio.stat.yearnum":"1 August 2024",
     "studio.cta":         "All Studio Projects",
 
     "devlog.tag":         "03 — Devlog",
@@ -138,6 +139,7 @@
     "studio.stat.games":  "Juegos Publicados",
     "studio.stat.jams":   "Participaciones en Jams",
     "studio.stat.year":   "Fundado",
+    "studio.stat.yearnum":"1 Agosto 2024",
     "studio.cta":         "Todos los Proyectos del Estudio",
 
     "devlog.tag":         "03 — Devlog",
