@@ -269,6 +269,7 @@
       </div>
 
       <div class="about-layout">
+
         <!-- Left: Bio + Skills -->
         <div class="fade-in">
           <p class="about-p" data-i18n="about.p1" data-i18n-html="true">
@@ -285,78 +286,178 @@
 
           <div class="skill-section">
             <div class="skill-section-title" data-i18n="about.skills">Technical Skills</div>
-            <div class="skill-rows">
-              <div class="skill-row">
-                <span class="skill-name">Unity / C#</span>
-                <div class="skill-track"><div class="skill-fill" data-width="90%"></div></div>
-                <span class="skill-pct">90%</span>
+
+            <div class="skills-grid">
+              <!-- ── GAME ENGINES ── -->
+              <div class="skill-cat">
+                <p class="skill-cat-label">Game Engines</p>
+                <div class="skill-chips">
+
+                  <!-- Unity — white/light gray -->
+                  <div class="skill-chip" style="--chip-color: #e0e0e0;">
+                    <span class="chip-icon"
+                          style="-webkit-mask-image: url('https://cdn.jsdelivr.net/npm/simple-icons@13/icons/unity.svg');
+                                     mask-image: url('https://cdn.jsdelivr.net/npm/simple-icons@13/icons/unity.svg');">
+                    </span>
+                    <span class="chip-name">Unity</span>
+                  </div>
+
+                  <!-- Unreal Engine — UE blue -->
+                  <div class="skill-chip" style="--chip-color: #1488cc;">
+                      <span class="chip-icon"
+                            style="-webkit-mask-image: url('https://cdn.jsdelivr.net/npm/simple-icons@13/icons/unrealengine.svg');
+                                       mask-image: url('https://cdn.jsdelivr.net/npm/simple-icons@13/icons/unrealengine.svg');">
+                      </span>
+                    <span class="chip-name">Unreal Engine</span>
+                  </div>
+
+                  <!-- Ren'Py — pink (VN engine brand color) -->
+                  <div class="skill-chip" style="--chip-color: #FF7DBF;">
+                      <span class="chip-icon-svg">
+                        <!-- Heart icon — matches Ren'Py's VN identity -->
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="#FF7DBF" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/>
+                        </svg>
+                      </span>
+                    <span class="chip-name">Ren'Py</span>
+                  </div>
+
+                </div>
               </div>
-              <div class="skill-row">
-                <span class="skill-name">Unreal Engine</span>
-                <div class="skill-track"><div class="skill-fill c" data-width="30%"></div></div>
-                <span class="skill-pct">30%</span>
+
+              <!-- ── PROGRAMMING LANGUAGES ── -->
+              <div class="skill-cat">
+                <p class="skill-cat-label">Programming Languages</p>
+                <div class="skill-chips">
+                  <!-- C# — Microsoft purple -->
+                  <div class="skill-chip" style="--chip-color: #a561e8;">
+                      <span class="chip-icon"
+                            style="-webkit-mask-image: url('https://cdn.jsdelivr.net/npm/simple-icons@13/icons/csharp.svg');
+                                       mask-image: url('https://cdn.jsdelivr.net/npm/simple-icons@13/icons/csharp.svg');">
+                      </span>
+                    <span class="chip-name">C#</span>
+                  </div>
+                  <!-- Python — Python blue -->
+                  <div class="skill-chip" style="--chip-color: #4B8BBE;">
+                      <span class="chip-icon"
+                            style="-webkit-mask-image: url('https://cdn.jsdelivr.net/npm/simple-icons@13/icons/python.svg');
+                                       mask-image: url('https://cdn.jsdelivr.net/npm/simple-icons@13/icons/python.svg');">
+                      </span>
+                    <span class="chip-name">Python</span>
+                  </div>
+                </div>
               </div>
-              
-              <div class="separator"></div>
-              
-              <div class="skill-row">
-                <span class="skill-name">Game Design</span>
-                <div class="skill-track"><div class="skill-fill" data-width="80%"></div></div>
-                <span class="skill-pct">80%</span>
-              </div>
-              <div class="skill-row">
-                <span class="skill-name">Procedural Generation</span>
-                <div class="skill-track"><div class="skill-fill c" data-width="75%"></div></div>
-                <span class="skill-pct">75%</span>
-              </div>
-              <div class="skill-row">
-                <span class="skill-name">Level Design</span>
-                <div class="skill-track"><div class="skill-fill" data-width="60%"></div></div>
-                <span class="skill-pct">60%</span>
+
+              <!-- ── DESIGN SKILLS ── -->
+              <div class="skill-cat">
+                <p class="skill-cat-label">Design Skills</p>
+                <div class="skill-chips">
+                  <!-- Game Design — orange -->
+                  <div class="skill-chip" style="--chip-color: #FF8C42;">
+                      <span class="chip-icon-svg">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none"
+                             stroke="#FF8C42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                      </span>
+                    <span class="chip-name">Game Design</span>
+                  </div>
+                  <!-- Level Design — green -->
+                  <div class="skill-chip" style="--chip-color: #4ADE80;">
+                    <span class="chip-icon-svg">
+                      <svg viewBox="0 0 24 24" width="15" height="15" fill="none"
+                           stroke="#4ADE80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="7" height="7"/>
+                        <rect x="14" y="3" width="7" height="7"/>
+                        <rect x="14" y="14" width="7" height="7"/>
+                        <rect x="3" y="14" width="7" height="7"/>
+                      </svg>
+                    </span>
+                    <span class="chip-name">Level Design</span>
+                  </div>
+                  <!-- Procedural Generation — violet -->
+                  <div class="skill-chip" style="--chip-color: #A78BFA;">
+                      <span class="chip-icon-svg">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none"
+                             stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <circle cx="12" cy="12" r="3"/>
+                          <line x1="12" y1="2" x2="12" y2="6"/>
+                          <line x1="12" y1="18" x2="12" y2="22"/>
+                          <line x1="4.22" y1="4.22" x2="7.05" y2="7.05"/>
+                          <line x1="16.95" y1="16.95" x2="19.78" y2="19.78"/>
+                          <line x1="2" y1="12" x2="6" y2="12"/>
+                          <line x1="18" y1="12" x2="22" y2="12"/>
+                          <line x1="4.22" y1="19.78" x2="7.05" y2="16.95"/>
+                          <line x1="16.95" y1="7.05" x2="19.78" y2="4.22"/>
+                        </svg>
+                      </span>
+                    <span class="chip-name">Procedural Generation</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </div> <!-- ✅ CLOSE LEFT COLUMN HERE -->
+
 
         <!-- Right: Timeline card -->
         <div class="fade-in" style="animation-delay:.1s">
           <div class="about-card">
             <div class="about-card-title" data-i18n="about.timeline">Timeline</div>
+
             <div class="timeline">
               <div class="tl-item">
-                <div class="tl-track"><div class="tl-dot c"></div><div class="tl-line"></div></div>
+                <div class="tl-track">
+                  <div class="tl-dot c"></div>
+                  <div class="tl-line"></div>
+                </div>
                 <div>
                   <div class="tl-year">2026</div>
                   <div class="tl-title">Hunters: Vega (WIP)</div>
                   <div class="tl-sub">PPCo — Bachelor's Final Project — In development</div>
                 </div>
               </div>
+
               <div class="tl-item">
-                <div class="tl-track"><div class="tl-dot"></div><div class="tl-line"></div></div>
+                <div class="tl-track">
+                  <div class="tl-dot"></div>
+                  <div class="tl-line"></div>
+                </div>
                 <div>
                   <div class="tl-year c">2025</div>
                   <div class="tl-title">Break the Bubble</div>
                   <div class="tl-sub">PPCo - GGJ 2025 — Demo released on itch.io</div>
                 </div>
               </div>
+
               <div class="tl-item">
-                <div class="tl-track"><div class="tl-dot c"></div><div class="tl-line"></div></div>
+                <div class="tl-track">
+                  <div class="tl-dot c"></div>
+                  <div class="tl-line"></div>
+                </div>
                 <div>
                   <div class="tl-year">2024</div>
                   <div class="tl-title">Car-Loop</div>
                   <div class="tl-sub">PPCo - Demo released on itch.io</div>
                 </div>
               </div>
+
               <div class="tl-item">
-                <div class="tl-track"><div class="tl-dot"></div><div class="tl-line"></div></div>
+                <div class="tl-track">
+                  <div class="tl-dot"></div>
+                  <div class="tl-line"></div>
+                </div>
                 <div>
                   <div class="tl-year c">2024</div>
                   <div class="tl-title">Hunters: Awakening</div>
                   <div class="tl-sub">PPCo - Demo released on itch.io</div>
                 </div>
               </div>
+
               <div class="tl-item">
-                <div class="tl-track"><div class="tl-dot c"></div><div class="tl-line"></div></div>
+                <div class="tl-track">
+                  <div class="tl-dot c"></div>
+                </div>
                 <div>
                   <div class="tl-year c">2023</div>
                   <div class="tl-title">Plants Path Collective</div>
@@ -366,7 +467,9 @@
             </div>
           </div>
         </div>
+
       </div>
+      
     </div>
   </section>
 
