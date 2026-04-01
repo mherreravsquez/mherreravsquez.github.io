@@ -2,12 +2,14 @@
   "projects": [
     {
       "id": "car-loop",
+      "featured": false,
       "ratio": "4:3",      
       "status": "released",
       "year": 2025,
       "engine": "Unity 6",
       "genre": "Psychological Horror",
       "studio": "ppc",
+      "personal": null,
       "tags": ["Meta Quest 3", "VR", "C#"],
       "title": {
         "en": "Car-Loop",
@@ -34,12 +36,14 @@
     },
     {
       "id": "bubble-ggj2025",
+      "featured": false,
       "ratio": "4:3",
       "status": "released",
       "year": 2025,
       "engine": "Unity 2023",
       "genre": "Metroidvania",
       "studio": "ppc",
+      "personal": null,
       "tags": ["C#", "Global Game Jam 2025", "Experimental narrative"],
       "title": {
         "en": "Break the Bubble",
@@ -76,6 +80,7 @@
       "engine": "Unity 6",
       "genre": "Experimental",
       "studio": null,
+      "personal": null,
       "tags": ["Experimental", "Kinect", "Interactive Exposition"],
       "title": {
         "en": "Boombastic",
@@ -102,12 +107,14 @@
     },
     {
       "id": "tragones",
-      "ratio": "4:3", "_comment": "16:9, 9:16, 4:3, 1:1",
+      "featured": false,
+      "ratio": "4:3", 
       "status": "released",
       "year": 2024,
       "engine": "RenPy",
       "genre": "Visual Novel",
       "studio": null,
+      "personal": null,
       "tags": ["RenPy", "Visual Novel"],
       "title": {
         "en": "Dungeon Meshi x Lugares que Hablan",
@@ -142,6 +149,7 @@
       "engine": "Unity 2023",
       "genre": "JRPG",
       "studio": "ppc",
+      "personal": null,
       "tags": ["C#", "JRPG", "Story Rich"],
       "title": {
         "en": "Hunters: Awakening",
@@ -166,12 +174,14 @@
     },
     {
       "id": "hunters-vega",
-      "ratio": "16:9", "_comment": "16:9, 9:16, 4:3, 1:1",
+      "featured": false,
+      "ratio": "16:9", 
       "status": "preprod",
       "year": 2027,
       "engine": "Unity 6",
       "genre": "JRPG",
       "studio": "ppc",
+      "personal": null,
       "tags": ["C#", "JRPG", "Roguelike"],
       "title": {
         "en": "Hunters: Vega",

@@ -5,6 +5,7 @@
   --bg:        #05070c;
   --bg2:       #070b12;
   --bg3:       #0b111a;
+  --bg4:       #04060A80;
 
   --surf:      #101722;
   --surf2:     #161f2c;
@@ -256,10 +257,23 @@ body.cursor-hover #cursor-ring {
 /* ── 40 / 60 flex row ── */
 .hero-body {
   display: flex;
-  align-items: center;        /* vertically center both columns */
+  align-items: center;        
   gap: 32px;
   padding: 0 40px;
   width: 100%;
+}
+
+.hero-body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+          linear-gradient(var(--line) 1px, transparent 1px),
+          linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: .25;
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* LEFT 40% — text */
@@ -294,23 +308,29 @@ body.cursor-hover #cursor-ring {
   display: flex; align-items: center;
   overflow: hidden;
   border-bottom: 1px solid var(--line);
-  background: rgba(4,6,10,.5);
+  background: var(--bg4);
+  
+  margin-top: 1rem;
 }
 .ticker-inner {
   display: flex;
   animation: ticker 40s linear infinite;
   white-space: nowrap;
+  align-items: center;
+  margin-bottom: 0.75rem;
 }
 .ticker-inner span {
   font-family: var(--mono);
   font-size: 12px;
+  font-weight: 500;
   letter-spacing: .2em;
   text-transform: uppercase;
   align-items: center;
-  color: var(--dimmer);
+  color: var(--accent);
   padding: 0 36px;
 }
-.ticker-inner span.hi { color: rgba(224, 20, 221, 0.6); }
+.ticker-inner span.hi { color: var(--accent2); }
+.ticker-inner span.dot { color: var(--text); }
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 .hero-eyebrow {
@@ -591,6 +611,9 @@ section { padding: 96px 40px; }
 }
 .sec-title-out { -webkit-text-stroke: 1px rgba(237,240,247,.4); color: transparent; }
 .sec-rule { flex: 1; height: 1px; background: linear-gradient(90deg, var(--line2), transparent); }
+.separator {
+  height: 5px;
+}
 
 
 /* ════════════════════════════════════════════════════════════
@@ -680,7 +703,7 @@ section { padding: 96px 40px; }
 .proj-card { cursor: none; display: block; }
 
 /* ── Column spans per ratio (fallback / filtered view) ── */
-.proj-card[data-ratio="16:9"] { grid-column: span 8; }
+.proj-card[data-ratio="16:9"] { grid-column: span 6; }
 .proj-card[data-ratio="4:3"]  { grid-column: span 6; }
 .proj-card[data-ratio="1:1"]  { grid-column: span 4; }
 .proj-card[data-ratio="9:16"] { grid-column: span 4; }

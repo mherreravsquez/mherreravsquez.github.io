@@ -132,6 +132,7 @@ async function loadProject() {
     const tags = [
       project.engine,
       project.studio === 'ppc' ? 'Plants Path Collective' : null,
+      project.personal === 'perso' ? 'Personal' : null,
       ...(project.tags || [])
     ].filter(Boolean);
     tagsEl.innerHTML = tags.map(t =>

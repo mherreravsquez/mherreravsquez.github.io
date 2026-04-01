@@ -716,6 +716,7 @@
     document.getElementById('pj-year').value        = p.year || '';
     document.getElementById('pj-status').value      = p.status || 'released';
     document.getElementById('pj-studio').value      = p.studio || '';
+    document.getElementById('pj-personal').value    = p.personal || '';
     document.getElementById('pj-featured').value    = p.featured ? 'true' : 'false';
     document.getElementById('pj-tags').value        = (p.tags || []).join(', ');
     document.getElementById('pj-thumb').value       = p.thumbnail || '';
@@ -778,6 +779,7 @@
       engine: document.getElementById('pj-engine').value.trim(),
       genre: document.getElementById('pj-genre').value.trim(),
       studio: document.getElementById('pj-studio').value || null,
+      personal: document.getElementById('pj-studio').value || null,
       tags: document.getElementById('pj-tags').value.split(',').map(t => t.trim()).filter(Boolean),
       title: { en: document.getElementById('pj-title-en').value.trim(), es: document.getElementById('pj-title-es').value.trim() },
       shortDesc: { en: document.getElementById('pj-desc-en').value.trim(), es: document.getElementById('pj-desc-es').value.trim() },
