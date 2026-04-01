@@ -18,8 +18,7 @@
 
     "projects.title":    "Projects",
     "projects.filter.all":    "All",
-    "projects.filter.unreal":  "Unreal",
-    "projects.filter.unity":  "Unity",
+    "projects.filter.personal": "Personal",
     "projects.filter.jam":    "Jam",
     "projects.filter.studio": "Studio",
 
@@ -120,8 +119,7 @@
 
     "projects.title":    "Proyectos",
     "projects.filter.all":    "Todos",
-    "projects.filter.unreal":  "Unreal",
-    "projects.filter.unity":  "Unity",
+    "projects.filter.personal": "Personal",
     "projects.filter.jam":    "Jam",
     "projects.filter.studio": "Estudio",
 
