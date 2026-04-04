@@ -74,7 +74,6 @@ When you push changes to the repository:
 ├── data/
 │   ├── projects.json
 │   └── translations.json
-├── admin.html
 ├── blog.html
 ├── post.html
 ├── project.html
@@ -102,28 +101,6 @@ https://github.com/mherreravsquez/blog-posts/
 ├── en/
 └── es/
 ```
-
----
-
-## Hero Section
-
-The hero is structured as a **40 / 60 horizontal split**:
-
-- **Left (40%)** — name, role, CTAs, and stats
-- **Right (60%)** — fullscreen media carousel
-
-### Configuring the Carousel
-
-Open `js/main.js` and find the `slides` array inside `initHeroCarousel()`:
-
-```js
-const slides = [
-  { src: 'https://i.imgur.com/YOUR_ID.gif', label: 'Project Name' },
-  { src: 'https://i.imgur.com/YOUR_ID.jpg', label: 'Project Name' },
-];
-```
-
-Supports `.gif`, `.jpg`, and `.png` URLs. Add or remove objects freely — dots and counter update automatically. `AUTO_DELAY` (default `4500`ms) controls slide duration.
 
 ---
 
