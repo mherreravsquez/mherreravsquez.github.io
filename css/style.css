@@ -349,7 +349,7 @@ body.cursor-hover #cursor-ring {
 .hero-name {
   font-family: var(--head);
   font-weight: 900;
-  font-size: clamp(60px, 9vw, 128px);
+  font-size: clamp(40px, 9vw, 90px);
   text-transform: uppercase;
   line-height: .87;
   letter-spacing: -.02em;
@@ -365,6 +365,13 @@ body.cursor-hover #cursor-ring {
   margin-top: 20px; margin-bottom: 36px;
   opacity: 0;
   animation: fadeUp .6s .46s ease forwards;
+}
+.hero-desc {
+  font-family: var(--body);
+  font-size: clamp(13px, 1.4vw, 16px);
+  line-height: 1.75;
+  color: var(--text);
+  max-width: 420px;
 }
 .hero-role {
   font-family: var(--head);

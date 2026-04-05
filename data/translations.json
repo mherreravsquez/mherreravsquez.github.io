@@ -8,6 +8,7 @@
     "nav.cv":            "CV",
 
     "hero.eyebrow":      "Game Designer — Gameplay Programmer",
+    "hero.desc":         "I design and build games — from systemic mechanics and procedural worlds to atmospheric narratives. Based in Santiago, Chile, and running Plants Path Collective as a solo dev.",
     "hero.role":         "Game Designer & Gameplay Programmer",
     "hero.location":     "Santiago, Chile",
     "hero.cta.projects": "View Projects",
@@ -110,6 +111,7 @@
     "nav.cv":            "CV",
 
     "hero.eyebrow":      "Diseñador de Juegos — Programador",
+    "hero.desc":         "Diseño y desarrollo videojuegos, desde mecánicas sistémicas y mundos generados proceduralmente hasta narrativas envolventes. Resido en Santiago de Chile y dirijo Plants Path Collective como desarrollador independiente.",
     "hero.role":         "Diseñador de Juegos & Programador",
     "hero.location":     "Santiago, Chile",
     "hero.cta.projects": "Ver Proyectos",
