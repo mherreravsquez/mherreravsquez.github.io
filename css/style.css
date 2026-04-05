@@ -59,21 +59,6 @@ img { display: block; max-width: 100%; }
 button { cursor: none; }
 
 /* ── Grid texture ── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-
-  background-image:
-          linear-gradient(var(--line) 1px, transparent 1px),
-          linear-gradient(90deg, var(--line) 1px, transparent 1px);
-
-  background-size: 60px 60px;
-
-  opacity: .25;
-  pointer-events: none;
-  z-index: 0;
-}
 /* ── Scanlines ── */
 body::after {
   content: '';
@@ -261,19 +246,6 @@ body.cursor-hover #cursor-ring {
   gap: 32px;
   padding: 0 40px;
   width: 100%;
-}
-
-.hero-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-          linear-gradient(var(--line) 1px, transparent 1px),
-          linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 60px 60px;
-  opacity: .25;
-  pointer-events: none;
-  z-index: 0;
 }
 
 /* LEFT 40% — text */
@@ -592,7 +564,7 @@ body.cursor-hover #cursor-ring {
    SECTION COMMONS
 ════════════════════════════════════════════════════════════ */
 section { padding: 96px 40px; }
-.wrap { max-width: 1200px; margin: 0 auto; }
+.wrap { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
 
 .sec-head { display: flex; align-items: center; gap: 18px; margin-bottom: 48px; }
 .sec-tag {
@@ -690,7 +662,7 @@ section { padding: 96px 40px; }
 /* ════════════════════════════════════════════════════════════
    PROJECTS SECTION
 ════════════════════════════════════════════════════════════ */
-#projects { background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+#projects { background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
 
 .proj-filters { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 32px; }
 .filter-btn {
@@ -860,11 +832,7 @@ section { padding: 96px 40px; }
 ════════════════════════════════════════════════════════════ */
 #studio { background: var(--bg); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
 
-.studio-bg {
-  position: absolute; inset: 0;
-  background: repeating-linear-gradient(-45deg, transparent, transparent 58px, rgba(23,232,196,.012) 58px, rgba(23,232,196,.012) 59px);
-  pointer-events: none;
-}
+.studio-bg { display: none; }
 
 .studio-grid {
   display: grid;
@@ -967,7 +935,7 @@ section { padding: 96px 40px; }
 /* ════════════════════════════════════════════════════════════
    DEVLOG PREVIEW
 ════════════════════════════════════════════════════════════ */
-#devlog { background: var(--bg2); border-bottom: 1px solid var(--line); }
+#devlog { background: var(--bg2); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
 
 .devlog-layout { display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: start; }
 
@@ -1029,7 +997,7 @@ section { padding: 96px 40px; }
 /* ════════════════════════════════════════════════════════════
    ABOUT
 ════════════════════════════════════════════════════════════ */
-#about { background: var(--bg); }
+#about { background: var(--bg); position: relative; overflow: hidden; }
 
 .about-layout { display: grid; grid-template-columns: 1fr 400px; gap: 80px; align-items: start; }
 
@@ -1425,33 +1393,54 @@ footer {
 .post-body a:hover { border-color: var(--accent); }
 .post-body hr { border: none; border-top: 1px solid var(--line2); margin: 36px 0; }
 
+/*!* ════════════════════════════════════════════════════════════*/
+/*   ADMIN PAGE*/
+/*════════════════════════════════════════════════════════════ *!*/
+/*.admin-page { min-height: 100vh; padding: 80px 40px; max-width: 900px; margin: 0 auto; }*/
+/*.admin-title { font-family: var(--head); font-weight: 900; font-size: 52px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 8px; }*/
+/*.admin-title .acc { color: var(--accent); }*/
+/*.admin-sub { font-family: var(--mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--dim); margin-bottom: 40px; }*/
+
+/*.admin-auth { background: var(--surf); border: 1px solid var(--line2); padding: 32px; margin-bottom: 32px; display: flex; flex-direction: column; gap: 14px; }*/
+/*.admin-auth-title { font-family: var(--mono); font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }*/
+/*.admin-auth-note { font-family: var(--mono); font-size: 10px; color: var(--dim); line-height: 1.5; }*/
+
+/*.admin-form { background: var(--surf); border: 1px solid var(--line2); padding: 32px; display: none; flex-direction: column; gap: 20px; }*/
+/*.admin-form.visible { display: flex; }*/
+/*.admin-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }*/
+/*.admin-section-title { font-family: var(--head); font-weight: 700; font-size: 20px; text-transform: uppercase; letter-spacing: .04em; color: var(--white); margin-bottom: 4px; padding-bottom: 10px; border-bottom: 1px solid var(--line2); }*/
+/*.form-help { font-family: var(--mono); font-size: 9px; color: var(--dimmer); margin-top: 4px; }*/
+
+/*.admin-preview { background: var(--bg3); border: 1px solid var(--line2); border-left: 2px solid var(--pink); padding: 24px; display: none; }*/
+/*.admin-preview.visible { display: block; }*/
+/*.admin-preview-title { font-family: var(--mono); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: var(--pink); margin-bottom: 16px; }*/
+/*.admin-preview-content { font-size: 14px; line-height: 1.7; color: rgba(237,240,247,.75); }*/
+
+/*.admin-status { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; color: var(--dim); padding: 12px 16px; border: 1px solid var(--line2); border-left: 2px solid var(--dim); display: none; }*/
+/*.admin-status.visible { display: block; }*/
+/*.admin-status.success { color: var(--pink); border-left-color: var(--pink); }*/
+/*.admin-status.error   { color: var(--accent); border-left-color: var(--accent); }*/
+
 /* ════════════════════════════════════════════════════════════
-   ADMIN PAGE
+   SECTION BACKGROUND PATTERNS — alternating grid / flat
+   Grid : #hero, #studio, #about  — var(--bg)  dark base
+   Flat : #projects, #devlog, #contact — var(--bg2) no pattern
 ════════════════════════════════════════════════════════════ */
-.admin-page { min-height: 100vh; padding: 80px 40px; max-width: 900px; margin: 0 auto; }
-.admin-title { font-family: var(--head); font-weight: 900; font-size: 52px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 8px; }
-.admin-title .acc { color: var(--accent); }
-.admin-sub { font-family: var(--mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--dim); margin-bottom: 40px; }
-
-.admin-auth { background: var(--surf); border: 1px solid var(--line2); padding: 32px; margin-bottom: 32px; display: flex; flex-direction: column; gap: 14px; }
-.admin-auth-title { font-family: var(--mono); font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
-.admin-auth-note { font-family: var(--mono); font-size: 10px; color: var(--dim); line-height: 1.5; }
-
-.admin-form { background: var(--surf); border: 1px solid var(--line2); padding: 32px; display: none; flex-direction: column; gap: 20px; }
-.admin-form.visible { display: flex; }
-.admin-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.admin-section-title { font-family: var(--head); font-weight: 700; font-size: 20px; text-transform: uppercase; letter-spacing: .04em; color: var(--white); margin-bottom: 4px; padding-bottom: 10px; border-bottom: 1px solid var(--line2); }
-.form-help { font-family: var(--mono); font-size: 9px; color: var(--dimmer); margin-top: 4px; }
-
-.admin-preview { background: var(--bg3); border: 1px solid var(--line2); border-left: 2px solid var(--pink); padding: 24px; display: none; }
-.admin-preview.visible { display: block; }
-.admin-preview-title { font-family: var(--mono); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: var(--pink); margin-bottom: 16px; }
-.admin-preview-content { font-size: 14px; line-height: 1.7; color: rgba(237,240,247,.75); }
-
-.admin-status { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; color: var(--dim); padding: 12px 16px; border: 1px solid var(--line2); border-left: 2px solid var(--dim); display: none; }
-.admin-status.visible { display: block; }
-.admin-status.success { color: var(--pink); border-left-color: var(--pink); }
-.admin-status.error   { color: var(--accent); border-left-color: var(--accent); }
+#hero::before,
+#studio::before,
+#about::before,
+#footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: .28;
+  pointer-events: none;
+  z-index: 0;
+}
 
 /* ════════════════════════════════════════════════════════════
    ANIMATIONS & UTILITIES
