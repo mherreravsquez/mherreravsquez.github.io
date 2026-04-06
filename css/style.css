@@ -33,6 +33,19 @@
   --chip-color: #ffffff;
   --muted: #5bf308;
   --text: #EDF0F7B8;
+  
+  --ptag-engine:                  #7afd2e;
+  --ptag-engine-border:           #7afd2e;
+  --ptag-studio:                  #7afd2e;
+  --ptag-studio-border:           #7afd2e;
+  --ptag-released:                #7afd2e;
+  --ptag-released-border:         #7afd2e;
+  --ptag-demo:                    #7afd2e;
+  --ptag-demo-border:             #7afd2e;
+  --ptag-indevelopment:           #7afd2e;
+  --ptag-indevelopment-border:    #7afd2e;
+  --ptag-preprod:                 #7afd2e;
+  --ptag-preprod-border:          #7afd2e;
 
   --head:      'Barlow Condensed', sans-serif;
   --body:      'Rajdhani', sans-serif;
@@ -340,7 +353,7 @@ body.cursor-hover #cursor-ring {
 }
 .hero-desc {
   font-family: var(--body);
-  font-size: clamp(13px, 1.4vw, 16px);
+  font-size: clamp(16px, 1.4vw, 20px);
   line-height: 1.75;
   color: var(--text);
   max-width: 420px;
@@ -757,14 +770,14 @@ section { padding: 96px 40px; }
 }
 
 .proj-info { position: relative; z-index: 2; padding: 14px 16px 16px; }
-.proj-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 6px; }
+.proj-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 6px; align-items: center; text-align: center;}
 .ptag {
   font-family: var(--mono);
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: .13em;
   text-transform: uppercase;
   padding: 2px 7px;
-  border: 1px solid var(--pink);
+  border: 2px solid var(--pink);
   color: var(--accent);
 }
 .ptag.engine { border-color: rgba(23,232,196,.3); color: var(--pink); }
@@ -792,7 +805,8 @@ section { padding: 96px 40px; }
 
 .proj-desc {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 14px;
+  font-weight: 200;
   color: var(--desc);
   margin-top: 4px;
   line-height: 1.5;
@@ -1185,10 +1199,10 @@ section { padding: 96px 40px; }
 .tl-dot.c { background: var(--pink); }
 .tl-line { flex: 1; width: 1px; background: var(--line2); margin-top: 5px; }
 .tl-item:last-child .tl-line { display: none; }
-.tl-year { font-family: var(--mono); font-size: 9px; letter-spacing: .1em; color: var(--accent); margin-bottom: 2px; }
+.tl-year { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; color: var(--accent); margin-bottom: 2px; }
 .tl-year.c { color: var(--pink); }
 .tl-title { font-family: var(--head); font-weight: 600; font-size: 15px; letter-spacing: .02em; margin-bottom: 2px; }
-.tl-sub { font-family: var(--mono); font-size: 9px; color: var(--dim); }
+.tl-sub { font-family: var(--mono); font-size: 13px; color: var(--dim); }
 
 /* ════════════════════════════════════════════════════════════
    CONTACT

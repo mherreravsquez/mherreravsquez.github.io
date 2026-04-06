@@ -259,45 +259,45 @@ function initStudioProjects() {
       .catch(() => {});
 }
 
-/* ════════════════ CONTACT FORM ════════════════ */
-function initContactForm() {
-  const form = document.getElementById('contact-form');
-  if (!form) return;
-
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const btn = form.querySelector('[type=submit]');
-    btn.textContent = '...';
-    btn.disabled = true;
-
-    // Replace with your actual form endpoint (e.g. Formspree)
-    const endpoint = form.dataset.action || 'https://formspree.io/f/YOUR_FORM_ID';
-    const body = new FormData(form);
-
-    fetch(endpoint, {
-      method: 'POST',
-      body,
-      headers: { 'Accept': 'application/json' }
-    })
-        .then(r => {
-          if (r.ok) {
-            form.innerHTML = `<p style="font-family:var(--mono);color:var(--pink);font-size:13px;letter-spacing:.1em;">
-          ✓ MESSAGE SENT. I'LL GET BACK TO YOU SOON.
-        </p>`;
-          } else {
-            throw new Error('Form error');
-          }
-        })
-        .catch(() => {
-          btn.textContent = window.I18n ? I18n.t('contact.form.send') : 'Send';
-          btn.disabled = false;
-          const err = document.createElement('p');
-          err.style.cssText = 'font-family:var(--mono);color:var(--accent);font-size:11px;margin-top:10px;';
-          err.textContent = 'Could not send — try emailing directly.';
-          form.appendChild(err);
-        });
-  });
-}
+// /* ════════════════ CONTACT FORM ════════════════ */
+// function initContactForm() {
+//   const form = document.getElementById('contact-form');
+//   if (!form) return;
+//
+//   form.addEventListener('submit', e => {
+//     e.preventDefault();
+//     const btn = form.querySelector('[type=submit]');
+//     btn.textContent = '...';
+//     btn.disabled = true;
+//
+//     // Replace with your actual form endpoint (e.g. Formspree)
+//     const endpoint = form.dataset.action || 'https://formspree.io/f/YOUR_FORM_ID';
+//     const body = new FormData(form);
+//
+//     fetch(endpoint, {
+//       method: 'POST',
+//       body,
+//       headers: { 'Accept': 'application/json' }
+//     })
+//         .then(r => {
+//           if (r.ok) {
+//             form.innerHTML = `<p style="font-family:var(--mono);color:var(--pink);font-size:13px;letter-spacing:.1em;">
+//           ✓ MESSAGE SENT. I'LL GET BACK TO YOU SOON.
+//         </p>`;
+//           } else {
+//             throw new Error('Form error');
+//           }
+//         })
+//         .catch(() => {
+//           btn.textContent = window.I18n ? I18n.t('contact.form.send') : 'Send';
+//           btn.disabled = false;
+//           const err = document.createElement('p');
+//           err.style.cssText = 'font-family:var(--mono);color:var(--accent);font-size:11px;margin-top:10px;';
+//           err.textContent = 'Could not send — try emailing directly.';
+//           form.appendChild(err);
+//         });
+//   });
+// }
 
 /* ════════════════ SKILL BARS ANIMATION ════════════════ */
 function initSkillBars() {
