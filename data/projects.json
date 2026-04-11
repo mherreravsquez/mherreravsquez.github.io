@@ -28,7 +28,11 @@
       "screenshots": [
         { "url": "https://i.imgur.com/JSl88oB.png"}
       ],
-      "videos": [],
+      "videos": [
+        { "url": "https://i.imgur.com/S2qvpDK.mp4", "label": "Dialogue System video"},
+        { "url": "https://i.imgur.com/zwxhUm2.mp4", "label": "Drive System video"},
+        { "url": "https://i.imgur.com/EpzKAbg.mp4", "label": "Interaction System video"}
+      ],
       "links": [
         { "label": "Play on itch.io", "url": "https://plants-path-co.itch.io/car-loop", "icon": "🎮" }
       ],
