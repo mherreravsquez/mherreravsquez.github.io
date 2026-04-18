@@ -9,10 +9,10 @@ This repository contains the source code for my personal portfolio website, buil
 **Live website:**
 https://mherreravsquez.github.io/
 
-**Repository:**
+**Webpage Repository:**
 https://github.com/mherreravsquez/mherreravsquez.github.io
 
-**Blog Posts:**
+**Blog Posts Repository:**
 https://mherreravsquez.github.io/blog-posts
 
 The site serves as a central hub to showcase my projects, development work, and tools.
@@ -60,24 +60,58 @@ When you push changes to the repository:
 ## Repository Structure
 
 ```
-/
-├── index.html
+mherreravsquez.github.io/
+├── assets/
+│   ├── projects/
+│   │   ├── boombastic/
+│   │   │   ├── cover.mp4
+│   │   │   └── thumb.mp4
+│   │   ├── bubble-ggj2025/
+│   │   │   ├── gallery/
+│   │   │   │   └── 01.webp
+│   │   │   ├── videos/
+│   │   │   │   └── demo.mp4
+│   │   │   ├── cover.mp4
+│   │   │   └── thumb.webp
+│   │   ├── car-loop/
+│   │   │   ├── gallery/
+│   │   │   │   └── 01.webp
+│   │   │   ├── videos/
+│   │   │   │   ├── tutorial1.mp4
+│   │   │   │   ├── tutorial2.mp4
+│   │   │   │   └── tutorial3.mp4
+│   │   │   ├── cover.webp
+│   │   │   └── thumb.webp
+│   │   ├── hunters-awakening/
+│   │   │   ├── gallery/
+│   │   │   ├── videos/
+│   │   │   └── thumb.webp
+│   │   ├── hunters-vega/
+│   │   │   ├── gallery/
+│   │   │   ├── videos/
+│   │   └── tragones/
+│   │       ├── gallery/
+│   │       │   ├── 01.webp
+│   │       │   └── 02.webp
+│   │       ├── videos/
+│   │       └── thumb.webp
+│   ├── resume-marceloherrera-en.pdf
+│   └── resume-marceloherrera-es.pdf
 ├── css/
 │   └── style.css
+├── data/
+│   ├── projects.json
+│   └── translations.json
 ├── js/
 │   ├── blogLoader.js
 │   ├── i18n.js
 │   ├── main.js
 │   └── projectLoader.js
-├── assets/
-│   └── resume-marceloherrera.pdf
-├── data/
-│   ├── projects.json
-│   └── translations.json
+├── README.md
 ├── blog.html
+├── index.html
 ├── post.html
-├── project.html
-└── README.md
+└── project.html
 ```
 
 ### Key folders

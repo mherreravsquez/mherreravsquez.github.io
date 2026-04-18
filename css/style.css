@@ -825,10 +825,9 @@ section { padding: 96px 40px; }
 
 /* ── Tetris / magazine layout (all-projects view only) ── */
 .proj-grid--tetris {
-  align-items: start; /* rows size to content, not stretch */
+  align-items: start;
 }
 
-/* All tetris cards: let aspect-ratio drive height naturally */
 .proj-grid--tetris .proj-card .proj-inner {
   height: auto;
 }
@@ -1116,10 +1115,10 @@ section { padding: 96px 40px; }
 
 /* SKILL CHIP */
 .skill-chip {
-  display: inline-flex;        /* enables flex alignment */
-  align-items: center;         /* vertically centers all children */
-  gap: 0.5rem;                 /* space between icon and text */
-  font-size: 11px;             /* base size – can be adjusted */
+  display: inline-flex;        
+  align-items: center;         
+  gap: 0.5rem;               
+  font-size: 11px;           
   padding: 6px 10px;
   background: transparent;
   color: var(--chip-color);
@@ -1130,19 +1129,19 @@ section { padding: 96px 40px; }
   font-weight: 400;
 }
 
-/* Chip name – remove irrelevant flex properties */
+/* Chip name */
 .chip-name {
   font-family: var(--body);
-  font-size: 0.75rem;          /* ~12px if root 16px */
+  font-size: 0.75rem;         
   font-weight: 600;
   text-transform: uppercase;
-  line-height: 1;               /* ensures tight vertical alignment */
+  line-height: 1;              
 }
 
-/* Icon – make it match the text height */
+/* Icon */
 .chip-icon {
   display: inline-block;
-  width: 0.75rem;              /* match text size (0.75rem) */
+  width: 0.75rem;            
   height: 0.75rem;
   background-color: currentColor;
   mask-size: contain;
@@ -1151,7 +1150,7 @@ section { padding: 96px 40px; }
   -webkit-mask-size: contain;
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
-  flex-shrink: 0;              /* prevents shrinking in tight spaces */
+  flex-shrink: 0;           
 }
 
 
@@ -1407,39 +1406,6 @@ footer {
 .post-body a:hover { border-color: var(--accent); }
 .post-body hr { border: none; border-top: 1px solid var(--line2); margin: 36px 0; }
 
-/*!* ════════════════════════════════════════════════════════════*/
-/*   ADMIN PAGE*/
-/*════════════════════════════════════════════════════════════ *!*/
-/*.admin-page { min-height: 100vh; padding: 80px 40px; max-width: 900px; margin: 0 auto; }*/
-/*.admin-title { font-family: var(--head); font-weight: 900; font-size: 52px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 8px; }*/
-/*.admin-title .acc { color: var(--accent); }*/
-/*.admin-sub { font-family: var(--mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--dim); margin-bottom: 40px; }*/
-
-/*.admin-auth { background: var(--surf); border: 1px solid var(--line2); padding: 32px; margin-bottom: 32px; display: flex; flex-direction: column; gap: 14px; }*/
-/*.admin-auth-title { font-family: var(--mono); font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }*/
-/*.admin-auth-note { font-family: var(--mono); font-size: 10px; color: var(--dim); line-height: 1.5; }*/
-
-/*.admin-form { background: var(--surf); border: 1px solid var(--line2); padding: 32px; display: none; flex-direction: column; gap: 20px; }*/
-/*.admin-form.visible { display: flex; }*/
-/*.admin-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }*/
-/*.admin-section-title { font-family: var(--head); font-weight: 700; font-size: 20px; text-transform: uppercase; letter-spacing: .04em; color: var(--white); margin-bottom: 4px; padding-bottom: 10px; border-bottom: 1px solid var(--line2); }*/
-/*.form-help { font-family: var(--mono); font-size: 9px; color: var(--dimmer); margin-top: 4px; }*/
-
-/*.admin-preview { background: var(--bg3); border: 1px solid var(--line2); border-left: 2px solid var(--pink); padding: 24px; display: none; }*/
-/*.admin-preview.visible { display: block; }*/
-/*.admin-preview-title { font-family: var(--mono); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: var(--pink); margin-bottom: 16px; }*/
-/*.admin-preview-content { font-size: 14px; line-height: 1.7; color: rgba(237,240,247,.75); }*/
-
-/*.admin-status { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; color: var(--dim); padding: 12px 16px; border: 1px solid var(--line2); border-left: 2px solid var(--dim); display: none; }*/
-/*.admin-status.visible { display: block; }*/
-/*.admin-status.success { color: var(--pink); border-left-color: var(--pink); }*/
-/*.admin-status.error   { color: var(--accent); border-left-color: var(--accent); }*/
-
-/* ════════════════════════════════════════════════════════════
-   SECTION BACKGROUND PATTERNS — alternating grid / flat
-   Grid : #hero, #studio, #about  — var(--bg)  dark base
-   Flat : #projects, #devlog, #contact — var(--bg2) no pattern
-════════════════════════════════════════════════════════════ */
 #hero::before,
 #studio::before,
 #about::before,
