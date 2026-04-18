@@ -79,33 +79,51 @@ async function initProjectGrid() {
   }
 
   function renderCard(p) {
-    const thumb = `assets/projects/${p.id}/thumb.webp`;
-    const video = `assets/projects/${p.id}/cover.mp4`;
-
+    const lang     = window.I18n?.lang || 'en';
+    const thumb    = `assets/projects/${p.id}/thumb.webp`;
+    const video    = `assets/projects/${p.id}/cover.mp4`;
     const hasVideo = p.hasVideoThumb === true;
+    const tc       = p.thumbClass || '';
+
+    let thumbContent;
+    if (hasVideo) {
+      thumbContent = `<video src="${video}" autoplay muted loop playsinline></video>`;
+    } else if (tc) {
+      thumbContent = ''; // CSS pattern class handles background
+    } else {
+      thumbContent = `<img src="${thumb}" alt="${p.title[lang]}">`;
+    }
 
     return `
-<a class="proj-card" href="project.html?project=${p.id}">
+<a class="proj-card" href="project.html?project=${p.id}" data-project="${p.id}" data-ratio="${p.ratio || '16:9'}">
   <div class="proj-inner">
-
-    <div class="proj-thumb">
-      ${
-        hasVideo
-            ? `<video src="${video}" autoplay muted loop playsinline></video>`
-            : `<img class="proj-thumb-img" src="${thumb}" alt="${p.title.en}">`
-    }
-    </div>
-
+    <div class="proj-thumb ${tc}">${thumbContent}</div>
+    <div class="proj-fade"></div>
+    <div class="proj-hover-overlay"></div>
+    <div class="proj-hover-line"></div>
+    <div class="proj-corner"></div>
     <div class="proj-info">
-      <div class="proj-title">${p.title.en}</div>
-      <div class="proj-desc">${p.shortDesc.en}</div>
+      <div class="proj-title" data-proj-title="${p.id}">${p.title[lang]}</div>
+      <div class="proj-desc"  data-proj-desc="${p.id}">${p.shortDesc[lang]}</div>
     </div>
-
+    <div class="proj-arrow">↗</div>
   </div>
 </a>`;
   }
 
   grid.innerHTML = projects.map(renderCard).join('');
+  grid.classList.add('proj-grid--tetris');
+
+  // Re-translate titles/descs on language switch
+  document.addEventListener('langchange', e => {
+    const lang = e.detail.lang;
+    projects.forEach(p => {
+      const titleEl = grid.querySelector(`[data-proj-title="${p.id}"]`);
+      const descEl  = grid.querySelector(`[data-proj-desc="${p.id}"]`);
+      if (titleEl) titleEl.textContent = p.title[lang];
+      if (descEl)  descEl.textContent  = p.shortDesc[lang];
+    });
+  });
 }
 
 /* ════════════════ HERO CAROUSEL ════════════════ */
@@ -157,6 +175,8 @@ function initHeroCarousel() {
     dotsEl.appendChild(btn);
   });
 
+  const labelEl = document.getElementById('hc-label');
+
   function goTo(i) {
     const slideEls = track.querySelectorAll('.hc-slide');
     const dotEls   = dotsEl.querySelectorAll('.hc-dot');
@@ -168,7 +188,12 @@ function initHeroCarousel() {
 
     slideEls[current].classList.add('active');
     dotEls[current].classList.add('active');
+
+    if (labelEl) labelEl.textContent = slides[current].label;
   }
+
+  // Set initial label
+  if (labelEl) labelEl.textContent = slides[0].label;
 
   if (prevBtn) prevBtn.onclick = () => goTo((current - 1 + slides.length) % slides.length);
   if (nextBtn) nextBtn.onclick = () => goTo((current + 1) % slides.length);

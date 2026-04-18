@@ -54,6 +54,13 @@ const I18n = (() => {
 
     document.documentElement.lang = _lang;
 
+    // Swap CV download link to the correct language PDF
+    document.querySelectorAll('.nav-cv').forEach(el => {
+      if (el.tagName === 'A') {
+        el.href = `assets/resume-marceloherrera-${_lang}.pdf`;
+      }
+    });
+
     // Notify other modules
     document.dispatchEvent(new CustomEvent('langchange', { detail: { lang: _lang } }));
 
