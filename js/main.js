@@ -114,36 +114,30 @@ async function initProjectGrid() {
     'car-loop': {
       gridColumn: '1 / 9',
       gridRow: '1 / 3',
-      stretch: true,          // este proyecto se estira y pierde su aspect ratio
-      customAspect: null
+      stretch: true,
     },
     'bubble-ggj2025': {
       gridColumn: '9 / 13',
       gridRow: '1',
       stretch: false,
-      customAspect: null      // usará su data-ratio original (4:3)
     },
     'hunters-awakening': {
       gridColumn: '9 / 13',
       gridRow: '2',
       stretch: false,
-      customAspect: null      // usará su data-ratio original (9:16)
     },
     'boombastic': {
       gridColumn: '1 / 6',
       gridRow: '3',
       stretch: false,
-      customAspect: null      // usará su data-ratio original (1:1)
     },
     'tragones': {
       gridColumn: '6 / 13',
       gridRow: '3',
       stretch: false,
-      customAspect: null      // usará su data-ratio original (4:3)
     }
   };
 
-  // Limpia los estilos inline de los proyectos afectados por el tetris
   function clearTetrisStyles() {
     for (const [id] of Object.entries(tetrisLayout)) {
       const card = grid.querySelector(`.proj-card[data-project="${id}"]`);
@@ -159,9 +153,8 @@ async function initProjectGrid() {
     }
   }
 
-  // Aplica el tetris solo en escritorio (>900px)
   function applyTetrisIfDesktop() {
-    clearTetrisStyles(); // primero limpia para evitar duplicados
+    clearTetrisStyles();
     if (window.innerWidth > 900) {
       for (const [id, config] of Object.entries(tetrisLayout)) {
         const card = grid.querySelector(`.proj-card[data-project="${id}"]`);
@@ -175,26 +168,29 @@ async function initProjectGrid() {
         if (!inner) continue;
 
         if (config.stretch) {
-          // Para car-loop: ocupa todo el espacio, sin aspect ratio fijo
+          // Solo car-loop se estira
           card.style.height = '100%';
           inner.style.height = '100%';
           inner.style.aspectRatio = 'unset';
         } else {
-          // Para el resto: forzamos explícitamente el aspect ratio según data-ratio
+          // Para el resto: forzamos el aspect ratio según data-ratio
           const ratio = card.getAttribute('data-ratio');
           if (ratio) {
             inner.style.aspectRatio = ratio;
           }
+          // Aseguramos que la tarjeta no tenga altura fija
+          card.style.height = 'auto';
+          card.style.alignSelf = 'start';
+          inner.style.height = 'auto';
         }
       }
     }
   }
 
-  // Ejecutar al cargar y al redimensionar
   applyTetrisIfDesktop();
   window.addEventListener('resize', () => applyTetrisIfDesktop());
 
-  // Re-traducir títulos al cambiar idioma
+  // Re-traducir títulos
   document.addEventListener('langchange', e => {
     const lang = e.detail.lang;
     projects.forEach(p => {
