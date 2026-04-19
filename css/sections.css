@@ -421,6 +421,9 @@
     flex-direction: column;
     gap: 8px;
 }
+.dlog-sidebar {
+    display: block;
+}
 .dlog-sidebar-panel {
     background: var(--bg-surface);
     border: 1px solid var(--border-light);
@@ -448,7 +451,7 @@
 }
 .about-layout .about-photo {
     grid-column: 2;
-    grid-row: 1 / span 2; 
+    grid-row: 1 / span 2;
 }
 .about-layout .skill-section {
     grid-column: 1;
@@ -574,7 +577,7 @@
 }
 .contact-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 640px);
     gap: 80px;
     align-items: start;
     position: relative;

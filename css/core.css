@@ -428,6 +428,8 @@ footer {
     body { cursor: auto; }
     #cursor, #cursor-ring { display: none !important; }
 
+    a, button, .tag-chip, .filter-btn { cursor: pointer; }
+
     .sec-head {
         margin-bottom: 32px;
         gap: 12px;
@@ -460,7 +462,7 @@ footer {
         opacity: 1;
         transform: none;
     }
-    .hero-eyebrow::before { display: none; }  /* quita la línea decorativa */
+    .hero-eyebrow::before { display: none; }  
     .hero-desc { max-width: 100%; margin: 0 auto; }
     .hero-meta { justify-content: center; }
     .hero-stats { display: none; }
@@ -512,7 +514,6 @@ footer {
         padding: 28px 20px;
     }
     .studio-right { padding: 28px 20px; }
-    .studio-stats { grid-template-columns: 1fr; }
 
     /* ───────── DEVLOG ───────── */
     .devlog-layout { grid-template-columns: 1fr; gap: 0px;}
@@ -546,6 +547,13 @@ footer {
     .clink { font-size: 10px; padding: 10px 14px; }
 
     /* ───────── PROJECT PAGE ───────── */
+    .proj-page-hero {
+        padding: 80px 20px 32px;
+        min-height: 45vh;
+    }
+    .proj-page-title { font-size: clamp(32px, 10vw, 56px); }
+    .proj-page-meta { gap: 16px; }
+    .post-layout { padding: 72px 20px 40px; }
     .proj-body-layout {
         grid-template-columns: 1fr;
         padding: 40px 20px;
@@ -554,6 +562,7 @@ footer {
     .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 
     /* ───────── BLOG ───────── */
+    .blog-hero { padding: 80px 20px 32px; }
     .blog-layout {
         grid-template-columns: 1fr;
         padding: 40px 20px;
@@ -570,8 +579,13 @@ footer {
 
 /* ───────── SMALL PHONES (≤480px) ───────── */
 @media (max-width: 480px) {
-    .hero-name { font-size: 56px; }
+    .hero-name { font-size: 52px; }
     .proj-grid { grid-template-columns: 1fr; }
     .proj-body-layout { padding: 32px 16px; }
     .post-layout { padding: 60px 16px; }
+    .blog-hero { padding: 72px 16px 24px; }
+    .contact-big { font-size: clamp(32px, 12vw, 56px); }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .proj-page-hero { padding: 72px 16px 24px; }
+    footer { padding: 20px 16px; }
 }

@@ -420,3 +420,55 @@
     flex-shrink: 0;
     margin-left: 8px;
 }
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE — PAGE-SPECIFIC OVERRIDES
+════════════════════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+
+    /* ───────── BLOG LIST ───────── */
+    .blog-hero { padding: 80px 20px 32px; }
+    .blog-hero h1 { font-size: clamp(44px, 12vw, 72px); }
+
+    /* ───────── SINGLE POST ───────── */
+    .post-layout { padding: 72px 20px 40px; }
+    .post-header { margin-bottom: 32px; padding-bottom: 24px; }
+    .post-title { font-size: clamp(28px, 8vw, 48px); }
+    .post-body { font-size: 15px; }
+
+    /* ───────── PROJECT DETAIL ───────── */
+    .proj-page-hero {
+        min-height: 45vh;
+        padding: 80px 20px 32px;
+    }
+    .proj-page-title { font-size: clamp(32px, 10vw, 56px); }
+    .proj-page-meta { gap: 16px; }
+    .proj-body-layout {
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+        gap: 32px;
+    }
+    .proj-sidebar { position: static; }
+    .proj-description { font-size: 15px; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-img { aspect-ratio: 4/3; }
+}
+
+@media (max-width: 480px) {
+
+    /* ───────── BLOG LIST ───────── */
+    .blog-hero { padding: 72px 16px 24px; }
+
+    /* ───────── SINGLE POST ───────── */
+    .post-layout { padding: 60px 16px 32px; }
+    .post-title { font-size: clamp(26px, 9vw, 40px); }
+    .post-body h1 { font-size: 28px; }
+    .post-body h2 { font-size: 22px; }
+    .post-body h3 { font-size: 18px; }
+
+    /* ───────── PROJECT DETAIL ───────── */
+    .proj-page-hero { padding: 72px 16px 24px; }
+    .proj-body-layout { padding: 32px 16px; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .proj-page-meta { flex-wrap: wrap; gap: 12px; }
+}

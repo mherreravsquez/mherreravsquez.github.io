@@ -2,7 +2,6 @@
   "projects": [
     {
       "id": "car-loop",
-      "featured": false,
       "ratio": "4:3",
       "status": "released",
       "year": 2025,
@@ -41,7 +40,6 @@
     },
     {
       "id": "bubble-ggj2025",
-      "featured": false,
       "ratio": "4:3",
       "status": "released",
       "releaseDate": "2025-01-24",
@@ -78,7 +76,6 @@
     },
     {
       "id": "boombastic",
-      "featured": false,
       "ratio": "1:1",
       "status": "released",
       "releaseDate": "2025-10-20",
@@ -113,7 +110,6 @@
     },
     {
       "id": "tragones",
-      "featured": false,
       "ratio": "4:3",
       "status": "released",
       "releaseDate": "2024-08-13",
@@ -148,7 +144,6 @@
     },
     {
       "id": "hunters-awakening",
-      "featured": false,
       "ratio": "9:16",
       "status": "released",
       "releaseDate": "2024-12-15",
@@ -180,7 +175,6 @@
     },
     {
       "id": "hunters-vega",
-      "featured": false,
       "ratio": "16:9",
       "status": "preprod",
       "releaseDate": "2027-01-30",
