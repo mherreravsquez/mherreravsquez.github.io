@@ -1,7 +1,3 @@
-/**
- * main.js — Core portfolio interactions (LOCAL ASSETS VERSION)
- */
-
 /* ════════════════ CURSOR ════════════════ */
 function initCursor() {
   const cursor = document.getElementById('cursor');
@@ -126,84 +122,138 @@ async function initProjectGrid() {
   });
 }
 
-/* ════════════════ HERO CAROUSEL ════════════════ */
-function initHeroCarousel() {
-  const carousel = document.getElementById('hero-carousel');
-  const track   = document.getElementById('hc-track');
-  const dotsEl  = document.getElementById('hc-dots');
-  const prevBtn = document.getElementById('hc-prev');
-  const nextBtn = document.getElementById('hc-next');
-
-  if (!track || !dotsEl) return;
+/* ════════════════ HERO BACKGROUND CAROUSEL ════════════════ */
+function initHeroBackgroundCarousel() {
+  const container = document.getElementById('hero-bg-carousel');
+  const track = document.getElementById('hbg-track');
+  if (!container || !track) return;
 
   const slides = [
-    {
-      src: 'assets/projects/bubble-ggj2025/cover.mp4',
-      label: 'Break the Bubble'
-    },
-    {
-      src: 'assets/projects/car-loop/cover.webp',
-      label: 'Car Loop'
-    },
-    {
-      src: 'assets/projects/boombastic/cover.mp4',
-      label: 'Boombastic'
-    }
+    { src: 'assets/projects/bubble-ggj2025/cover.mp4', type: 'video' },
+    { src: 'assets/projects/car-loop/cover.webp',      type: 'image' },
+    { src: 'assets/projects/boombastic/cover.mp4',     type: 'video' }
   ];
 
-  let current = 0;
+  let currentIndex = 0;
+  let currentTimer = null;
+  let isPlaying = true;
+  let isPageVisible = true;
 
-  // Build slides
-  slides.forEach((s, i) => {
+  slides.forEach((slide, i) => {
     const div = document.createElement('div');
-    div.className = 'hc-slide' + (i === 0 ? ' active' : '');
+    div.className = 'hbg-slide' + (i === 0 ? ' active' : '');
 
-    if (s.src.endsWith('.mp4')) {
-      div.innerHTML = `<video src="${s.src}" autoplay muted loop playsinline></video>`;
+    if (slide.type === 'video') {
+      const video = document.createElement('video');
+      video.src = slide.src;
+      video.muted = true;
+      video.loop = false;
+      video.playsInline = true;
+      video.setAttribute('playsinline', '');
+      video.style.objectFit = 'cover';
+      div.appendChild(video);
     } else {
-      div.innerHTML = `<img src="${s.src}" />`;
+      const img = document.createElement('img');
+      img.src = slide.src;
+      img.style.objectFit = 'cover';
+      div.appendChild(img);
     }
 
     track.appendChild(div);
   });
 
-  // Build dots
-  slides.forEach((_, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'hc-dot' + (i === 0 ? ' active' : '');
-    btn.addEventListener('click', () => goTo(i));
-    dotsEl.appendChild(btn);
-  });
-
-  const labelEl = document.getElementById('hc-label');
-
-  function goTo(i) {
-    const slideEls = track.querySelectorAll('.hc-slide');
-    const dotEls   = dotsEl.querySelectorAll('.hc-dot');
-
-    slideEls[current].classList.remove('active');
-    dotEls[current].classList.remove('active');
-
-    current = i;
-
-    slideEls[current].classList.add('active');
-    dotEls[current].classList.add('active');
-
-    if (labelEl) labelEl.textContent = slides[current].label;
+  function clearTimer() {
+    if (currentTimer) {
+      clearTimeout(currentTimer);
+      currentTimer = null;
+    }
   }
 
-  // Set initial label
-  if (labelEl) labelEl.textContent = slides[0].label;
+  function stopCurrentMedia() {
+    const activeSlide = track.querySelector('.hbg-slide.active');
+    if (!activeSlide) return;
+    const video = activeSlide.querySelector('video');
+    if (video) {
+      video.pause();
+      video.currentTime = 0;
+      video.removeEventListener('ended', onVideoEnd);
+    }
+  }
 
-  if (prevBtn) prevBtn.onclick = () => goTo((current - 1 + slides.length) % slides.length);
-  if (nextBtn) nextBtn.onclick = () => goTo((current + 1) % slides.length);
+  function onVideoEnd() {
+    if (!isPlaying || !isPageVisible) return;
+    goToNext();
+  }
+
+  async function playCurrentMedia() {
+    const activeSlide = track.querySelector('.hbg-slide.active');
+    if (!activeSlide) return;
+    const video = activeSlide.querySelector('video');
+    const img = activeSlide.querySelector('img');
+
+    if (video) {
+      video.currentTime = 0;
+      try {
+        await video.play();
+        video.addEventListener('ended', onVideoEnd, { once: true });
+      } catch (err) {
+
+        const retry = () => {
+          if (isPlaying && isPageVisible) {
+            video.play().catch(e => console.warn('Sigue bloqueado'));
+          }
+          document.removeEventListener('visibilitychange', retry);
+        };
+        document.addEventListener('visibilitychange', retry);
+      }
+    } else if (img) {
+      clearTimer();
+      currentTimer = setTimeout(() => {
+        if (isPlaying && isPageVisible) goToNext();
+      }, 5000);
+    }
+  }
+
+  function goToNext() {
+    const slidesNodes = track.querySelectorAll('.hbg-slide');
+    if (slidesNodes.length === 0) return;
+
+    slidesNodes[currentIndex].classList.remove('active');
+    stopCurrentMedia();
+
+    currentIndex = (currentIndex + 1) % slidesNodes.length;
+    slidesNodes[currentIndex].classList.add('active');
+    playCurrentMedia();
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    isPageVisible = !document.hidden;
+    if (!isPageVisible) {
+      clearTimer();
+      stopCurrentMedia();
+    } else {
+      if (isPlaying) playCurrentMedia();
+    }
+  });
+
+  playCurrentMedia();
 }
 
 /* ════════════════ BOOT ════════════════ */
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  // Init i18n first so translations are ready before grid renders
+  if (window.I18n) await I18n.init();
+
+  // Wire up language toggle buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (window.I18n) I18n.setLang(btn.dataset.lang);
+    });
+  });
+
   initCursor();
   initNav();
   initFadeIn();
   initProjectGrid();
-  initHeroCarousel();
+  initHeroBackgroundCarousel();
 });

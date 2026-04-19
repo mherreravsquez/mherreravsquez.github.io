@@ -102,7 +102,7 @@ async function renderBlogList(containerEl) {
   try {
     manifest = await fetchManifest();
   } catch (e) {
-    containerEl.innerHTML = `<p style="font-family:var(--mono);color:var(--dim);font-size:12px;padding:32px 0;">
+    containerEl.innerHTML = `<p style="font-family:var(--mono);color:var(--text-secondary);font-size:12px;padding:32px 0;">
       Could not load posts. Check the BLOG_BASE URL in blogLoader.js.
     </p>`;
     return;
@@ -117,7 +117,7 @@ async function renderBlogList(containerEl) {
   posts = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
   if (!posts.length) {
-    containerEl.innerHTML = `<p style="font-family:var(--mono);color:var(--dim);font-size:12px;padding:32px 0;">
+    containerEl.innerHTML = `<p style="font-family:var(--mono);color:var(--text-secondary);font-size:12px;padding:32px 0;">
       ${window.I18n ? I18n.t('devlog.empty') : 'No posts found.'}
     </p>`;
     return;
@@ -134,7 +134,7 @@ async function renderBlogList(containerEl) {
     <div class="bpc-meta">
       <span class="bpc-date">${post.date || ''}</span>
       <span class="bpc-type ${type}">${type}</span>
-      ${post.project ? `<span style="font-family:var(--mono);font-size:9px;color:var(--dimmer);text-transform:uppercase;letter-spacing:.1em;">⌥ ${post.project}</span>` : ''}
+      ${post.project ? `<span style="font-family:var(--mono);font-size:9px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.1em;">⌥ ${post.project}</span>` : ''}
     </div>
     <div class="bpc-title">${title}</div>
     ${excerpt ? `<div class="bpc-excerpt">${excerpt}</div>` : ''}
@@ -160,7 +160,7 @@ window.filterByTag = function(tag, el) {
   });
   // TODO: filter by tag using post.tags in manifest if needed
   document.querySelectorAll('.tag-chip').forEach(c => c.style.borderColor = '');
-  if (el) el.style.borderColor = 'var(--accent)';
+  if (el) el.style.borderColor = 'var(--green)';
 };
 
 /* ════════════════════════════════════════════════════════════
@@ -204,7 +204,7 @@ async function renderSinglePost() {
   const projEl = document.getElementById('post-project');
   if (projEl) {
     if (fm.project) {
-      projEl.innerHTML = `<a href="project.html?project=${fm.project}" style="color:var(--dim);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--dimmer);">⌥ ${fm.project}</a>`;
+      projEl.innerHTML = `<a href="project.html?project=${fm.project}" style="color:var(--text-secondary);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--text-secondary);">⌥ ${fm.project}</a>`;
     } else {
       projEl.style.display = 'none';
     }
@@ -232,7 +232,7 @@ function _setPostText(id, val) {
 async function renderDevlogPreview(containerEl, limit = 4) {
   const lang = window.I18n ? I18n.lang : 'en';
 
-  containerEl.innerHTML = `<div style="padding:20px;font-family:var(--mono);font-size:10px;color:var(--dim);">
+  containerEl.innerHTML = `<div style="padding:20px;font-family:var(--mono);font-size:10px;color:var(--text-secondary);">
     <span class="loading-spinner"></span>
   </div>`;
 
@@ -240,7 +240,7 @@ async function renderDevlogPreview(containerEl, limit = 4) {
   try {
     manifest = await fetchManifest();
   } catch (e) {
-    containerEl.innerHTML = `<p style="font-family:var(--mono);color:var(--dim);font-size:11px;">
+    containerEl.innerHTML = `<p style="font-family:var(--mono);color:var(--text-secondary);font-size:11px;">
       Devlog coming soon.
     </p>`;
     return;
@@ -252,7 +252,7 @@ async function renderDevlogPreview(containerEl, limit = 4) {
       .slice(0, limit);
 
   if (!posts.length) {
-    containerEl.innerHTML = `<p style="font-family:var(--mono);color:var(--dim);font-size:11px;">No posts yet.</p>`;
+    containerEl.innerHTML = `<p style="font-family:var(--mono);color:var(--text-secondary);font-size:11px;">No posts yet.</p>`;
     return;
   }
 

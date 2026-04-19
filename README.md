@@ -95,6 +95,7 @@ mherreravsquez.github.io/
 │   │       │   └── 02.webp
 │   │       ├── videos/
 │   │       └── thumb.webp
+│   ├── pfp.webp
 │   ├── resume-marceloherrera-en.pdf
 │   └── resume-marceloherrera-es.pdf
 ├── css/
@@ -112,6 +113,7 @@ mherreravsquez.github.io/
 ├── index.html
 ├── post.html
 └── project.html
+
 ```
 
 ### Key folders
