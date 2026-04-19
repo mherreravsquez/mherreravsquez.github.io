@@ -457,12 +457,12 @@ footer {
     }
 
     .hero-name { font-size: clamp(42px, 12vw, 72px); line-height: 0.9; }
-    .hero-eyebrow, .hero-name, .hero-meta, .hero-bottom {
+    .hero-eyebrow, .hero-name, .hero-meta {
         animation: none;
         opacity: 1;
         transform: none;
     }
-    .hero-eyebrow::before { display: none; }  
+    .hero-eyebrow::before { display: none; }
     .hero-desc { max-width: 100%; margin: 0 auto; }
     .hero-meta { justify-content: center; }
     .hero-stats { display: none; }
