@@ -88,7 +88,7 @@ mherreravsquez.github.io/
 │   │   │   └── thumb.webp
 │   │   ├── hunters-vega/
 │   │   │   ├── gallery/
-│   │   │   ├── videos/
+│   │   │   └── videos/
 │   │   └── tragones/
 │   │       ├── gallery/
 │   │       │   ├── 01.webp
@@ -99,7 +99,10 @@ mherreravsquez.github.io/
 │   ├── resume-marceloherrera-en.pdf
 │   └── resume-marceloherrera-es.pdf
 ├── css/
-│   └── style.css
+│   ├── components.css
+│   ├── core.css
+│   ├── pages.css
+│   └── sections.css
 ├── data/
 │   ├── projects.json
 │   └── translations.json
