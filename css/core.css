@@ -486,7 +486,6 @@ footer {
         grid-column: span 1 !important;
     }
     .proj-inner {
-        aspect-ratio: 16 / 9 !important;
         height: auto !important;
     }
 
@@ -516,7 +515,7 @@ footer {
     .studio-stats { grid-template-columns: 1fr; }
 
     /* ───────── DEVLOG ───────── */
-    .devlog-layout { grid-template-columns: 1fr; }
+    .devlog-layout { grid-template-columns: 1fr; gap: 0px;}
     .dlog-sidebar { display: none; }
 
     /* ───────── ABOUT ME ───────── */

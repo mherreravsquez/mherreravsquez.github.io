@@ -283,6 +283,7 @@
     gap: 10px;
     grid-auto-flow: dense;
 }
+
 /* Aspect ratios */
 .proj-card[data-ratio='16:9'] {
     grid-column: span 6;
@@ -308,8 +309,6 @@
 .proj-card[data-ratio='9:16'] .proj-inner {
     aspect-ratio: 9/16;
 }
-
-
 
 /* ───────── STUDIO SECTION ───────── */
 #studio {
