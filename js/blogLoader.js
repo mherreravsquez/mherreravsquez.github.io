@@ -108,7 +108,8 @@ async function renderBlogList(containerEl) {
     return;
   }
 
-  let posts = manifest.posts || [];
+  let posts = (manifest.posts || []).filter(p => p.category === 'game');
+  
 
   // Only show posts that match the current language (posts with no lang show in both)
   posts = posts.filter(p => !p.lang || p.lang === lang);
