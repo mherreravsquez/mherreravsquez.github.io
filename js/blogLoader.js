@@ -248,6 +248,7 @@ async function renderDevlogPreview(containerEl, limit = 4) {
   }
 
   const posts = (manifest.posts || [])
+      .filter(p => p.category === 'game') 
       .filter(p => !p.lang || p.lang === lang)   // only posts matching current language
       .sort((a, b) => new Date(b.date) - new Date(a.date))
       .slice(0, limit);
@@ -287,7 +288,9 @@ async function renderDevlogPreview(containerEl, limit = 4) {
   const indexTagCloud = document.getElementById('devlog-tag-cloud');
   if (indexTagCloud) {
     const tagSet = new Set();
-    (manifest.posts || []).forEach(p => (p.tags || []).forEach(t => tagSet.add(t)));
+    const gamePosts = (manifest.posts || []).filter(p => p.category === 'game');
+    gamePosts.forEach(p => (p.tags || []).forEach(t => tagSet.add(t)));
+
     indexTagCloud.innerHTML = [...tagSet].slice(0, 12).map(tag =>
         `<span class="tag-chip">${tag}</span>`
     ).join('');
@@ -297,7 +300,9 @@ async function renderDevlogPreview(containerEl, limit = 4) {
   const projFilter = document.getElementById('devlog-proj-filter');
   if (projFilter) {
     const projSet = new Set();
-    (manifest.posts || []).forEach(p => { if (p.project) projSet.add(p.project); });
+    const gamePosts = (manifest.posts || []).filter(p => p.category === 'game');
+    gamePosts.forEach(p => { if (p.project) projSet.add(p.project); });
+    
     projFilter.innerHTML = [...projSet].map(proj =>
         `<a href="project.html?project=${proj}" class="tag-chip">${proj}</a>`
     ).join('');
