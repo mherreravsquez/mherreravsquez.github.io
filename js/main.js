@@ -110,33 +110,33 @@ async function initProjectGrid() {
   grid.classList.add('proj-grid--tetris');
 
   // Configuración del tetris (posiciones y comportamientos)
-  const tetrisLayout = {
-    'car-loop': {
-      gridColumn: '1 / 9',
-      gridRow: '1 / 3',
-      stretch: true,
-    },
-    'bubble-ggj2025': {
-      gridColumn: '9 / 13',
-      gridRow: '1',
-      stretch: false,
-    },
-    'hunters-awakening': {
-      gridColumn: '9 / 13',
-      gridRow: '2',
-      stretch: false,
-    },
-    'boombastic': {
-      gridColumn: '1 / 6',
-      gridRow: '3',
-      stretch: false,
-    },
-    'tragones': {
-      gridColumn: '6 / 13',
-      gridRow: '3',
-      stretch: false,
-    }
-  };
+  // const tetrisLayout = {
+  //   'car-loop': {
+  //     gridColumn: '1 / 9',
+  //     gridRow: '1 / 3',
+  //     stretch: true,
+  //   },
+  //   'bubble-ggj2025': {
+  //     gridColumn: '9 / 13',
+  //     gridRow: '1',
+  //     stretch: false,
+  //   },
+  //   'hunters-awakening': {
+  //     gridColumn: '9 / 13',
+  //     gridRow: '2',
+  //     stretch: false,
+  //   },
+  //   'boombastic': {
+  //     gridColumn: '1 / 6',
+  //     gridRow: '3',
+  //     stretch: false,
+  //   },
+  //   'tragones': {
+  //     gridColumn: '6 / 13',
+  //     gridRow: '3',
+  //     stretch: false,
+  //   }
+  // };
 
   function clearTetrisStyles() {
     for (const [id] of Object.entries(tetrisLayout)) {
